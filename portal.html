@@ -1,0 +1,914 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career Portal | Los Angeles Fire Department</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f2f3f5;
+            color: #222;
+        }
+
+        /* TOP HEADER */
+        header {
+            background: #b5121b;
+            color: white;
+            height: 78px;
+            display: flex;
+            align-items: center;
+            padding: 0 55px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 47px;
+            height: 47px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .brand h1 {
+            font-size: 19px;
+            font-weight: 700;
+        }
+
+        /* PORTAL NAV */
+        .portal-nav {
+            background: white;
+            border-bottom: 1px solid #d6d6d6;
+            padding: 16px 55px;
+        }
+
+        .portal-nav a {
+            color: #333;
+            text-decoration: none;
+            margin-right: 32px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .portal-nav a:hover {
+            color: #b5121b;
+        }
+
+        /* MAIN */
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 25px;
+        }
+
+        /* PAGE TITLE */
+        .page-title {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 28px 30px;
+            margin-bottom: 20px;
+        }
+
+        .page-title h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .page-title p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* SEARCH */
+        .search {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .search h3 {
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+
+        .search-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search input,
+        .search select {
+            height: 42px;
+            border: 1px solid #bbb;
+            padding: 0 12px;
+            font-size: 14px;
+        }
+
+        .search input {
+            flex: 2;
+        }
+
+        .search select {
+            flex: 1;
+        }
+
+        .search button {
+            background: #b5121b;
+            color: white;
+            border: none;
+            padding: 0 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .search button:hover {
+            background: #941019;
+        }
+
+        /* RESULTS */
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .results-header h3 {
+            font-size: 18px;
+        }
+
+        .results-header span {
+            font-size: 13px;
+            color: #777;
+        }
+
+        /* JOB CARD */
+        .job {
+            background: white;
+            border: 1px solid #d8d8d8;
+            margin-bottom: 14px;
+        }
+
+        .job-header {
+            padding: 18px 22px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .job-header h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .job-number {
+            color: #777;
+            font-size: 12px;
+        }
+
+        .status {
+            background: #e8f4e8;
+            color: #286628;
+            padding: 6px 10px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .job-body {
+            padding: 20px 22px;
+        }
+
+        .job-body p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .details {
+            display: flex;
+            gap: 60px;
+            margin-bottom: 20px;
+        }
+
+        .detail label {
+            display: block;
+            color: #777;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .detail span {
+            font-size: 13px;
+        }
+
+        .view {
+            display: inline-block;
+            background: #b5121b;
+            color: white;
+            text-decoration: none;
+            padding: 11px 18px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .view:hover {
+            background: #941019;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 50px;
+            background: #171717;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+            font-size: 12px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 750px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            .portal-nav {
+                padding: 15px 20px;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            .container {
+                margin-top: 20px;
+            }
+
+            .search-row {
+                flex-direction: column;
+            }
+
+            .search input,
+            .search select,
+            .search button {
+                width: 100%;
+                height: 42px;
+            }
+
+            .details {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .job-header {
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="brand">
+
+            <div class="logo">
+                LAFD
+            </div>
+
+            <h1>
+                Los Angeles Fire Department
+            </h1>
+
+        </div>
+
+    </header>
+
+
+    <!-- PORTAL NAV -->
+    <div class="portal-nav">
+
+        <a href="careers.html">
+            Career Opportunities
+        </a>
+
+        <a href="#">
+            My Applications
+        </a>
+
+        <a href="#">
+            Sign In
+        </a>
+
+    </div>
+
+
+    <!-- CONTENT -->
+    <main class="container">
+
+
+        <!-- TITLE -->
+        <section class="page-title">
+
+            <h2>
+                Career Opportunities
+            </h2>
+
+            <p>
+                Search and apply for employment opportunities with the
+                Los Angeles Fire Department.
+            </p>
+
+        </section>
+
+
+        <!-- SEARCH -->
+        <section class="search">
+
+            <h3>
+                Search Jobs
+            </h3>
+
+            <div class="search-row">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by job title or keyword..."
+                >
+
+                <select id="departmentFilter">
+
+                    <option value="">
+                        All Departments
+                    </option>
+
+                    <option value="fire">
+                        Fire Operations
+                    </option>
+
+                    <option value="ems">
+                        Emergency Medical Services
+                    </option>
+
+                    <option value="prevention">
+                        Fire Prevention
+                    </option>
+
+                    <option value="communications">
+                        Communications
+                    </option>
+
+                </select>
+
+                <button onclick="searchJobs()">
+                    SEARCH
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULTS -->
+        <div class="results-header">
+
+            <h3>
+                Available Positions
+            </h3>
+
+            <span id="resultCount">
+                4 positions
+            </span>
+
+        </div>
+
+
+        <section id="jobs">
+
+
+            <!-- FIREFIGHTER -->
+            <div
+                class="job"
+                data-title="firefighter"
+                data-department="fire"
+            >
+
+                <div class="job-header">
+
+                    <div>
+
+                        <h4>
+                            Firefighter
+                        </h4>
+
+                        <span class="job-number">
+                            Job Number: LAFD-FF-001
+                        </span>
+
+                    </div>
+
+                    <span class="status">
+                        Accepting Applications
+                    </span>
+
+                </div>
+
+
+                <div class="job-body">
+
+                    <p>
+                        Respond to fires, medical emergencies, rescue
+                        incidents, and other emergency situations while
+                        protecting life and property.
+                    </p>
+
+
+                    <div class="details">
+
+                        <div class="detail">
+
+                            <label>
+                                Department
+                            </label>
+
+                            <span>
+                                Fire Operations
+                            </span>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <label>
+                                Employment
+                            </label>
+
+                            <span>
+                                Full Time
+                            </span>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <label>
+                                Location
+                            </label>
+
+                            <span>
+                                Los Angeles, CA
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="application.html?position=firefighter"
+                        class="view"
+                    >
+                        VIEW POSITION
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PARAMEDIC -->
+            <div
+                class="job"
+                data-title="firefighter paramedic"
+                data-department="ems"
+            >
+
+                <div class="job-header">
+
+                    <div>
+
+                        <h4>
+                            Firefighter / Paramedic
+                        </h4>
+
+                        <span class="job-number">
+                            Job Number: LAFD-EMS-002
+                        </span>
+
+                    </div>
+
+                    <span class="status">
+                        Accepting Applications
+                    </span>
+
+                </div>
+
+
+                <div class="job-body">
+
+                    <p>
+                        Provide advanced emergency medical care while
+                        supporting fire suppression, rescue, and emergency
+                        response operations.
+                    </p>
+
+
+                    <div class="details">
+
+                        <div class="detail">
+
+                            <label>
+                                Department
+                            </label>
+
+                            <span>
+                                Emergency Medical Services
+                            </span>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <label>
+                                Employment
+                            </label>
+
+                            <span>
+                                Full Time
+                            </span>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <label>
+                                Location
+                            </label>
+
+                            <span>
+                                Los Angeles, CA
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="application.html?position=paramedic"
+                        class="view"
+                    >
+                        VIEW POSITION
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- FIRE PREVENTION -->
+            <div
+                class="job"
+                data-title="fire prevention inspector"
+                data-department="prevention"
+            >
+
+                <div class="job-header">
+
+                    <div>
+
+                        <h4>
+                            Fire Prevention Inspector
+                        </h4>
+
+                        <span class="job-number">
+                            Job Number: LAFD-FP-003
+                        </span>
+
+                    </div>
+
+                    <span class="status">
+                        Accepting Applications
+                    </span>
+
+                </div>
+
+
+                <div class="job-body">
+
+                    <p>
+                        Conduct inspections, assist with fire prevention
+                        programs, and help maintain public safety standards.
+                    </p>
+
+
+                    <div class="details">
+
+                        <div class="detail">
+
+                            <label>
+                                Department
+                            </label>
+
+                            <span>
+                                Fire Prevention
+                            </span>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <label>
+                                Employment
+                            </label>
+
+                            <span>
+                                Full Time
+                            </span>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <label>
+                                Location
+                            </label>
+
+                            <span>
+                                Los Angeles, CA
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="application.html?position=prevention"
+                        class="view"
+                    >
+                        VIEW POSITION
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMMUNICATIONS -->
+            <div
+                class="job"
+                data-title="emergency communications dispatcher"
+                data-department="communications"
+            >
+
+                <div class="job-header">
+
+                    <div>
+
+                        <h4>
+                            Emergency Communications Dispatcher
+                        </h4>
+
+                        <span class="job-number">
+                            Job Number: LAFD-COM-004
+                        </span>
+
+                    </div>
+
+                    <span class="status">
+                        Accepting Applications
+                    </span>
+
+                </div>
+
+
+                <div class="job-body">
+
+                    <p>
+                        Receive emergency calls, coordinate department
+                        resources, and support emergency response operations.
+                    </p>
+
+
+                    <div class="details">
+
+                        <div class="detail">
+
+                            <label>
+                                Department
+                            </label>
+
+                            <span>
+                                Communications
+                            </span>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <label>
+                                Employment
+                            </label>
+
+                            <span>
+                                Full Time
+                            </span>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <label>
+                                Location
+                            </label>
+
+                            <span>
+                                Los Angeles, CA
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="application.html?position=dispatcher"
+                        class="view"
+                    >
+                        VIEW POSITION
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        © 2026 Los Angeles Fire Department — FiveM Roleplay
+
+    </footer>
+
+
+    <script>
+
+        function searchJobs() {
+
+            const search =
+                document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase()
+                .trim();
+
+            const department =
+                document
+                .getElementById("departmentFilter")
+                .value;
+
+            const jobs =
+                document.querySelectorAll(".job");
+
+            let count = 0;
+
+
+            jobs.forEach(job => {
+
+                const title =
+                    job.dataset.title;
+
+                const jobDepartment =
+                    job.dataset.department;
+
+
+                const searchMatch =
+                    title.includes(search);
+
+                const departmentMatch =
+                    department === "" ||
+                    jobDepartment === department;
+
+
+                if (searchMatch && departmentMatch) {
+
+                    job.style.display = "block";
+
+                    count++;
+
+                } else {
+
+                    job.style.display = "none";
+
+                }
+
+            });
+
+
+            document
+                .getElementById("resultCount")
+                .textContent =
+                count + (count === 1 ? " position" : " positions");
+
+        }
+
+
+        /* Allow ENTER to search */
+        document
+            .getElementById("searchInput")
+            .addEventListener("keypress", function(event) {
+
+                if (event.key === "Enter") {
+
+                    searchJobs();
+
+                }
+
+            });
+
+
+        /*
+            Automatically focus the position selected
+            from careers.html.
+
+            Example:
+            portal.html?position=firefighter
+        */
+
+        const params =
+            new URLSearchParams(window.location.search);
+
+        const selectedPosition =
+            params.get("position");
+
+
+        if (selectedPosition) {
+
+            const positionMap = {
+
+                firefighter: "firefighter",
+                paramedic: "firefighter paramedic",
+                prevention: "fire prevention inspector",
+                dispatcher: "emergency communications dispatcher"
+
+            };
+
+
+            if (positionMap[selectedPosition]) {
+
+                document
+                    .getElementById("searchInput")
+                    .value =
+                    positionMap[selectedPosition];
+
+                searchJobs();
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
