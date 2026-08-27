@@ -1,0 +1,1443 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Los Angeles Fire Department | LAFD</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red: #b51f2b;
+            --dark-red: #8f1721;
+            --black: #171717;
+            --dark: #242424;
+            --gray: #666;
+            --light-gray: #f3f3f3;
+            --border: #ddd;
+            --white: #fff;
+            --gold: #c99a3e;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--black);
+            background: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* TOP GOVERNMENT BAR */
+
+        .top-bar {
+            background: #1c1c1c;
+            color: #fff;
+            height: 38px;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar-inner {
+            width: min(1180px, 92%);
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .city-name {
+            letter-spacing: .3px;
+        }
+
+        .top-links {
+            display: flex;
+            gap: 22px;
+            color: #ddd;
+        }
+
+        .top-links a:hover {
+            color: #fff;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #fff;
+            border-bottom: 4px solid var(--red);
+        }
+
+        .header-main {
+            width: min(1180px, 92%);
+            min-height: 108px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .seal {
+            width: 76px;
+            height: 76px;
+            border: 3px solid var(--red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: var(--red);
+            font-weight: 900;
+            font-size: 26px;
+            background: #fff;
+        }
+
+        .seal::before {
+            content: "";
+            position: absolute;
+            inset: 5px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+        }
+
+        .brand-text h1 {
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: .5px;
+        }
+
+        .brand-text p {
+            margin-top: 5px;
+            color: #666;
+            font-size: 13px;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            background: #fff;
+        }
+
+        .nav-inner {
+            width: min(1180px, 92%);
+            margin: auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links a {
+            padding: 17px 15px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-left: 1px solid #eee;
+            transition: .2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--red);
+            color: #fff;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* HERO */
+
+        .hero {
+            height: 525px;
+            position: relative;
+            overflow: hidden;
+            background: #111;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity .7s ease;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        /*
+            Replace these Unsplash URLs with your own FiveM/LAFD images
+            for a completely self-contained website.
+        */
+
+        .slide-one {
+            background-image:
+                linear-gradient(90deg, rgba(0,0,0,.8), rgba(0,0,0,.25)),
+                url("https://images.unsplash.com/photo-1583500178690-f7c7f5e7e5f3?auto=format&fit=crop&w=2000&q=85");
+        }
+
+        .slide-two {
+            background-image:
+                linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.2)),
+                url("https://images.unsplash.com/photo-1581089778245-3ce67677f718?auto=format&fit=crop&w=2000&q=85");
+        }
+
+        .slide-three {
+            background-image:
+                linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.18)),
+                url("https://images.unsplash.com/photo-1599859553554-2f3f3f3f3f3f?auto=format&fit=crop&w=2000&q=85");
+        }
+
+        .hero-content {
+            width: min(1180px, 92%);
+            height: 100%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            color: #fff;
+        }
+
+        .hero-copy {
+            max-width: 700px;
+        }
+
+        .eyebrow {
+            font-size: 13px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #eee;
+        }
+
+        .hero h2 {
+            font-size: clamp(42px, 6vw, 68px);
+            line-height: .98;
+            text-transform: uppercase;
+            font-weight: 900;
+            margin-bottom: 22px;
+        }
+
+        .hero h2 span {
+            color: #e4b24d;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #eee;
+            max-width: 630px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 22px;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+            display: inline-block;
+            transition: .2s;
+            border: 2px solid transparent;
+        }
+
+        .btn-red {
+            background: var(--red);
+            color: #fff;
+        }
+
+        .btn-red:hover {
+            background: var(--dark-red);
+        }
+
+        .btn-outline {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        .btn-outline:hover {
+            background: #fff;
+            color: #111;
+        }
+
+        .hero-dots {
+            position: absolute;
+            bottom: 25px;
+            left: 4%;
+            display: flex;
+            gap: 8px;
+            z-index: 5;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: #fff;
+        }
+
+        /* EMERGENCY STRIP */
+
+        .emergency {
+            background: var(--red);
+            color: #fff;
+        }
+
+        .emergency-inner {
+            width: min(1180px, 92%);
+            min-height: 82px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .emergency-text {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .emergency-icon {
+            width: 42px;
+            height: 42px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+        }
+
+        .emergency strong {
+            font-size: 16px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .emergency small {
+            display: block;
+            margin-top: 4px;
+            opacity: .9;
+        }
+
+        .emergency-number {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        /* SECTION */
+
+        .section {
+            padding: 75px 0;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading .line {
+            width: 45px;
+            height: 4px;
+            background: var(--red);
+            margin: 0 auto 15px;
+        }
+
+        .section-heading h2 {
+            font-size: 32px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            color: #666;
+            max-width: 680px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: #fff;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .about-image {
+            min-height: 390px;
+            background:
+                linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.12)),
+                url("https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=1200&q=85");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .about-copy h3 {
+            font-size: 28px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .about-copy h3 span {
+            color: var(--red);
+        }
+
+        .about-copy p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .about-list {
+            margin-top: 25px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .about-list div {
+            border-left: 4px solid var(--red);
+            padding: 10px 14px;
+            background: #f7f7f7;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* SERVICES */
+
+        .services {
+            background: #f4f4f4;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 35px 30px;
+            transition: .25s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,.09);
+            border-top: 4px solid var(--red);
+        }
+
+        .card-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--red);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 22px;
+        }
+
+        .card h3 {
+            font-size: 19px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .card-link {
+            color: var(--red);
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        /* PREVENTION */
+
+        .prevention {
+            background: #fff;
+        }
+
+        .prevention-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .prevention-item {
+            min-height: 250px;
+            padding: 30px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prevention-item::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,.9));
+        }
+
+        .prevention-item > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .prep-one {
+            background-image: url("https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&fit=crop&w=900&q=85");
+        }
+
+        .prep-two {
+            background-image: url("https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=85");
+        }
+
+        .prep-three {
+            background-image: url("https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=900&q=85");
+        }
+
+        .prevention-item h3 {
+            font-size: 20px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .prevention-item p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        /* RECRUITMENT */
+
+        .recruitment {
+            background:
+                linear-gradient(90deg, rgba(0,0,0,.9), rgba(0,0,0,.45)),
+                url("https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=2000&q=85");
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        .recruitment-inner {
+            min-height: 360px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 760px;
+        }
+
+        .recruitment h2 {
+            font-size: 42px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .recruitment p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #ddd;
+            margin-bottom: 28px;
+        }
+
+        /* QUICK LINKS */
+
+        .quick-links {
+            background: #f3f3f3;
+            border-top: 1px solid #ddd;
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 35px;
+        }
+
+        .quick-column h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--red);
+        }
+
+        .quick-column a {
+            display: block;
+            font-size: 13px;
+            color: #555;
+            padding: 7px 0;
+        }
+
+        .quick-column a:hover {
+            color: var(--red);
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #1b1b1b;
+            color: #ccc;
+        }
+
+        .footer-main {
+            padding: 45px 0;
+        }
+
+        .footer-grid {
+            width: min(1180px, 92%);
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+        }
+
+        .footer-brand {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-seal {
+            width: 55px;
+            height: 55px;
+            border: 2px solid #aaa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+        }
+
+        .footer-brand strong {
+            color: #fff;
+            font-size: 17px;
+        }
+
+        .footer-about {
+            color: #999;
+            font-size: 13px;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #999;
+            font-size: 13px;
+            padding: 5px 0;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 11px;
+            color: #777;
+        }
+
+        .disclaimer {
+            margin-top: 7px;
+            color: #666;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .header-main {
+                min-height: 85px;
+            }
+
+            .seal {
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+            }
+
+            .brand-text h1 {
+                font-size: 20px;
+            }
+
+            .nav-inner {
+                width: 100%;
+            }
+
+            .mobile-menu {
+                display: block;
+                padding: 15px 4%;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                border-bottom: 1px solid #eee;
+                border-left: none;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards,
+            .prevention-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .emergency-inner {
+                padding: 18px 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .top-links {
+                display: none;
+            }
+
+            .brand-text p {
+                display: none;
+            }
+
+            .brand-text h1 {
+                font-size: 17px;
+            }
+
+            .hero {
+                height: 480px;
+            }
+
+            .hero h2 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .emergency-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .emergency-number {
+                padding-left: 58px;
+            }
+
+            .section {
+                padding: 55px 0;
+            }
+
+            .quick-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CITY BAR -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="city-name">
+                CITY OF LOS ANGELES
+            </div>
+
+            <div class="top-links">
+                <a href="#">311</a>
+                <a href="#">City Services</a>
+                <a href="#">Accessibility</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-main">
+
+            <a href="#" class="brand">
+                <div class="seal">LAFD</div>
+
+                <div class="brand-text">
+                    <h1>LOS ANGELES FIRE DEPARTMENT</h1>
+                    <p>Serving the City of Los Angeles</p>
+                </div>
+            </a>
+
+        </div>
+
+        <nav>
+            <div class="nav-inner">
+
+                <div class="mobile-menu" onclick="toggleMenu()">
+                    ☰
+                </div>
+
+                <div class="nav-links" id="navLinks">
+                    <a href="#" class="active">Home</a>
+                    <a href="#about">About Us</a>
+                    <a href="#services">Services</a>
+                    <a href="#prevention">Prevention</a>
+                    <a href="#community">Community</a>
+                    <a href="#careers">Recruitment</a>
+                    <a href="#contact">Contact</a>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-slide slide-one active"></div>
+        <div class="hero-slide slide-two"></div>
+        <div class="hero-slide slide-three"></div>
+
+        <div class="hero-content">
+            <div class="hero-copy">
+
+                <div class="eyebrow">
+                    Los Angeles Fire Department
+                </div>
+
+                <h2>
+                    Dedicated to<br>
+                    <span>Saving Lives.</span>
+                </h2>
+
+                <p>
+                    Protecting life, property and the environment through
+                    professional emergency response, fire prevention,
+                    preparedness and community service.
+                </p>
+
+                <div class="buttons">
+                    <a href="#about" class="btn btn-red">
+                        About the Department
+                    </a>
+
+                    <a href="#careers" class="btn btn-outline">
+                        Join LAFD
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hero-dots">
+            <div class="dot active" onclick="showSlide(0)"></div>
+            <div class="dot" onclick="showSlide(1)"></div>
+            <div class="dot" onclick="showSlide(2)"></div>
+        </div>
+
+    </section>
+
+    <!-- EMERGENCY -->
+    <section class="emergency">
+
+        <div class="emergency-inner">
+
+            <div class="emergency-text">
+
+                <div class="emergency-icon">!</div>
+
+                <div>
+                    <strong>Emergency</strong>
+                    <small>For emergencies requiring immediate assistance</small>
+                </div>
+
+            </div>
+
+            <div class="emergency-number">
+                DIAL 9-1-1
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+
+        <div class="container">
+
+            <div class="about-grid">
+
+                <div class="about-image"></div>
+
+                <div class="about-copy">
+
+                    <h3>
+                        The <span>Los Angeles</span> Fire Department
+                    </h3>
+
+                    <p>
+                        The Los Angeles Fire Department is committed to
+                        protecting the lives, property and environment of
+                        the communities we serve.
+                    </p>
+
+                    <p>
+                        Our personnel provide professional emergency
+                        response, fire suppression, emergency medical
+                        services, fire prevention and public education
+                        throughout the City of Los Angeles.
+                    </p>
+
+                    <div class="about-list">
+                        <div>Emergency Response</div>
+                        <div>Fire Suppression & Rescue</div>
+                        <div>Emergency Medical Services</div>
+                        <div>Fire Prevention & Education</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="services">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div class="line"></div>
+
+                <h2>Department Services</h2>
+
+                <p>
+                    Learn more about the services provided by the
+                    Los Angeles Fire Department and our commitment
+                    to public safety.
+                </p>
+
+            </div>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="card-icon">🚒</div>
+
+                    <h3>Fire & Rescue</h3>
+
+                    <p>
+                        Professional fire suppression, rescue operations
+                        and emergency response provided by trained
+                        department personnel.
+                    </p>
+
+                    <a href="#" class="card-link">
+                        Learn More →
+                    </a>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-icon">✚</div>
+
+                    <h3>Emergency Medical</h3>
+
+                    <p>
+                        Emergency medical response and patient care
+                        provided by department fire and rescue personnel.
+                    </p>
+
+                    <a href="#" class="card-link">
+                        Learn More →
+                    </a>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-icon">🔥</div>
+
+                    <h3>Fire Prevention</h3>
+
+                    <p>
+                        Programs designed to reduce fire risk through
+                        inspections, education, planning and enforcement.
+                    </p>
+
+                    <a href="#prevention" class="card-link">
+                        Learn More →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PREVENTION -->
+    <section class="section prevention" id="prevention">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div class="line"></div>
+
+                <h2>Safety & Preparedness</h2>
+
+                <p>
+                    Preparing today can help protect your family,
+                    home and community tomorrow.
+                </p>
+
+            </div>
+
+            <div class="prevention-grid">
+
+                <div class="prevention-item prep-one">
+
+                    <h3>Emergency Preparedness</h3>
+
+                    <p>
+                        Learn how to prepare your household for
+                        earthquakes, fires and other emergencies.
+                    </p>
+
+                </div>
+
+                <div class="prevention-item prep-two">
+
+                    <h3>Wildfire Safety</h3>
+
+                    <p>
+                        Understand wildfire risks and take steps
+                        to protect your home and property.
+                    </p>
+
+                </div>
+
+                <div class="prevention-item prep-three">
+
+                    <h3>Fire Safety</h3>
+
+                    <p>
+                        Simple fire safety practices can help prevent
+                        emergencies before they happen.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- COMMUNITY -->
+    <section class="section" id="community">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div class="line"></div>
+
+                <h2>Serving Our Community</h2>
+
+                <p>
+                    The LAFD works alongside residents, businesses and
+                    community organizations to promote safety,
+                    preparedness and public awareness.
+                </p>
+
+            </div>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="card-icon">🏠</div>
+
+                    <h3>Community Education</h3>
+
+                    <p>
+                        Public education programs help residents
+                        understand emergency preparedness and fire safety.
+                    </p>
+
+                    <a href="#" class="card-link">
+                        Explore →
+                    </a>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-icon">👨‍👩‍👧</div>
+
+                    <h3>Community Programs</h3>
+
+                    <p>
+                        Programs designed to strengthen relationships
+                        between the department and the communities we serve.
+                    </p>
+
+                    <a href="#" class="card-link">
+                        Explore →
+                    </a>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-icon">📍</div>
+
+                    <h3>Find a Fire Station</h3>
+
+                    <p>
+                        Locate department stations and learn more about
+                        the services available within your community.
+                    </p>
+
+                    <a href="#" class="card-link">
+                        Find a Station →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- RECRUITMENT -->
+    <section class="section recruitment" id="careers">
+
+        <div class="container">
+
+            <div class="recruitment-inner">
+
+                <div class="eyebrow">
+                    Careers with the Department
+                </div>
+
+                <h2>
+                    Make a Difference.<br>
+                    Serve Your Community.
+                </h2>
+
+                <p>
+                    A career with the Los Angeles Fire Department offers
+                    the opportunity to serve the public, protect lives
+                    and make a lasting difference in the community.
+                </p>
+
+                <div>
+                    <a href="#" class="btn btn-red">
+                        Careers & Recruitment →
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- QUICK LINKS -->
+    <section class="section quick-links" id="contact">
+
+        <div class="container">
+
+            <div class="quick-grid">
+
+                <div class="quick-column">
+
+                    <h3>Department</h3>
+
+                    <a href="#about">About LAFD</a>
+                    <a href="#">Department Leadership</a>
+                    <a href="#">Fire Stations</a>
+                    <a href="#">Department History</a>
+                    <a href="#">Contact Us</a>
+
+                </div>
+
+                <div class="quick-column">
+
+                    <h3>Services</h3>
+
+                    <a href="#">Emergency Services</a>
+                    <a href="#">Fire & Rescue</a>
+                    <a href="#">Emergency Medical Services</a>
+                    <a href="#">Fire Prevention</a>
+                    <a href="#">Inspections</a>
+
+                </div>
+
+                <div class="quick-column">
+
+                    <h3>Safety</h3>
+
+                    <a href="#">Emergency Preparedness</a>
+                    <a href="#">Wildfire Safety</a>
+                    <a href="#">Fire Safety</a>
+                    <a href="#">Disaster Preparedness</a>
+                    <a href="#">Community Education</a>
+
+                </div>
+
+                <div class="quick-column">
+
+                    <h3>Connect</h3>
+
+                    <a href="#">Recruitment</a>
+                    <a href="#">Community Programs</a>
+                    <a href="#">Contact the Department</a>
+                    <a href="#">Accessibility</a>
+                    <a href="#">Privacy</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-main">
+
+            <div class="footer-grid">
+
+                <div>
+
+                    <div class="footer-brand">
+
+                        <div class="footer-seal">
+                            LAFD
+                        </div>
+
+                        <strong>
+                            LOS ANGELES FIRE DEPARTMENT
+                        </strong>
+
+                    </div>
+
+                    <p class="footer-about">
+                        Dedicated to protecting life, property and the
+                        environment through professional emergency
+                        services, fire prevention and community service.
+                    </p>
+
+                </div>
+
+                <div class="footer-col">
+
+                    <h4>Department</h4>
+
+                    <a href="#about">About Us</a>
+                    <a href="#services">Services</a>
+                    <a href="#prevention">Prevention</a>
+                    <a href="#careers">Recruitment</a>
+
+                </div>
+
+                <div class="footer-col">
+
+                    <h4>Contact</h4>
+
+                    <a href="#">Contact Us</a>
+                    <a href="#">Find a Station</a>
+                    <a href="#">Community</a>
+                    <a href="#">Accessibility</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <div>
+                © 2026 Los Angeles Fire Department
+            </div>
+
+            <div class="disclaimer">
+                This website is a fictional roleplay project and is not
+                affiliated with the City of Los Angeles or the Los Angeles
+                Fire Department.
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script>
+
+        /* MOBILE NAVIGATION */
+
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("open");
+        }
+
+
+        /* HERO SLIDER */
+
+        let currentSlide = 0;
+
+        const slides = document.querySelectorAll(".hero-slide");
+        const dots = document.querySelectorAll(".dot");
+
+        function showSlide(index) {
+
+            slides.forEach(slide => {
+                slide.classList.remove("active");
+            });
+
+            dots.forEach(dot => {
+                dot.classList.remove("active");
+            });
+
+            currentSlide = index;
+
+            slides[currentSlide].classList.add("active");
+            dots[currentSlide].classList.add("active");
+        }
+
+
+        setInterval(() => {
+
+            currentSlide++;
+
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+
+            showSlide(currentSlide);
+
+        }, 6500);
+
+
+        /* CLOSE MOBILE MENU AFTER CLICK */
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", () => {
+                document.getElementById("navLinks").classList.remove("open");
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
+```
