@@ -994,46 +994,147 @@
 
 
     /* ================================
+       SAVE APPLICATION LOCALLY
+    ================================= */
+
+    function saveApplicationLocally(application) {
+
+        try {
+
+            const existingApplications =
+                JSON.parse(
+                    localStorage.getItem(
+                        "lafdApplications"
+                    ) || "[]"
+                );
+
+
+            /*
+                Keep the complete application.
+
+                This allows the My Applications
+                page to display the full submission.
+            */
+
+            const savedApplication = {
+
+                ...application,
+
+                status: "Submitted",
+
+                savedAt:
+                    new Date().toISOString()
+
+            };
+
+
+            /*
+                Put newest application first.
+            */
+
+            existingApplications.unshift(
+                savedApplication
+            );
+
+
+            localStorage.setItem(
+
+                "lafdApplications",
+
+                JSON.stringify(
+                    existingApplications
+                )
+
+            );
+
+
+            return true;
+
+
+        } catch (error) {
+
+            console.error(
+                "Unable to save application locally:",
+                error
+            );
+
+            return false;
+
+        }
+
+    }
+
+
+
+    /* ================================
        SUBMIT APPLICATION
     ================================= */
 
     async function submitApplication() {
 
         const error =
-            document.getElementById("errorMessage");
+            document.getElementById(
+                "errorMessage"
+            );
 
         const button =
-            document.getElementById("submitButton");
+            document.getElementById(
+                "submitButton"
+            );
 
 
         error.style.display = "none";
 
 
-        /* Required fields */
+        /* ================================
+           REQUIRED FIELDS
+        ================================= */
 
         const required = [
 
-            document.getElementById("firstName"),
+            document.getElementById(
+                "firstName"
+            ),
 
-            document.getElementById("lastName"),
+            document.getElementById(
+                "lastName"
+            ),
 
-            document.getElementById("dob"),
+            document.getElementById(
+                "dob"
+            ),
 
-            document.getElementById("phone"),
+            document.getElementById(
+                "phone"
+            ),
 
-            document.getElementById("email"),
+            document.getElementById(
+                "email"
+            ),
 
-            document.getElementById("address"),
+            document.getElementById(
+                "address"
+            ),
 
-            document.getElementById("city"),
+            document.getElementById(
+                "city"
+            ),
 
-            document.getElementById("state"),
+            document.getElementById(
+                "state"
+            ),
 
-            document.getElementById("license"),
+            document.getElementById(
+                "license"
+            ),
 
-            document.getElementById("eligible"),
+            document.getElementById(
+                "eligible"
+            ),
 
-            document.getElementById("motivation")
+            document.getElementById(
+                "motivation"
+            )
 
         ];
 
@@ -1045,7 +1146,8 @@
                 error.textContent =
                     "Please complete all required fields before submitting.";
 
-                error.style.display = "block";
+                error.style.display =
+                    "block";
 
                 field.focus();
 
@@ -1057,13 +1159,24 @@
 
 
 
-        /* Certification */
+        /* ================================
+           CERTIFICATION
+        ================================= */
 
         const truth =
-            document.getElementById("truth").checked;
+            document
+                .getElementById(
+                    "truth"
+                )
+                .checked;
+
 
         const consent =
-            document.getElementById("consent").checked;
+            document
+                .getElementById(
+                    "consent"
+                )
+                .checked;
 
 
         if (!truth || !consent) {
@@ -1071,7 +1184,8 @@
             error.textContent =
                 "Please complete the applicant certification before submitting.";
 
-            error.style.display = "block";
+            error.style.display =
+                "block";
 
             return;
 
@@ -1079,50 +1193,65 @@
 
 
 
-        /* Generate application number */
+        /* ================================
+           GENERATE APPLICATION NUMBER
+        ================================= */
 
         const applicationNumber =
             generateApplicationNumber();
 
 
 
-        /* Collect application */
+        /* ================================
+           COLLECT APPLICATION
+        ================================= */
 
         const application = {
 
             applicationNumber,
 
-            position: selected.name,
+            position:
+                selected.name,
 
 
             /* Personal Information */
 
             firstName:
                 document
-                    .getElementById("firstName")
+                    .getElementById(
+                        "firstName"
+                    )
                     .value
                     .trim(),
 
             lastName:
                 document
-                    .getElementById("lastName")
+                    .getElementById(
+                        "lastName"
+                    )
                     .value
                     .trim(),
 
             dob:
                 document
-                    .getElementById("dob")
+                    .getElementById(
+                        "dob"
+                    )
                     .value,
 
             phone:
                 document
-                    .getElementById("phone")
+                    .getElementById(
+                        "phone"
+                    )
                     .value
                     .trim(),
 
             email:
                 document
-                    .getElementById("email")
+                    .getElementById(
+                        "email"
+                    )
                     .value
                     .trim(),
 
@@ -1131,19 +1260,25 @@
 
             address:
                 document
-                    .getElementById("address")
+                    .getElementById(
+                        "address"
+                    )
                     .value
                     .trim(),
 
             city:
                 document
-                    .getElementById("city")
+                    .getElementById(
+                        "city"
+                    )
                     .value
                     .trim(),
 
             state:
                 document
-                    .getElementById("state")
+                    .getElementById(
+                        "state"
+                    )
                     .value,
 
 
@@ -1151,29 +1286,39 @@
 
             employer:
                 document
-                    .getElementById("employer")
+                    .getElementById(
+                        "employer"
+                    )
                     .value
                     .trim(),
 
             previousPosition:
                 document
-                    .getElementById("previousPosition")
+                    .getElementById(
+                        "previousPosition"
+                    )
                     .value
                     .trim(),
 
             experience:
                 document
-                    .getElementById("experience")
+                    .getElementById(
+                        "experience"
+                    )
                     .value,
 
             education:
                 document
-                    .getElementById("education")
+                    .getElementById(
+                        "education"
+                    )
                     .value,
 
             relevantExperience:
                 document
-                    .getElementById("relevantExperience")
+                    .getElementById(
+                        "relevantExperience"
+                    )
                     .value
                     .trim(),
 
@@ -1182,12 +1327,16 @@
 
             license:
                 document
-                    .getElementById("license")
+                    .getElementById(
+                        "license"
+                    )
                     .value,
 
             eligible:
                 document
-                    .getElementById("eligible")
+                    .getElementById(
+                        "eligible"
+                    )
                     .value,
 
 
@@ -1195,13 +1344,17 @@
 
             motivation:
                 document
-                    .getElementById("motivation")
+                    .getElementById(
+                        "motivation"
+                    )
                     .value
                     .trim(),
 
             additional:
                 document
-                    .getElementById("additional")
+                    .getElementById(
+                        "additional"
+                    )
                     .value
                     .trim(),
 
@@ -1215,7 +1368,9 @@
 
 
 
-        /* Disable button */
+        /* ================================
+           DISABLE BUTTON
+        ================================= */
 
         button.disabled = true;
 
@@ -1224,8 +1379,11 @@
 
 
 
-        try {
+        /* ================================
+           SEND APPLICATION
+        ================================= */
 
+        try {
 
             const response =
                 await fetch(
@@ -1235,8 +1393,10 @@
                         method: "POST",
 
                         headers: {
+
                             "Content-Type":
                                 "application/json"
+
                         },
 
                         body:
@@ -1249,18 +1409,25 @@
 
 
             const result =
-                await response.json()
-                    .catch(() => null);
+                await response
+                    .json()
+                    .catch(
+                        () => null
+                    );
 
 
 
-            /* Check response */
+            /* ================================
+               CHECK RESPONSE
+            ================================= */
 
             if (!response.ok) {
 
                 throw new Error(
+
                     result?.message ||
                     "Application submission failed."
+
                 );
 
             }
@@ -1268,25 +1435,53 @@
 
 
             /* ================================
-               SUCCESS
+               SAVE LOCALLY
+               
+               IMPORTANT:
+               This happens AFTER the API
+               successfully accepts the application.
+            ================================= */
+
+            saveApplicationLocally(
+                application
+            );
+
+
+
+            /* ================================
+               SUCCESS PAGE
             ================================= */
 
             document
-                .getElementById("applicationPage")
-                .style.display = "none";
+                .getElementById(
+                    "applicationPage"
+                )
+                .style.display =
+                    "none";
 
 
             document
-                .getElementById("successPage")
-                .style.display = "block";
+                .getElementById(
+                    "successPage"
+                )
+                .style.display =
+                    "block";
 
 
             document
-                .getElementById("applicationNumber")
+                .getElementById(
+                    "applicationNumber"
+                )
                 .textContent =
+
                 result?.applicationNumber ||
                 applicationNumber;
 
+
+
+            /* ================================
+               SCROLL TO TOP
+            ================================= */
 
             window.scrollTo({
 
@@ -1309,10 +1504,13 @@
                 "We were unable to submit your application. Please try again.";
 
 
-            error.style.display = "block";
+            error.style.display =
+                "block";
 
 
-            button.disabled = false;
+            button.disabled =
+                false;
+
 
             button.textContent =
                 "SUBMIT APPLICATION";
