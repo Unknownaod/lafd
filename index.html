@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,931 +11,212 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        :root {
-            --red: #a71930;
-            --red-dark: #851426;
-            --black: #191919;
-            --gray: #666;
-            --light: #f4f4f4;
-            --border: #d9d9d9;
-            --gold: #c8a24b;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: var(--black);
-            background: white;
+            background: #f5f5f5;
+            color: #222;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* =========================
-           CITY BAR
-        ========================= */
-
-        .city-bar {
-            height: 38px;
-            background: #202020;
-            color: #ddd;
-            font-size: 12px;
-        }
-
-        .city-bar-inner {
-            width: min(1200px, 92%);
-            height: 100%;
-            margin: auto;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .city-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .city-links a:hover {
-            color: white;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
+        /* Header */
         header {
-            background: white;
-            border-bottom: 4px solid var(--red);
-        }
-
-        .header {
-            width: min(1200px, 92%);
-            min-height: 108px;
-            margin: auto;
-
+            background: #b5121b;
+            height: 78px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            padding: 0 55px;
+            color: white;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 15px;
         }
 
-        .seal {
-            width: 76px;
-            height: 76px;
-
-            border: 3px solid var(--red);
+        .logo {
+            width: 48px;
+            height: 48px;
+            border: 2px solid white;
             border-radius: 50%;
-
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: bold;
+            font-size: 13px;
+        }
 
-            color: var(--red);
-            font-weight: 900;
+        .brand h1 {
             font-size: 20px;
-
-            position: relative;
-        }
-
-        .seal::after {
-            content: "";
-            position: absolute;
-            inset: 6px;
-
-            border: 1px solid var(--gold);
-            border-radius: 50%;
-        }
-
-        .brand-title {
-            font-size: 27px;
-            font-weight: 800;
+            font-weight: 700;
             letter-spacing: .3px;
         }
 
-        .brand-subtitle {
-            margin-top: 5px;
-            font-size: 12px;
-            color: #777;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
         nav {
-            background: white;
-        }
-
-        .nav {
-            width: min(1200px, 92%);
-            margin: auto;
-
+            margin-left: auto;
             display: flex;
-            justify-content: flex-end;
+            gap: 32px;
         }
 
-        .nav a {
-            padding: 17px 17px;
-
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-
-            border-left: 1px solid #eee;
-
-            transition: .2s;
-        }
-
-        .nav a:hover,
-        .nav a.active {
+        nav a {
             color: white;
-            background: var(--red);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
         }
 
-        .mobile-button {
-            display: none;
-            cursor: pointer;
-            font-size: 25px;
-            padding: 15px 4%;
+        nav a:hover {
+            text-decoration: underline;
         }
 
-        /* =========================
-           HERO
-        ========================= */
-
+        /* Hero */
         .hero {
-            height: 550px;
-            position: relative;
-            overflow: hidden;
-
-            background: #111;
-        }
-
-        .hero-slide {
-            position: absolute;
-            inset: 0;
-
-            opacity: 0;
-
-            background-size: cover;
-            background-position: center;
-
-            transition: opacity .8s ease;
-        }
-
-        .hero-slide.active {
-            opacity: 1;
-        }
-
-        .hero-1 {
-            background-image:
-                linear-gradient(
-                    90deg,
-                    rgba(0,0,0,.86),
-                    rgba(0,0,0,.35)
-                ),
-                url("images/hero-1.jpg");
-        }
-
-        .hero-2 {
-            background-image:
-                linear-gradient(
-                    90deg,
-                    rgba(0,0,0,.86),
-                    rgba(0,0,0,.3)
-                ),
-                url("images/hero-2.jpg");
-        }
-
-        .hero-3 {
-            background-image:
-                linear-gradient(
-                    90deg,
-                    rgba(0,0,0,.86),
-                    rgba(0,0,0,.3)
-                ),
-                url("images/hero-3.jpg");
+            height: 430px;
+            background:
+                linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.58)),
+                url("https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1800&q=80")
+                center/cover;
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+            color: white;
         }
 
         .hero-content {
-            width: min(1200px, 92%);
-            height: 100%;
-            margin: auto;
-
-            display: flex;
-            align-items: center;
-
-            color: white;
-            position: relative;
-            z-index: 2;
+            max-width: 650px;
         }
 
-        .hero-copy {
-            max-width: 720px;
-        }
-
-        .hero-eyebrow {
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-
-            margin-bottom: 17px;
-        }
-
-        .hero h1 {
-            font-size: clamp(45px, 6vw, 72px);
-            line-height: .95;
-
-            text-transform: uppercase;
-            font-weight: 900;
-
-            margin-bottom: 25px;
-        }
-
-        .hero h1 span {
-            color: #d7ad50;
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
 
         .hero p {
-            color: #eee;
-
-            font-size: 17px;
-            line-height: 1.7;
-
-            max-width: 650px;
-            margin-bottom: 30px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
         }
 
         .button {
             display: inline-block;
-
-            padding: 15px 23px;
-
-            font-size: 12px;
-            font-weight: 900;
-
-            text-transform: uppercase;
-            letter-spacing: .4px;
-
-            transition: .2s;
-        }
-
-        .button-red {
+            background: #b5121b;
             color: white;
-            background: var(--red);
+            padding: 13px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
         }
 
-        .button-red:hover {
-            background: var(--red-dark);
+        .button:hover {
+            background: #951019;
         }
 
-        .button-outline {
-            border: 2px solid white;
-            color: white;
-        }
-
-        .button-outline:hover {
-            background: white;
-            color: #111;
-        }
-
-        .slider-controls {
-            position: absolute;
-            bottom: 25px;
-            left: 4%;
-
-            display: flex;
-            gap: 8px;
-
-            z-index: 5;
-        }
-
-        .slider-dot {
-            width: 11px;
-            height: 11px;
-
-            border: 1px solid white;
-            border-radius: 50%;
-
-            cursor: pointer;
-        }
-
-        .slider-dot.active {
-            background: white;
-        }
-
-        /* =========================
-           EMERGENCY BAR
-        ========================= */
-
-        .emergency {
-            background: var(--red);
-            color: white;
-        }
-
-        .emergency-inner {
-            width: min(1200px, 92%);
-            min-height: 84px;
-            margin: auto;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .emergency-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .emergency-icon {
-            width: 42px;
-            height: 42px;
-
-            border: 2px solid white;
-            border-radius: 50%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-weight: 900;
-        }
-
-        .emergency-title {
-            font-weight: 900;
-            text-transform: uppercase;
-            font-size: 15px;
-        }
-
-        .emergency-subtitle {
-            margin-top: 4px;
-            font-size: 12px;
-            opacity: .9;
-        }
-
-        .emergency-number {
-            font-size: 27px;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-
-        /* =========================
-           GENERAL SECTIONS
-        ========================= */
-
-        .section {
-            padding: 80px 0;
-        }
-
+        /* Main */
         .container {
-            width: min(1200px, 92%);
+            max-width: 1100px;
             margin: auto;
+            padding: 55px 25px;
         }
 
-        .section-heading {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-line {
-            width: 45px;
-            height: 4px;
-
-            background: var(--red);
-
-            margin: 0 auto 16px;
-        }
-
-        .section-heading h2 {
-            font-size: 32px;
-            text-transform: uppercase;
+        .section-title {
+            font-size: 28px;
             margin-bottom: 12px;
+            color: #222;
         }
 
-        .section-heading p {
-            max-width: 700px;
-            margin: auto;
+        .red-line {
+            width: 55px;
+            height: 4px;
+            background: #b5121b;
+            margin-bottom: 25px;
+        }
 
-            color: #666;
+        .about {
+            font-size: 16px;
             line-height: 1.7;
-        }
-
-        /* =========================
-           WELCOME
-        ========================= */
-
-        .welcome-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-
-            gap: 60px;
-            align-items: center;
-        }
-
-        .welcome-image {
-            min-height: 400px;
-
-            background:
-                linear-gradient(
-                    rgba(0,0,0,.12),
-                    rgba(0,0,0,.12)
-                ),
-                url("images/about.jpg");
-
-            background-size: cover;
-            background-position: center;
-        }
-
-        .welcome h2 {
-            font-size: 31px;
-            text-transform: uppercase;
-
-            margin-bottom: 20px;
-        }
-
-        .welcome h2 span {
-            color: var(--red);
-        }
-
-        .welcome p {
+            max-width: 850px;
             color: #555;
-            line-height: 1.85;
-            margin-bottom: 18px;
         }
 
-        .welcome-list {
-            margin-top: 25px;
-
-            display: grid;
-            gap: 10px;
-        }
-
-        .welcome-list div {
-            padding: 12px 15px;
-
-            background: #f5f5f5;
-            border-left: 4px solid var(--red);
-
-            font-size: 13px;
-            font-weight: 800;
-        }
-
-        /* =========================
-           FEATURED SERVICES
-        ========================= */
-
-        .services {
-            background: var(--light);
-        }
-
-        .service-grid {
+        /* Cards */
+        .cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
+            gap: 20px;
+            margin-top: 35px;
         }
 
-        .service-card {
+        .card {
             background: white;
-            border: 1px solid var(--border);
-
-            padding: 35px 30px;
-
-            transition: .25s;
+            border-top: 4px solid #b5121b;
+            padding: 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,.08);
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-
-            border-top: 4px solid var(--red);
-
-            box-shadow: 0 12px 30px rgba(0,0,0,.08);
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 19px;
         }
 
-        .service-icon {
-            width: 55px;
-            height: 55px;
-
-            background: var(--red);
-            color: white;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 23px;
-
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            font-size: 18px;
-            text-transform: uppercase;
-
-            margin-bottom: 12px;
-        }
-
-        .service-card p {
+        .card p {
             color: #666;
             font-size: 14px;
-            line-height: 1.7;
-
-            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
-        .learn-more {
-            color: var(--red);
-
-            font-size: 12px;
-            font-weight: 900;
-
-            text-transform: uppercase;
-        }
-
-        /* =========================
-           SAFETY
-        ========================= */
-
-        .safety-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .safety-card {
-            min-height: 280px;
-
-            position: relative;
-
-            background-size: cover;
-            background-position: center;
-
+        /* Emergency */
+        .emergency {
+            background: #222;
             color: white;
-
-            display: flex;
-            align-items: flex-end;
-
-            padding: 30px;
-
-            overflow: hidden;
+            text-align: center;
+            padding: 40px 20px;
         }
 
-        .safety-card::before {
-            content: "";
-
-            position: absolute;
-            inset: 0;
-
-            background:
-                linear-gradient(
-                    transparent 20%,
-                    rgba(0,0,0,.9)
-                );
-        }
-
-        .safety-card > div {
-            position: relative;
-            z-index: 2;
-        }
-
-        .safety-one {
-            background-image: url("images/preparedness.jpg");
-        }
-
-        .safety-two {
-            background-image: url("images/wildfire.jpg");
-        }
-
-        .safety-three {
-            background-image: url("images/fire-safety.jpg");
-        }
-
-        .safety-card h3 {
-            text-transform: uppercase;
-            font-size: 20px;
+        .emergency h2 {
+            font-size: 30px;
             margin-bottom: 8px;
         }
 
-        .safety-card p {
-            font-size: 13px;
-            line-height: 1.6;
-            color: #ddd;
+        .emergency span {
+            color: #e21b2d;
         }
 
-        /* =========================
-           CAREERS CTA
-        ========================= */
-
-        .careers {
-            color: white;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(0,0,0,.9),
-                    rgba(0,0,0,.45)
-                ),
-                url("images/careers.jpg");
-
-            background-size: cover;
-            background-position: center;
+        .emergency p {
+            color: #ccc;
+            font-size: 15px;
         }
 
-        .careers-content {
-            max-width: 750px;
-        }
-
-        .careers h2 {
-            font-size: 43px;
-            line-height: 1.05;
-
-            text-transform: uppercase;
-
-            margin-bottom: 20px;
-        }
-
-        .careers p {
-            color: #ddd;
-            line-height: 1.8;
-
-            font-size: 16px;
-
-            margin-bottom: 28px;
-        }
-
-        /* =========================
-           QUICK LINKS
-        ========================= */
-
-        .quick-links {
-            background: #f3f3f3;
-
-            border-top: 1px solid var(--border);
-        }
-
-        .quick-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-
-            gap: 35px;
-        }
-
-        .quick-column h3 {
-            font-size: 13px;
-            text-transform: uppercase;
-
-            padding-bottom: 12px;
-            margin-bottom: 12px;
-
-            border-bottom: 3px solid var(--red);
-        }
-
-        .quick-column a {
-            display: block;
-
-            padding: 6px 0;
-
-            color: #555;
-            font-size: 13px;
-        }
-
-        .quick-column a:hover {
-            color: var(--red);
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
+        /* Footer */
         footer {
-            background: #1b1b1b;
+            background: #111;
             color: #aaa;
-        }
-
-        .footer-main {
-            padding: 48px 0;
-        }
-
-        .footer-grid {
-            width: min(1200px, 92%);
-            margin: auto;
-
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-
-            gap: 50px;
-        }
-
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-
-            margin-bottom: 18px;
-        }
-
-        .footer-seal {
-            width: 54px;
-            height: 54px;
-
-            border: 2px solid #777;
-            border-radius: 50%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            color: white;
-            font-weight: 900;
-            font-size: 12px;
-        }
-
-        .footer-brand strong {
-            color: white;
-            font-size: 16px;
-        }
-
-        .footer-description {
-            max-width: 500px;
-
-            font-size: 13px;
-            line-height: 1.8;
-
-            color: #888;
-        }
-
-        .footer-column h4 {
-            color: white;
-
-            font-size: 13px;
-            text-transform: uppercase;
-
-            margin-bottom: 14px;
-        }
-
-        .footer-column a {
-            display: block;
-
-            font-size: 13px;
-            color: #888;
-
-            padding: 5px 0;
-        }
-
-        .footer-column a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #333;
-
-            padding: 20px;
-
             text-align: center;
-
-            font-size: 11px;
-            color: #666;
+            padding: 25px;
+            font-size: 13px;
         }
 
-        .disclaimer {
-            margin-top: 7px;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 950px) {
-
-            .brand-title {
-                font-size: 21px;
+        /* Mobile */
+        @media (max-width: 750px) {
+            header {
+                padding: 0 20px;
             }
 
-            .nav {
-                justify-content: flex-start;
-            }
-
-            .nav a {
-                padding: 15px 11px;
-            }
-
-            .welcome-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .service-grid,
-            .safety-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .quick-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 650px) {
-
-            .city-links {
+            nav {
                 display: none;
-            }
-
-            .header {
-                min-height: 85px;
-            }
-
-            .seal {
-                width: 60px;
-                height: 60px;
-            }
-
-            .brand-title {
-                font-size: 17px;
-            }
-
-            .brand-subtitle {
-                display: none;
-            }
-
-            .mobile-button {
-                display: block;
-            }
-
-            .nav {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .nav.open {
-                display: flex;
-            }
-
-            .nav a {
-                border-top: 1px solid #eee;
-                border-left: none;
             }
 
             .hero {
-                height: 500px;
+                padding: 40px 25px;
             }
 
-            .hero h1 {
-                font-size: 44px;
+            .hero h2 {
+                font-size: 36px;
             }
 
-            .hero p {
-                font-size: 15px;
-            }
-
-            .emergency-inner {
-                padding: 18px 0;
-
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .emergency-number {
-                margin-left: 57px;
-            }
-
-            .section {
-                padding: 55px 0;
-            }
-
-            .quick-grid {
+            .cards {
                 grid-template-columns: 1fr;
-            }
-
-            .careers h2 {
-                font-size: 35px;
             }
         }
     </style>
@@ -944,871 +224,104 @@
 
 <body>
 
-    <!-- CITY BAR -->
-
-    <div class="city-bar">
-        <div class="city-bar-inner">
-
-            <div>
-                CITY OF LOS ANGELES
-            </div>
-
-            <div class="city-links">
-                <a href="#">311</a>
-                <a href="#">City Services</a>
-                <a href="#">Accessibility</a>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- HEADER -->
-
     <header>
+        <div class="brand">
+            <div class="logo">LAFD</div>
 
-        <div class="header">
-
-            <a href="index.html" class="brand">
-
-                <div class="seal">
-                    LAFD
-                </div>
-
-                <div>
-                    <div class="brand-title">
-                        LOS ANGELES FIRE DEPARTMENT
-                    </div>
-
-                    <div class="brand-subtitle">
-                        Serving the City of Los Angeles
-                    </div>
-                </div>
-
-            </a>
-
+            <h1>Los Angeles Fire Department</h1>
         </div>
-
 
         <nav>
-
-            <div class="mobile-button" onclick="toggleMenu()">
-                ☰
-            </div>
-
-            <div class="nav" id="nav">
-
-                <a href="index.html" class="active">
-                    Home
-                </a>
-
-                <a href="about.html">
-                    About Us
-                </a>
-
-                <a href="services.html">
-                    Services
-                </a>
-
-                <a href="prevention.html">
-                    Prevention
-                </a>
-
-                <a href="community.html">
-                    Community
-                </a>
-
-                <a href="careers.html">
-                    Careers
-                </a>
-
-                <a href="stations.html">
-                    Stations
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-            </div>
-
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="stations.html">Stations</a>
+            <a href="careers.html">Careers</a>
         </nav>
-
     </header>
 
 
-    <!-- HERO -->
-
     <section class="hero">
-
-        <div class="hero-slide hero-1 active"></div>
-        <div class="hero-slide hero-2"></div>
-        <div class="hero-slide hero-3"></div>
-
         <div class="hero-content">
+            <h2>Los Angeles Fire Department</h2>
 
-            <div class="hero-copy">
+            <p>
+                Protecting lives, property, and the communities we serve.
+                The Los Angeles Fire Department is committed to professional
+                emergency response and public safety.
+            </p>
 
-                <div class="hero-eyebrow">
-                    Los Angeles Fire Department
-                </div>
+            <a href="about.html" class="button">ABOUT THE DEPARTMENT</a>
+        </div>
+    </section>
 
-                <h1>
-                    Dedicated to<br>
-                    <span>Saving Lives.</span>
-                </h1>
+
+    <main class="container">
+
+        <h2 class="section-title">Welcome to the LAFD</h2>
+
+        <div class="red-line"></div>
+
+        <p class="about">
+            The Los Angeles Fire Department provides fire suppression,
+            emergency medical services, rescue operations, and other
+            emergency services throughout the City of Los Angeles.
+        </p>
+
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Fire & Rescue</h3>
 
                 <p>
-                    Protecting life, property and the environment
-                    through professional emergency response,
-                    fire prevention, preparedness and community
-                    service.
+                    Professional fire suppression, rescue operations,
+                    and emergency response.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <h3>Emergency Medical Services</h3>
+
+                <p>
+                    Emergency medical care and transportation for
+                    those in need.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <h3>Join the Department</h3>
+
+                <p>
+                    Interested in serving Los Angeles?
+                    Learn more about careers with the LAFD.
                 </p>
 
-                <div class="hero-buttons">
+                <br>
 
-                    <a href="about.html" class="button button-red">
-                        About the Department
-                    </a>
-
-                    <a href="careers.html" class="button button-outline">
-                        Join the Department
-                    </a>
-
-                </div>
-
+                <a href="careers.html" class="button">
+                    CAREERS
+                </a>
             </div>
 
         </div>
 
+    </main>
 
-        <div class="slider-controls">
-
-            <div class="slider-dot active" onclick="showSlide(0)"></div>
-            <div class="slider-dot" onclick="showSlide(1)"></div>
-            <div class="slider-dot" onclick="showSlide(2)"></div>
-
-        </div>
-
-    </section>
-
-
-    <!-- EMERGENCY -->
 
     <section class="emergency">
+        <h2>Emergency? <span>Call 911</span></h2>
 
-        <div class="emergency-inner">
-
-            <div class="emergency-left">
-
-                <div class="emergency-icon">
-                    !
-                </div>
-
-                <div>
-
-                    <div class="emergency-title">
-                        Emergency
-                    </div>
-
-                    <div class="emergency-subtitle">
-                        For emergencies requiring immediate assistance
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="emergency-number">
-                DIAL 9-1-1
-            </div>
-
-        </div>
-
+        <p>
+            For emergencies requiring fire, rescue, or medical assistance.
+        </p>
     </section>
 
-
-    <!-- WELCOME -->
-
-    <section class="section welcome" id="about">
-
-        <div class="container">
-
-            <div class="welcome-grid">
-
-                <div class="welcome-image"></div>
-
-                <div>
-
-                    <h2>
-                        Serving the <span>City of Los Angeles</span>
-                    </h2>
-
-                    <p>
-                        The Los Angeles Fire Department is committed
-                        to protecting the lives, property and environment
-                        of the communities we serve.
-                    </p>
-
-                    <p>
-                        Our personnel provide professional emergency
-                        response, fire suppression, rescue operations,
-                        emergency medical services, fire prevention
-                        and public education.
-                    </p>
-
-                    <div class="welcome-list">
-
-                        <div>
-                            Emergency Response
-                        </div>
-
-                        <div>
-                            Fire Suppression & Rescue
-                        </div>
-
-                        <div>
-                            Emergency Medical Services
-                        </div>
-
-                        <div>
-                            Fire Prevention & Education
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SERVICES -->
-
-    <section class="section services">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <div class="section-line"></div>
-
-                <h2>
-                    Department Services
-                </h2>
-
-                <p>
-                    The Department provides a broad range of emergency
-                    and public safety services to the residents and
-                    visitors of Los Angeles.
-                </p>
-
-            </div>
-
-
-            <div class="service-grid">
-
-                <div class="service-card">
-
-                    <div class="service-icon">
-                        🚒
-                    </div>
-
-                    <h3>
-                        Fire & Rescue
-                    </h3>
-
-                    <p>
-                        Fire suppression, technical rescue and emergency
-                        response operations performed by highly trained
-                        department personnel.
-                    </p>
-
-                    <a href="services.html" class="learn-more">
-                        Learn More →
-                    </a>
-
-                </div>
-
-
-                <div class="service-card">
-
-                    <div class="service-icon">
-                        ✚
-                    </div>
-
-                    <h3>
-                        Emergency Medical
-                    </h3>
-
-                    <p>
-                        Emergency medical response and patient care
-                        provided by department personnel throughout
-                        the city.
-                    </p>
-
-                    <a href="services.html" class="learn-more">
-                        Learn More →
-                    </a>
-
-                </div>
-
-
-                <div class="service-card">
-
-                    <div class="service-icon">
-                        🔥
-                    </div>
-
-                    <h3>
-                        Fire Prevention
-                    </h3>
-
-                    <p>
-                        Fire prevention programs, inspections, education
-                        and safety initiatives designed to reduce risk.
-                    </p>
-
-                    <a href="prevention.html" class="learn-more">
-                        Learn More →
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SAFETY -->
-
-    <section class="section">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <div class="section-line"></div>
-
-                <h2>
-                    Safety & Preparedness
-                </h2>
-
-                <p>
-                    Take steps today to protect yourself, your family
-                    and your community during an emergency.
-                </p>
-
-            </div>
-
-
-            <div class="safety-grid">
-
-                <a href="prevention.html" class="safety-card safety-one">
-
-                    <div>
-
-                        <h3>
-                            Emergency Preparedness
-                        </h3>
-
-                        <p>
-                            Prepare your household for earthquakes,
-                            fires and other emergencies.
-                        </p>
-
-                    </div>
-
-                </a>
-
-
-                <a href="prevention.html" class="safety-card safety-two">
-
-                    <div>
-
-                        <h3>
-                            Wildfire Safety
-                        </h3>
-
-                        <p>
-                            Understand wildfire risks and learn how
-                            to protect your home and property.
-                        </p>
-
-                    </div>
-
-                </a>
-
-
-                <a href="prevention.html" class="safety-card safety-three">
-
-                    <div>
-
-                        <h3>
-                            Fire Safety
-                        </h3>
-
-                        <p>
-                            Learn practical fire safety measures that
-                            can help prevent emergencies.
-                        </p>
-
-                    </div>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- COMMUNITY -->
-
-    <section class="section services">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <div class="section-line"></div>
-
-                <h2>
-                    Serving Our Community
-                </h2>
-
-                <p>
-                    Building strong relationships with residents,
-                    businesses and organizations throughout Los Angeles.
-                </p>
-
-            </div>
-
-
-            <div class="service-grid">
-
-                <div class="service-card">
-
-                    <div class="service-icon">
-                        🏠
-                    </div>
-
-                    <h3>
-                        Community Education
-                    </h3>
-
-                    <p>
-                        Public education programs designed to promote
-                        preparedness and fire safety.
-                    </p>
-
-                    <a href="community.html" class="learn-more">
-                        Explore →
-                    </a>
-
-                </div>
-
-
-                <div class="service-card">
-
-                    <div class="service-icon">
-                        👥
-                    </div>
-
-                    <h3>
-                        Community Programs
-                    </h3>
-
-                    <p>
-                        Programs designed to strengthen partnerships
-                        between the Department and the community.
-                    </p>
-
-                    <a href="community.html" class="learn-more">
-                        Explore →
-                    </a>
-
-                </div>
-
-
-                <div class="service-card">
-
-                    <div class="service-icon">
-                        📍
-                    </div>
-
-                    <h3>
-                        Fire Stations
-                    </h3>
-
-                    <p>
-                        Find department stations and learn more about
-                        emergency services in your area.
-                    </p>
-
-                    <a href="stations.html" class="learn-more">
-                        Find a Station →
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CAREERS -->
-
-    <section class="section careers">
-
-        <div class="container">
-
-            <div class="careers-content">
-
-                <div class="hero-eyebrow">
-                    Careers With the Department
-                </div>
-
-                <h2>
-                    Make a Difference.<br>
-                    Serve Your Community.
-                </h2>
-
-                <p>
-                    A career with the Los Angeles Fire Department
-                    provides an opportunity to serve the public,
-                    protect lives and make a lasting difference
-                    within the community.
-                </p>
-
-                <a href="careers.html" class="button button-red">
-                    Careers & Recruitment →
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- QUICK LINKS -->
-
-    <section class="section quick-links">
-
-        <div class="container">
-
-            <div class="quick-grid">
-
-                <div class="quick-column">
-
-                    <h3>
-                        Department
-                    </h3>
-
-                    <a href="about.html">
-                        About LAFD
-                    </a>
-
-                    <a href="about.html">
-                        Department Leadership
-                    </a>
-
-                    <a href="stations.html">
-                        Fire Stations
-                    </a>
-
-                    <a href="about.html">
-                        Department History
-                    </a>
-
-                    <a href="contact.html">
-                        Contact Us
-                    </a>
-
-                </div>
-
-
-                <div class="quick-column">
-
-                    <h3>
-                        Services
-                    </h3>
-
-                    <a href="services.html">
-                        Emergency Services
-                    </a>
-
-                    <a href="services.html">
-                        Fire & Rescue
-                    </a>
-
-                    <a href="services.html">
-                        Emergency Medical Services
-                    </a>
-
-                    <a href="prevention.html">
-                        Fire Prevention
-                    </a>
-
-                    <a href="prevention.html">
-                        Inspections
-                    </a>
-
-                </div>
-
-
-                <div class="quick-column">
-
-                    <h3>
-                        Safety
-                    </h3>
-
-                    <a href="prevention.html">
-                        Emergency Preparedness
-                    </a>
-
-                    <a href="prevention.html">
-                        Wildfire Safety
-                    </a>
-
-                    <a href="prevention.html">
-                        Fire Safety
-                    </a>
-
-                    <a href="prevention.html">
-                        Disaster Preparedness
-                    </a>
-
-                    <a href="community.html">
-                        Community Education
-                    </a>
-
-                </div>
-
-
-                <div class="quick-column">
-
-                    <h3>
-                        Connect
-                    </h3>
-
-                    <a href="careers.html">
-                        Recruitment
-                    </a>
-
-                    <a href="community.html">
-                        Community Programs
-                    </a>
-
-                    <a href="contact.html">
-                        Contact the Department
-                    </a>
-
-                    <a href="#">
-                        Accessibility
-                    </a>
-
-                    <a href="#">
-                        Privacy
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
 
     <footer>
-
-        <div class="footer-main">
-
-            <div class="footer-grid">
-
-                <div>
-
-                    <div class="footer-brand">
-
-                        <div class="footer-seal">
-                            LAFD
-                        </div>
-
-                        <strong>
-                            LOS ANGELES FIRE DEPARTMENT
-                        </strong>
-
-                    </div>
-
-                    <p class="footer-description">
-                        Dedicated to protecting life, property and
-                        the environment through professional emergency
-                        services, fire prevention and community service.
-                    </p>
-
-                </div>
-
-
-                <div class="footer-column">
-
-                    <h4>
-                        Department
-                    </h4>
-
-                    <a href="about.html">
-                        About Us
-                    </a>
-
-                    <a href="services.html">
-                        Services
-                    </a>
-
-                    <a href="stations.html">
-                        Stations
-                    </a>
-
-                    <a href="careers.html">
-                        Careers
-                    </a>
-
-                </div>
-
-
-                <div class="footer-column">
-
-                    <h4>
-                        Contact
-                    </h4>
-
-                    <a href="contact.html">
-                        Contact Us
-                    </a>
-
-                    <a href="stations.html">
-                        Find a Station
-                    </a>
-
-                    <a href="community.html">
-                        Community
-                    </a>
-
-                    <a href="#">
-                        Accessibility
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-
-            © 2026 Los Angeles Fire Department
-
-            <div class="disclaimer">
-                This website is a fictional roleplay project and is not
-                affiliated with the City of Los Angeles or the Los Angeles
-                Fire Department.
-            </div>
-
-        </div>
-
+        © 2026 Los Angeles Fire Department — FiveM Roleplay
     </footer>
-
-
-    <script>
-
-        /* =========================
-           MOBILE MENU
-        ========================= */
-
-        function toggleMenu() {
-            document
-                .getElementById("nav")
-                .classList.toggle("open");
-        }
-
-
-        /* =========================
-           HERO SLIDER
-        ========================= */
-
-        let currentSlide = 0;
-
-        const slides =
-            document.querySelectorAll(".hero-slide");
-
-        const dots =
-            document.querySelectorAll(".slider-dot");
-
-
-        function showSlide(index) {
-
-            slides.forEach(slide => {
-                slide.classList.remove("active");
-            });
-
-            dots.forEach(dot => {
-                dot.classList.remove("active");
-            });
-
-            currentSlide = index;
-
-            slides[currentSlide]
-                .classList.add("active");
-
-            dots[currentSlide]
-                .classList.add("active");
-        }
-
-
-        setInterval(() => {
-
-            currentSlide++;
-
-            if (currentSlide >= slides.length) {
-                currentSlide = 0;
-            }
-
-            showSlide(currentSlide);
-
-        }, 7000);
-
-
-        /* =========================
-           CLOSE MOBILE NAV
-        ========================= */
-
-        document
-            .querySelectorAll(".nav a")
-            .forEach(link => {
-
-                link.addEventListener("click", () => {
-
-                    document
-                        .getElementById("nav")
-                        .classList.remove("open");
-
-                });
-
-            });
-
-    </script>
 
 </body>
 </html>
-```
