@@ -1,0 +1,1202 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employment Application | Los Angeles Fire Department</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f2f3f5;
+            color: #222;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #b5121b;
+            height: 78px;
+            display: flex;
+            align-items: center;
+            padding: 0 55px;
+            color: white;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 47px;
+            height: 47px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .brand h1 {
+            font-size: 19px;
+        }
+
+        /* NAV */
+
+        .nav {
+            background: white;
+            border-bottom: 1px solid #d5d5d5;
+            padding: 15px 55px;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            margin-right: 30px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav a:hover {
+            color: #b5121b;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 25px;
+        }
+
+        /* TITLE */
+
+        .page-title {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .page-title h2 {
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .page-title p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .position {
+            margin-top: 18px;
+            display: inline-block;
+            background: #eee;
+            border-left: 4px solid #b5121b;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* FORM */
+
+        .form-section {
+            background: white;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            background: #eeeeee;
+            border-bottom: 1px solid #d5d5d5;
+            padding: 16px 22px;
+        }
+
+        .section-header h3 {
+            font-size: 16px;
+        }
+
+        .section-header p {
+            color: #777;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .section-body {
+            padding: 25px 22px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 7px;
+            color: #444;
+        }
+
+        label span {
+            color: #b5121b;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid #bbb;
+            padding: 11px 12px;
+            font-size: 13px;
+            outline: none;
+            background: white;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #b5121b;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .help {
+            color: #888;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        /* CHECKBOX */
+
+        .checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .checkbox input {
+            width: auto;
+            margin-top: 2px;
+        }
+
+        .checkbox label {
+            font-weight: normal;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* SUBMIT */
+
+        .submit-section {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 25px;
+        }
+
+        .submit-section p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .submit-button {
+            background: #b5121b;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background: #941019;
+        }
+
+        .submit-button:disabled {
+            background: #999;
+            cursor: not-allowed;
+        }
+
+        /* ERROR */
+
+        .error {
+            display: none;
+            background: #fbe8e8;
+            border: 1px solid #e1aaaa;
+            color: #8b1a1a;
+            padding: 13px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        /* SUCCESS */
+
+        .success {
+            display: none;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            background: #2f7d32;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+        }
+
+        .success h2 {
+            margin-bottom: 10px;
+        }
+
+        .success p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .application-number {
+            margin: 20px auto;
+            background: #f1f1f1;
+            padding: 14px;
+            max-width: 350px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 15px;
+            background: #b5121b;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #171717;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+            font-size: 12px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            .nav {
+                padding: 15px 20px;
+                white-space: nowrap;
+                overflow-x: auto;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full {
+                grid-column: auto;
+            }
+
+            .container {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="brand">
+
+        <div class="logo">
+            LAFD
+        </div>
+
+        <h1>
+            Los Angeles Fire Department
+        </h1>
+
+    </div>
+
+</header>
+
+
+<div class="nav">
+
+    <a href="careers.html">
+        Career Opportunities
+    </a>
+
+    <a href="portal.html">
+        Job Search
+    </a>
+
+    <a href="#">
+        My Applications
+    </a>
+
+</div>
+
+
+<main class="container">
+
+    <!-- APPLICATION -->
+
+    <div id="applicationPage">
+
+        <section class="page-title">
+
+            <h2>
+                Employment Application
+            </h2>
+
+            <p>
+                Complete the application below to be considered for
+                employment with the Los Angeles Fire Department.
+            </p>
+
+            <div class="position">
+                Position: <span id="positionName">Firefighter</span>
+            </div>
+
+        </section>
+
+
+        <div id="errorMessage" class="error"></div>
+
+
+        <!-- PERSONAL INFORMATION -->
+
+        <section class="form-section">
+
+            <div class="section-header">
+
+                <h3>
+                    Personal Information
+                </h3>
+
+                <p>
+                    Please provide your basic applicant information.
+                </p>
+
+            </div>
+
+            <div class="section-body">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            First Name <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="firstName"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Last Name <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="lastName"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Date of Birth <span>*</span>
+                        </label>
+
+                        <input
+                            type="date"
+                            id="dob"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Phone Number <span>*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="(555) 555-5555"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            Email Address <span>*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="you@example.com"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ADDRESS -->
+
+        <section class="form-section">
+
+            <div class="section-header">
+
+                <h3>
+                    Address
+                </h3>
+
+                <p>
+                    Provide your current residential information.
+                </p>
+
+            </div>
+
+            <div class="section-body">
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+
+                        <label>
+                            Street Address <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="address"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            City <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            State <span>*</span>
+                        </label>
+
+                        <select id="state" required>
+
+                            <option value="">
+                                Select State
+                            </option>
+
+                            <option>California</option>
+                            <option>Arizona</option>
+                            <option>Nevada</option>
+                            <option>Oregon</option>
+                            <option>Washington</option>
+                            <option>Other</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EMPLOYMENT -->
+
+        <section class="form-section">
+
+            <div class="section-header">
+
+                <h3>
+                    Employment & Experience
+                </h3>
+
+                <p>
+                    Tell us about your previous experience.
+                </p>
+
+            </div>
+
+            <div class="section-body">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Current / Most Recent Employer
+                        </label>
+
+                        <input
+                            type="text"
+                            id="employer"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Previous Position
+                        </label>
+
+                        <input
+                            type="text"
+                            id="previousPosition"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Years of Experience
+                        </label>
+
+                        <select id="experience">
+
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option>Less than 1 year</option>
+                            <option>1–2 years</option>
+                            <option>3–5 years</option>
+                            <option>6–10 years</option>
+                            <option>10+ years</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Education Level
+                        </label>
+
+                        <select id="education">
+
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option>High School</option>
+                            <option>College</option>
+                            <option>University</option>
+                            <option>Trade School</option>
+                            <option>Other</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            Relevant Experience
+                        </label>
+
+                        <textarea
+                            id="relevantExperience"
+                            placeholder="Describe any relevant fire, EMS, emergency services, public safety, leadership, or other experience."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUESTIONS -->
+
+        <section class="form-section">
+
+            <div class="section-header">
+
+                <h3>
+                    Applicant Questions
+                </h3>
+
+                <p>
+                    Please answer each question truthfully.
+                </p>
+
+            </div>
+
+            <div class="section-body">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Do you possess a valid driver's license? <span>*</span>
+                        </label>
+
+                        <select id="license" required>
+
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option>Yes</option>
+                            <option>No</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Are you legally eligible to work? <span>*</span>
+                        </label>
+
+                        <select id="eligible" required>
+
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option>Yes</option>
+                            <option>No</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            Why do you want to join the LAFD? <span>*</span>
+                        </label>
+
+                        <textarea
+                            id="motivation"
+                            required
+                            placeholder="Explain why you are interested in this position."
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            Additional Information
+                        </label>
+
+                        <textarea
+                            id="additional"
+                            placeholder="Anything else you would like the recruitment team to know."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CERTIFICATION -->
+
+        <section class="form-section">
+
+            <div class="section-header">
+
+                <h3>
+                    Applicant Certification
+                </h3>
+
+            </div>
+
+            <div class="section-body">
+
+                <div class="checkbox">
+
+                    <input
+                        type="checkbox"
+                        id="truth"
+                    >
+
+                    <label for="truth">
+                        I certify that the information provided in this
+                        application is accurate and complete to the best
+                        of my knowledge. <span>*</span>
+                    </label>
+
+                </div>
+
+
+                <div class="checkbox">
+
+                    <input
+                        type="checkbox"
+                        id="consent"
+                    >
+
+                    <label for="consent">
+                        I understand that submitting this application does
+                        not guarantee employment and that additional
+                        screening may be required. <span>*</span>
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUBMIT -->
+
+        <section class="submit-section">
+
+            <p>
+                Please review your application before submitting.
+                Once submitted, your application will be forwarded to
+                the LAFD recruitment team for review.
+            </p>
+
+            <button
+                class="submit-button"
+                id="submitButton"
+                onclick="submitApplication()"
+            >
+                SUBMIT APPLICATION
+            </button>
+
+        </section>
+
+    </div>
+
+
+    <!-- SUCCESS -->
+
+    <section id="successPage" class="success">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>
+            Application Submitted
+        </h2>
+
+        <p>
+            Your employment application has been successfully submitted.
+            Please retain your application number for your records.
+        </p>
+
+        <div class="application-number">
+            Application Number:
+            <span id="applicationNumber"></span>
+        </div>
+
+        <p>
+            The recruitment team will review your application and
+            contact you if additional information is required.
+        </p>
+
+        <a
+            href="careers.html"
+            class="back-button"
+        >
+            RETURN TO CAREERS
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    © 2026 Los Angeles Fire Department — FiveM Roleplay
+
+</footer>
+
+
+<script>
+
+    /* POSITION DATA */
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+    const position =
+        params.get("position") || "firefighter";
+
+
+    const positions = {
+
+        firefighter: {
+            name: "Firefighter"
+        },
+
+        paramedic: {
+            name: "Firefighter / Paramedic"
+        },
+
+        prevention: {
+            name: "Fire Prevention Inspector"
+        },
+
+        dispatcher: {
+            name: "Emergency Communications Dispatcher"
+        }
+
+    };
+
+
+    const selected =
+        positions[position] || positions.firefighter;
+
+
+    document
+        .getElementById("positionName")
+        .textContent = selected.name;
+
+
+    /* GENERATE APPLICATION NUMBER */
+
+    function generateApplicationNumber() {
+
+        const year =
+            new Date().getFullYear();
+
+        const random =
+            Math.floor(100000 + Math.random() * 900000);
+
+        return "LAFD-" + year + "-" + random;
+
+    }
+
+
+    /* SUBMIT */
+
+    async function submitApplication() {
+
+        const error =
+            document.getElementById("errorMessage");
+
+        error.style.display = "none";
+
+
+        const required = [
+
+            document.getElementById("firstName"),
+
+            document.getElementById("lastName"),
+
+            document.getElementById("dob"),
+
+            document.getElementById("phone"),
+
+            document.getElementById("email"),
+
+            document.getElementById("address"),
+
+            document.getElementById("city"),
+
+            document.getElementById("state"),
+
+            document.getElementById("license"),
+
+            document.getElementById("eligible"),
+
+            document.getElementById("motivation")
+
+        ];
+
+
+        for (const field of required) {
+
+            if (!field.value.trim()) {
+
+                error.textContent =
+                    "Please complete all required fields before submitting.";
+
+                error.style.display = "block";
+
+                field.focus();
+
+                return;
+
+            }
+
+        }
+
+
+        if (
+            !document.getElementById("truth").checked ||
+            !document.getElementById("consent").checked
+        ) {
+
+            error.textContent =
+                "Please complete the applicant certification before submitting.";
+
+            error.style.display = "block";
+
+            return;
+
+        }
+
+
+        const applicationNumber =
+            generateApplicationNumber();
+
+
+        const application = {
+
+            applicationNumber,
+
+            position: selected.name,
+
+            firstName:
+                document.getElementById("firstName").value.trim(),
+
+            lastName:
+                document.getElementById("lastName").value.trim(),
+
+            dob:
+                document.getElementById("dob").value,
+
+            phone:
+                document.getElementById("phone").value.trim(),
+
+            email:
+                document.getElementById("email").value.trim(),
+
+            address:
+                document.getElementById("address").value.trim(),
+
+            city:
+                document.getElementById("city").value.trim(),
+
+            state:
+                document.getElementById("state").value,
+
+            employer:
+                document.getElementById("employer").value.trim(),
+
+            previousPosition:
+                document.getElementById("previousPosition").value.trim(),
+
+            experience:
+                document.getElementById("experience").value,
+
+            education:
+                document.getElementById("education").value,
+
+            relevantExperience:
+                document.getElementById("relevantExperience").value.trim(),
+
+            license:
+                document.getElementById("license").value,
+
+            eligible:
+                document.getElementById("eligible").value,
+
+            motivation:
+                document.getElementById("motivation").value.trim(),
+
+            additional:
+                document.getElementById("additional").value.trim(),
+
+            submittedAt:
+                new Date().toISOString()
+
+        };
+
+
+        const button =
+            document.getElementById("submitButton");
+
+        button.disabled = true;
+
+        button.textContent = "SUBMITTING...";
+
+
+        try {
+
+            /*
+                Your backend endpoint.
+
+                The backend should receive this JSON and
+                send the Discord webhook embed.
+            */
+
+            const response =
+                await fetch("/api/applications", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify(application)
+
+                });
+
+
+            if (!response.ok) {
+                throw new Error("Submission failed.");
+            }
+
+
+            document
+                .getElementById("applicationPage")
+                .style.display = "none";
+
+
+            document
+                .getElementById("successPage")
+                .style.display = "block";
+
+
+            document
+                .getElementById("applicationNumber")
+                .textContent =
+                applicationNumber;
+
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+
+        } catch (err) {
+
+            error.textContent =
+                "We were unable to submit your application. Please try again.";
+
+            error.style.display = "block";
+
+            button.disabled = false;
+
+            button.textContent =
+                "SUBMIT APPLICATION";
+
+        }
+
+    }
+
+</script>
+
+</body>
+</html>
+```
