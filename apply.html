@@ -928,12 +928,14 @@
 </footer>
 
 
+
 <script>
 
-    /* POSITION DATA */
+    /* ================================
+       POSITION DATA
+    ================================= */
 
-    const params =
-        new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);
 
     const position =
         params.get("position") || "firefighter";
@@ -969,7 +971,10 @@
         .textContent = selected.name;
 
 
-    /* GENERATE APPLICATION NUMBER */
+
+    /* ================================
+       GENERATE APPLICATION NUMBER
+    ================================= */
 
     function generateApplicationNumber() {
 
@@ -977,22 +982,34 @@
             new Date().getFullYear();
 
         const random =
-            Math.floor(100000 + Math.random() * 900000);
+            Math.floor(
+                100000 +
+                Math.random() * 900000
+            );
 
-        return "LAFD-" + year + "-" + random;
+        return `LAFD-${year}-${random}`;
 
     }
 
 
-    /* SUBMIT */
+
+    /* ================================
+       SUBMIT APPLICATION
+    ================================= */
 
     async function submitApplication() {
 
         const error =
             document.getElementById("errorMessage");
 
+        const button =
+            document.getElementById("submitButton");
+
+
         error.style.display = "none";
 
+
+        /* Required fields */
 
         const required = [
 
@@ -1039,10 +1056,17 @@
         }
 
 
-        if (
-            !document.getElementById("truth").checked ||
-            !document.getElementById("consent").checked
-        ) {
+
+        /* Certification */
+
+        const truth =
+            document.getElementById("truth").checked;
+
+        const consent =
+            document.getElementById("consent").checked;
+
+
+        if (!truth || !consent) {
 
             error.textContent =
                 "Please complete the applicant certification before submitting.";
@@ -1054,9 +1078,15 @@
         }
 
 
+
+        /* Generate application number */
+
         const applicationNumber =
             generateApplicationNumber();
 
+
+
+        /* Collect application */
 
         const application = {
 
@@ -1064,56 +1094,119 @@
 
             position: selected.name,
 
+
+            /* Personal Information */
+
             firstName:
-                document.getElementById("firstName").value.trim(),
+                document
+                    .getElementById("firstName")
+                    .value
+                    .trim(),
 
             lastName:
-                document.getElementById("lastName").value.trim(),
+                document
+                    .getElementById("lastName")
+                    .value
+                    .trim(),
 
             dob:
-                document.getElementById("dob").value,
+                document
+                    .getElementById("dob")
+                    .value,
 
             phone:
-                document.getElementById("phone").value.trim(),
+                document
+                    .getElementById("phone")
+                    .value
+                    .trim(),
 
             email:
-                document.getElementById("email").value.trim(),
+                document
+                    .getElementById("email")
+                    .value
+                    .trim(),
+
+
+            /* Address */
 
             address:
-                document.getElementById("address").value.trim(),
+                document
+                    .getElementById("address")
+                    .value
+                    .trim(),
 
             city:
-                document.getElementById("city").value.trim(),
+                document
+                    .getElementById("city")
+                    .value
+                    .trim(),
 
             state:
-                document.getElementById("state").value,
+                document
+                    .getElementById("state")
+                    .value,
+
+
+            /* Employment */
 
             employer:
-                document.getElementById("employer").value.trim(),
+                document
+                    .getElementById("employer")
+                    .value
+                    .trim(),
 
             previousPosition:
-                document.getElementById("previousPosition").value.trim(),
+                document
+                    .getElementById("previousPosition")
+                    .value
+                    .trim(),
 
             experience:
-                document.getElementById("experience").value,
+                document
+                    .getElementById("experience")
+                    .value,
 
             education:
-                document.getElementById("education").value,
+                document
+                    .getElementById("education")
+                    .value,
 
             relevantExperience:
-                document.getElementById("relevantExperience").value.trim(),
+                document
+                    .getElementById("relevantExperience")
+                    .value
+                    .trim(),
+
+
+            /* Requirements */
 
             license:
-                document.getElementById("license").value,
+                document
+                    .getElementById("license")
+                    .value,
 
             eligible:
-                document.getElementById("eligible").value,
+                document
+                    .getElementById("eligible")
+                    .value,
+
+
+            /* Questions */
 
             motivation:
-                document.getElementById("motivation").value.trim(),
+                document
+                    .getElementById("motivation")
+                    .value
+                    .trim(),
 
             additional:
-                document.getElementById("additional").value.trim(),
+                document
+                    .getElementById("additional")
+                    .value
+                    .trim(),
+
+
+            /* Submission */
 
             submittedAt:
                 new Date().toISOString()
@@ -1121,41 +1214,62 @@
         };
 
 
-        const button =
-            document.getElementById("submitButton");
+
+        /* Disable button */
 
         button.disabled = true;
 
-        button.textContent = "SUBMITTING...";
+        button.textContent =
+            "SUBMITTING...";
+
 
 
         try {
 
-            /*
-                Your backend endpoint.
-
-                The backend should receive this JSON and
-                send the Discord webhook embed.
-            */
 
             const response =
-                await fetch("/api/applications", {
+                await fetch(
+                    "/api/applications",
+                    {
 
-                    method: "POST",
+                        method: "POST",
 
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
 
-                    body: JSON.stringify(application)
+                        body:
+                            JSON.stringify(
+                                application
+                            )
 
-                });
+                    }
+                );
 
+
+            const result =
+                await response.json()
+                    .catch(() => null);
+
+
+
+            /* Check response */
 
             if (!response.ok) {
-                throw new Error("Submission failed.");
+
+                throw new Error(
+                    result?.message ||
+                    "Application submission failed."
+                );
+
             }
 
+
+
+            /* ================================
+               SUCCESS
+            ================================= */
 
             document
                 .getElementById("applicationPage")
@@ -1170,21 +1284,33 @@
             document
                 .getElementById("applicationNumber")
                 .textContent =
+                result?.applicationNumber ||
                 applicationNumber;
 
 
             window.scrollTo({
+
                 top: 0,
+
                 behavior: "smooth"
+
             });
 
 
         } catch (err) {
 
+            console.error(
+                "Application error:",
+                err
+            );
+
+
             error.textContent =
                 "We were unable to submit your application. Please try again.";
 
+
             error.style.display = "block";
+
 
             button.disabled = false;
 
@@ -1197,6 +1323,7 @@
 
 </script>
 
+
 </body>
 </html>
-```
+
