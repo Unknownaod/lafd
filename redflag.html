@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Red Flag Parking | Los Angeles Fire Department</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="./lafd-logo.png"
+    >
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        body {
+            background: #f4f4f4;
+            color: #222;
+        }
+
+
+        /* ================================
+           CITY GOVERNMENT BAR
+        ================================= */
+
+        .city-bar {
+
+            background: #eeeeee;
+
+            border-bottom: 1px solid #d5d5d5;
+
+            min-height: 38px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 55px;
+
+            font-size: 12px;
+
+            color: #444;
+
+        }
+
+
+        .city-bar-logo {
+
+            width: 22px;
+
+            height: 22px;
+
+            object-fit: contain;
+
+            margin-right: 9px;
+
+        }
+
+
+        .city-bar span {
+            font-weight: 600;
+        }
+
+
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        header {
+
+            background: #b5121b;
+
+            min-height: 82px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 55px;
+
+            color: white;
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+
+        }
+
+
+        .lafd-logo {
+
+            width: 54px;
+
+            height: 54px;
+
+            object-fit: contain;
+
+            background: white;
+
+            border-radius: 50%;
+
+            padding: 3px;
+
+        }
+
+
+        .city-logo {
+
+            width: 48px;
+
+            height: 48px;
+
+            object-fit: contain;
+
+        }
+
+
+        .logo-divider {
+
+            width: 1px;
+
+            height: 45px;
+
+            background: rgba(255,255,255,.45);
+
+            margin: 0 3px;
+
+        }
+
+
+        .brand-text h1 {
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            letter-spacing: .3px;
+
+        }
+
+
+        .brand-text p {
+
+            font-size: 11px;
+
+            margin-top: 3px;
+
+            color: #eee;
+
+        }
+
+
+        nav {
+
+            margin-left: auto;
+
+            display: flex;
+
+            gap: 30px;
+
+        }
+
+
+        nav a {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+
+
+        /* ================================
+           PAGE HEADER
+        ================================= */
+
+        .page-header {
+
+            background:
+
+                linear-gradient(
+                    rgba(0,0,0,.68),
+                    rgba(0,0,0,.68)
+                ),
+
+                url("https://media.discordapp.net/attachments/1394469502061772811/1397741145932697630/Screenshot_2025-07-23_193808.png?ex=6a9182a1&is=6a903121&hm=caf47823a2dc8854e047d875ce7096889dc503df09235f35c02ccd2ee73e9ba2&=&format=webp&quality=lossless")
+                center/cover;
+
+            min-height: 270px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+
+        }
+
+
+        .page-header h2 {
+
+            font-size: 42px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .page-header p {
+
+            color: #ddd;
+
+            font-size: 15px;
+
+        }
+
+
+
+        /* ================================
+           MAIN
+        ================================= */
+
+        .container {
+
+            max-width: 1050px;
+
+            margin: auto;
+
+            padding: 45px 25px 70px;
+
+        }
+
+
+        .content {
+
+            background: white;
+
+            border: 1px solid #ddd;
+
+            padding: 35px;
+
+        }
+
+
+        .content h2 {
+
+            font-size: 27px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .red-line {
+
+            width: 55px;
+
+            height: 4px;
+
+            background: #b5121b;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .content p {
+
+            color: #555;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .content h3 {
+
+            font-size: 19px;
+
+            margin-top: 30px;
+
+            margin-bottom: 12px;
+
+            padding-bottom: 9px;
+
+            border-bottom: 2px solid #b5121b;
+
+        }
+
+
+        .content ul {
+
+            padding-left: 22px;
+
+            color: #555;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* ================================
+           NOTICE
+        ================================= */
+
+        .notice {
+
+            background: #fff8e5;
+
+            border: 1px solid #ead9a5;
+
+            border-left: 5px solid #d59b00;
+
+            padding: 18px;
+
+            margin: 25px 0;
+
+            color: #665522;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .notice strong {
+
+            display: block;
+
+            color: #554400;
+
+            margin-bottom: 5px;
+
+        }
+
+
+
+        /* ================================
+           INFO CARDS
+        ================================= */
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-top: 25px;
+
+        }
+
+
+        .info-card {
+
+            border: 1px solid #ddd;
+
+            background: #f8f8f8;
+
+            padding: 20px;
+
+        }
+
+
+        .info-card h4 {
+
+            font-size: 14px;
+
+            margin-bottom: 8px;
+
+            color: #333;
+
+        }
+
+
+        .info-card p {
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            margin: 0;
+
+            color: #666;
+
+        }
+
+
+
+        /* ================================
+           BUTTON
+        ================================= */
+
+        .back-button {
+
+            display: inline-block;
+
+            margin-top: 20px;
+
+            background: #b5121b;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 13px 22px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+        }
+
+
+        .back-button:hover {
+
+            background: #951019;
+
+        }
+
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+
+            background: #111;
+
+            color: #aaa;
+
+            text-align: center;
+
+            padding: 25px;
+
+            font-size: 12px;
+
+        }
+
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 750px) {
+
+            .city-bar {
+                padding: 0 20px;
+            }
+
+
+            header {
+                padding: 15px 20px;
+            }
+
+
+            nav {
+                display: none;
+            }
+
+
+            .brand-text h1 {
+                font-size: 16px;
+            }
+
+
+            .brand-text p {
+                font-size: 10px;
+            }
+
+
+            .lafd-logo {
+                width: 46px;
+                height: 46px;
+            }
+
+
+            .city-logo {
+                width: 40px;
+                height: 40px;
+            }
+
+
+            .logo-divider {
+                height: 35px;
+            }
+
+
+            .page-header h2 {
+                font-size: 32px;
+            }
+
+
+            .content {
+                padding: 25px;
+            }
+
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================================
+     CITY GOVERNMENT BAR
+================================= -->
+
+<div class="city-bar">
+
+    <img
+        src="la-city-logo.png"
+        alt="City of Los Angeles"
+        class="city-bar-logo"
+    >
+
+    <span>
+        An official website of the City of Los Angeles
+    </span>
+
+</div>
+
+
+<!-- ================================
+     HEADER
+================================= -->
+
+<header>
+
+    <div class="brand">
+
+        <img
+            src="lafd-logo.png"
+            alt="Los Angeles Fire Department"
+            class="lafd-logo"
+        >
+
+
+        <div class="logo-divider"></div>
+
+
+        <img
+            src="la-city-logo.png"
+            alt="City of Los Angeles"
+            class="city-logo"
+        >
+
+
+        <div class="brand-text">
+
+            <h1>
+                Los Angeles Fire Department
+            </h1>
+
+            <p>
+                City of Los Angeles
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="stations.html">
+            Stations
+        </a>
+
+        <a href="careers.html">
+            Careers
+        </a>
+
+        <a href="my-applications.html">
+            My Applications
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- ================================
+     PAGE HEADER
+================================= -->
+
+<section class="page-header">
+
+    <div>
+
+        <h2>
+            Red Flag Parking
+        </h2>
+
+        <p>
+            Keeping roadways clear during periods of extreme fire danger
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     MAIN CONTENT
+================================= -->
+
+<main class="container">
+
+    <div class="content">
+
+        <h2>
+            Red Flag Parking
+        </h2>
+
+        <div class="red-line"></div>
+
+
+        <p>
+
+            To increase public safety, the Los Angeles Fire Department
+            and Department of Transportation have created a program to
+            remove illegally parked vehicles in posted locations within
+            the Very High Fire Hazard Severity Zones.
+
+        </p>
+
+
+        <p>
+
+            The goal of the Red Flag Parking Program is to educate the
+            public on the potential hazards associated with a fast-moving
+            brush fire and the importance of keeping roadways clear for
+            emergency vehicles.
+
+        </p>
+
+
+        <div class="notice">
+
+            <strong>
+                Red Flag Parking Restrictions
+            </strong>
+
+            When Red Flag Parking restrictions are in effect, vehicles
+            parked in designated areas may be subject to removal.
+            Motorists should carefully observe all posted signs and
+            parking restrictions.
+
+        </div>
+
+
+        <h3>
+            Why Red Flag Parking Matters
+        </h3>
+
+
+        <p>
+
+            During a wildfire, fire engines, rescue units, ambulances,
+            and other emergency vehicles need unobstructed access to
+            affected neighborhoods. Illegally parked vehicles can
+            significantly delay emergency response and make evacuation
+            routes more difficult to access.
+
+        </p>
+
+
+        <div class="info-grid">
+
+            <div class="info-card">
+
+                <h4>
+                    Keep Roadways Clear
+                </h4>
+
+                <p>
+                    Do not park in posted Red Flag Parking areas or
+                    locations that may restrict emergency access.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <h4>
+                    Watch for Signs
+                </h4>
+
+                <p>
+                    Pay attention to temporary and permanent parking
+                    signs indicating restrictions during elevated fire danger.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <h4>
+                    Emergency Access
+                </h4>
+
+                <p>
+                    Clear roadways allow fire apparatus and emergency
+                    personnel to reach residents and incidents quickly.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <h3>
+            Vehicle Removal
+        </h3>
+
+
+        <p>
+
+            Vehicles found illegally parked in designated Red Flag
+            Parking locations may be subject to citation and removal
+            in accordance with applicable parking regulations.
+
+        </p>
+
+
+        <p>
+
+            Residents and visitors are encouraged to check posted
+            restrictions before leaving a vehicle in areas designated
+            for Red Flag Parking enforcement.
+
+        </p>
+
+
+        <a
+            href="index.html"
+            class="back-button"
+        >
+            RETURN TO HOME
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- ================================
+     FOOTER
+================================= -->
+
+<footer>
+
+    © 2026 Los Angeles Fire Department — FiveM Roleplay
+
+</footer>
+
+
+</body>
+
+</html>
