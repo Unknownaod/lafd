@@ -1,0 +1,1947 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Applications | Los Angeles Fire Department</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        body {
+            background: #f4f4f4;
+            color: #222;
+        }
+
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        header {
+
+            background: #b5121b;
+
+            min-height: 78px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 55px;
+
+            color: white;
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        .logo {
+
+            width: 48px;
+
+            height: 48px;
+
+            border: 2px solid white;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+        }
+
+
+        .brand h1 {
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+        }
+
+
+        nav {
+
+            margin-left: auto;
+
+            display: flex;
+
+            gap: 30px;
+
+        }
+
+
+        nav a {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+
+
+        nav a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+
+        /* ================================
+           PAGE HEADER
+        ================================= */
+
+        .page-header {
+
+            background:
+
+                linear-gradient(
+                    rgba(0,0,0,.68),
+                    rgba(0,0,0,.68)
+                ),
+
+                url("https://media.discordapp.net/attachments/1394469502061772811/1397741145932697630/Screenshot_2025-07-23_193808.png?ex=6a9182a1&is=6a903121&hm=caf47823a2dc8854e047d875ce7096889dc503df09235f35c02ccd2ee73e9ba2&=&format=webp&quality=lossless")
+                center/cover;
+
+            height: 250px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+
+        }
+
+
+        .page-header h2 {
+
+            font-size: 40px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .page-header p {
+
+            color: #ddd;
+
+            font-size: 15px;
+
+        }
+
+
+
+        /* ================================
+           MAIN
+        ================================= */
+
+        .container {
+
+            max-width: 1050px;
+
+            margin: auto;
+
+            padding: 45px 25px 70px;
+
+        }
+
+
+        .section-title {
+
+            font-size: 28px;
+
+            margin-bottom: 9px;
+
+        }
+
+
+        .red-line {
+
+            width: 55px;
+
+            height: 4px;
+
+            background: #b5121b;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .intro {
+
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+
+        }
+
+
+
+        /* ================================
+           APPLICATION CARD
+        ================================= */
+
+        .application {
+
+            background: white;
+
+            border: 1px solid #ddd;
+
+            border-left: 5px solid #b5121b;
+
+            margin-bottom: 18px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 2px 7px rgba(0,0,0,.06);
+
+        }
+
+
+        .application-top {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+        }
+
+
+        .application h3 {
+
+            font-size: 21px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .application-number {
+
+            font-size: 12px;
+
+            color: #777;
+
+        }
+
+
+        .application-date {
+
+            font-size: 12px;
+
+            color: #777;
+
+            margin-top: 5px;
+
+        }
+
+
+
+        /* ================================
+           STATUS
+        ================================= */
+
+        .status {
+
+            display: inline-block;
+
+            padding: 7px 11px;
+
+            background: #fff3cd;
+
+            color: #856404;
+
+            border: 1px solid #ffe69c;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            white-space: nowrap;
+
+        }
+
+
+        .status.review {
+
+            background: #e7f1ff;
+
+            border-color: #b8d4ff;
+
+            color: #1456a0;
+
+        }
+
+
+        .status.accepted {
+
+            background: #e5f6e9;
+
+            border-color: #b9e2c0;
+
+            color: #217a35;
+
+        }
+
+
+        .status.rejected {
+
+            background: #fbe7e7;
+
+            border-color: #edbcbc;
+
+            color: #a32020;
+
+        }
+
+
+
+        /* ================================
+           CARD DETAILS
+        ================================= */
+
+        .summary {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-top: 22px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #eee;
+
+        }
+
+
+        .summary-item {
+
+            background: #f7f7f7;
+
+            padding: 13px;
+
+        }
+
+
+        .summary-item strong {
+
+            display: block;
+
+            color: #777;
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .summary-item span {
+
+            font-size: 13px;
+
+            color: #333;
+
+        }
+
+
+
+        /* ================================
+           BUTTONS
+        ================================= */
+
+        .actions {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 20px;
+
+        }
+
+
+        .button {
+
+            border: none;
+
+            cursor: pointer;
+
+            padding: 11px 18px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+        }
+
+
+        .view-button {
+
+            background: #b5121b;
+
+            color: white;
+
+        }
+
+
+        .view-button:hover {
+
+            background: #951019;
+
+        }
+
+
+        .delete-button {
+
+            background: #eee;
+
+            color: #444;
+
+        }
+
+
+        .delete-button:hover {
+
+            background: #ddd;
+
+        }
+
+
+
+        /* ================================
+           EMPTY STATE
+        ================================= */
+
+        .empty {
+
+            background: white;
+
+            border: 1px solid #ddd;
+
+            padding: 60px 30px;
+
+            text-align: center;
+
+        }
+
+
+        .empty h3 {
+
+            font-size: 21px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .empty p {
+
+            color: #777;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .career-button {
+
+            display: inline-block;
+
+            background: #b5121b;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 12px 20px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+        }
+
+
+        .career-button:hover {
+
+            background: #951019;
+
+        }
+
+
+
+        /* ================================
+           MODAL
+        ================================= */
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,.65);
+
+            z-index: 1000;
+
+            padding: 25px;
+
+            overflow-y: auto;
+
+        }
+
+
+        .modal.active {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .modal-box {
+
+            width: 100%;
+
+            max-width: 850px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            background: white;
+
+            box-shadow:
+                0 8px 35px rgba(0,0,0,.3);
+
+        }
+
+
+        .modal-header {
+
+            background: #b5121b;
+
+            color: white;
+
+            padding: 22px 28px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+        }
+
+
+        .modal-header h2 {
+
+            font-size: 20px;
+
+        }
+
+
+        .close {
+
+            border: none;
+
+            background: transparent;
+
+            color: white;
+
+            font-size: 26px;
+
+            cursor: pointer;
+
+        }
+
+
+        .modal-content {
+
+            padding: 28px;
+
+        }
+
+
+        .modal-section {
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .modal-section h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 13px;
+
+            padding-bottom: 9px;
+
+            border-bottom: 2px solid #b5121b;
+
+        }
+
+
+        .details-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 1px;
+
+            background: #ddd;
+
+            border: 1px solid #ddd;
+
+        }
+
+
+        .detail {
+
+            background: white;
+
+            padding: 13px;
+
+        }
+
+
+        .detail strong {
+
+            display: block;
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            color: #777;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .detail span {
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            word-break: break-word;
+
+        }
+
+
+        .long-answer {
+
+            background: #f7f7f7;
+
+            border: 1px solid #ddd;
+
+            padding: 15px;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            white-space: pre-wrap;
+
+            word-break: break-word;
+
+        }
+
+
+        .modal-footer {
+
+            padding: 18px 28px;
+
+            border-top: 1px solid #ddd;
+
+            text-align: right;
+
+        }
+
+
+        .close-button {
+
+            background: #333;
+
+            color: white;
+
+            border: none;
+
+            padding: 11px 20px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+
+            background: #111;
+
+            color: #aaa;
+
+            text-align: center;
+
+            padding: 25px;
+
+            font-size: 12px;
+
+        }
+
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 750px) {
+
+            header {
+
+                padding: 0 20px;
+
+            }
+
+
+            .brand h1 {
+
+                font-size: 16px;
+
+            }
+
+
+            nav {
+
+                display: none;
+
+            }
+
+
+            .page-header h2 {
+
+                font-size: 32px;
+
+            }
+
+
+            .summary {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .application-top {
+
+                flex-direction: column;
+
+            }
+
+
+            .details-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================================
+     HEADER
+================================= -->
+
+<header>
+
+    <div class="brand">
+
+        <div class="logo">
+            LAFD
+        </div>
+
+        <h1>
+            Los Angeles Fire Department
+        </h1>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="careers.html">
+            Careers
+        </a>
+
+        <a href="portal.html">
+            Job Search
+        </a>
+
+        <a href="my-applications.html">
+            My Applications
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ================================
+     PAGE HEADER
+================================= -->
+
+<section class="page-header">
+
+    <div>
+
+        <h2>
+            My Applications
+        </h2>
+
+        <p>
+            View and manage your submitted employment applications.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================
+     MAIN
+================================= -->
+
+<main class="container">
+
+
+    <h2 class="section-title">
+        Application History
+    </h2>
+
+
+    <div class="red-line"></div>
+
+
+    <p class="intro">
+
+        Applications submitted from this browser are displayed
+        below. Select an application to view the information
+        submitted with your application.
+
+    </p>
+
+
+    <div id="applications"></div>
+
+
+</main>
+
+
+
+<!-- ================================
+     APPLICATION MODAL
+================================= -->
+
+<div
+    class="modal"
+    id="applicationModal"
+>
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <h2>
+                Application Details
+            </h2>
+
+            <button
+                class="close"
+                onclick="closeApplication()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            class="modal-content"
+            id="applicationDetails"
+        ></div>
+
+
+        <div class="modal-footer">
+
+            <button
+                class="close-button"
+                onclick="closeApplication()"
+            >
+                CLOSE
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================
+     FOOTER
+================================= -->
+
+<footer>
+
+    © 2026 Los Angeles Fire Department — FiveM Roleplay
+
+</footer>
+
+
+
+<script>
+
+    /* ================================
+       LOAD APPLICATIONS
+    ================================= */
+
+    let applications = [];
+
+
+    function loadApplications() {
+
+        try {
+
+            applications =
+                JSON.parse(
+                    localStorage.getItem(
+                        "lafdApplications"
+                    ) || "[]"
+                );
+
+
+            if (!Array.isArray(applications)) {
+
+                applications = [];
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Unable to load applications:",
+                error
+            );
+
+            applications = [];
+
+        }
+
+
+        renderApplications();
+
+    }
+
+
+
+    /* ================================
+       FORMAT DATE
+    ================================= */
+
+    function formatDate(date) {
+
+        if (!date) {
+
+            return "Not available";
+
+        }
+
+
+        const parsed =
+            new Date(date);
+
+
+        if (isNaN(parsed.getTime())) {
+
+            return "Not available";
+
+        }
+
+
+        return parsed.toLocaleString(
+            "en-US",
+            {
+
+                month: "long",
+
+                day: "numeric",
+
+                year: "numeric",
+
+                hour: "numeric",
+
+                minute: "2-digit"
+
+            }
+        );
+
+    }
+
+
+
+    /* ================================
+       ESCAPE HTML
+    ================================= */
+
+    function escapeHTML(value) {
+
+        const div =
+            document.createElement(
+                "div"
+            );
+
+
+        div.textContent =
+            value ?? "";
+
+
+        return div.innerHTML;
+
+    }
+
+
+
+    /* ================================
+       STATUS CLASS
+    ================================= */
+
+    function getStatusClass(status) {
+
+        const normalized =
+            String(
+                status || "Submitted"
+            ).toLowerCase();
+
+
+        if (
+            normalized.includes("accept") ||
+            normalized.includes("hire")
+        ) {
+
+            return "accepted";
+
+        }
+
+
+        if (
+            normalized.includes("reject") ||
+            normalized.includes("deny")
+        ) {
+
+            return "rejected";
+
+        }
+
+
+        if (
+            normalized.includes("review") ||
+            normalized.includes("process")
+        ) {
+
+            return "review";
+
+        }
+
+
+        return "";
+
+    }
+
+
+
+    /* ================================
+       RENDER APPLICATIONS
+    ================================= */
+
+    function renderApplications() {
+
+        const container =
+            document.getElementById(
+                "applications"
+            );
+
+
+        container.innerHTML = "";
+
+
+        /* EMPTY */
+
+        if (applications.length === 0) {
+
+            container.innerHTML = `
+
+                <div class="empty">
+
+                    <h3>
+                        No Applications Found
+                    </h3>
+
+                    <p>
+
+                        You have not submitted any
+                        employment applications from
+                        this browser.
+
+                    </p>
+
+                    <a
+                        href="careers.html"
+                        class="career-button"
+                    >
+                        VIEW CAREER OPPORTUNITIES
+                    </a>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        /* APPLICATIONS */
+
+        applications.forEach(
+            (application, index) => {
+
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "application";
+
+
+                const status =
+                    application.status ||
+                    "Submitted";
+
+
+                card.innerHTML = `
+
+                    <div class="application-top">
+
+                        <div>
+
+                            <h3>
+                                ${escapeHTML(
+                                    application.position ||
+                                    "Employment Application"
+                                )}
+                            </h3>
+
+                            <div class="application-number">
+
+                                Application #${escapeHTML(
+                                    application.applicationNumber ||
+                                    "N/A"
+                                )}
+
+                            </div>
+
+                            <div class="application-date">
+
+                                Submitted:
+                                ${formatDate(
+                                    application.submittedAt
+                                )}
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="status ${getStatusClass(status)}">
+
+                            ${escapeHTML(status)}
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="summary">
+
+                        <div class="summary-item">
+
+                            <strong>
+                                Applicant
+                            </strong>
+
+                            <span>
+
+                                ${escapeHTML(
+                                    application.firstName ||
+                                    ""
+                                )}
+
+                                ${escapeHTML(
+                                    application.lastName ||
+                                    ""
+                                )}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <strong>
+                                Email
+                            </strong>
+
+                            <span>
+
+                                ${escapeHTML(
+                                    application.email ||
+                                    "Not provided"
+                                )}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <strong>
+                                Application Status
+                            </strong>
+
+                            <span>
+
+                                ${escapeHTML(status)}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="actions">
+
+                        <button
+                            class="button view-button"
+                            onclick="viewApplication(${index})"
+                        >
+                            VIEW APPLICATION
+                        </button>
+
+
+                        <button
+                            class="button delete-button"
+                            onclick="deleteApplication(${index})"
+                        >
+                            REMOVE FROM THIS BROWSER
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(
+                    card
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* ================================
+       VIEW APPLICATION
+    ================================= */
+
+    function viewApplication(index) {
+
+        const application =
+            applications[index];
+
+
+        if (!application) {
+
+            return;
+
+        }
+
+
+        const details =
+            document.getElementById(
+                "applicationDetails"
+            );
+
+
+        details.innerHTML = `
+
+            <div class="modal-section">
+
+                <h3>
+                    Application Information
+                </h3>
+
+
+                <div class="details-grid">
+
+                    <div class="detail">
+
+                        <strong>
+                            Application Number
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.applicationNumber
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Position
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.position
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Status
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.status ||
+                                "Submitted"
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Submitted
+                        </strong>
+
+                        <span>
+                            ${formatDate(
+                                application.submittedAt
+                            )}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="modal-section">
+
+                <h3>
+                    Personal Information
+                </h3>
+
+
+                <div class="details-grid">
+
+                    <div class="detail">
+
+                        <strong>
+                            First Name
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.firstName
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Last Name
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.lastName
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Date of Birth
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.dob
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Phone
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.phone
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Email
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.email
+                            )}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="modal-section">
+
+                <h3>
+                    Address
+                </h3>
+
+
+                <div class="details-grid">
+
+                    <div class="detail">
+
+                        <strong>
+                            Street Address
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.address
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>
+                            City
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.city
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>
+                            State
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.state
+                            )}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="modal-section">
+
+                <h3>
+                    Employment & Education
+                </h3>
+
+
+                <div class="details-grid">
+
+                    <div class="detail">
+
+                        <strong>
+                            Employer
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.employer
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Previous Position
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.previousPosition
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Experience
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.experience
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Education
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.education
+                            )}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="modal-section">
+
+                <h3>
+                    Eligibility
+                </h3>
+
+
+                <div class="details-grid">
+
+                    <div class="detail">
+
+                        <strong>
+                            Driver's License
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.license
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <strong>
+                            Eligible to Work
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                application.eligible
+                            )}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="modal-section">
+
+                <h3>
+                    Relevant Experience
+                </h3>
+
+
+                <div class="long-answer">
+
+                    ${escapeHTML(
+                        application.relevantExperience ||
+                        "No information provided."
+                    )}
+
+                </div>
+
+            </div>
+
+
+
+            <div class="modal-section">
+
+                <h3>
+                    Why do you want to join LAFD?
+                </h3>
+
+
+                <div class="long-answer">
+
+                    ${escapeHTML(
+                        application.motivation ||
+                        "No response provided."
+                    )}
+
+                </div>
+
+            </div>
+
+
+
+            <div class="modal-section">
+
+                <h3>
+                    Additional Information
+                </h3>
+
+
+                <div class="long-answer">
+
+                    ${escapeHTML(
+                        application.additional ||
+                        "No additional information provided."
+                    )}
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        document
+            .getElementById(
+                "applicationModal"
+            )
+            .classList.add("active");
+
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+
+
+    /* ================================
+       CLOSE APPLICATION
+    ================================= */
+
+    function closeApplication() {
+
+        document
+            .getElementById(
+                "applicationModal"
+            )
+            .classList.remove("active");
+
+
+        document.body.style.overflow =
+            "";
+
+    }
+
+
+
+    /* ================================
+       DELETE APPLICATION
+    ================================= */
+
+    function deleteApplication(index) {
+
+        const application =
+            applications[index];
+
+
+        if (!application) {
+
+            return;
+
+        }
+
+
+        const confirmed =
+            confirm(
+
+                `Remove application ${application.applicationNumber} from this browser? This will not affect the application sent to LAFD.`
+
+            );
+
+
+        if (!confirmed) {
+
+            return;
+
+        }
+
+
+        applications.splice(
+            index,
+            1
+        );
+
+
+        localStorage.setItem(
+
+            "lafdApplications",
+
+            JSON.stringify(
+                applications
+            )
+
+        );
+
+
+        renderApplications();
+
+    }
+
+
+
+    /* ================================
+       CLOSE MODAL WHEN CLICKING OUTSIDE
+    ================================= */
+
+    document
+        .getElementById(
+            "applicationModal"
+        )
+        .addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target === this
+                ) {
+
+                    closeApplication();
+
+                }
+
+            }
+        );
+
+
+
+    /* ================================
+       ESC KEY
+    ================================= */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeApplication();
+
+            }
+
+        }
+    );
+
+
+
+    /* ================================
+       INITIALIZE
+    ================================= */
+
+    loadApplications();
+
+</script>
+
+
+</body>
+
+</html>
+```
