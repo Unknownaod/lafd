@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -154,6 +155,7 @@
             text-decoration: none;
             font-size: 13px;
             font-weight: bold;
+            transition: background .2s;
         }
 
         .button:hover {
@@ -190,6 +192,7 @@
 
         /* Mobile */
         @media (max-width: 750px) {
+
             header {
                 padding: 0 20px;
             }
@@ -216,6 +219,7 @@
 
         <div class="brand">
             <div class="logo">LAFD</div>
+
             <h1>Los Angeles Fire Department</h1>
         </div>
 
@@ -246,7 +250,9 @@
     <!-- Main -->
     <main class="container">
 
-        <h2 class="title">Join the Los Angeles Fire Department</h2>
+        <h2 class="title">
+            Join the Los Angeles Fire Department
+        </h2>
 
         <div class="red-line"></div>
 
@@ -261,6 +267,8 @@
         <!-- Positions -->
         <section class="jobs">
 
+
+            <!-- Firefighter -->
             <div class="job">
 
                 <h3>Firefighter</h3>
@@ -271,13 +279,17 @@
                     supporting your fellow personnel.
                 </p>
 
-                <a href="#" class="button">
+                <a
+                    href="portal.html?position=firefighter"
+                    class="button"
+                >
                     VIEW POSITION
                 </a>
 
             </div>
 
 
+            <!-- Firefighter / Paramedic -->
             <div class="job">
 
                 <h3>Firefighter / Paramedic</h3>
@@ -287,13 +299,17 @@
                     as a firefighter and emergency responder.
                 </p>
 
-                <a href="#" class="button">
+                <a
+                    href="portal.html?position=paramedic"
+                    class="button"
+                >
                     VIEW POSITION
                 </a>
 
             </div>
 
 
+            <!-- Fire Prevention -->
             <div class="job">
 
                 <h3>Fire Prevention</h3>
@@ -303,13 +319,17 @@
                     education, fire prevention, and code enforcement.
                 </p>
 
-                <a href="#" class="button">
+                <a
+                    href="portal.html?position=prevention"
+                    class="button"
+                >
                     VIEW POSITION
                 </a>
 
             </div>
 
 
+            <!-- Communications -->
             <div class="job">
 
                 <h3>Communications</h3>
@@ -319,11 +339,15 @@
                     communications, and coordination of department resources.
                 </p>
 
-                <a href="#" class="button">
+                <a
+                    href="portal.html?position=communications"
+                    class="button"
+                >
                     VIEW POSITION
                 </a>
 
             </div>
+
 
         </section>
 
@@ -353,3 +377,4 @@
 
 </body>
 </html>
+```
