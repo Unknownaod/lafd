@@ -1,13 +1,24 @@
 
 <!DOCTYPE html>
 <html lang="en">
+```html
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Careers | Los Angeles Fire Department</title>
 
+
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -15,366 +26,824 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
+
         body {
             background: #f5f5f5;
             color: #222;
         }
 
-        /* Header */
-        header {
-            background: #b5121b;
-            height: 78px;
+
+
+        /* ================================
+           CITY GOVERNMENT BAR
+        ================================= */
+
+        .city-bar {
+
+            background: #eeeeee;
+
+            border-bottom: 1px solid #d5d5d5;
+
+            min-height: 44px;
+
             display: flex;
+
             align-items: center;
+
             padding: 0 55px;
-            color: white;
+
+            color: #444;
+
         }
+
+
+        .city-government {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        .city-logo {
+
+            width: 30px;
+
+            height: 30px;
+
+            object-fit: contain;
+
+        }
+
+
+        .city-bar span {
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+        }
+
+
+
+        /* ================================
+           MAIN HEADER
+        ================================= */
+
+        header {
+
+            background: #b5121b;
+
+            min-height: 82px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 55px;
+
+            color: white;
+
+        }
+
 
         .brand {
+
             display: flex;
+
             align-items: center;
+
             gap: 15px;
+
         }
 
-        .logo {
-            width: 48px;
-            height: 48px;
-            border: 2px solid white;
+
+        /* LAFD LOGO */
+
+        .lafd-logo {
+
+            width: 54px;
+
+            height: 54px;
+
+            object-fit: contain;
+
+            background: white;
+
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 13px;
+
+            padding: 3px;
+
         }
 
-        .brand h1 {
+
+        .brand-text h1 {
+
             font-size: 20px;
+
             font-weight: 700;
+
+            letter-spacing: .3px;
+
         }
+
+
+        .brand-text p {
+
+            font-size: 11px;
+
+            margin-top: 3px;
+
+            color: #eee;
+
+        }
+
+
+
+        /* ================================
+           NAVIGATION
+        ================================= */
 
         nav {
+
             margin-left: auto;
+
             display: flex;
-            gap: 32px;
+
+            align-items: center;
+
+            gap: 30px;
+
         }
+
 
         nav a {
+
             color: white;
+
             text-decoration: none;
+
             font-size: 14px;
+
             font-weight: 600;
+
         }
+
 
         nav a:hover {
+
             text-decoration: underline;
+
         }
 
-        /* Hero */
+
+
+        /* ================================
+           HERO
+        ================================= */
+
         .hero {
+
             background:
-                linear-gradient(rgba(0,0,0,.62), rgba(0,0,0,.62)),
+
+                linear-gradient(
+                    rgba(0,0,0,.62),
+                    rgba(0,0,0,.62)
+                ),
+
                 url("https://media.discordapp.net/attachments/1394469502061772811/1397741145932697630/Screenshot_2025-07-23_193808.png?ex=6a9182a1&is=6a903121&hm=caf47823a2dc8854e047d875ce7096889dc503df09235f35c02ccd2ee73e9ba2&=&format=webp&quality=lossless")
+
                 center/cover;
 
             height: 330px;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             text-align: center;
+
             color: white;
+
         }
+
 
         .hero h2 {
+
             font-size: 45px;
+
             margin-bottom: 12px;
+
         }
+
 
         .hero p {
+
             font-size: 17px;
+
             color: #ddd;
+
         }
 
-        /* Main */
+
+
+        /* ================================
+           MAIN
+        ================================= */
+
         .container {
+
             max-width: 1050px;
+
             margin: auto;
+
             padding: 55px 25px;
+
         }
+
 
         .title {
+
             font-size: 29px;
+
             margin-bottom: 10px;
+
         }
+
 
         .red-line {
+
             width: 55px;
+
             height: 4px;
+
             background: #b5121b;
+
             margin-bottom: 25px;
+
         }
+
 
         .intro {
+
             color: #555;
+
             line-height: 1.7;
+
             max-width: 850px;
+
             margin-bottom: 40px;
+
         }
 
-        /* Careers */
+
+
+        /* ================================
+           CAREER POSITIONS
+        ================================= */
+
         .jobs {
+
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
             gap: 22px;
+
         }
+
 
         .job {
+
             background: white;
+
             padding: 30px;
+
             border-top: 4px solid #b5121b;
-            box-shadow: 0 2px 8px rgba(0,0,0,.08);
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,.08);
+
         }
+
 
         .job h3 {
+
             font-size: 21px;
+
             margin-bottom: 12px;
+
         }
+
 
         .job p {
+
             color: #666;
+
             line-height: 1.6;
+
             font-size: 14px;
+
             margin-bottom: 20px;
+
         }
+
 
         .button {
+
             display: inline-block;
+
             background: #b5121b;
+
             color: white;
+
             padding: 12px 20px;
+
             text-decoration: none;
+
             font-size: 13px;
+
             font-weight: bold;
-            transition: background .2s;
+
+            transition:
+                background .2s,
+                transform .15s;
+
         }
+
 
         .button:hover {
+
             background: #951019;
+
+            transform: translateY(-1px);
+
         }
 
-        /* Requirements */
+
+
+        /* ================================
+           REQUIREMENTS
+        ================================= */
+
         .requirements {
+
             margin-top: 50px;
+
             background: white;
+
             padding: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,.08);
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,.08);
+
         }
+
 
         .requirements h2 {
+
             margin-bottom: 20px;
+
         }
+
 
         .requirements ul {
+
             padding-left: 20px;
+
             color: #555;
+
             line-height: 2;
+
         }
 
-        /* Footer */
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
         footer {
+
             background: #111;
+
             color: #aaa;
+
             text-align: center;
+
             padding: 25px;
+
             font-size: 13px;
+
             margin-top: 30px;
+
         }
 
-        /* Mobile */
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
         @media (max-width: 750px) {
 
-            header {
+            .city-bar {
+
                 padding: 0 20px;
+
             }
+
+
+            .city-logo {
+
+                width: 27px;
+
+                height: 27px;
+
+            }
+
+
+            .city-bar span {
+
+                font-size: 11px;
+
+            }
+
+
+            header {
+
+                padding: 15px 20px;
+
+            }
+
 
             nav {
+
                 display: none;
+
             }
+
+
+            .brand-text h1 {
+
+                font-size: 16px;
+
+            }
+
+
+            .brand-text p {
+
+                font-size: 10px;
+
+            }
+
+
+            .lafd-logo {
+
+                width: 46px;
+
+                height: 46px;
+
+            }
+
+
+            .hero {
+
+                height: 270px;
+
+            }
+
 
             .hero h2 {
+
                 font-size: 35px;
+
             }
 
+
             .jobs {
+
                 grid-template-columns: 1fr;
+
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- Header -->
-    <header>
-
-        <div class="brand">
-            <div class="logo">LAFD</div>
-
-            <h1>Los Angeles Fire Department</h1>
-        </div>
-
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="stations.html">Stations</a>
-            <a href="careers.html">Careers</a>
-        </nav>
-
-    </header>
 
 
-    <!-- Hero -->
-    <section class="hero">
+<!-- ================================
+     CITY GOVERNMENT BAR
+================================= -->
 
-        <div>
-            <h2>Careers</h2>
+<div class="city-bar">
+
+    <div class="city-government">
+
+        <img
+            src="la-city-logo.png"
+            alt="City of Los Angeles"
+            class="city-logo"
+        >
+
+        <span>
+            An official website of the City of Los Angeles
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================
+     MAIN HEADER
+================================= -->
+
+<header>
+
+    <div class="brand">
+
+        <img
+            src="lafd-logo.png"
+            alt="Los Angeles Fire Department"
+            class="lafd-logo"
+        >
+
+
+        <div class="brand-text">
+
+            <h1>
+                Los Angeles Fire Department
+            </h1>
 
             <p>
-                Serve your community. Make a difference.
+                City of Los Angeles
             </p>
+
         </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="stations.html">
+            Stations
+        </a>
+
+        <a href="careers.html">
+            Careers
+        </a>
+
+        <a href="my-applications.html">
+            My Applications
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ================================
+     HERO
+================================= -->
+
+<section class="hero">
+
+    <div>
+
+        <h2>
+            Careers
+        </h2>
+
+        <p>
+            Serve your community. Make a difference.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================
+     MAIN CONTENT
+================================= -->
+
+<main class="container">
+
+
+    <h2 class="title">
+        Join the Los Angeles Fire Department
+    </h2>
+
+
+    <div class="red-line"></div>
+
+
+    <p class="intro">
+
+        A career with the Los Angeles Fire Department means becoming
+        part of a team dedicated to protecting the lives and property
+        of the citizens we serve. Explore the opportunities available
+        within the department.
+
+    </p>
+
+
+
+    <!-- ================================
+         POSITIONS
+    ================================= -->
+
+    <section class="jobs">
+
+
+        <!-- FIREFIGHTER -->
+
+        <div class="job">
+
+            <h3>
+                Firefighter
+            </h3>
+
+            <p>
+
+                Respond to fires, medical emergencies, rescues, and
+                other incidents while protecting the community and
+                supporting your fellow personnel.
+
+            </p>
+
+            <a
+                href="portal.html?position=firefighter"
+                class="button"
+            >
+                VIEW POSITION
+            </a>
+
+        </div>
+
+
+
+        <!-- PARAMEDIC -->
+
+        <div class="job">
+
+            <h3>
+                Firefighter / Paramedic
+            </h3>
+
+            <p>
+
+                Provide advanced emergency medical care while serving
+                as a firefighter and emergency responder.
+
+            </p>
+
+            <a
+                href="portal.html?position=paramedic"
+                class="button"
+            >
+                VIEW POSITION
+            </a>
+
+        </div>
+
+
+
+        <!-- FIRE PREVENTION -->
+
+        <div class="job">
+
+            <h3>
+                Fire Prevention
+            </h3>
+
+            <p>
+
+                Help protect the community through inspections,
+                education, fire prevention, and code enforcement.
+
+            </p>
+
+            <a
+                href="portal.html?position=prevention"
+                class="button"
+            >
+                VIEW POSITION
+            </a>
+
+        </div>
+
+
+
+        <!-- COMMUNICATIONS -->
+
+        <div class="job">
+
+            <h3>
+                Emergency Communications
+            </h3>
+
+            <p>
+
+                Support emergency operations through dispatch,
+                communications, and coordination of department
+                resources.
+
+            </p>
+
+            <a
+                href="portal.html?position=communications"
+                class="button"
+            >
+                VIEW POSITION
+            </a>
+
+        </div>
+
 
     </section>
 
 
-    <!-- Main -->
-    <main class="container">
 
-        <h2 class="title">
-            Join the Los Angeles Fire Department
+    <!-- ================================
+         REQUIREMENTS
+    ================================= -->
+
+    <section class="requirements">
+
+        <h2>
+            General Requirements
         </h2>
 
-        <div class="red-line"></div>
 
-        <p class="intro">
-            A career with the Los Angeles Fire Department means becoming
-            part of a team dedicated to protecting the lives and property
-            of the citizens we serve. Explore the opportunities available
-            within the department.
-        </p>
+        <ul>
 
+            <li>
+                Must meet the department's minimum age requirement.
+            </li>
 
-        <!-- Positions -->
-        <section class="jobs">
+            <li>
+                Must possess a valid driver's license.
+            </li>
 
+            <li>
+                Must successfully complete the application process.
+            </li>
 
-            <!-- Firefighter -->
-            <div class="job">
+            <li>
+                Must pass required testing and evaluations.
+            </li>
 
-                <h3>Firefighter</h3>
+            <li>
+                Must successfully complete department training.
+            </li>
 
-                <p>
-                    Respond to fires, medical emergencies, rescues, and
-                    other incidents while protecting the community and
-                    supporting your fellow personnel.
-                </p>
+        </ul>
 
-                <a
-                    href="portal.html?position=firefighter"
-                    class="button"
-                >
-                    VIEW POSITION
-                </a>
-
-            </div>
+    </section>
 
 
-            <!-- Firefighter / Paramedic -->
-            <div class="job">
-
-                <h3>Firefighter / Paramedic</h3>
-
-                <p>
-                    Provide advanced emergency medical care while serving
-                    as a firefighter and emergency responder.
-                </p>
-
-                <a
-                    href="portal.html?position=paramedic"
-                    class="button"
-                >
-                    VIEW POSITION
-                </a>
-
-            </div>
+</main>
 
 
-            <!-- Fire Prevention -->
-            <div class="job">
 
-                <h3>Fire Prevention</h3>
+<!-- ================================
+     FOOTER
+================================= -->
 
-                <p>
-                    Help protect the community through inspections,
-                    education, fire prevention, and code enforcement.
-                </p>
+<footer>
 
-                <a
-                    href="portal.html?position=prevention"
-                    class="button"
-                >
-                    VIEW POSITION
-                </a>
+    © 2026 Los Angeles Fire Department — FiveM Roleplay
 
-            </div>
+</footer>
 
-
-            <!-- Communications -->
-            <div class="job">
-
-                <h3>Communications</h3>
-
-                <p>
-                    Support emergency operations through dispatch,
-                    communications, and coordination of department resources.
-                </p>
-
-                <a
-                    href="portal.html?position=communications"
-                    class="button"
-                >
-                    VIEW POSITION
-                </a>
-
-            </div>
-
-
-        </section>
-
-
-        <!-- Requirements -->
-        <section class="requirements">
-
-            <h2>General Requirements</h2>
-
-            <ul>
-                <li>Must meet the department's minimum age requirement.</li>
-                <li>Must possess a valid driver's license.</li>
-                <li>Must successfully complete the application process.</li>
-                <li>Must pass required testing and evaluations.</li>
-                <li>Must successfully complete department training.</li>
-            </ul>
-
-        </section>
-
-    </main>
-
-
-    <!-- Footer -->
-    <footer>
-        © 2026 Los Angeles Fire Department — FiveM Roleplay
-    </footer>
 
 </body>
-</html>
 
+</html>
+```
