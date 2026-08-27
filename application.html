@@ -1,0 +1,705 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Opportunity | Los Angeles Fire Department</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f2f3f5;
+            color: #222;
+        }
+
+        /* HEADER */
+        header {
+            background: #b5121b;
+            color: white;
+            height: 78px;
+            display: flex;
+            align-items: center;
+            padding: 0 55px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 47px;
+            height: 47px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .brand h1 {
+            font-size: 19px;
+        }
+
+        /* NAV */
+        .nav {
+            background: white;
+            border-bottom: 1px solid #d6d6d6;
+            padding: 15px 55px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            margin-right: 30px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav a:hover {
+            color: #b5121b;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1050px;
+            margin: 35px auto;
+            padding: 0 25px;
+        }
+
+        /* JOB HEADER */
+        .job-title {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .job-title h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .job-number {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 7px 11px;
+            background: #e7f3e7;
+            color: #286328;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* CONTENT GRID */
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 20px;
+        }
+
+        /* MAIN CONTENT */
+        .main {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 30px;
+        }
+
+        .main h3 {
+            font-size: 19px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #b5121b;
+        }
+
+        .main p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .main ul {
+            padding-left: 20px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            background: white;
+            border: 1px solid #ddd;
+            height: fit-content;
+        }
+
+        .sidebar-header {
+            background: #eee;
+            padding: 15px 18px;
+            font-weight: bold;
+            font-size: 14px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .sidebar-content {
+            padding: 18px;
+        }
+
+        .info {
+            margin-bottom: 18px;
+        }
+
+        .info label {
+            display: block;
+            color: #777;
+            text-transform: uppercase;
+            font-size: 10px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .info span {
+            font-size: 13px;
+        }
+
+        /* APPLY */
+        .apply-box {
+            background: white;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .apply-box h3 {
+            margin-bottom: 8px;
+        }
+
+        .apply-box p {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .apply-button {
+            display: inline-block;
+            background: #b5121b;
+            color: white;
+            text-decoration: none;
+            padding: 13px 30px;
+            font-size: 13px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .apply-button:hover {
+            background: #941019;
+        }
+
+        /* NOTICE */
+        .notice {
+            background: #fff8e5;
+            border: 1px solid #ead9a5;
+            padding: 15px;
+            margin-top: 20px;
+            color: #665522;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #171717;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+            font-size: 12px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 750px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            .nav {
+                padding: 15px 20px;
+                white-space: nowrap;
+                overflow-x: auto;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="brand">
+
+            <div class="logo">
+                LAFD
+            </div>
+
+            <h1>
+                Los Angeles Fire Department
+            </h1>
+
+        </div>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+    <div class="nav">
+
+        <a href="careers.html">
+            Career Opportunities
+        </a>
+
+        <a href="portal.html">
+            Job Search
+        </a>
+
+        <a href="#">
+            My Applications
+        </a>
+
+    </div>
+
+
+    <!-- PAGE -->
+    <main class="container">
+
+
+        <!-- JOB TITLE -->
+        <section class="job-title">
+
+            <h2 id="jobTitle">
+                Firefighter
+            </h2>
+
+            <div class="job-number" id="jobNumber">
+                Job Number: LAFD-FF-001
+            </div>
+
+            <span class="status">
+                Accepting Applications
+            </span>
+
+        </section>
+
+
+        <div class="content">
+
+
+            <!-- MAIN JOB DESCRIPTION -->
+            <section class="main">
+
+                <h3>
+                    Job Overview
+                </h3>
+
+                <p id="jobOverview">
+                    The Firefighter position is responsible for responding
+                    to emergency incidents, protecting life and property,
+                    performing fire suppression operations, and providing
+                    emergency assistance to the community.
+                </p>
+
+
+                <h3>
+                    Responsibilities
+                </h3>
+
+                <ul id="responsibilities">
+
+                    <li>Respond to emergency incidents.</li>
+
+                    <li>Perform fire suppression operations.</li>
+
+                    <li>Assist with rescue operations.</li>
+
+                    <li>Provide emergency medical assistance.</li>
+
+                    <li>Operate and maintain department equipment.</li>
+
+                    <li>Work effectively as part of an emergency response team.</li>
+
+                </ul>
+
+
+                <h3>
+                    General Requirements
+                </h3>
+
+                <ul>
+
+                    <li>Meet the minimum age requirement.</li>
+
+                    <li>Possess a valid driver's license.</li>
+
+                    <li>Maintain a professional standard of conduct.</li>
+
+                    <li>Successfully complete required testing.</li>
+
+                    <li>Successfully complete department training.</li>
+
+                </ul>
+
+
+                <h3>
+                    Additional Information
+                </h3>
+
+                <p>
+                    Applicants should review all requirements carefully
+                    before submitting an application. Additional information
+                    may be requested during the recruitment process.
+                </p>
+
+            </section>
+
+
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+
+                <div class="sidebar-header">
+                    Position Information
+                </div>
+
+                <div class="sidebar-content">
+
+                    <div class="info">
+
+                        <label>
+                            Department
+                        </label>
+
+                        <span id="department">
+                            Fire Operations
+                        </span>
+
+                    </div>
+
+
+                    <div class="info">
+
+                        <label>
+                            Employment Type
+                        </label>
+
+                        <span>
+                            Full Time
+                        </span>
+
+                    </div>
+
+
+                    <div class="info">
+
+                        <label>
+                            Location
+                        </label>
+
+                        <span>
+                            Los Angeles, CA
+                        </span>
+
+                    </div>
+
+
+                    <div class="info">
+
+                        <label>
+                            Job Number
+                        </label>
+
+                        <span id="sideJobNumber">
+                            LAFD-FF-001
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+
+        <!-- APPLY -->
+        <section class="apply-box">
+
+            <h3>
+                Ready to Apply?
+            </h3>
+
+            <p>
+                Submit your application through the LAFD recruitment portal.
+            </p>
+
+            <button
+                class="apply-button"
+                onclick="startApplication()"
+            >
+                APPLY NOW
+            </button>
+
+        </section>
+
+
+        <div class="notice">
+
+            <strong>Important:</strong>
+            Please ensure that all information submitted during the
+            application process is accurate and complete.
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        © 2026 Los Angeles Fire Department — FiveM Roleplay
+
+    </footer>
+
+
+    <script>
+
+        const params =
+            new URLSearchParams(window.location.search);
+
+        const position =
+            params.get("position");
+
+
+        const jobs = {
+
+            firefighter: {
+
+                title: "Firefighter",
+
+                number: "LAFD-FF-001",
+
+                department: "Fire Operations",
+
+                overview:
+                    "The Firefighter position is responsible for responding to emergency incidents, protecting life and property, performing fire suppression operations, and providing emergency assistance to the community.",
+
+                responsibilities: [
+
+                    "Respond to emergency incidents.",
+
+                    "Perform fire suppression operations.",
+
+                    "Assist with rescue operations.",
+
+                    "Provide emergency medical assistance.",
+
+                    "Operate and maintain department equipment.",
+
+                    "Work effectively as part of an emergency response team."
+
+                ]
+
+            },
+
+
+            paramedic: {
+
+                title: "Firefighter / Paramedic",
+
+                number: "LAFD-EMS-002",
+
+                department: "Emergency Medical Services",
+
+                overview:
+                    "The Firefighter / Paramedic position provides advanced emergency medical care while supporting fire suppression, rescue, and emergency response operations.",
+
+                responsibilities: [
+
+                    "Respond to medical and fire emergencies.",
+
+                    "Provide advanced emergency medical care.",
+
+                    "Assist with rescue operations.",
+
+                    "Operate emergency medical equipment.",
+
+                    "Transport and care for patients.",
+
+                    "Support fire suppression operations."
+
+                ]
+
+            },
+
+
+            prevention: {
+
+                title: "Fire Prevention Inspector",
+
+                number: "LAFD-FP-003",
+
+                department: "Fire Prevention",
+
+                overview:
+                    "The Fire Prevention Inspector assists with inspections, fire prevention programs, public education, and enforcement of applicable safety standards.",
+
+                responsibilities: [
+
+                    "Conduct fire prevention inspections.",
+
+                    "Document inspection findings.",
+
+                    "Assist with fire prevention programs.",
+
+                    "Educate members of the community.",
+
+                    "Identify potential fire hazards.",
+
+                    "Prepare required reports."
+
+                ]
+
+            },
+
+
+            dispatcher: {
+
+                title: "Emergency Communications Dispatcher",
+
+                number: "LAFD-COM-004",
+
+                department: "Communications",
+
+                overview:
+                    "The Emergency Communications Dispatcher receives emergency calls, gathers critical information, dispatches appropriate resources, and supports emergency operations.",
+
+                responsibilities: [
+
+                    "Receive and process emergency calls.",
+
+                    "Gather incident information.",
+
+                    "Dispatch emergency resources.",
+
+                    "Monitor radio communications.",
+
+                    "Maintain accurate incident information.",
+
+                    "Coordinate with field personnel."
+
+                ]
+
+            }
+
+        };
+
+
+        /* LOAD SELECTED POSITION */
+
+        if (position && jobs[position]) {
+
+            const job = jobs[position];
+
+
+            document
+                .getElementById("jobTitle")
+                .textContent = job.title;
+
+
+            document
+                .getElementById("jobNumber")
+                .textContent =
+                "Job Number: " + job.number;
+
+
+            document
+                .getElementById("sideJobNumber")
+                .textContent =
+                job.number;
+
+
+            document
+                .getElementById("department")
+                .textContent =
+                job.department;
+
+
+            document
+                .getElementById("jobOverview")
+                .textContent =
+                job.overview;
+
+
+            const list =
+                document.getElementById("responsibilities");
+
+            list.innerHTML = "";
+
+
+            job.responsibilities.forEach(item => {
+
+                const li =
+                    document.createElement("li");
+
+                li.textContent = item;
+
+                list.appendChild(li);
+
+            });
+
+        }
+
+
+        /* APPLICATION BUTTON */
+
+        function startApplication() {
+
+            const selected =
+                position || "firefighter";
+
+            window.location.href =
+                "apply.html?position=" + selected;
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
