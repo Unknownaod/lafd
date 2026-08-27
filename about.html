@@ -30,74 +30,170 @@
         }
 
 
+
         /* ================================
-           HEADER
+           CITY GOVERNMENT BAR
+        ================================= */
+
+        .city-bar {
+
+            background: #eeeeee;
+
+            border-bottom: 1px solid #d4d4d4;
+
+            min-height: 44px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 55px;
+
+            color: #444;
+
+        }
+
+
+        .city-government {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        .city-logo {
+
+            width: 30px;
+
+            height: 30px;
+
+            object-fit: contain;
+
+        }
+
+
+        .city-bar span {
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+        }
+
+
+
+        /* ================================
+           MAIN HEADER
         ================================= */
 
         header {
+
             background: #b5121b;
 
-            min-height: 78px;
+            min-height: 82px;
 
             display: flex;
+
             align-items: center;
 
             padding: 0 55px;
 
             color: white;
+
         }
 
 
         .brand {
+
             display: flex;
+
             align-items: center;
 
             gap: 15px;
+
         }
 
 
-        .logo {
-            width: 48px;
-            height: 48px;
+        /* LAFD LOGO */
 
-            border: 2px solid white;
+        .lafd-logo {
+
+            width: 54px;
+
+            height: 54px;
+
+            object-fit: contain;
+
+            background: white;
+
             border-radius: 50%;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 3px;
 
-            font-size: 12px;
-            font-weight: bold;
         }
 
 
-        .brand h1 {
+        .brand-text h1 {
+
             font-size: 20px;
+
             font-weight: 700;
+
+            letter-spacing: .3px;
+
         }
 
+
+        .brand-text p {
+
+            font-size: 11px;
+
+            margin-top: 3px;
+
+            color: #eee;
+
+        }
+
+
+
+        /* ================================
+           NAVIGATION
+        ================================= */
 
         nav {
+
             margin-left: auto;
 
             display: flex;
+
+            align-items: center;
+
             gap: 30px;
+
         }
 
 
         nav a {
+
             color: white;
 
             text-decoration: none;
 
             font-size: 14px;
+
             font-weight: 600;
+
         }
 
 
         nav a:hover {
+
             text-decoration: underline;
+
         }
 
 
@@ -109,37 +205,46 @@
         .hero {
 
             background:
+
                 linear-gradient(
                     rgba(0,0,0,.65),
                     rgba(0,0,0,.65)
                 ),
 
                 url("https://media.discordapp.net/attachments/1394469502061772811/1394843997599432825/IMG_6684.png?ex=6a918473&is=6a9032f3&hm=27cc5a979e9243f8a13f3d4ffb4ef1041c0036bdaa3908067ce2e0d189492420&=&format=webp&quality=lossless")
+
                 center/cover;
 
             height: 300px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             text-align: center;
 
             color: white;
+
         }
 
 
         .hero h2 {
+
             font-size: 43px;
 
             margin-bottom: 10px;
+
         }
 
 
         .hero p {
+
             font-size: 16px;
 
             color: #ddd;
+
         }
 
 
@@ -155,6 +260,7 @@
             margin: auto;
 
             padding: 50px 25px 70px;
+
         }
 
 
@@ -163,17 +269,20 @@
             font-size: 29px;
 
             margin-bottom: 10px;
+
         }
 
 
         .red-line {
 
             width: 55px;
+
             height: 4px;
 
             background: #b5121b;
 
             margin-bottom: 25px;
+
         }
 
 
@@ -188,7 +297,9 @@
             margin-bottom: 25px;
 
             box-shadow:
+
                 0 2px 8px rgba(0,0,0,.06);
+
         }
 
 
@@ -197,6 +308,7 @@
             font-size: 20px;
 
             margin-bottom: 13px;
+
         }
 
 
@@ -209,6 +321,7 @@
             font-size: 14px;
 
             margin-bottom: 15px;
+
         }
 
 
@@ -452,16 +565,32 @@
 
         @media (max-width: 750px) {
 
-            header {
+            .city-bar {
 
                 padding: 0 20px;
 
             }
 
 
-            .brand h1 {
+            .city-logo {
 
-                font-size: 16px;
+                width: 27px;
+
+                height: 27px;
+
+            }
+
+
+            .city-bar span {
+
+                font-size: 11px;
+
+            }
+
+
+            header {
+
+                padding: 15px 20px;
 
             }
 
@@ -469,6 +598,36 @@
             nav {
 
                 display: none;
+
+            }
+
+
+            .brand-text h1 {
+
+                font-size: 16px;
+
+            }
+
+
+            .brand-text p {
+
+                font-size: 10px;
+
+            }
+
+
+            .lafd-logo {
+
+                width: 46px;
+
+                height: 46px;
+
+            }
+
+
+            .hero {
+
+                height: 260px;
 
             }
 
@@ -503,21 +662,57 @@
 <body>
 
 
+
 <!-- ================================
-     HEADER
+     CITY GOVERNMENT BAR
+================================= -->
+
+<div class="city-bar">
+
+    <div class="city-government">
+
+        <img
+            src="la-city-logo.png"
+            alt="City of Los Angeles"
+            class="city-logo"
+        >
+
+        <span>
+            An official website of the City of Los Angeles
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================
+     LAFD HEADER
 ================================= -->
 
 <header>
 
     <div class="brand">
 
-        <div class="logo">
-            LAFD
-        </div>
+        <img
+            src="lafd-logo.png"
+            alt="Los Angeles Fire Department"
+            class="lafd-logo"
+        >
 
-        <h1>
-            Los Angeles Fire Department
-        </h1>
+
+        <div class="brand-text">
+
+            <h1>
+                Los Angeles Fire Department
+            </h1>
+
+            <p>
+                City of Los Angeles
+            </p>
+
+        </div>
 
     </div>
 
