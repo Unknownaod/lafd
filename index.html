@@ -39,9 +39,9 @@
 
             background: #eeeeee;
 
-            border-bottom: 1px solid #d5d5d5;
+            border-bottom: 1px solid #d4d4d4;
 
-            min-height: 38px;
+            min-height: 44px;
 
             display: flex;
 
@@ -49,14 +49,36 @@
 
             padding: 0 55px;
 
-            font-size: 12px;
-
             color: #444;
 
         }
 
 
+        .city-government {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        .city-logo {
+
+            width: 30px;
+
+            height: 30px;
+
+            object-fit: contain;
+
+        }
+
+
         .city-bar span {
+
+            font-size: 12px;
 
             font-weight: 600;
 
@@ -91,7 +113,7 @@
 
             align-items: center;
 
-            gap: 16px;
+            gap: 15px;
 
         }
 
@@ -115,31 +137,7 @@
         }
 
 
-        /* CITY LOGO */
-
-        .city-logo {
-
-            width: 48px;
-
-            height: 48px;
-
-            object-fit: contain;
-
-        }
-
-
-        .logo-divider {
-
-            width: 1px;
-
-            height: 45px;
-
-            background: rgba(255,255,255,.45);
-
-            margin: 0 3px;
-
-        }
-
+        /* DEPARTMENT TEXT */
 
         .brand-text h1 {
 
@@ -163,11 +161,17 @@
         }
 
 
+        /* ================================
+           NAVIGATION
+        ================================= */
+
         nav {
 
             margin-left: auto;
 
             display: flex;
+
+            align-items: center;
 
             gap: 30px;
 
@@ -184,12 +188,14 @@
 
             font-weight: 600;
 
+            transition: opacity .2s ease;
+
         }
 
 
         nav a:hover {
 
-            text-decoration: underline;
+            opacity: .75;
 
         }
 
@@ -254,6 +260,10 @@
         }
 
 
+        /* ================================
+           BUTTON
+        ================================= */
+
         .button {
 
             display: inline-block;
@@ -269,6 +279,8 @@
             font-weight: bold;
 
             font-size: 14px;
+
+            transition: background .2s ease;
 
         }
 
@@ -463,6 +475,22 @@
             }
 
 
+            .city-logo {
+
+                width: 27px;
+
+                height: 27px;
+
+            }
+
+
+            .city-bar span {
+
+                font-size: 11px;
+
+            }
+
+
             header {
 
                 padding: 15px 20px;
@@ -500,23 +528,9 @@
             }
 
 
-            .city-logo {
-
-                width: 40px;
-
-                height: 40px;
-
-            }
-
-
-            .logo-divider {
-
-                height: 35px;
-
-            }
-
-
             .hero {
+
+                height: 400px;
 
                 padding: 40px 25px;
 
@@ -526,6 +540,13 @@
             .hero h2 {
 
                 font-size: 36px;
+
+            }
+
+
+            .hero p {
+
+                font-size: 16px;
 
             }
 
@@ -547,46 +568,41 @@
 
 
 <!-- ================================
-     CITY BAR
+     CITY GOVERNMENT BAR
 ================================= -->
 
 <div class="city-bar">
 
-    <span>
-        An official website of the City of Los Angeles
-    </span>
+    <div class="city-government">
+
+        <img
+            src="la-city-logo.png"
+            alt="City of Los Angeles"
+            class="city-logo"
+        >
+
+        <span>
+            An official website of the City of Los Angeles
+        </span>
+
+    </div>
 
 </div>
 
 
 
 <!-- ================================
-     HEADER
+     LAFD HEADER
 ================================= -->
 
 <header>
 
     <div class="brand">
 
-
-        <!-- LAFD LOGO -->
-
         <img
             src="lafd-logo.png"
             alt="Los Angeles Fire Department"
             class="lafd-logo"
-        >
-
-
-        <div class="logo-divider"></div>
-
-
-        <!-- CITY OF LOS ANGELES LOGO -->
-
-        <img
-            src="la-city-logo.png"
-            alt="City of Los Angeles"
-            class="city-logo"
         >
 
 
@@ -630,6 +646,7 @@
     </nav>
 
 </header>
+
 
 
 
