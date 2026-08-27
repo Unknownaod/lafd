@@ -5,296 +5,467 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Job Opportunity | Los Angeles Fire Department</title>
+<title>Job Opportunity | Los Angeles Fire Department</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background: #f2f3f5;
+        color: #222;
+    }
+
+
+    /* ================================
+       CITY GOVERNMENT BAR
+    ================================= */
+
+    .city-bar {
+        background: #eeeeee;
+        border-bottom: 1px solid #d5d5d5;
+        min-height: 38px;
+        display: flex;
+        align-items: center;
+        padding: 0 55px;
+        font-size: 12px;
+        color: #444;
+    }
+
+    .city-bar span {
+        font-weight: 600;
+    }
+
+
+    /* ================================
+       HEADER
+    ================================= */
+
+    header {
+        background: #b5121b;
+        color: white;
+        min-height: 82px;
+        display: flex;
+        align-items: center;
+        padding: 0 55px;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+
+    /* LAFD LOGO */
+
+    .lafd-logo {
+        width: 54px;
+        height: 54px;
+        object-fit: contain;
+        background: white;
+        border-radius: 50%;
+        padding: 3px;
+    }
+
+
+    /* CITY LOGO */
+
+    .city-logo {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+    }
+
+
+    /* LOGO DIVIDER */
+
+    .logo-divider {
+        width: 1px;
+        height: 45px;
+        background: rgba(255,255,255,.45);
+        margin: 0 3px;
+    }
+
+
+    /* BRAND TEXT */
+
+    .brand-text h1 {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: .3px;
+    }
+
+    .brand-text p {
+        font-size: 11px;
+        margin-top: 3px;
+        color: #eee;
+    }
+
+
+    /* ================================
+       NAV
+    ================================= */
+
+    .nav {
+        background: white;
+        border-bottom: 1px solid #d6d6d6;
+        padding: 15px 55px;
+    }
+
+    .nav a {
+        text-decoration: none;
+        color: #333;
+        margin-right: 30px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .nav a:hover {
+        color: #b5121b;
+    }
+
+
+    /* ================================
+       CONTAINER
+    ================================= */
+
+    .container {
+        max-width: 1050px;
+        margin: 35px auto;
+        padding: 0 25px;
+    }
+
+
+    /* ================================
+       JOB HEADER
+    ================================= */
+
+    .job-title {
+        background: white;
+        border: 1px solid #ddd;
+        padding: 30px;
+        margin-bottom: 20px;
+    }
+
+    .job-title h2 {
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    .job-number {
+        color: #777;
+        font-size: 13px;
+    }
+
+    .status {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 7px 11px;
+        background: #e7f3e7;
+        color: #286328;
+        font-size: 11px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+
+    /* ================================
+       CONTENT GRID
+    ================================= */
+
+    .content {
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        gap: 20px;
+    }
+
+
+    /* ================================
+       MAIN CONTENT
+    ================================= */
+
+    .main {
+        background: white;
+        border: 1px solid #ddd;
+        padding: 30px;
+    }
+
+    .main h3 {
+        font-size: 19px;
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #b5121b;
+    }
+
+    .main p {
+        color: #555;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 25px;
+    }
+
+    .main ul {
+        padding-left: 20px;
+        color: #555;
+        font-size: 14px;
+        line-height: 1.9;
+        margin-bottom: 25px;
+    }
+
+
+    /* ================================
+       SIDEBAR
+    ================================= */
+
+    .sidebar {
+        background: white;
+        border: 1px solid #ddd;
+        height: fit-content;
+    }
+
+    .sidebar-header {
+        background: #eee;
+        padding: 15px 18px;
+        font-weight: bold;
+        font-size: 14px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .sidebar-content {
+        padding: 18px;
+    }
+
+    .info {
+        margin-bottom: 18px;
+    }
+
+    .info label {
+        display: block;
+        color: #777;
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .info span {
+        font-size: 13px;
+    }
+
+
+    /* ================================
+       APPLY
+    ================================= */
+
+    .apply-box {
+        background: white;
+        border: 1px solid #ddd;
+        margin-top: 20px;
+        padding: 25px;
+        text-align: center;
+    }
+
+    .apply-box h3 {
+        margin-bottom: 8px;
+    }
+
+    .apply-box p {
+        color: #666;
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+
+    .apply-button {
+        display: inline-block;
+        background: #b5121b;
+        color: white;
+        text-decoration: none;
+        padding: 13px 30px;
+        font-size: 13px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+    }
+
+    .apply-button:hover {
+        background: #941019;
+    }
+
+
+    /* ================================
+       NOTICE
+    ================================= */
+
+    .notice {
+        background: #fff8e5;
+        border: 1px solid #ead9a5;
+        padding: 15px;
+        margin-top: 20px;
+        color: #665522;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    footer {
+        background: #171717;
+        color: #aaa;
+        text-align: center;
+        padding: 25px;
+        margin-top: 50px;
+        font-size: 12px;
+    }
+
+
+    /* ================================
+       MOBILE
+    ================================= */
+
+    @media (max-width: 750px) {
+
+        .city-bar {
+            padding: 0 20px;
         }
 
-        body {
-            background: #f2f3f5;
-            color: #222;
-        }
-
-        /* HEADER */
         header {
-            background: #b5121b;
-            color: white;
-            height: 78px;
-            display: flex;
-            align-items: center;
-            padding: 0 55px;
+            padding: 15px 20px;
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .lafd-logo {
+            width: 46px;
+            height: 46px;
         }
 
-        .logo {
-            width: 47px;
-            height: 47px;
-            border: 2px solid white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
+        .city-logo {
+            width: 40px;
+            height: 40px;
         }
 
-        .brand h1 {
-            font-size: 19px;
+        .logo-divider {
+            height: 35px;
         }
 
-        /* NAV */
-        .nav {
-            background: white;
-            border-bottom: 1px solid #d6d6d6;
-            padding: 15px 55px;
+        .brand-text h1 {
+            font-size: 16px;
         }
 
-        .nav a {
-            text-decoration: none;
-            color: #333;
-            margin-right: 30px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .nav a:hover {
-            color: #b5121b;
-        }
-
-        /* CONTAINER */
-        .container {
-            max-width: 1050px;
-            margin: 35px auto;
-            padding: 0 25px;
-        }
-
-        /* JOB HEADER */
-        .job-title {
-            background: white;
-            border: 1px solid #ddd;
-            padding: 30px;
-            margin-bottom: 20px;
-        }
-
-        .job-title h2 {
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-
-        .job-number {
-            color: #777;
-            font-size: 13px;
-        }
-
-        .status {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 7px 11px;
-            background: #e7f3e7;
-            color: #286328;
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        /* CONTENT GRID */
-        .content {
-            display: grid;
-            grid-template-columns: 1fr 280px;
-            gap: 20px;
-        }
-
-        /* MAIN CONTENT */
-        .main {
-            background: white;
-            border: 1px solid #ddd;
-            padding: 30px;
-        }
-
-        .main h3 {
-            font-size: 19px;
-            margin-bottom: 12px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #b5121b;
-        }
-
-        .main p {
-            color: #555;
-            font-size: 14px;
-            line-height: 1.7;
-            margin-bottom: 25px;
-        }
-
-        .main ul {
-            padding-left: 20px;
-            color: #555;
-            font-size: 14px;
-            line-height: 1.9;
-            margin-bottom: 25px;
-        }
-
-        /* SIDEBAR */
-        .sidebar {
-            background: white;
-            border: 1px solid #ddd;
-            height: fit-content;
-        }
-
-        .sidebar-header {
-            background: #eee;
-            padding: 15px 18px;
-            font-weight: bold;
-            font-size: 14px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .sidebar-content {
-            padding: 18px;
-        }
-
-        .info {
-            margin-bottom: 18px;
-        }
-
-        .info label {
-            display: block;
-            color: #777;
-            text-transform: uppercase;
+        .brand-text p {
             font-size: 10px;
-            font-weight: bold;
-            margin-bottom: 5px;
         }
 
-        .info span {
-            font-size: 13px;
+        .nav {
+            padding: 15px 20px;
+            white-space: nowrap;
+            overflow-x: auto;
         }
 
-        /* APPLY */
-        .apply-box {
-            background: white;
-            border: 1px solid #ddd;
+        .content {
+            grid-template-columns: 1fr;
+        }
+
+        .container {
             margin-top: 20px;
-            padding: 25px;
-            text-align: center;
         }
+    }
+</style>
 
-        .apply-box h3 {
-            margin-bottom: 8px;
-        }
 
-        .apply-box p {
-            color: #666;
-            font-size: 13px;
-            margin-bottom: 18px;
-        }
-
-        .apply-button {
-            display: inline-block;
-            background: #b5121b;
-            color: white;
-            text-decoration: none;
-            padding: 13px 30px;
-            font-size: 13px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-        }
-
-        .apply-button:hover {
-            background: #941019;
-        }
-
-        /* NOTICE */
-        .notice {
-            background: #fff8e5;
-            border: 1px solid #ead9a5;
-            padding: 15px;
-            margin-top: 20px;
-            color: #665522;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        /* FOOTER */
-        footer {
-            background: #171717;
-            color: #aaa;
-            text-align: center;
-            padding: 25px;
-            margin-top: 50px;
-            font-size: 12px;
-        }
-
-        /* MOBILE */
-        @media (max-width: 750px) {
-
-            header {
-                padding: 0 20px;
-            }
-
-            .nav {
-                padding: 15px 20px;
-                white-space: nowrap;
-                overflow-x: auto;
-            }
-
-            .content {
-                grid-template-columns: 1fr;
-            }
-
-            .container {
-                margin-top: 20px;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header>
+<!-- ================================
+     CITY GOVERNMENT BAR
+================================= -->
 
-        <div class="brand">
-
-            <div class="logo">
-                LAFD
-            </div>
-
-            <h1>
-                Los Angeles Fire Department
-            </h1>
-
-        </div>
-
-    </header>
+<div class="city-bar">
 
 
-    <!-- NAVIGATION -->
-    <div class="nav">
+<span>
+    An official website of the City of Los Angeles
+</span>
 
-        <a href="careers.html">
-            Career Opportunities
-        </a>
 
-        <a href="portal.html">
-            Job Search
-        </a>
+</div>
 
-        <a href="my-applications.html">
-            My Applications
-        </a>
+<!-- ================================
+     HEADER
+================================= -->
+
+<header>
+
+
+<div class="brand">
+
+
+    <!-- LAFD LOGO -->
+
+    <img
+        src="lafd-logo.png"
+        alt="Los Angeles Fire Department"
+        class="lafd-logo"
+    >
+
+
+    <div class="logo-divider"></div>
+
+
+    <!-- CITY OF LOS ANGELES LOGO -->
+
+    <img
+        src="la-city-logo.png"
+        alt="City of Los Angeles"
+        class="city-logo"
+    >
+
+
+    <div class="brand-text">
+
+        <h1>
+            Los Angeles Fire Department
+        </h1>
+
+        <p>
+            City of Los Angeles
+        </p>
 
     </div>
+
+</div>
+
+
+</header>
+
+<!-- ================================
+     NAVIGATION
+================================= -->
+
+<div class="nav">
+
+
+<a href="careers.html">
+    Career Opportunities
+</a>
+
+<a href="portal.html">
+    Job Search
+</a>
+
+<a href="my-applications.html">
+    My Applications
+</a>
+
+
+</div>
 
 
     <!-- PAGE -->
