@@ -1,0 +1,948 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Fire Stations | Los Angeles Fire Department</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        body {
+            background: #f5f5f5;
+            color: #222;
+        }
+
+
+
+        /* ================================
+           CITY GOVERNMENT BAR
+        ================================= */
+
+        .city-bar {
+            background: #eeeeee;
+
+            border-bottom: 1px solid #d4d4d4;
+
+            min-height: 44px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 55px;
+
+            color: #444;
+        }
+
+
+        .city-government {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .city-logo {
+            width: 30px;
+            height: 30px;
+
+            object-fit: contain;
+        }
+
+
+        .city-bar span {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+
+
+        /* ================================
+           MAIN HEADER
+        ================================= */
+
+        header {
+            background: #b5121b;
+
+            min-height: 82px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 55px;
+
+            color: white;
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .lafd-logo {
+            width: 54px;
+            height: 54px;
+
+            object-fit: contain;
+
+            background: white;
+
+            border-radius: 50%;
+
+            padding: 3px;
+        }
+
+
+        .brand-text h1 {
+            font-size: 20px;
+
+            font-weight: 700;
+
+            letter-spacing: .3px;
+        }
+
+
+        .brand-text p {
+            font-size: 11px;
+
+            margin-top: 3px;
+
+            color: #eee;
+        }
+
+
+        nav {
+            margin-left: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 30px;
+        }
+
+
+        nav a {
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+
+
+        /* ================================
+           PAGE HEADER
+        ================================= */
+
+        .page-header {
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.62),
+                    rgba(0,0,0,.62)
+                ),
+
+                url("https://media.discordapp.net/attachments/1394469502061772811/1394843996442067015/Screenshot_2025-06-28_182416.png?ex=6a918473&is=6a9032f3&hm=655e89646379386e8abc4f53733de9764cfa48305edab8f8f0e4b7b005dca408&=&format=webp&quality=lossless&width=1536&height=843")
+                center/cover;
+
+            height: 260px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+        }
+
+
+        .page-header h2 {
+            font-size: 42px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .page-header p {
+            color: #ddd;
+
+            font-size: 16px;
+        }
+
+
+
+        /* ================================
+           MAIN
+        ================================= */
+
+        .container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 50px 25px 70px;
+        }
+
+
+        .section-title {
+            font-size: 28px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .red-line {
+            width: 55px;
+
+            height: 4px;
+
+            background: #b5121b;
+
+            margin-bottom: 25px;
+        }
+
+
+        .intro {
+            max-width: 850px;
+
+            color: #555;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+        }
+
+
+
+        /* ================================
+           SEARCH
+        ================================= */
+
+        .search-box {
+            background: white;
+
+            border: 1px solid #ddd;
+
+            padding: 20px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,.05);
+        }
+
+
+        .search-box input {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: 1px solid #ccc;
+
+            font-size: 14px;
+
+            outline: none;
+        }
+
+
+        .search-box input:focus {
+            border-color: #b5121b;
+        }
+
+
+
+        /* ================================
+           STATIONS
+        ================================= */
+
+        .stations {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .station {
+            background: white;
+
+            border: 1px solid #ddd;
+
+            border-top: 4px solid #b5121b;
+
+            padding: 25px;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,.06);
+        }
+
+
+        .station-number {
+            color: #b5121b;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+            text-transform: uppercase;
+        }
+
+
+        .station h3 {
+            font-size: 20px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .station p {
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            margin-bottom: 6px;
+        }
+
+
+        .station-location {
+            font-weight: 600;
+
+            color: #444 !important;
+        }
+
+
+        .station-button {
+            display: inline-block;
+
+            margin-top: 15px;
+
+            background: #b5121b;
+
+            color: white;
+
+            padding: 10px 17px;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+
+        .station-button:hover {
+            background: #951019;
+        }
+
+
+
+        /* ================================
+           NO RESULTS
+        ================================= */
+
+        #noResults {
+            display: none;
+
+            background: white;
+
+            border: 1px solid #ddd;
+
+            padding: 30px;
+
+            text-align: center;
+
+            color: #666;
+        }
+
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+            background: #111;
+
+            color: #aaa;
+
+            text-align: center;
+
+            padding: 25px;
+
+            font-size: 13px;
+        }
+
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 750px) {
+
+            .city-bar {
+                padding: 0 20px;
+            }
+
+
+            .city-logo {
+                width: 27px;
+                height: 27px;
+            }
+
+
+            .city-bar span {
+                font-size: 11px;
+            }
+
+
+            header {
+                padding: 15px 20px;
+            }
+
+
+            nav {
+                display: none;
+            }
+
+
+            .brand-text h1 {
+                font-size: 16px;
+            }
+
+
+            .brand-text p {
+                font-size: 10px;
+            }
+
+
+            .lafd-logo {
+                width: 46px;
+                height: 46px;
+            }
+
+
+            .page-header {
+                height: 230px;
+            }
+
+
+            .page-header h2 {
+                font-size: 34px;
+            }
+
+
+            .stations {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+
+<!-- ================================
+     CITY GOVERNMENT BAR
+================================= -->
+
+<div class="city-bar">
+
+    <div class="city-government">
+
+        <img
+            src="la-city-logo.png"
+            alt="City of Los Angeles"
+            class="city-logo"
+        >
+
+        <span>
+            An official website of the City of Los Angeles
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================
+     HEADER
+================================= -->
+
+<header>
+
+    <div class="brand">
+
+        <img
+            src="lafd-logo.png"
+            alt="Los Angeles Fire Department"
+            class="lafd-logo"
+        >
+
+
+        <div class="brand-text">
+
+            <h1>
+                Los Angeles Fire Department
+            </h1>
+
+            <p>
+                City of Los Angeles
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="stations.html">
+            Stations
+        </a>
+
+        <a href="careers.html">
+            Careers
+        </a>
+
+        <a href="my-applications.html">
+            My Applications
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ================================
+     PAGE HEADER
+================================= -->
+
+<section class="page-header">
+
+    <div>
+
+        <h2>
+            Fire Stations
+        </h2>
+
+        <p>
+            Locate fire stations and department facilities.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================
+     MAIN
+================================= -->
+
+<main class="container">
+
+
+    <h2 class="section-title">
+        LAFD Fire Stations
+    </h2>
+
+
+    <div class="red-line"></div>
+
+
+    <p class="intro">
+
+        The Los Angeles Fire Department operates fire
+        stations throughout the City of Los Angeles.
+        Search below to find a station and view its
+        available information.
+
+    </p>
+
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="stationSearch"
+            placeholder="Search by station number, name, or location..."
+            onkeyup="searchStations()"
+        >
+
+    </div>
+
+
+
+    <!-- STATIONS -->
+
+    <section class="stations" id="stations">
+
+
+        <div
+            class="station"
+            data-search="station 1 downtown los angeles"
+        >
+
+            <div class="station-number">
+                Fire Station 1
+            </div>
+
+
+            <h3>
+                Downtown
+            </h3>
+
+
+            <p class="station-location">
+                Downtown Los Angeles
+            </p>
+
+
+            <p>
+                Engine • Truck • Rescue
+            </p>
+
+
+            <a
+                href="#"
+                class="station-button"
+            >
+                VIEW STATION
+            </a>
+
+        </div>
+
+
+
+        <div
+            class="station"
+            data-search="station 3 hollywood los angeles"
+        >
+
+            <div class="station-number">
+                Fire Station 3
+            </div>
+
+
+            <h3>
+                Hollywood
+            </h3>
+
+
+            <p class="station-location">
+                Hollywood
+            </p>
+
+
+            <p>
+                Engine • Truck • Rescue
+            </p>
+
+
+            <a
+                href="#"
+                class="station-button"
+            >
+                VIEW STATION
+            </a>
+
+        </div>
+
+
+
+        <div
+            class="station"
+            data-search="station 10 south los angeles"
+        >
+
+            <div class="station-number">
+                Fire Station 10
+            </div>
+
+
+            <h3>
+                South Los Angeles
+            </h3>
+
+
+            <p class="station-location">
+                South Los Angeles
+            </p>
+
+
+            <p>
+                Engine • Truck • Rescue
+            </p>
+
+
+            <a
+                href="#"
+                class="station-button"
+            >
+                VIEW STATION
+            </a>
+
+        </div>
+
+
+
+        <div
+            class="station"
+            data-search="station 27 los angeles"
+        >
+
+            <div class="station-number">
+                Fire Station 27
+            </div>
+
+
+            <h3>
+                Los Angeles
+            </h3>
+
+
+            <p class="station-location">
+                City of Los Angeles
+            </p>
+
+
+            <p>
+                Engine • Truck • Rescue
+            </p>
+
+
+            <a
+                href="#"
+                class="station-button"
+            >
+                VIEW STATION
+            </a>
+
+        </div>
+
+
+
+        <div
+            class="station"
+            data-search="station 35 los angeles"
+        >
+
+            <div class="station-number">
+                Fire Station 35
+            </div>
+
+
+            <h3>
+                Los Angeles
+            </h3>
+
+
+            <p class="station-location">
+                City of Los Angeles
+            </p>
+
+
+            <p>
+                Engine • Truck • Rescue
+            </p>
+
+
+            <a
+                href="#"
+                class="station-button"
+            >
+                VIEW STATION
+            </a>
+
+        </div>
+
+
+
+        <div
+            class="station"
+            data-search="station 89 los angeles"
+        >
+
+            <div class="station-number">
+                Fire Station 89
+            </div>
+
+
+            <h3>
+                Los Angeles
+            </h3>
+
+
+            <p class="station-location">
+                City of Los Angeles
+            </p>
+
+
+            <p>
+                Engine • Truck • Rescue
+            </p>
+
+
+            <a
+                href="#"
+                class="station-button"
+            >
+                VIEW STATION
+            </a>
+
+        </div>
+
+
+    </section>
+
+
+
+    <div id="noResults">
+
+        No fire stations matched your search.
+
+    </div>
+
+
+</main>
+
+
+
+<!-- ================================
+     FOOTER
+================================= -->
+
+<footer>
+
+    © 2026 Los Angeles Fire Department — FiveM Roleplay
+
+</footer>
+
+
+
+<script>
+
+    function searchStations() {
+
+        const input =
+            document
+                .getElementById("stationSearch")
+                .value
+                .toLowerCase()
+                .trim();
+
+
+        const stations =
+            document.querySelectorAll(".station");
+
+
+        let visible = 0;
+
+
+        stations.forEach(station => {
+
+            const searchText =
+                station
+                    .getAttribute("data-search")
+                    .toLowerCase();
+
+
+            if (
+                searchText.includes(input)
+            ) {
+
+                station.style.display = "block";
+
+                visible++;
+
+            } else {
+
+                station.style.display = "none";
+
+            }
+
+        });
+
+
+        const noResults =
+            document.getElementById("noResults");
+
+
+        if (visible === 0) {
+
+            noResults.style.display = "block";
+
+        } else {
+
+            noResults.style.display = "none";
+
+        }
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
+```
