@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Unsubscribe | LAFD Emergency Alerts</title>
+
+<link rel="icon" type="image/png" href="./lafd-logo.png">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================
+   CITY BAR
+======================================== */
+
+.city-bar {
+    min-height: 38px;
+    background: #eee;
+    border-bottom: 1px solid #d5d5d5;
+    display: flex;
+    align-items: center;
+    padding: 0 55px;
+    font-size: 12px;
+    color: #444;
+}
+
+.city-bar img {
+    width: 22px;
+    height: 22px;
+    margin-right: 9px;
+}
+
+.city-bar span {
+    font-weight: 600;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+header {
+    min-height: 82px;
+    background: #b5121b;
+    display: flex;
+    align-items: center;
+    padding: 0 55px;
+    color: white;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.lafd-logo {
+    width: 54px;
+    height: 54px;
+    background: white;
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.city-logo {
+    width: 47px;
+    height: 47px;
+}
+
+.logo-divider {
+    width: 1px;
+    height: 44px;
+    background: rgba(255,255,255,.45);
+}
+
+.brand-text h1 {
+    font-size: 19px;
+}
+
+.brand-text p {
+    font-size: 11px;
+    margin-top: 3px;
+    color: #eee;
+}
+
+nav {
+    margin-left: auto;
+    display: flex;
+    gap: 27px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ========================================
+   PAGE HEADER
+======================================== */
+
+.page-header {
+    background: #222;
+    color: white;
+    padding: 30px 55px;
+}
+
+.page-header-inner {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.page-header h2 {
+    font-size: 26px;
+}
+
+.page-header p {
+    color: #ccc;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.container {
+    width: 100%;
+    max-width: 1050px;
+    margin: auto;
+    padding: 45px 25px 80px;
+    flex: 1;
+}
+
+.form-box {
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 35px;
+}
+
+.form-box h2 {
+    font-size: 22px;
+}
+
+.red-line {
+    width: 50px;
+    height: 4px;
+    background: #b5121b;
+    margin: 10px 0 25px;
+}
+
+.description {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* ========================================
+   FORM
+======================================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 7px;
+    color: #444;
+}
+
+.required {
+    color: #b5121b;
+}
+
+input {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 12px;
+    font-size: 13px;
+    outline: none;
+    background: white;
+}
+
+input:focus {
+    border-color: #b5121b;
+}
+
+/* ========================================
+   NOTICE
+======================================== */
+
+.notice {
+    margin-top: 22px;
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-left: 5px solid #777;
+    padding: 15px;
+    color: #555;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* ========================================
+   BUTTON
+======================================== */
+
+.submit-area {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+}
+
+.submit {
+    background: #b5121b;
+    color: white;
+    border: none;
+    padding: 13px 24px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background: #991019;
+}
+
+.submit:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.cancel {
+    background: #333;
+    color: white;
+    text-decoration: none;
+    padding: 13px 24px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.cancel:hover {
+    background: #222;
+}
+
+/* ========================================
+   STATUS
+======================================== */
+
+.form-status {
+    display: none;
+    margin-top: 20px;
+    padding: 13px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.form-status.success {
+    display: block;
+    background: #edf7ed;
+    border: 1px solid #b8d8b8;
+    border-left: 5px solid #398439;
+    color: #285c28;
+}
+
+.form-status.error {
+    display: block;
+    background: #fff0f0;
+    border: 1px solid #e0baba;
+    border-left: 5px solid #b5121b;
+    color: #8b1717;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+
+footer {
+    background: #111;
+    color: #999;
+    text-align: center;
+    padding: 27px;
+    font-size: 11px;
+}
+
+footer strong {
+    color: #ddd;
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media(max-width:750px) {
+
+    .city-bar {
+        padding: 0 20px;
+    }
+
+    header {
+        padding: 15px 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .page-header {
+        padding: 25px 20px;
+    }
+
+    .container {
+        padding: 25px 15px 50px;
+    }
+
+    .form-box {
+        padding: 25px 20px;
+    }
+
+    .submit-area {
+        flex-direction: column;
+    }
+
+    .submit,
+    .cancel {
+        text-align: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ========================================
+     CITY BAR
+======================================== -->
+
+<div class="city-bar">
+
+
+<img
+    src="la-city-logo.png"
+    alt="City of Los Angeles"
+>
+
+<span>
+    An official website of the City of Los Angeles
+</span>
+
+
+</div>
+
+<!-- ========================================
+     HEADER
+======================================== -->
+
+<header>
+
+
+<div class="brand">
+
+    <img
+        src="lafd-logo.png"
+        class="lafd-logo"
+        alt="Los Angeles Fire Department"
+    >
+
+    <div class="logo-divider"></div>
+
+    <img
+        src="la-city-logo.png"
+        class="city-logo"
+        alt="City of Los Angeles"
+    >
+
+    <div class="brand-text">
+
+        <h1>
+            Los Angeles Fire Department
+        </h1>
+
+        <p>
+            City of Los Angeles
+        </p>
+
+    </div>
+
+</div>
+
+
+<nav>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="alerts.html">
+        Emergency Alerts
+    </a>
+
+    <a href="contact.html">
+        Contact
+    </a>
+
+</nav>
+
+
+</header>
+
+<!-- ========================================
+     PAGE HEADER
+======================================== -->
+
+<section class="page-header">
+
+
+<div class="page-header-inner">
+
+    <h2>
+        Unsubscribe From Alerts
+    </h2>
+
+    <p>
+        Emergency Alert System
+    </p>
+
+</div>
+
+
+</section>
+
+<!-- ========================================
+     MAIN
+======================================== -->
+
+<main class="container">
+
+
+<form
+    class="form-box"
+    id="unsubscribeForm"
+>
+
+    <h2>
+        Alert Subscription
+    </h2>
+
+    <div class="red-line"></div>
+
+
+    <p class="description">
+
+        Enter the email address associated with
+        your LAFD emergency alert subscription.
+        You will no longer receive emergency
+        alert emails after successfully unsubscribing.
+
+    </p>
+
+
+    <div class="form-group">
+
+        <label for="email">
+
+            Email Address
+            <span class="required">*</span>
+
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+        >
+
+    </div>
+
+
+    <div class="notice">
+
+        <strong>Important</strong>
+
+        <br>
+
+        Unsubscribing will deactivate your current
+        emergency alert subscription. You can
+        subscribe again at any time through the
+        Emergency Alerts page.
+
+    </div>
+
+
+    <div
+        id="formStatus"
+        class="form-status"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+
+    <div class="submit-area">
+
+        <button
+            type="submit"
+            class="submit"
+            id="unsubscribeButton"
+        >
+            UNSUBSCRIBE
+        </button>
+
+        <a
+            href="alerts.html"
+            class="cancel"
+        >
+            CANCEL
+        </a>
+
+    </div>
+
+</form>
+
+
+</main>
+
+<!-- ========================================
+     FOOTER
+======================================== -->
+
+<footer>
+
+
+<strong>
+    Los Angeles Fire Department
+</strong>
+
+<br><br>
+
+Emergency Alert System
+
+<br>
+
+© 2026 Los Angeles Fire Department — FiveM Roleplay
+
+
+</footer>
+
+<!-- ========================================
+     SCRIPT
+======================================== -->
+
+<script>
+
+document
+    .getElementById("unsubscribeForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+            const button =
+                document
+                    .getElementById("unsubscribeButton");
+
+            const status =
+                document
+                    .getElementById("formStatus");
+
+
+            if (!email) {
+
+                showStatus(
+                    "Please enter your email address.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            button.disabled = true;
+
+            button.textContent =
+                "PROCESSING...";
+
+
+            status.className =
+                "form-status";
+
+            status.textContent =
+                "";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/alerts/unsubscribe",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                email: email
+                            })
+
+                        }
+                    );
+
+
+                let data;
+
+                try {
+
+                    data =
+                        await response.json();
+
+                } catch {
+
+                    throw new Error(
+                        "The alert service returned an invalid response."
+                    );
+
+                }
+
+
+                if (
+                    !response.ok ||
+                    !data.success
+                ) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to unsubscribe."
+                    );
+
+                }
+
+
+                showStatus(
+                    data.message ||
+                    "You have been unsubscribed from alerts.",
+                    "success"
+                );
+
+
+                document
+                    .getElementById("email")
+                    .value = "";
+
+
+            } catch (error) {
+
+                console.error(
+                    "Unsubscribe error:",
+                    error
+                );
+
+
+                showStatus(
+                    error.message ||
+                    "Unable to unsubscribe. Please try again later.",
+                    "error"
+                );
+
+            } finally {
+
+                button.disabled = false;
+
+                button.textContent =
+                    "UNSUBSCRIBE";
+
+            }
+
+        }
+    );
+
+
+function showStatus(message, type) {
+
+    const status =
+        document
+            .getElementById("formStatus");
+
+    status.textContent =
+        message;
+
+    status.className =
+        `form-status ${type}`;
+
+}
+
+</script>
+
+</body>
+
+</html>
