@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Educational Videos | Los Angeles Fire Department</title>
+
+<link rel="icon" type="image/png" href="./lafd-logo.png">
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background: #f4f4f4;
+        color: #222;
+    }
+
+    .city-bar {
+        background: #eeeeee;
+        border-bottom: 1px solid #d5d5d5;
+        min-height: 38px;
+        display: flex;
+        align-items: center;
+        padding: 0 55px;
+        font-size: 12px;
+        color: #444;
+    }
+
+    .city-bar-logo {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+        margin-right: 9px;
+    }
+
+    .city-bar span {
+        font-weight: 600;
+    }
+
+    header {
+        background: #b5121b;
+        min-height: 82px;
+        display: flex;
+        align-items: center;
+        padding: 0 55px;
+        color: white;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .lafd-logo {
+        width: 54px;
+        height: 54px;
+        object-fit: contain;
+        background: white;
+        border-radius: 50%;
+        padding: 3px;
+    }
+
+    .city-logo {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+    }
+
+    .logo-divider {
+        width: 1px;
+        height: 45px;
+        background: rgba(255,255,255,.45);
+        margin: 0 3px;
+    }
+
+    .brand-text h1 {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: .3px;
+    }
+
+    .brand-text p {
+        font-size: 11px;
+        margin-top: 3px;
+        color: #eee;
+    }
+
+    nav {
+        margin-left: auto;
+        display: flex;
+        gap: 30px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    .page-header {
+        background:
+            linear-gradient(
+                rgba(0,0,0,.68),
+                rgba(0,0,0,.68)
+            ),
+            url("https://media.discordapp.net/attachments/1394469502061772811/1397741145932697630/Screenshot_2025-07-23_193808.png?ex=6a9182a1&is=6a903121&hm=caf47823a2dc8854e047d875ce7096889dc503df09235f35c02ccd2ee73e9ba2&=&format=webp&quality=lossless")
+            center/cover;
+
+        min-height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+
+    .page-header h2 {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    .page-header p {
+        color: #ddd;
+        font-size: 15px;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 45px 25px 70px;
+    }
+
+    .content {
+        background: white;
+        border: 1px solid #ddd;
+        padding: 35px;
+    }
+
+    .content h2 {
+        font-size: 27px;
+        margin-bottom: 10px;
+    }
+
+    .red-line {
+        width: 55px;
+        height: 4px;
+        background: #b5121b;
+        margin-bottom: 25px;
+    }
+
+    .intro {
+        color: #555;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 30px;
+    }
+
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 25px;
+    }
+
+    .video-card {
+        border: 1px solid #ddd;
+        background: #fafafa;
+        overflow: hidden;
+    }
+
+    .video-placeholder {
+        height: 190px;
+        background:
+            linear-gradient(
+                rgba(0,0,0,.45),
+                rgba(0,0,0,.45)
+            ),
+            url("https://media.discordapp.net/attachments/1394469502061772811/1397741145932697630/Screenshot_2025-07-23_193808.png?ex=6a9182a1&is=6a903121&hm=caf47823a2dc8854e047d875ce7096889dc503df09235f35c02ccd2ee73e9ba2&=&format=webp&quality=lossless")
+            center/cover;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .play {
+        width: 58px;
+        height: 58px;
+        background: #b5121b;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 23px;
+        padding-left: 4px;
+    }
+
+    .video-info {
+        padding: 20px;
+    }
+
+    .video-info h3 {
+        font-size: 17px;
+        margin-bottom: 8px;
+    }
+
+    .video-info p {
+        font-size: 12px;
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 15px;
+    }
+
+    .watch {
+        display: inline-block;
+        background: #b5121b;
+        color: white;
+        text-decoration: none;
+        padding: 11px 17px;
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+    .watch:hover {
+        background: #951019;
+    }
+
+    .section-title {
+        font-size: 19px;
+        margin-top: 40px;
+        margin-bottom: 15px;
+        padding-bottom: 9px;
+        border-bottom: 2px solid #b5121b;
+    }
+
+    .notice {
+        background: #fff8e5;
+        border: 1px solid #ead9a5;
+        border-left: 5px solid #d59b00;
+        padding: 18px;
+        margin: 25px 0;
+        color: #665522;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .notice strong {
+        display: block;
+        color: #554400;
+        margin-bottom: 5px;
+    }
+
+    .resource-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .resource {
+        border: 1px solid #ddd;
+        background: #f8f8f8;
+        padding: 20px;
+        text-decoration: none;
+        color: #222;
+    }
+
+    .resource:hover {
+        border-color: #b5121b;
+    }
+
+    .resource h4 {
+        font-size: 14px;
+        margin-bottom: 7px;
+    }
+
+    .resource p {
+        font-size: 12px;
+        color: #666;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .resource span {
+        display: block;
+        margin-top: 10px;
+        font-size: 10px;
+        color: #999;
+    }
+
+    .back-button {
+        display: inline-block;
+        margin-top: 30px;
+        background: #333;
+        color: white;
+        text-decoration: none;
+        padding: 13px 22px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .back-button:hover {
+        background: #222;
+    }
+
+    footer {
+        background: #111;
+        color: #aaa;
+        text-align: center;
+        padding: 25px;
+        font-size: 12px;
+    }
+
+    @media (max-width: 750px) {
+
+        .city-bar {
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 15px 20px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .brand-text h1 {
+            font-size: 16px;
+        }
+
+        .brand-text p {
+            font-size: 10px;
+        }
+
+        .lafd-logo {
+            width: 46px;
+            height: 46px;
+        }
+
+        .city-logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-divider {
+            height: 35px;
+        }
+
+        .page-header h2 {
+            font-size: 32px;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .video-grid,
+        .resource-grid {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+<div class="city-bar">
+
+
+<img
+    src="la-city-logo.png"
+    alt="City of Los Angeles"
+    class="city-bar-logo"
+>
+
+<span>
+    An official website of the City of Los Angeles
+</span>
+
+
+</div>
+
+<header>
+
+
+<div class="brand">
+
+    <img
+        src="lafd-logo.png"
+        alt="Los Angeles Fire Department"
+        class="lafd-logo"
+    >
+
+    <div class="logo-divider"></div>
+
+    <img
+        src="la-city-logo.png"
+        alt="City of Los Angeles"
+        class="city-logo"
+    >
+
+    <div class="brand-text">
+
+        <h1>
+            Los Angeles Fire Department
+        </h1>
+
+        <p>
+            City of Los Angeles
+        </p>
+
+    </div>
+
+</div>
+
+
+<nav>
+
+    <a href="index.html">Home</a>
+
+    <a href="about.html">About</a>
+
+    <a href="stations.html">Stations</a>
+
+    <a href="careers.html">Careers</a>
+
+    <a href="my-applications.html">My Applications</a>
+
+</nav>
+
+
+</header>
+
+<section class="page-header">
+
+
+<div>
+
+    <h2>
+        Educational Videos
+    </h2>
+
+    <p>
+        Fire safety and public education resources
+    </p>
+
+</div>
+
+
+</section>
+
+<main class="container">
+
+
+<div class="content">
+
+    <h2>
+        LAFD Educational Videos
+    </h2>
+
+    <div class="red-line"></div>
+
+    <p class="intro">
+
+        The Los Angeles Fire Department provides educational
+        resources to help residents, businesses, and visitors
+        understand fire safety, emergency preparedness, wildfire
+        prevention, and other important public safety topics.
+
+    </p>
+
+
+    <div class="notice">
+
+        <strong>
+            Public Safety Education
+        </strong>
+
+        These resources are intended to help the community
+        prepare for emergencies and understand basic fire and
+        life-safety practices.
+
+    </div>
+
+
+    <h3 class="section-title">
+        Featured Topics
+    </h3>
+
+
+    <div class="video-grid">
+
+
+        <div class="video-card">
+
+            <div class="video-placeholder">
+
+                <div class="play">
+                    ▶
+                </div>
+
+            </div>
+
+            <div class="video-info">
+
+                <h3>
+                    Wildfire Preparedness
+                </h3>
+
+                <p>
+                    Learn how residents can prepare their homes,
+                    create evacuation plans, and protect their
+                    families from wildfire.
+                </p>
+
+                <a
+                    href="wildfire.html"
+                    class="watch"
+                >
+                    VIEW RESOURCE
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="video-card">
+
+            <div class="video-placeholder">
+
+                <div class="play">
+                    ▶
+                </div>
+
+            </div>
+
+            <div class="video-info">
+
+                <h3>
+                    Ready, Set, Go!
+                </h3>
+
+                <p>
+                    Understand the Ready, Set, Go! approach to
+                    wildfire preparedness and evacuation.
+                </p>
+
+                <a
+                    href="ready-set-go.html"
+                    class="watch"
+                >
+                    VIEW RESOURCE
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="video-card">
+
+            <div class="video-placeholder">
+
+                <div class="play">
+                    ▶
+                </div>
+
+            </div>
+
+            <div class="video-info">
+
+                <h3>
+                    Brush Clearance
+                </h3>
+
+                <p>
+                    Learn about vegetation management and the
+                    importance of maintaining brush clearance.
+                </p>
+
+                <a
+                    href="brush.html"
+                    class="watch"
+                >
+                    VIEW RESOURCE
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="video-card">
+
+            <div class="video-placeholder">
+
+                <div class="play">
+                    ▶
+                </div>
+
+            </div>
+
+            <div class="video-info">
+
+                <h3>
+                    Fire Safety
+                </h3>
+
+                <p>
+                    General fire safety information for homes,
+                    businesses, and the community.
+                </p>
+
+                <a
+                    href="https://lafd.org/educational-videos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="watch"
+                >
+                    LAFD VIDEOS
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <h3 class="section-title">
+        Additional Resources
+    </h3>
+
+
+    <div class="resource-grid">
+
+
+        <a
+            href="ready-set-go.html"
+            class="resource"
+        >
+
+            <h4>
+                Ready, Set, Go!
+            </h4>
+
+            <p>
+                Wildfire preparation and evacuation planning.
+            </p>
+
+        </a>
+
+
+        <a
+            href="wildfire.html"
+            class="resource"
+        >
+
+            <h4>
+                Wildfire
+            </h4>
+
+            <p>
+                Wildfire prevention, safety, and evacuation
+                information.
+            </p>
+
+        </a>
+
+
+        <a
+            href="brush.html"
+            class="resource"
+        >
+
+            <h4>
+                Brush Clearance
+            </h4>
+
+            <p>
+                Brush management and wildfire prevention.
+            </p>
+
+        </a>
+
+
+        <a
+            href="fire-code.html"
+            class="resource"
+        >
+
+            <h4>
+                Fire Code
+            </h4>
+
+            <p>
+                Fire prevention and life-safety requirements.
+            </p>
+
+        </a>
+
+
+        <a
+            href="faq.html"
+            class="resource"
+        >
+
+            <h4>
+                Frequently Asked Questions
+            </h4>
+
+            <p>
+                Find answers to common LAFD questions.
+            </p>
+
+        </a>
+
+
+        <a
+            href="https://lafd.org/educational-videos"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="resource"
+        >
+
+            <h4>
+                Official LAFD Videos
+            </h4>
+
+            <p>
+                Visit the official LAFD educational video
+                resource.
+            </p>
+
+            <span>
+                LAFD.org ↗
+            </span>
+
+        </a>
+
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="back-button"
+    >
+        RETURN TO HOME
+    </a>
+
+</div>
+
+
+</main>
+
+<footer>
+
+
+© 2026 Los Angeles Fire Department — FiveM Roleplay
+
+
+</footer>
+
+</body>
+
+</html>
