@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Complaint Record Form | Los Angeles Fire Department</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #e9e9e9;
+            color: #222;
+            padding: 35px 15px;
+        }
+
+        .document {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            border: 1px solid #999;
+            box-shadow: 0 3px 15px rgba(0,0,0,.15);
+        }
+
+        .government-bar {
+            background: #eeeeee;
+            border-bottom: 1px solid #ccc;
+            padding: 8px 30px;
+            font-size: 11px;
+            color: #444;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 22px 30px;
+            border-bottom: 4px solid #b5121b;
+        }
+
+        .lafd-logo {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+        }
+
+        .header-text h1 {
+            font-size: 22px;
+        }
+
+        .header-text p {
+            margin-top: 5px;
+            font-size: 11px;
+            color: #666;
+        }
+
+        .form-title {
+            padding: 22px 30px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .form-title h2 {
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        .form-title p {
+            margin-top: 7px;
+            color: #666;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .form-content {
+            padding: 30px;
+        }
+
+        .notice {
+            background: #f6f6f6;
+            border: 1px solid #ccc;
+            padding: 15px;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .warning {
+            background: #fff8e5;
+            border: 1px solid #e4d19a;
+            color: #665522;
+            padding: 15px;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            background: #333;
+            color: white;
+            padding: 9px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .grid.three {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .required {
+            color: #b5121b;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid #aaa;
+            background: white;
+            padding: 10px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #b5121b;
+        }
+
+        textarea {
+            min-height: 180px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            border: 1px solid #ccc;
+            padding: 15px;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .checkbox input {
+            width: auto;
+        }
+
+        .signature-box {
+            border: 1px solid #aaa;
+            padding: 15px;
+            background: #fafafa;
+        }
+
+        .signature-box p {
+            font-size: 11px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .footer-note {
+            border-top: 1px solid #ccc;
+            padding-top: 15px;
+            font-size: 10px;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        .button {
+            border: none;
+            padding: 13px 24px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .submit {
+            background: #b5121b;
+            color: white;
+        }
+
+        .submit:hover {
+            background: #941019;
+        }
+
+        .print {
+            background: #333;
+            color: white;
+        }
+
+        .status {
+            display: none;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 12px;
+            border: 1px solid #b9dfc0;
+            background: #e8f5e9;
+            color: #246b2b;
+        }
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .form-content {
+                padding: 20px;
+            }
+
+            .grid,
+            .grid.three,
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .actions {
+                flex-direction: column-reverse;
+                gap: 10px;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+        }
+
+        @media print {
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .document {
+                border: none;
+                box-shadow: none;
+                max-width: none;
+            }
+
+            .actions {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="document">
+
+    <div class="government-bar">
+        An official website of the City of Los Angeles
+    </div>
+
+    <div class="header">
+
+        <img
+            src="lafd-logo.png"
+            alt="Los Angeles Fire Department"
+            class="lafd-logo"
+        >
+
+        <div class="header-text">
+
+            <h1>
+                LOS ANGELES FIRE DEPARTMENT
+            </h1>
+
+            <p>
+                PROFESSIONAL STANDARDS DIVISION
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="form-title">
+
+        <h2>
+            Complaint Record Form
+        </h2>
+
+        <p>
+            Use this form to report a concern regarding the conduct,
+            professionalism, or service provided by a member of the
+            Los Angeles Fire Department.
+        </p>
+
+    </div>
+
+    <form id="complaintForm">
+
+        <div class="form-content">
+
+            <div class="notice">
+
+                <strong>Submitting a Complaint</strong><br>
+
+                The Los Angeles Fire Department takes complaints and
+                concerns seriously. Information submitted through this
+                form may be reviewed by Professional Standards personnel
+                and may be used for follow-up purposes.
+
+            </div>
+
+
+            <div class="warning">
+
+                <strong>Important:</strong>
+
+                Do not use this form to report an emergency or request
+                immediate assistance. For emergencies, call 9-1-1.
+
+            </div>
+
+
+            <div class="section">
+
+                <div class="section-title">
+                    Incident Information
+                </div>
+
+                <div class="grid three">
+
+                    <div class="field">
+
+                        <label>
+                            Date of Incident
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="date"
+                            name="incident_date"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            Approximate Time
+                        </label>
+
+                        <input
+                            type="time"
+                            name="incident_time"
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            Incident / Event Type
+                        </label>
+
+                        <select name="incident_type">
+
+                            <option value="">
+                                Select Type
+                            </option>
+
+                            <option>Fire Response</option>
+                            <option>Medical Response</option>
+                            <option>Traffic Collision</option>
+                            <option>Station Visit</option>
+                            <option>Public Interaction</option>
+                            <option>Administrative Matter</option>
+                            <option>Other</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="field full">
+
+                        <label>
+                            Location of Incident
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            name="incident_location"
+                            placeholder="Street, intersection, business, station, or general location"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="field full">
+
+                        <label>
+                            Incident / Report Number
+                        </label>
+
+                        <input
+                            type="text"
+                            name="report_number"
+                            placeholder="If known"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="section">
+
+                <div class="section-title">
+                    Employee / Unit Information
+                </div>
+
+                <div class="grid three">
+
+                    <div class="field">
+
+                        <label>
+                            Employee Last Name
+                        </label>
+
+                        <input
+                            type="text"
+                            name="employee_last"
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            Employee First Name
+                        </label>
+
+                        <input
+                            type="text"
+                            name="employee_first"
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            Badge / Employee Number
+                        </label>
+
+                        <input
+                            type="text"
+                            name="employee_badge"
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            Unit Number
+                        </label>
+
+                        <input
+                            type="text"
+                            name="unit_number"
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            Station
+                        </label>
+
+                        <input
+                            type="text"
+                            name="station"
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            Unit Type
+                        </label>
+
+                        <select name="unit_type">
+
+                            <option value="">
+                                Select Unit
+                            </option>
+
+                            <option>Engine</option>
+                            <option>Truck</option>
+                            <option>Rescue Ambulance</option>
+                            <option>Paramedic Rescue</option>
+                            <option>Heavy Rescue</option>
+                            <option>Battalion Command</option>
+                            <option>Other</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="section">
+
+                <div class="section-title">
+                    Nature of Complaint
+                </div>
+
+                <div class="checkbox-grid">
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="complaint_type" value="Conduct">
+                        Employee Conduct
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="complaint_type" value="Professionalism">
+                        Professionalism
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="complaint_type" value="Service">
+                        Service Provided
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="complaint_type" value="Communication">
+                        Communication
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="complaint_type" value="Treatment">
+                        Treatment / Interaction
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="complaint_type" value="Other">
+                        Other Concern
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="section">
+
+                <div class="section-title">
+                    Complaint Details
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Describe Your Concern
+                        <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                        name="statement"
+                        placeholder="Please provide a detailed description of what occurred. Include relevant facts, statements, actions, and circumstances."
+                        required
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="section">
+
+                <div class="section-title">
+                    Reporting Party Information
+                </div>
+
+                <div class="grid">
+
+                    <div class="field">
+
+                        <label>
+                            Full Name
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            name="reporting_name"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            Email Address
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            name="reporting_email"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="field full">
+
+                        <label>
+                            Preferred Contact Method
+                        </label>
+
+                        <select name="contact_method">
+
+                            <option>Email</option>
+                            <option>No Follow-Up Requested</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="signature-box">
+
+                <p>
+                    By submitting this form, I certify that the information
+                    provided is accurate to the best of my knowledge. I
+                    understand that the information may be reviewed by
+                    Department personnel for administrative and
+                    Professional Standards purposes.
+                </p>
+
+                <div class="field">
+
+                    <label>
+                        Electronic Signature
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        name="signature"
+                        placeholder="Type your full name"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-note">
+
+                Form Reference: LAFD-PSD-COMP-01<br>
+                Professional Standards Division — Complaint Submission
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    type="button"
+                    class="button print"
+                    onclick="window.print()"
+                >
+                    PRINT FORM
+                </button>
+
+                <button
+                    type="submit"
+                    class="button submit"
+                >
+                    SUBMIT COMPLAINT
+                </button>
+
+            </div>
+
+            <div
+                id="status"
+                class="status"
+            ></div>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<script>
+
+    const WEBHOOK_URL = "https://discordapp.com/api/webhooks/1542688585633763328/tU60bbfb3ZtOAiQPK77f6fO8lflkH1WMFfNET2Wb4rXirzYCwjcjZ_0UR9cmV4LcwsSv";
+
+    document
+        .getElementById("complaintForm")
+        .addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const form = new FormData(this);
+
+            const complaintTypes = [];
+
+            document
+                .querySelectorAll('input[name="complaint_type"]:checked')
+                .forEach(function(item) {
+                    complaintTypes.push(item.value);
+                });
+
+
+            const payload = {
+
+                username: "LAFD Professional Standards",
+
+                embeds: [{
+
+                    title: "New LAFD Complaint",
+
+                    color: 11801371,
+
+                    fields: [
+
+                        {
+                            name: "Reporting Party",
+                            value:
+                                `${form.get("reporting_name")}\n${form.get("reporting_email")}`
+                        },
+
+                        {
+                            name: "Incident",
+                            value:
+                                `${form.get("incident_date")} ${form.get("incident_time") || ""}\n` +
+                                `${form.get("incident_type") || "Not specified"}\n` +
+                                `${form.get("incident_location")}`
+                        },
+
+                        {
+                            name: "Employee / Unit",
+                            value:
+                                `${form.get("employee_first") || ""} ${form.get("employee_last") || ""}\n` +
+                                `Badge: ${form.get("employee_badge") || "N/A"}\n` +
+                                `Unit: ${form.get("unit_number") || "N/A"}\n` +
+                                `Station: ${form.get("station") || "N/A"}`
+                        },
+
+                        {
+                            name: "Complaint Type",
+                            value:
+                                complaintTypes.join(", ") ||
+                                "Not specified"
+                        },
+
+                        {
+                            name: "Complaint Details",
+                            value:
+                                form.get("statement").substring(0, 1024)
+                        }
+
+                    ],
+
+                    footer: {
+                        text: "LAFD Professional Standards • Complaint"
+                    },
+
+                    timestamp: new Date().toISOString()
+
+                }]
+
+            };
+
+
+            const status =
+                document.getElementById("status");
+
+
+            try {
+
+                const response = await fetch(
+                    WEBHOOK_URL,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(payload)
+                    }
+                );
+
+
+                if (!response.ok) {
+                    throw new Error("Webhook request failed.");
+                }
+
+
+                status.style.display = "block";
+
+                status.textContent =
+                    "Your complaint has been submitted successfully.";
+
+                this.reset();
+
+            }
+
+            catch (error) {
+
+                status.style.display = "block";
+
+                status.style.background = "#fbe7e7";
+                status.style.borderColor = "#edbcbc";
+                status.style.color = "#9d2020";
+
+                status.textContent =
+                    "Unable to submit the complaint. Please try again.";
+
+            }
+
+        });
+
+</script>
+
+</body>
+
+</html>
