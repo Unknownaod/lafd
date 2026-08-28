@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Emergency Alerts | Los Angeles Fire Department</title>
+
+<link rel="icon" type="image/png" href="./lafd-logo.png">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f4f4f4;
+    color: #222;
+}
+
+/* ================================
+   CITY GOVERNMENT BAR
+================================ */
+
+.city-bar {
+    background: #eeeeee;
+    border-bottom: 1px solid #d5d5d5;
+    min-height: 38px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 55px;
+
+    font-size: 12px;
+    color: #444;
+}
+
+.city-bar img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    margin-right: 9px;
+}
+
+.city-bar span {
+    font-weight: 600;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+header {
+    background: #b5121b;
+    min-height: 82px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 55px;
+
+    color: white;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.lafd-logo {
+    width: 54px;
+    height: 54px;
+
+    object-fit: contain;
+
+    background: white;
+
+    border-radius: 50%;
+
+    padding: 3px;
+}
+
+.city-logo {
+    width: 47px;
+    height: 47px;
+
+    object-fit: contain;
+}
+
+.logo-divider {
+    width: 1px;
+    height: 44px;
+
+    background: rgba(255,255,255,.45);
+}
+
+.brand-text h1 {
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.brand-text p {
+    font-size: 11px;
+    margin-top: 3px;
+    color: #eee;
+}
+
+/* ================================
+   NAVIGATION
+================================ */
+
+nav {
+    margin-left: auto;
+
+    display: flex;
+
+    gap: 27px;
+}
+
+nav a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ================================
+   PAGE HEADER
+================================ */
+
+.page-header {
+    background:
+        linear-gradient(
+            rgba(0,0,0,.65),
+            rgba(0,0,0,.65)
+        ),
+        url("https://media.discordapp.net/attachments/1394469502061772811/1397741145932697630/Screenshot_2025-07-23_193808.png?format=webp&quality=lossless")
+        center/cover;
+
+    min-height: 250px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: white;
+}
+
+.page-header h2 {
+    font-size: 40px;
+    margin-bottom: 9px;
+}
+
+.page-header p {
+    color: #ddd;
+    font-size: 14px;
+}
+
+/* ================================
+   MAIN
+================================ */
+
+.container {
+    max-width: 1050px;
+
+    margin: auto;
+
+    padding: 45px 25px 70px;
+}
+
+.section-title {
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 26px;
+}
+
+.red-line {
+    width: 55px;
+    height: 4px;
+
+    background: #b5121b;
+
+    margin-top: 10px;
+}
+
+/* ================================
+   ALERT LIST
+================================ */
+
+.alert-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.alert {
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-left: 6px solid #777;
+
+    padding: 23px 25px;
+}
+
+.alert.emergency {
+    border-left-color: #b5121b;
+}
+
+.alert.warning {
+    border-left-color: #d58b00;
+}
+
+.alert.advisory {
+    border-left-color: #2874a6;
+}
+
+.alert.information {
+    border-left-color: #555;
+}
+
+/* ================================
+   ALERT HEADER
+================================ */
+
+.alert-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 10px;
+}
+
+.alert-type {
+    font-size: 10px;
+
+    font-weight: bold;
+
+    padding: 5px 9px;
+
+    color: white;
+
+    background: #555;
+}
+
+.emergency .alert-type {
+    background: #b5121b;
+}
+
+.warning .alert-type {
+    background: #d58b00;
+}
+
+.advisory .alert-type {
+    background: #2874a6;
+}
+
+.information .alert-type {
+    background: #555;
+}
+
+.alert h3 {
+    font-size: 19px;
+}
+
+.alert p {
+    font-size: 13px;
+
+    color: #555;
+
+    line-height: 1.7;
+
+    margin-top: 8px;
+
+    white-space: pre-line;
+}
+
+/* ================================
+   ALERT META
+================================ */
+
+.alert-meta {
+    margin-top: 15px;
+
+    padding-top: 12px;
+
+    border-top: 1px solid #eee;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 25px;
+
+    font-size: 11px;
+
+    color: #777;
+}
+
+.alert-meta strong {
+    color: #444;
+}
+
+/* ================================
+   ALERT LINK
+================================ */
+
+.alert-link {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    color: #b5121b;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+.alert-link:hover {
+    text-decoration: underline;
+}
+
+/* ================================
+   NO ALERTS
+================================ */
+
+.no-alerts {
+    background: white;
+
+    border: 1px solid #ddd;
+
+    padding: 35px;
+
+    text-align: center;
+}
+
+.no-alerts h3 {
+    font-size: 18px;
+
+    margin-bottom: 8px;
+}
+
+.no-alerts p {
+    color: #666;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+/* ================================
+   ERROR
+================================ */
+
+.alert-error {
+    background: #fff1f1;
+
+    border: 1px solid #e1b5b5;
+
+    border-left: 6px solid #b5121b;
+
+    padding: 20px;
+
+    color: #6b1b1b;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+/* ================================
+   EMAIL ALERTS
+================================ */
+
+.subscribe {
+    margin-top: 40px;
+
+    background: #222;
+
+    color: white;
+
+    padding: 30px;
+}
+
+.subscribe h2 {
+    font-size: 21px;
+
+    margin-bottom: 8px;
+}
+
+.subscribe p {
+    color: #ccc;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    max-width: 700px;
+}
+
+.subscribe-button {
+    display: inline-block;
+
+    margin-top: 18px;
+
+    background: #b5121b;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 12px 20px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+.subscribe-button:hover {
+    background: #951019;
+}
+
+/* ================================
+   BACK BUTTON
+================================ */
+
+.back-button {
+    display: inline-block;
+
+    margin-top: 30px;
+
+    background: #b5121b;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 12px 21px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+.back-button:hover {
+    background: #951019;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+    background: #111;
+
+    color: #999;
+
+    text-align: center;
+
+    padding: 27px;
+
+    font-size: 11px;
+}
+
+footer strong {
+    color: #ddd;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width: 750px) {
+
+    .city-bar {
+        padding: 0 20px;
+    }
+
+    header {
+        padding: 15px 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .page-header {
+        min-height: 210px;
+
+        padding: 25px;
+    }
+
+    .page-header h2 {
+        font-size: 31px;
+    }
+
+    .container {
+        padding: 35px 20px 60px;
+    }
+
+    .alert {
+        padding: 20px;
+    }
+
+    .alert-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 7px;
+    }
+
+    .alert-meta {
+        flex-direction: column;
+
+        gap: 7px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================================
+     CITY GOVERNMENT BAR
+================================ -->
+
+<div class="city-bar">
+
+
+<img
+    src="la-city-logo.png"
+    alt="City of Los Angeles"
+>
+
+<span>
+    An official website of the City of Los Angeles
+</span>
+
+
+</div>
+
+<!-- ================================
+     HEADER
+================================ -->
+
+<header>
+
+
+<div class="brand">
+
+    <img
+        src="lafd-logo.png"
+        class="lafd-logo"
+        alt="Los Angeles Fire Department"
+    >
+
+    <div class="logo-divider"></div>
+
+    <img
+        src="la-city-logo.png"
+        class="city-logo"
+        alt="City of Los Angeles"
+    >
+
+    <div class="brand-text">
+
+        <h1>
+            Los Angeles Fire Department
+        </h1>
+
+        <p>
+            City of Los Angeles
+        </p>
+
+    </div>
+
+</div>
+
+
+<nav>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="about.html">
+        About
+    </a>
+
+    <a href="stations.html">
+        Stations
+    </a>
+
+    <a href="careers.html">
+        Careers
+    </a>
+
+    <a href="alerts.html">
+        Alerts
+    </a>
+
+</nav>
+
+
+</header>
+
+<!-- ================================
+     PAGE HEADER
+================================ -->
+
+<section class="page-header">
+
+
+<div>
+
+    <h2>
+        Emergency Alerts
+    </h2>
+
+    <p>
+        Fire and emergency information from the Los Angeles Fire Department
+    </p>
+
+</div>
+
+
+</section>
+
+<!-- ================================
+     MAIN
+================================ -->
+
+<main class="container">
+
+
+<div class="section-title">
+
+    <h2>
+        Current Alerts
+    </h2>
+
+    <div class="red-line"></div>
+
+</div>
+
+
+<!--
+    ALERTS FROM /api/alerts
+    ARE INSERTED HERE
+-->
+
+<div
+    id="alerts-container"
+    class="alert-list"
+>
+
+    <article class="alert information">
+
+        <div class="alert-header">
+
+            <span class="alert-type">
+                INFORMATION
+            </span>
+
+            <h3>
+                Loading Alerts
+            </h3>
+
+        </div>
+
+        <p>
+            Checking for current emergency alerts...
+        </p>
+
+    </article>
+
+</div>
+
+
+<!-- ================================
+     EMAIL SUBSCRIPTION
+================================= -->
+
+<section class="subscribe">
+
+    <h2>
+        Receive Emergency Alerts
+    </h2>
+
+    <p>
+        Subscribe to receive emergency and public safety
+        alerts by email. You can unsubscribe at any time.
+    </p>
+
+    <a
+        href="alert-signup.html"
+        class="subscribe-button"
+    >
+        SIGN UP FOR EMAIL ALERTS
+    </a>
+
+</section>
+
+
+<a
+    href="index.html"
+    class="back-button"
+>
+    RETURN TO HOME
+</a>
+
+
+</main>
+
+<!-- ================================
+     FOOTER
+================================ -->
+
+<footer>
+
+
+<strong>
+    Los Angeles Fire Department
+</strong>
+
+<br><br>
+
+Emergency Alerts
+
+<br>
+
+© 2026 Los Angeles Fire Department — FiveM Roleplay
+
+
+</footer>
+
+<!-- ================================
+     ALERT SYSTEM SCRIPT
+================================ -->
+
+<script>
+
+const alertsContainer =
+    document.getElementById("alerts-container");
+
+
+/* ================================
+   LOAD ALERTS
+================================ */
+
+async function loadAlerts() {
+
+    try {
+
+        const response =
+            await fetch("/api/alerts", {
+                method: "GET",
+                cache: "no-store"
+            });
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                `Server returned ${response.status}`
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            !data ||
+            !data.success ||
+            !Array.isArray(data.alerts) ||
+            data.alerts.length === 0
+        ) {
+
+            showNoAlerts();
+
+            return;
+
+        }
+
+
+        alertsContainer.innerHTML = "";
+
+
+        data.alerts.forEach(alert => {
+
+            alertsContainer.appendChild(
+                createAlertElement(alert)
+            );
+
+        });
+
+
+    } catch (error) {
+
+        console.error(
+            "Alert loading error:",
+            error
+        );
+
+
+        showAlertError();
+
+    }
+
+}
+
+
+/* ================================
+   CREATE ALERT
+================================ */
+
+function createAlertElement(alert) {
+
+    const article =
+        document.createElement("article");
+
+
+    let type =
+        String(
+            alert.type || "information"
+        ).toLowerCase();
+
+
+    const allowedTypes = [
+        "emergency",
+        "warning",
+        "advisory",
+        "information"
+    ];
+
+
+    if (!allowedTypes.includes(type)) {
+        type = "information";
+    }
+
+
+    article.className =
+        `alert ${type}`;
+
+
+    const typeLabel =
+        type.charAt(0).toUpperCase() +
+        type.slice(1);
+
+
+    const header =
+        document.createElement("div");
+
+    header.className =
+        "alert-header";
+
+
+    const badge =
+        document.createElement("span");
+
+    badge.className =
+        "alert-type";
+
+    badge.textContent =
+        typeLabel.toUpperCase();
+
+
+    const title =
+        document.createElement("h3");
+
+    title.textContent =
+        alert.title || "Emergency Alert";
+
+
+    header.appendChild(badge);
+    header.appendChild(title);
+
+
+    const message =
+        document.createElement("p");
+
+    message.textContent =
+        alert.message || "";
+
+
+    article.appendChild(header);
+    article.appendChild(message);
+
+
+    const meta =
+        document.createElement("div");
+
+    meta.className =
+        "alert-meta";
+
+
+    if (alert.area) {
+
+        const area =
+            document.createElement("span");
+
+        const strong =
+            document.createElement("strong");
+
+        strong.textContent =
+            "Affected Area:";
+
+        area.appendChild(strong);
+
+        area.appendChild(
+            document.createTextNode(
+                " " + alert.area
+            )
+        );
+
+        meta.appendChild(area);
+
+    }
+
+
+    if (alert.issuedAt) {
+
+        const issued =
+            document.createElement("span");
+
+        const strong =
+            document.createElement("strong");
+
+        strong.textContent =
+            "Issued:";
+
+        issued.appendChild(strong);
+
+        issued.appendChild(
+            document.createTextNode(
+                " " + formatDate(alert.issuedAt)
+            )
+        );
+
+        meta.appendChild(issued);
+
+    }
+
+
+    if (alert.expiresAt) {
+
+        const expires =
+            document.createElement("span");
+
+        const strong =
+            document.createElement("strong");
+
+        strong.textContent =
+            "Expires:";
+
+        expires.appendChild(strong);
+
+        expires.appendChild(
+            document.createTextNode(
+                " " + formatDate(alert.expiresAt)
+            )
+        );
+
+        meta.appendChild(expires);
+
+    }
+
+
+    if (meta.children.length > 0) {
+
+        article.appendChild(meta);
+
+    }
+
+
+    if (alert.link) {
+
+        const link =
+            document.createElement("a");
+
+        link.className =
+            "alert-link";
+
+        link.href =
+            alert.link;
+
+        link.textContent =
+            "MORE INFORMATION →";
+
+        link.target =
+            "_blank";
+
+        link.rel =
+            "noopener noreferrer";
+
+        article.appendChild(link);
+
+    }
+
+
+    return article;
+
+}
+
+
+/* ================================
+   NO ALERTS
+================================ */
+
+function showNoAlerts() {
+
+    alertsContainer.innerHTML = `
+
+        <article class="no-alerts">
+
+            <h3>
+                No Active Emergency Alerts
+            </h3>
+
+            <p>
+                There are currently no active emergency
+                alerts issued through this website.
+                Please check back for updates.
+            </p>
+
+        </article>
+
+    `;
+
+}
+
+
+/* ================================
+   ERROR
+================================ */
+
+function showAlertError() {
+
+    alertsContainer.innerHTML = `
+
+        <div class="alert-error">
+
+            <strong>
+                Alert Service Unavailable
+            </strong>
+
+            <br><br>
+
+            Emergency alert information is temporarily
+            unavailable. Please try again shortly.
+
+        </div>
+
+    `;
+
+}
+
+
+/* ================================
+   DATE FORMAT
+================================ */
+
+function formatDate(date) {
+
+    const parsed =
+        new Date(date);
+
+
+    if (
+        Number.isNaN(
+            parsed.getTime()
+        )
+    ) {
+
+        return "Unknown";
+
+    }
+
+
+    return parsed.toLocaleString(
+        "en-US",
+        {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+            hour: "numeric",
+            minute: "2-digit"
+        }
+    );
+
+}
+
+
+/* ================================
+   INITIAL LOAD
+================================ */
+
+loadAlerts();
+
+
+/* ================================
+   AUTO REFRESH
+================================ */
+
+setInterval(
+    loadAlerts,
+    60000
+);
+
+</script>
+
+</body>
+
+</html>
