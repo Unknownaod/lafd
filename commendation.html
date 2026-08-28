@@ -701,154 +701,287 @@
 
 <script>
 
-    const WEBHOOK_URL = "https://discordapp.com/api/webhooks/1542688396483362817/lAyK-8LZ-lt1LET8yvnOmgDwIY8npQ284k5W0WKYXZZte_acSseSHPf9DBb9x3xG-fUf";
+    /* ================================
+       SUBMIT COMMENDATION
+    ================================= */
 
-    document
-        .getElementById("commendationForm")
-        .addEventListener("submit", async function(event) {
+    async function submitCommendation() {
 
-            event.preventDefault();
+        const form =
+            document.getElementById("commendationForm");
 
-            const form = new FormData(this);
-
-            const reasons = [];
-
-            document
-                .querySelectorAll('input[name="reason"]:checked')
-                .forEach(function(item) {
-                    reasons.push(item.value);
-                });
-
-            const data = {
-
-                incidentDate: form.get("incident_date"),
-                incidentTime: form.get("incident_time"),
-                incidentType: form.get("incident_type"),
-                location: form.get("incident_location"),
-                reportNumber: form.get("report_number"),
-
-                employeeLast: form.get("employee_last"),
-                employeeFirst: form.get("employee_first"),
-                employeeBadge: form.get("employee_badge"),
-                unitNumber: form.get("unit_number"),
-                station: form.get("station"),
-                unitType: form.get("unit_type"),
-
-                reasons: reasons.join(", ") || "Not specified",
-
-                statement: form.get("statement"),
-
-                reportingName: form.get("reporting_name"),
-                reportingEmail: form.get("reporting_email"),
-                contactMethod: form.get("contact_method"),
-
-                signature: form.get("signature")
-
-            };
+        const status =
+            document.getElementById("status");
 
 
-            const payload = {
+        /* ================================
+           COLLECT FORM DATA
+        ================================= */
 
-                username: "LAFD Professional Standards",
-
-                embeds: [{
-
-                    title: "New LAFD Commendation",
-
-                    color: 11801371,
-
-                    fields: [
-
-                        {
-                            name: "Reporting Party",
-                            value:
-                                `${data.reportingName}\n${data.reportingEmail}`
-                        },
-
-                        {
-                            name: "Incident",
-                            value:
-                                `${data.incidentDate} ${data.incidentTime || ""}\n${data.incidentType || "Not specified"}\n${data.location}`
-                        },
-
-                        {
-                            name: "Employee / Unit",
-                            value:
-                                `${data.employeeFirst || ""} ${data.employeeLast || ""}\n` +
-                                `Badge: ${data.employeeBadge || "N/A"}\n` +
-                                `Unit: ${data.unitNumber || "N/A"}\n` +
-                                `Station: ${data.station || "N/A"}`
-                        },
-
-                        {
-                            name: "Reason",
-                            value: data.reasons
-                        },
-
-                        {
-                            name: "Statement",
-                            value: data.statement.substring(0, 1024)
-                        }
-
-                    ],
-
-                    footer: {
-                        text: "LAFD Professional Standards • Commendation"
-                    },
-
-                    timestamp: new Date().toISOString()
-
-                }]
-
-            };
+        const formData =
+            new FormData(form);
 
 
-            const status =
-                document.getElementById("status");
+        const reasons = [];
 
 
-            try {
+        document
+            .querySelectorAll(
+                'input[name="reason"]:checked'
+            )
+            .forEach(function(item) {
 
-                const response = await fetch(
-                    WEBHOOK_URL,
+                reasons.push(item.value);
+
+            });
+
+
+        const commendation = {
+
+            /* Incident */
+
+            incidentDate:
+                formData.get("incident_date"),
+
+            incidentTime:
+                formData.get("incident_time"),
+
+            incidentType:
+                formData.get("incident_type"),
+
+            location:
+                formData.get("incident_location"),
+
+            reportNumber:
+                formData.get("report_number"),
+
+
+            /* Employee / Unit */
+
+            employeeLast:
+                formData.get("employee_last"),
+
+            employeeFirst:
+                formData.get("employee_first"),
+
+            employeeBadge:
+                formData.get("employee_badge"),
+
+            unitNumber:
+                formData.get("unit_number"),
+
+            station:
+                formData.get("station"),
+
+            unitType:
+                formData.get("unit_type"),
+
+
+            /* Reason */
+
+            reasons:
+                reasons.join(", ") ||
+                "Not specified",
+
+
+            /* Statement */
+
+            statement:
+                formData.get("statement"),
+
+
+            /* Reporting Party */
+
+            reportingName:
+                formData.get("reporting_name"),
+
+            reportingEmail:
+                formData.get("reporting_email"),
+
+            contactMethod:
+                formData.get("contact_method"),
+
+
+            /* Signature */
+
+            signature:
+                formData.get("signature"),
+
+
+            /* Submission */
+
+            submittedAt:
+                new Date().toISOString()
+
+        };
+
+
+        /* ================================
+           DISABLE BUTTON
+        ================================= */
+
+        const submitButton =
+            form.querySelector(
+                'button[type="submit"]'
+            );
+
+
+        if (submitButton) {
+
+            submitButton.disabled = true;
+
+            submitButton.textContent =
+                "SUBMITTING...";
+
+        }
+
+
+        status.style.display = "none";
+
+
+        /* ================================
+           SEND TO API
+        ================================= */
+
+        try {
+
+            const response =
+                await fetch(
+                    "/api/commendations",
                     {
+
                         method: "POST",
+
                         headers: {
-                            "Content-Type": "application/json"
+
+                            "Content-Type":
+                                "application/json"
+
                         },
-                        body: JSON.stringify(payload)
+
+                        body:
+                            JSON.stringify(
+                                commendation
+                            )
+
                     }
                 );
 
 
-                if (!response.ok) {
-                    throw new Error("Webhook request failed.");
-                }
+            const result =
+                await response
+                    .json()
+                    .catch(
+                        () => null
+                    );
 
 
-                status.style.display = "block";
+            /* ================================
+               CHECK RESPONSE
+            ================================= */
 
-                status.textContent =
-                    "Your commendation has been submitted successfully.";
+            if (!response.ok) {
 
-                this.reset();
+                throw new Error(
 
-            }
+                    result?.message ||
+                    "Commendation submission failed."
 
-            catch (error) {
-
-                status.style.display = "block";
-
-                status.style.background = "#fbe7e7";
-                status.style.borderColor = "#edbcbc";
-                status.style.color = "#9d2020";
-
-                status.textContent =
-                    "Unable to submit the commendation. Please try again.";
+                );
 
             }
 
-        });
+
+            /* ================================
+               SUCCESS
+            ================================= */
+
+            status.style.display =
+                "block";
+
+            status.style.background =
+                "#e5f6e9";
+
+            status.style.borderColor =
+                "#b9e2c0";
+
+            status.style.color =
+                "#217a35";
+
+
+            status.textContent =
+                "Your commendation has been submitted successfully.";
+
+
+            form.reset();
+
+
+        } catch (error) {
+
+            console.error(
+                "Commendation error:",
+                error
+            );
+
+
+            /* ================================
+               ERROR
+            ================================= */
+
+            status.style.display =
+                "block";
+
+            status.style.background =
+                "#fbe7e7";
+
+            status.style.borderColor =
+                "#edbcbc";
+
+            status.style.color =
+                "#9d2020";
+
+
+            status.textContent =
+                "We were unable to submit your commendation. Please try again.";
+
+
+        } finally {
+
+            /* ================================
+               RESTORE BUTTON
+            ================================= */
+
+            if (submitButton) {
+
+                submitButton.disabled =
+                    false;
+
+                submitButton.textContent =
+                    "SUBMIT COMMENDATION";
+
+            }
+
+        }
+
+    }
+
+
+    /* ================================
+       FORM LISTENER
+    ================================= */
+
+    document
+        .getElementById("commendationForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+                submitCommendation();
+
+            }
+        );
 
 </script>
 
