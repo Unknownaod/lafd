@@ -1,9 +1,16 @@
+javascript
 import { MongoClient } from "mongodb";
 
 let client;
 let clientPromise;
 
 function getClient() {
+
+    if (!process.env.MONGODB_URI) {
+        throw new Error(
+            "MONGODB_URI is not configured."
+        );
+    }
 
     if (!clientPromise) {
 
@@ -21,6 +28,10 @@ function getClient() {
 
 export default async function handler(req, res) {
 
+    // ======================================
+    // CORS
+    // ======================================
+
     res.setHeader(
         "Access-Control-Allow-Origin",
         "*"
@@ -36,9 +47,17 @@ export default async function handler(req, res) {
         "Content-Type"
     );
 
+    // ======================================
+    // OPTIONS
+    // ======================================
+
     if (req.method === "OPTIONS") {
         return res.status(200).end();
     }
+
+    // ======================================
+    // ONLY ALLOW POST
+    // ======================================
 
     if (req.method !== "POST") {
 
@@ -53,12 +72,41 @@ export default async function handler(req, res) {
 
     }
 
+    // ======================================
+    // CHECK MONGODB
+    // ======================================
+
+    if (!process.env.MONGODB_URI) {
+
+        console.error(
+            "MONGODB_URI is not configured."
+        );
+
+        return res.status(500).json({
+
+            success: false,
+
+            message:
+                "Database is not configured."
+
+        });
+
+    }
+
     try {
 
-        const { email } =
-            req.body || {};
+        // ======================================
+        // GET EMAIL
+        // ======================================
 
-        if (!email) {
+        const {
+            email
+        } = req.body || {};
+
+        if (
+            !email ||
+            typeof email !== "string"
+        ) {
 
             return res.status(400).json({
 
@@ -71,46 +119,112 @@ export default async function handler(req, res) {
 
         }
 
+        // ======================================
+        // CLEAN EMAIL
+        // ======================================
+
         const cleanEmail =
-            String(email)
+            email
                 .trim()
                 .toLowerCase();
+
+        // ======================================
+        // EMAIL VALIDATION
+        // ======================================
+
+        const emailRegex =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(cleanEmail)) {
+
+            return res.status(400).json({
+
+                success: false,
+
+                message:
+                    "Please enter a valid email address."
+
+            });
+
+        }
+
+        // ======================================
+        // CONNECT TO MONGODB
+        // ======================================
 
         const mongoClient =
             await getClient();
 
         const db =
             mongoClient.db(
-                process.env.MONGODB_DB || "lafd"
+                process.env.MONGODB_DB ||
+                "lafd"
             );
 
-        const result =
-            await db
-                .collection("alertSubscribers")
-                .updateOne(
-                    {
-                        email: cleanEmail
-                    },
-                    {
-                        $set: {
-                            active: false,
-                            updatedAt: new Date()
-                        }
-                    }
-                );
+        const subscribers =
+            db.collection(
+                "alertSubscribers"
+            );
 
-        if (result.matchedCount === 0) {
+        // ======================================
+        // FIND ACTIVE SUBSCRIPTION
+        // ======================================
+
+        const existing =
+            await subscribers.findOne({
+
+                email:
+                    cleanEmail,
+
+                active:
+                    true
+
+            });
+
+        if (!existing) {
 
             return res.status(404).json({
 
                 success: false,
 
                 message:
-                    "No active subscription was found."
+                    "No active subscription was found for this email address."
 
             });
 
         }
+
+        // ======================================
+        // DEACTIVATE SUBSCRIPTION
+        // ======================================
+
+        await subscribers.updateOne(
+
+            {
+                email:
+                    cleanEmail,
+
+                active:
+                    true
+            },
+
+            {
+                $set: {
+
+                    active:
+                        false,
+
+                    updatedAt:
+                        new Date()
+
+                }
+            }
+
+        );
+
+        // ======================================
+        // SUCCESS
+        // ======================================
 
         return res.status(200).json({
 
@@ -124,8 +238,19 @@ export default async function handler(req, res) {
     } catch (error) {
 
         console.error(
-            "Unsubscribe error:",
+            "================================="
+        );
+
+        console.error(
+            "FIMS ALERT UNSUBSCRIBE ERROR"
+        );
+
+        console.error(
             error
+        );
+
+        console.error(
+            "================================="
         );
 
         return res.status(500).json({
@@ -138,4 +263,5 @@ export default async function handler(req, res) {
         });
 
     }
+
 }
