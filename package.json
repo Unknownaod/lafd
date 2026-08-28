@@ -8,6 +8,6 @@
     "start": "vercel dev"
   },
   "dependencies": {
-    "mongoose": "^8.18.0"
+    "mongodb": "^6.19.0"
   }
 }
