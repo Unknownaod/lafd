@@ -738,6 +738,17 @@ Public Safety Alert System
 <script>
 
 /* ========================================
+   API CONFIGURATION
+======================================== */
+
+const ALERTS_LIST_API =
+    "/api/alerts/list";
+
+const ALERTS_SUBSCRIBE_API =
+    "/api/alerts/subscribe";
+
+
+/* ========================================
    LOAD CURRENT ALERTS
 ======================================== */
 
@@ -746,19 +757,40 @@ async function loadAlerts() {
     const alertsList =
         document.getElementById("alertsList");
 
+    if (!alertsList) {
+        return;
+    }
+
     try {
 
         const response =
-            await fetch("/api/alerts/list");
+            await fetch(
+                ALERTS_LIST_API,
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
+            );
 
-        if (!response.ok) {
-            throw new Error("Unable to load alerts.");
+        let data = null;
+
+        try {
+            data = await response.json();
+        } catch {
+            data = null;
         }
 
-        const data =
-            await response.json();
+        if (!response.ok) {
+
+            throw new Error(
+                data?.message ||
+                "Unable to load alerts."
+            );
+
+        }
 
         if (
+            !data ||
             !data.success ||
             !Array.isArray(data.alerts) ||
             data.alerts.length === 0
@@ -766,7 +798,10 @@ async function loadAlerts() {
 
             alertsList.innerHTML = `
                 <div class="no-alerts">
-                    There are currently no active emergency alerts.
+                    <strong>No Active Alerts</strong>
+                    <span>
+                        There are currently no active emergency alerts.
+                    </span>
                 </div>
             `;
 
@@ -774,8 +809,54 @@ async function loadAlerts() {
         }
 
 
+        /* ========================================
+           FILTER EXPIRED ALERTS
+        ======================================== */
+
+        const now =
+            Date.now();
+
+        const activeAlerts =
+            data.alerts.filter(alert => {
+
+                if (!alert.expiresAt) {
+                    return true;
+                }
+
+                const expiration =
+                    new Date(
+                        alert.expiresAt
+                    ).getTime();
+
+                return (
+                    Number.isNaN(expiration) ||
+                    expiration > now
+                );
+
+            });
+
+
+        if (activeAlerts.length === 0) {
+
+            alertsList.innerHTML = `
+                <div class="no-alerts">
+                    <strong>No Active Alerts</strong>
+                    <span>
+                        There are currently no active emergency alerts.
+                    </span>
+                </div>
+            `;
+
+            return;
+        }
+
+
+        /* ========================================
+           DISPLAY ALERTS
+        ======================================== */
+
         alertsList.innerHTML =
-            data.alerts
+            activeAlerts
                 .map(createAlertCard)
                 .join("");
 
@@ -788,9 +869,11 @@ async function loadAlerts() {
         );
 
         alertsList.innerHTML = `
-            <div class="no-alerts">
-                Unable to load current alerts.
-                Please try again later.
+            <div class="no-alerts error">
+                <strong>Unable to Load Alerts</strong>
+                <span>
+                    Please try again later.
+                </span>
             </div>
         `;
 
@@ -807,82 +890,150 @@ function createAlertCard(alert) {
 
     const severity =
         String(
-            alert.severity || "info"
-        ).toLowerCase();
+            alert.severity ||
+            "info"
+        )
+        .toLowerCase();
 
 
     const title =
         escapeHtml(
-            alert.title || "Public Safety Alert"
+            alert.title ||
+            "Public Safety Alert"
         );
 
 
     const message =
         escapeHtml(
-            alert.message || ""
+            alert.message ||
+            ""
         );
 
 
     const location =
         escapeHtml(
-            alert.location || "Los Angeles"
+            alert.location ||
+            "Los Angeles"
         );
 
 
     const type =
         escapeHtml(
-            alert.type || "General"
+            alert.type ||
+            "General"
         );
 
 
-    const date =
-        alert.createdAt
-            ? new Date(alert.createdAt)
-                .toLocaleString()
-            : "Recently";
+    /* ========================================
+       DATE
+    ======================================== */
+
+    let date =
+        "Recently";
+
+    if (alert.createdAt) {
+
+        const parsedDate =
+            new Date(
+                alert.createdAt
+            );
+
+        if (!Number.isNaN(
+            parsedDate.getTime()
+        )) {
+
+            date =
+                parsedDate.toLocaleString(
+                    "en-US",
+                    {
+                        dateStyle: "medium",
+                        timeStyle: "short"
+                    }
+                );
+
+        }
+
+    }
+
+
+    /* ========================================
+       SEVERITY LABEL
+    ======================================== */
+
+    const severityLabel =
+        escapeHtml(
+            String(
+                alert.severity ||
+                "INFO"
+            ).toUpperCase()
+        );
 
 
     return `
 
         <article
-            class="alert-card ${severity}"
+            class="alert-card ${escapeHtml(
+                severity
+            )}"
         >
 
             <div class="alert-top">
 
                 <div class="alert-title">
+
                     ${title}
+
                 </div>
 
+
                 <div class="alert-badge">
-                    ${escapeHtml(
-                        alert.severity || "INFO"
-                    )}
+
+                    ${severityLabel}
+
                 </div>
 
             </div>
 
 
             <div class="alert-message">
+
                 ${message}
+
             </div>
 
 
             <div class="alert-meta">
 
                 <span>
-                    <strong>Type:</strong>
+
+                    <strong>
+                        Type:
+                    </strong>
+
                     ${type}
+
                 </span>
 
+
                 <span>
-                    <strong>Location:</strong>
+
+                    <strong>
+                        Location:
+                    </strong>
+
                     ${location}
+
                 </span>
 
+
                 <span>
-                    <strong>Issued:</strong>
+
+                    <strong>
+                        Issued:
+                    </strong>
+
                     ${escapeHtml(date)}
+
                 </span>
 
             </div>
@@ -895,32 +1046,28 @@ function createAlertCard(alert) {
 
 
 /* ========================================
-   SUBSCRIBE
+   SUBSCRIBE TO ALERTS
 ======================================== */
 
-document
-    .getElementById("subscribeForm")
-    .addEventListener(
+const subscribeForm =
+    document.getElementById(
+        "subscribeForm"
+    );
+
+
+if (subscribeForm) {
+
+    subscribeForm.addEventListener(
         "submit",
         async function(event) {
 
             event.preventDefault();
 
 
-            const email =
-                document
-                    .getElementById("email")
-                    .value
-                    .trim();
-
-
-            const categories =
-                Array.from(
-                    document.querySelectorAll(
-                        'input[name="categories"]:checked'
-                    )
-                )
-                .map(input => input.value);
+            const emailInput =
+                document.getElementById(
+                    "email"
+                );
 
 
             const status =
@@ -935,7 +1082,55 @@ document
                 );
 
 
-            if (!email) {
+            if (
+                !emailInput ||
+                !status ||
+                !button
+            ) {
+
+                console.error(
+                    "Alert subscription elements are missing."
+                );
+
+                return;
+
+            }
+
+
+            const email =
+                emailInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            const categoryInputs =
+                document.querySelectorAll(
+                    'input[name="categories"]:checked'
+                );
+
+
+            const categories =
+                Array.from(
+                    categoryInputs
+                )
+                .map(
+                    input =>
+                        input.value
+                );
+
+
+            /* ========================================
+               EMAIL VALIDATION
+            ======================================== */
+
+            const emailRegex =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+            if (
+                !email ||
+                !emailRegex.test(email)
+            ) {
 
                 showStatus(
                     "Please enter a valid email address.",
@@ -943,10 +1138,17 @@ document
                 );
 
                 return;
+
             }
 
 
-            if (categories.length === 0) {
+            /* ========================================
+               CATEGORY VALIDATION
+            ======================================== */
+
+            if (
+                categories.length === 0
+            ) {
 
                 showStatus(
                     "Please select at least one alert category.",
@@ -954,10 +1156,16 @@ document
                 );
 
                 return;
+
             }
 
 
-            button.disabled = true;
+            /* ========================================
+               DISABLE BUTTON
+            ======================================== */
+
+            button.disabled =
+                true;
 
             button.textContent =
                 "SUBMITTING...";
@@ -974,51 +1182,94 @@ document
 
                 const response =
                     await fetch(
-                        "/api/alerts/subscribe",
+                        ALERTS_SUBSCRIBE_API,
                         {
 
-                            method: "POST",
+                            method:
+                                "POST",
 
                             headers: {
+
                                 "Content-Type":
                                     "application/json"
+
                             },
 
-                            body: JSON.stringify({
+                            body:
+                                JSON.stringify({
 
-                                email,
+                                    email:
+                                        email,
 
-                                categories
+                                    categories:
+                                        categories
 
-                            })
+                                })
 
                         }
                     );
 
 
-                const data =
-                    await response.json();
+                let data = null;
+
+                try {
+
+                    data =
+                        await response.json();
+
+                } catch {
+
+                    data = null;
+
+                }
 
 
-                if (!response.ok || !data.success) {
+                if (
+                    !response.ok ||
+                    !data ||
+                    !data.success
+                ) {
 
                     throw new Error(
-                        data.message ||
+
+                        data?.message ||
                         "Unable to subscribe."
+
                     );
 
                 }
 
 
+                /* ========================================
+                   SUCCESS
+                ======================================== */
+
                 showStatus(
+
+                    data.message ||
                     "You have successfully signed up for emergency alerts.",
+
                     "success"
+
                 );
 
 
+                emailInput.value =
+                    "";
+
+
+                /* Uncheck categories */
+
                 document
-                    .getElementById("email")
-                    .value = "";
+                    .querySelectorAll(
+                        'input[name="categories"]'
+                    )
+                    .forEach(
+                        input => {
+                            input.checked =
+                                false;
+                        }
+                    );
 
 
             } catch (error) {
@@ -1030,14 +1281,18 @@ document
 
 
                 showStatus(
+
                     error.message ||
                     "Unable to complete your subscription.",
+
                     "error"
+
                 );
 
             } finally {
 
-                button.disabled = false;
+                button.disabled =
+                    false;
 
                 button.textContent =
                     "SIGN UP FOR ALERTS";
@@ -1047,17 +1302,27 @@ document
         }
     );
 
+}
+
 
 /* ========================================
    STATUS MESSAGE
 ======================================== */
 
-function showStatus(message, type) {
+function showStatus(
+    message,
+    type
+) {
 
     const status =
         document.getElementById(
             "formStatus"
         );
+
+
+    if (!status) {
+        return;
+    }
 
 
     status.textContent =
@@ -1077,11 +1342,31 @@ function showStatus(message, type) {
 function escapeHtml(value) {
 
     return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
@@ -1091,6 +1376,17 @@ function escapeHtml(value) {
 ======================================== */
 
 loadAlerts();
+
+
+/* ========================================
+   AUTO REFRESH
+   Check for new alerts every 60 seconds.
+======================================== */
+
+setInterval(
+    loadAlerts,
+    60 * 1000
+);
 
 </script>
 
