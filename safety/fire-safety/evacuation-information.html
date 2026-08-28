@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Evacuation Information | Los Angeles Fire Department</title>
+
+<link
+    rel="icon"
+    type="image/png"
+    href="./lafd-logo.png"
+>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background: #f4f4f4;
+        color: #222;
+    }
+
+    /* ================================
+       CITY GOVERNMENT BAR
+    ================================= */
+
+    .city-bar {
+        background: #eeeeee;
+        border-bottom: 1px solid #d5d5d5;
+        min-height: 38px;
+        display: flex;
+        align-items: center;
+        padding: 0 55px;
+        font-size: 12px;
+        color: #444;
+    }
+
+    .city-bar-logo {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+        margin-right: 9px;
+    }
+
+    .city-bar span {
+        font-weight: 600;
+    }
+
+    /* ================================
+       HEADER
+    ================================= */
+
+    header {
+        background: #b5121b;
+        min-height: 82px;
+        display: flex;
+        align-items: center;
+        padding: 0 55px;
+        color: white;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .lafd-logo {
+        width: 54px;
+        height: 54px;
+        object-fit: contain;
+        background: white;
+        border-radius: 50%;
+        padding: 3px;
+    }
+
+    .city-logo {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+    }
+
+    .logo-divider {
+        width: 1px;
+        height: 45px;
+        background: rgba(255,255,255,.45);
+        margin: 0 3px;
+    }
+
+    .brand-text h1 {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: .3px;
+    }
+
+    .brand-text p {
+        font-size: 11px;
+        margin-top: 3px;
+        color: #eee;
+    }
+
+    nav {
+        margin-left: auto;
+        display: flex;
+        gap: 30px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    /* ================================
+       PAGE HEADER
+    ================================= */
+
+    .page-header {
+        background:
+            linear-gradient(
+                rgba(0,0,0,.68),
+                rgba(0,0,0,.68)
+            ),
+            url("https://media.discordapp.net/attachments/1394469502061772811/1397741145932697630/Screenshot_2025-07-23_193808.png?ex=6a9182a1&is=6a903121&hm=caf47823a2dc8854e047d875ce7096889dc503df09235f35c02ccd2ee73e9ba2&=&format=webp&quality=lossless")
+            center/cover;
+
+        min-height: 290px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        color: white;
+    }
+
+    .page-header h2 {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    .page-header p {
+        color: #ddd;
+        font-size: 15px;
+    }
+
+    /* ================================
+       MAIN
+    ================================= */
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 45px 25px 70px;
+    }
+
+    .content {
+        background: white;
+        border: 1px solid #ddd;
+        padding: 35px;
+    }
+
+    .content h2 {
+        font-size: 27px;
+        margin-bottom: 10px;
+    }
+
+    .red-line {
+        width: 55px;
+        height: 4px;
+        background: #b5121b;
+        margin-bottom: 25px;
+    }
+
+    .content p {
+        color: #555;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 22px;
+    }
+
+    .content h3 {
+        font-size: 19px;
+        margin-top: 32px;
+        margin-bottom: 12px;
+        padding-bottom: 9px;
+        border-bottom: 2px solid #b5121b;
+    }
+
+    .content ul {
+        padding-left: 22px;
+        color: #555;
+        font-size: 14px;
+        line-height: 1.9;
+        margin-bottom: 20px;
+    }
+
+    /* ================================
+       WARNING
+    ================================= */
+
+    .warning {
+        background: #fff0f0;
+        border: 1px solid #e3b4b4;
+        border-left: 5px solid #b5121b;
+        padding: 19px;
+        margin: 25px 0;
+        color: #632020;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .warning strong {
+        display: block;
+        color: #8d1018;
+        margin-bottom: 6px;
+        font-size: 14px;
+    }
+
+    /* ================================
+       READY SET GO
+    ================================= */
+
+    .rsg-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin: 25px 0;
+    }
+
+    .rsg-card {
+        border: 1px solid #ddd;
+        background: #f8f8f8;
+        padding: 22px;
+    }
+
+    .rsg-card .number {
+        width: 42px;
+        height: 42px;
+        background: #b5121b;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 14px;
+    }
+
+    .rsg-card h4 {
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+
+    .rsg-card p {
+        font-size: 12px;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    /* ================================
+       CHECKLIST
+    ================================= */
+
+    .checklist {
+        border: 1px solid #ddd;
+        margin-top: 20px;
+    }
+
+    .check-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 13px;
+        padding: 15px 18px;
+        border-bottom: 1px solid #ddd;
+        background: #fafafa;
+    }
+
+    .check-item:last-child {
+        border-bottom: none;
+    }
+
+    .check {
+        width: 20px;
+        height: 20px;
+        background: #b5121b;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: bold;
+        flex-shrink: 0;
+    }
+
+    .check-item span {
+        font-size: 13px;
+        color: #555;
+        line-height: 1.5;
+    }
+
+    /* ================================
+       EVACUATION LEVELS
+    ================================= */
+
+    .levels {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .level {
+        border: 1px solid #ddd;
+        padding: 20px;
+        background: #f8f8f8;
+    }
+
+    .level-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .level-badge {
+        background: #b5121b;
+        color: white;
+        padding: 6px 10px;
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    .level h4 {
+        font-size: 14px;
+    }
+
+    .level p {
+        font-size: 12px;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    /* ================================
+       LINKS
+    ================================= */
+
+    .link-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .link-card {
+        border: 1px solid #ddd;
+        background: #fafafa;
+        padding: 20px;
+        text-decoration: none;
+        color: #222;
+    }
+
+    .link-card:hover {
+        border-color: #b5121b;
+    }
+
+    .link-card h4 {
+        font-size: 14px;
+        margin-bottom: 7px;
+    }
+
+    .link-card p {
+        font-size: 12px;
+        color: #666;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* ================================
+       BUTTON
+    ================================= */
+
+    .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 30px;
+    }
+
+    .button {
+        display: inline-block;
+        background: #b5121b;
+        color: white;
+        text-decoration: none;
+        padding: 13px 21px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .button:hover {
+        background: #951019;
+    }
+
+    .button.secondary {
+        background: #333;
+    }
+
+    .button.secondary:hover {
+        background: #222;
+    }
+
+    /* ================================
+       EMERGENCY BOX
+    ================================= */
+
+    .emergency {
+        background: #b5121b;
+        color: white;
+        padding: 25px;
+        margin-top: 35px;
+    }
+
+    .emergency h3 {
+        margin: 0 0 8px;
+        padding: 0;
+        border: none;
+        color: white;
+    }
+
+    .emergency p {
+        color: #f4f4f4;
+        margin: 0;
+    }
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    footer {
+        background: #111;
+        color: #aaa;
+        text-align: center;
+        padding: 25px;
+        font-size: 12px;
+    }
+
+    /* ================================
+       MOBILE
+    ================================= */
+
+    @media (max-width: 750px) {
+
+        .city-bar {
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 15px 20px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .brand-text h1 {
+            font-size: 16px;
+        }
+
+        .brand-text p {
+            font-size: 10px;
+        }
+
+        .lafd-logo {
+            width: 46px;
+            height: 46px;
+        }
+
+        .city-logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-divider {
+            height: 35px;
+        }
+
+        .page-header h2 {
+            font-size: 32px;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .rsg-grid,
+        .levels,
+        .link-grid {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+<!-- CITY GOVERNMENT BAR -->
+
+<div class="city-bar">
+
+
+<img
+    src="la-city-logo.png"
+    alt="City of Los Angeles"
+    class="city-bar-logo"
+>
+
+<span>
+    An official website of the City of Los Angeles
+</span>
+
+
+</div>
+
+<!-- HEADER -->
+
+<header>
+
+
+<div class="brand">
+
+    <img
+        src="lafd-logo.png"
+        alt="Los Angeles Fire Department"
+        class="lafd-logo"
+    >
+
+    <div class="logo-divider"></div>
+
+    <img
+        src="la-city-logo.png"
+        alt="City of Los Angeles"
+        class="city-logo"
+    >
+
+    <div class="brand-text">
+
+        <h1>
+            Los Angeles Fire Department
+        </h1>
+
+        <p>
+            City of Los Angeles
+        </p>
+
+    </div>
+
+</div>
+
+
+<nav>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="about.html">
+        About
+    </a>
+
+    <a href="stations.html">
+        Stations
+    </a>
+
+    <a href="careers.html">
+        Careers
+    </a>
+
+    <a href="my-applications.html">
+        My Applications
+    </a>
+
+</nav>
+
+
+</header>
+
+<!-- PAGE HEADER -->
+
+<section class="page-header">
+
+
+<div>
+
+    <h2>
+        Evacuation Information
+    </h2>
+
+    <p>
+        Be prepared to leave safely during an emergency
+    </p>
+
+</div>
+
+
+</section>
+
+<!-- MAIN -->
+
+<main class="container">
+
+
+<div class="content">
+
+    <h2>
+        Emergency Evacuation
+    </h2>
+
+    <div class="red-line"></div>
+
+    <p>
+
+        Wildfires and other emergencies can develop quickly.
+        Having an evacuation plan before an emergency occurs
+        can help protect you, your family, pets, and property.
+
+    </p>
+
+    <p>
+
+        Residents should remain aware of changing conditions
+        and follow instructions from emergency officials.
+
+    </p>
+
+
+    <div class="warning">
+
+        <strong>
+            If You Are Ordered to Evacuate
+        </strong>
+
+        Leave immediately using the recommended evacuation
+        route. Do not wait for conditions to worsen or for
+        emergency personnel to arrive at your home.
+
+    </div>
+
+
+    <h3>
+        Ready, Set, Go!
+    </h3>
+
+
+    <div class="rsg-grid">
+
+
+        <div class="rsg-card">
+
+            <div class="number">
+                R
+            </div>
+
+            <h4>
+                READY
+            </h4>
+
+            <p>
+                Prepare your household, emergency supplies,
+                important documents, vehicles, and pets before
+                an evacuation becomes necessary.
+            </p>
+
+        </div>
+
+
+        <div class="rsg-card">
+
+            <div class="number">
+                S
+            </div>
+
+            <h4>
+                SET
+            </h4>
+
+            <p>
+                Stay alert and monitor official emergency
+                information. Be prepared to leave immediately.
+            </p>
+
+        </div>
+
+
+        <div class="rsg-card">
+
+            <div class="number">
+                G
+            </div>
+
+            <h4>
+                GO
+            </h4>
+
+            <p>
+                Evacuate when directed. Follow official
+                instructions and use designated evacuation
+                routes whenever possible.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <h3>
+        Evacuation Checklist
+    </h3>
+
+
+    <p>
+        Keep the following items ready so you can leave quickly
+        if an evacuation becomes necessary.
+    </p>
+
+
+    <div class="checklist">
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Emergency water and food supplies
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Important identification and documents
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Necessary medications and personal items
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Flashlights, batteries, chargers, and communication devices
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Supplies for pets and service animals
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <span>
+                Clothing and essential personal items
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <h3>
+        Before You Leave
+    </h3>
+
+
+    <ul>
+
+        <li>
+            Close windows and doors.
+        </li>
+
+        <li>
+            Move combustible items away from structures when it
+            is safe to do so.
+        </li>
+
+        <li>
+            Take essential medications and important documents.
+        </li>
+
+        <li>
+            Bring pets with you.
+        </li>
+
+        <li>
+            Follow official evacuation instructions.
+        </li>
+
+        <li>
+            Do not block roadways needed by emergency vehicles.
+        </li>
+
+    </ul>
+
+
+    <h3>
+        During an Evacuation
+    </h3>
+
+
+    <p>
+
+        Remain calm and follow directions from firefighters,
+        law enforcement officers, and emergency officials.
+        Traffic may be heavy, and evacuation routes may change
+        as conditions develop.
+
+    </p>
+
+
+    <div class="levels">
+
+
+        <div class="level">
+
+            <div class="level-title">
+
+                <span class="level-badge">
+                    EVACUATION
+                </span>
+
+                <h4>
+                    Follow Official Orders
+                </h4>
+
+            </div>
+
+            <p>
+                If authorities issue an evacuation order for
+                your location, leave immediately.
+            </p>
+
+        </div>
+
+
+        <div class="level">
+
+            <div class="level-title">
+
+                <span class="level-badge">
+                    WARNING
+                </span>
+
+                <h4>
+                    Be Prepared
+                </h4>
+
+            </div>
+
+            <p>
+                An evacuation warning means conditions may
+                require evacuation. Prepare to leave without delay.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <h3>
+        Evacuation Resources
+    </h3>
+
+
+    <div class="link-grid">
+
+
+        <a
+            href="ready-set-go.html"
+            class="link-card"
+        >
+
+            <h4>
+                Ready, Set, Go!
+            </h4>
+
+            <p>
+                Learn how to prepare for wildfire evacuation.
+            </p>
+
+        </a>
+
+
+        <a
+            href="wildfire.html"
+            class="link-card"
+        >
+
+            <h4>
+                Wildfire Information
+            </h4>
+
+            <p>
+                Wildfire prevention, preparedness, and safety
+                information.
+            </p>
+
+        </a>
+
+
+        <a
+            href="educational-videos.html"
+            class="link-card"
+        >
+
+            <h4>
+                Educational Videos
+            </h4>
+
+            <p>
+                Public safety and fire prevention educational
+                resources.
+            </p>
+
+        </a>
+
+
+        <a
+            href="https://www.lafd.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link-card"
+        >
+
+            <h4>
+                LAFD
+            </h4>
+
+            <p>
+                Visit the Los Angeles Fire Department website.
+            </p>
+
+        </a>
+
+
+        <a
+            href="https://www.lapdonline.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link-card"
+        >
+
+            <h4>
+                LAPD
+            </h4>
+
+            <p>
+                Los Angeles Police Department emergency
+                information and public safety resources.
+            </p>
+
+        </a>
+
+
+        <a
+            href="https://www.ready.gov/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link-card"
+        >
+
+            <h4>
+                Ready.gov
+            </h4>
+
+            <p>
+                Federal emergency preparedness information
+                and resources.
+            </p>
+
+        </a>
+
+
+    </div>
+
+
+    <div class="emergency">
+
+        <h3>
+            Emergency?
+        </h3>
+
+        <p>
+            If you are experiencing an immediate emergency,
+            call <strong>9-1-1</strong>.
+        </p>
+
+    </div>
+
+
+    <div class="button-row">
+
+        <a
+            href="wildfire.html"
+            class="button"
+        >
+            WILDFIRE INFORMATION
+        </a>
+
+        <a
+            href="ready-set-go.html"
+            class="button"
+        >
+            READY, SET, GO!
+        </a>
+
+        <a
+            href="index.html"
+            class="button secondary"
+        >
+            RETURN TO HOME
+        </a>
+
+    </div>
+
+</div>
+
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+
+© 2026 Los Angeles Fire Department — FiveM Roleplay
+
+
+</footer>
+
+</body>
+
+</html>
