@@ -1,0 +1,13 @@
+{
+  "name": "lafd-fims",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Los Angeles Fire Department FiveM Roleplay Website",
+  "type": "module",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "mongoose": "^8.18.0"
+  }
+}
