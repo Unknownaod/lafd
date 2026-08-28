@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Contact | Los Angeles Fire Department</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        /* ================================
+           CITY GOVERNMENT BAR
+        ================================= */
+
+        .city-bar {
+            background: #eeeeee;
+            border-bottom: 1px solid #d5d5d5;
+            min-height: 38px;
+            display: flex;
+            align-items: center;
+            padding: 0 55px;
+            font-size: 12px;
+            color: #444;
+        }
+
+        .city-bar span {
+            font-weight: 600;
+        }
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        header {
+            background: #b5121b;
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            padding: 0 55px;
+            color: white;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .lafd-logo {
+            width: 54px;
+            height: 54px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 3px;
+        }
+
+        .city-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .logo-divider {
+            width: 1px;
+            height: 45px;
+            background: rgba(255,255,255,.45);
+            margin: 0 3px;
+        }
+
+        .brand-text h1 {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: .3px;
+        }
+
+        .brand-text p {
+            font-size: 11px;
+            margin-top: 3px;
+            color: #eee;
+        }
+
+        nav {
+            margin-left: auto;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* ================================
+           PAGE HEADER
+        ================================= */
+
+        .page-header {
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.68),
+                    rgba(0,0,0,.68)
+                ),
+                url("https://media.discordapp.net/attachments/1394469502061772811/1397741145932697630/Screenshot_2025-07-23_193808.png?ex=6a9182a1&is=6a903121&hm=caf47823a2dc8854e047d875ce7096889dc503df09235f35c02ccd2ee73e9ba2&=&format=webp&quality=lossless")
+                center/cover;
+
+            height: 250px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+        }
+
+        .page-header h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: #ddd;
+            font-size: 15px;
+        }
+
+        /* ================================
+           MAIN
+        ================================= */
+
+        .container {
+            max-width: 1050px;
+            margin: auto;
+            padding: 45px 25px 70px;
+        }
+
+        .intro-title {
+            font-size: 28px;
+            margin-bottom: 9px;
+        }
+
+        .red-line {
+            width: 55px;
+            height: 4px;
+            background: #b5121b;
+            margin-bottom: 18px;
+        }
+
+        .intro {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        /* ================================
+           CONTACT SECTIONS
+        ================================= */
+
+        .contact-section {
+            background: white;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding: 28px;
+        }
+
+        .contact-section h3 {
+            font-size: 20px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #b5121b;
+        }
+
+        .contact-section h4 {
+            font-size: 15px;
+            margin-bottom: 7px;
+        }
+
+        .contact-section p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .contact-section strong {
+            color: #333;
+        }
+
+        .contact-section a {
+            color: #b5121b;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-section a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-list {
+            padding-left: 20px;
+            margin: 10px 0 20px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .contact-card {
+            background: #f7f7f7;
+            border-left: 4px solid #b5121b;
+            padding: 17px;
+            margin-bottom: 15px;
+        }
+
+        .contact-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-card strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .contact-card span {
+            color: #555;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+            font-size: 12px;
+        }
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 750px) {
+
+            .city-bar {
+                padding: 0 20px;
+            }
+
+            header {
+                padding: 15px 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .brand-text h1 {
+                font-size: 16px;
+            }
+
+            .brand-text p {
+                font-size: 10px;
+            }
+
+            .lafd-logo {
+                width: 46px;
+                height: 46px;
+            }
+
+            .city-logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo-divider {
+                height: 35px;
+            }
+
+            .page-header h2 {
+                font-size: 32px;
+            }
+
+            .contact-section {
+                padding: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================================
+     CITY GOVERNMENT BAR
+================================= -->
+
+<div class="city-bar">
+
+    <span>
+        An official website of the City of Los Angeles
+    </span>
+
+</div>
+
+
+<!-- ================================
+     HEADER
+================================= -->
+
+<header>
+
+    <div class="brand">
+
+        <img
+            src="lafd-logo.png"
+            alt="Los Angeles Fire Department"
+            class="lafd-logo"
+        >
+
+        <div class="logo-divider"></div>
+
+        <img
+            src="la-city-logo.png"
+            alt="City of Los Angeles"
+            class="city-logo"
+        >
+
+        <div class="brand-text">
+
+            <h1>
+                Los Angeles Fire Department
+            </h1>
+
+            <p>
+                City of Los Angeles
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="stations.html">
+            Stations
+        </a>
+
+        <a href="careers.html">
+            Careers
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- ================================
+     PAGE HEADER
+================================= -->
+
+<section class="page-header">
+
+    <div>
+
+        <h2>
+            Contact
+        </h2>
+
+        <p>
+            Questions, comments, concerns and general information
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     MAIN CONTENT
+================================= -->
+
+<main class="container">
+
+    <h2 class="intro-title">
+        Contact the Los Angeles Fire Department
+    </h2>
+
+    <div class="red-line"></div>
+
+    <p class="intro">
+        We welcome your questions, comments and concerns.
+        There are a number of ways to contact the Los Angeles Fire Department.
+    </p>
+
+
+    <!-- ================================
+         EMERGENCY
+    ================================= -->
+
+    <section class="contact-section">
+
+        <h3>
+            Emergency &amp; Breaking News
+        </h3>
+
+        <div class="contact-card">
+
+            <strong>
+                To report an emergency, call 9-1-1.
+            </strong>
+
+            <span>
+                For immediate emergencies requiring police, fire or medical assistance,
+                always contact 9-1-1.
+            </span>
+
+        </div>
+
+        <div class="contact-card">
+
+            <strong>
+                Breaking News, Emergency Incident Information &amp; Interviews
+            </strong>
+
+            <span>
+                LAFD Media Desk<br>
+                Available every day, 7 AM to 10 PM
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         MEDIA RELATIONS
+    ================================= -->
+
+    <section class="contact-section">
+
+        <h3>
+            Media Relations
+        </h3>
+
+        <p>
+            <strong>
+                Non-Emergency Media Inquiries, Feature Stories &amp; Interview Requests
+            </strong>
+        </p>
+
+        <p>
+            Monday–Friday, business hours
+        </p>
+
+        <p>
+            To request an interview, feature story, or media event with LAFD,
+            please email
+            <a href="mailto:LAFDrequest@lafdi10.org">
+                LAFDrequest@lafdi10.org
+            </a>
+            with the following:
+        </p>
+
+        <ul class="contact-list">
+
+            <li>
+                <strong>Story Overview</strong> – a brief description of your story
+                and how LAFD factors in
+            </li>
+
+            <li>
+                <strong>Deadline</strong> – the date and time you need a response
+                or information by
+            </li>
+
+            <li>
+                <strong>Specific Request</strong> – a statement, interview, access,
+                data, or something else
+            </li>
+
+        </ul>
+
+        <p>
+            Most requests are scheduled in advance to ensure proper staffing
+            and accommodation. Please allow 48–72 hours for non-emergency
+            requests to be processed.
+        </p>
+
+    </section>
+
+
+    <!-- ================================
+         GENERAL INFORMATION
+    ================================= -->
+
+    <section class="contact-section">
+
+        <h3>
+            General Public Information
+        </h3>
+
+        <p>
+            Have a general question? Visit our
+            <a href="faq.html">
+                Frequently Asked Questions (FAQ)
+            </a>
+            page first.
+        </p>
+
+    </section>
+
+
+    <!-- ================================
+         FIRE REPORTS
+    ================================= -->
+
+    <section class="contact-section">
+
+        <h3>
+            Fire Reports &amp; Public Records Requests
+        </h3>
+
+        <p>
+            Fire reports and California Public Records Act (CPRA) requests
+            must be submitted by mail.
+        </p>
+
+    </section>
+
+
+    <!-- ================================
+         COMPLAINTS
+    ================================= -->
+
+    <section class="contact-section">
+
+        <h3>
+            Commendations, Complaints &amp; Community Concerns
+        </h3>
+
+        <p>
+            To commend an LAFD employee or report a concern about employee
+            conduct, visit our
+            <a href="professional-standards.html">
+                Professional Standards
+            </a>
+            page.
+        </p>
+
+    </section>
+
+
+    <!-- ================================
+         SB 432
+    ================================= -->
+
+    <section class="contact-section">
+
+        <h3>
+            Communicable Disease Compliance Reporting (SB 432)
+        </h3>
+
+        <p>
+            Contact the designated officer regarding communicable disease
+            compliance reporting.
+        </p>
+
+    </section>
+
+
+    <!-- ================================
+         APPLY FOR
+    ================================= -->
+
+    <section class="contact-section">
+
+        <h3>
+            Apply For
+        </h3>
+
+
+        <div class="contact-card">
+
+            <strong>
+                Brush Clearance Inspection
+            </strong>
+
+            <span>
+
+                Send specific details to
+                <a href="mailto:LAFDBrush@lafdi10.org">
+                    LAFDBrush@lafdi10.org
+                </a>
+
+            </span>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <strong>
+                Fire Prevention Bureau
+            </strong>
+
+            <span>
+
+                <a href="mailto:lafdfpb@lafdi10.org">
+                    lafdfpb@lafdi10.org
+                </a>
+
+                &nbsp; | &nbsp;
+
+                <a href="mailto:LAFD.DAC@lafdi10.org">
+                    LAFD.DAC@lafdi10.org
+                </a>
+
+                &nbsp; | &nbsp;
+
+                <a href="mailto:lafd.r1r2@lafdi10.org">
+                    lafd.r1r2@lafdi10.org
+                </a>
+
+            </span>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <strong>
+                Fire Marshal's Office
+            </strong>
+
+            <span>
+
+                <a href="mailto:firemarshal@lafdi10.org">
+                    firemarshal@lafdi10.org
+                </a>
+
+            </span>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <strong>
+                LAFD Career Employment
+            </strong>
+
+            <span>
+
+                <a href="careers.html">
+                    Career Opportunities
+                </a>
+
+                <br><br>
+
+                Application questions and recruiter information can be
+                submitted through the LAFD Career Opportunities page.
+
+                <br><br>
+
+                <a href="mailto:per.joinlafd@lafdi10.org">
+                    per.joinlafd@lafdi10.org
+                </a>
+
+                <br>
+
+                <a href="mailto:joinlafd@lafdi10.org">
+                    joinlafd@lafdi10.org
+                </a>
+
+            </span>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <strong>
+                LAFD Cadet Program
+            </strong>
+
+            <span>
+
+                <a href="mailto:LAFDCadets@lafdi10.org">
+                    LAFDCadets@lafdi10.org
+                </a>
+
+            </span>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <strong>
+                Community Emergency Response Team (CERT)
+            </strong>
+
+            <span>
+
+                <a href="https://www.cert-la.com/" target="_blank">
+                    www.cert-la.com
+                </a>
+
+                (independent website)
+
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         GET INVOLVED
+    ================================= -->
+
+    <section class="contact-section">
+
+        <h3>
+            Get Involved
+        </h3>
+
+        <div class="contact-card">
+
+            <strong>
+                LAFD Arson Counter-Terrorism Section
+            </strong>
+
+            <span>
+
+                <a href="mailto:lafdarson@lafdi10.org">
+                    lafdarson@lafdi10.org
+                </a>
+
+                <br><br>
+
+                Monday–Friday, 7:30 AM–3:30 PM
+
+            </span>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <strong>
+                Tour Your Neighborhood Fire Station
+            </strong>
+
+            <span>
+
+                <a href="stations.html">
+                    Find Your Local Fire Station
+                </a>
+
+            </span>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- ================================
+     FOOTER
+================================= -->
+
+<footer>
+
+    © 2026 Los Angeles Fire Department — FiveM Roleplay
+
+</footer>
+
+
+</body>
+
+</html>
