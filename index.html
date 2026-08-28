@@ -1,682 +1,587 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-
-   <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Los Angeles Fire Department</title>
-
-    <meta
-        name="description"
-        content=""
-    >
-
-    <meta
-        property="og:title"
-        content="Los Angeles Fire Department"
-    >
-
-    <meta
-        property="og:description"
-        content=""
-    >
-
-    <meta
-        property="og:image"
-        content="https://lafdi10.org/lafd-logo.png"
-    >
-
-    <meta
-        property="og:type"
-        content="website"
-    >
-
-    <meta
-        name="twitter:card"
-        content="summary"
-    >
-
-    <meta
-        name="twitter:title"
-        content="Los Angeles Fire Department"
-    >
-
-    <meta
-        name="twitter:description"
-        content=""
-    >
-
-    <meta
-        name="twitter:image"
-        content="lafd-logo.png"
-    >
-
-    
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
 
-    <title>Los Angeles Fire Department</title>
+<title>Los Angeles Fire Department</title>
 
+<meta name="description" content="Los Angeles Fire Department - FiveM Roleplay">
 
-    <style>
+<link rel="stylesheet" href="index.css">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-
-        body {
-            background: #f5f5f5;
-            color: #222;
-        }
-
-
-
-        /* ================================
-           CITY GOVERNMENT BAR
-        ================================= */
-
-        .city-bar {
-
-            background: #eeeeee;
-
-            border-bottom: 1px solid #d4d4d4;
-
-            min-height: 44px;
-
-            display: flex;
-
-            align-items: center;
-
-            padding: 0 55px;
-
-            color: #444;
-
-        }
-
-
-        .city-government {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 10px;
-
-        }
-
-
-        .city-logo {
-
-            width: 30px;
-
-            height: 30px;
-
-            object-fit: contain;
-
-        }
-
-
-        .city-bar span {
-
-            font-size: 12px;
-
-            font-weight: 600;
-
-        }
-
-
-
-        /* ================================
-           MAIN HEADER
-        ================================= */
-
-        header {
-
-            background: #b5121b;
-
-            min-height: 82px;
-
-            display: flex;
-
-            align-items: center;
-
-            padding: 0 55px;
-
-            color: white;
-
-        }
-
-
-        .brand {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 15px;
-
-        }
-
-
-        /* LAFD LOGO */
-
-        .lafd-logo {
-
-            width: 54px;
-
-            height: 54px;
-
-            object-fit: contain;
-
-            background: white;
-
-            border-radius: 50%;
-
-            padding: 3px;
-
-        }
-
-
-        /* DEPARTMENT TEXT */
-
-        .brand-text h1 {
-
-            font-size: 20px;
-
-            font-weight: 700;
-
-            letter-spacing: .3px;
-
-        }
-
-
-        .brand-text p {
-
-            font-size: 11px;
-
-            margin-top: 3px;
-
-            color: #eee;
-
-        }
-
-
-        /* ================================
-           NAVIGATION
-        ================================= */
-
-        nav {
-
-            margin-left: auto;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 30px;
-
-        }
-
-
-        nav a {
-
-            color: white;
-
-            text-decoration: none;
-
-            font-size: 14px;
-
-            font-weight: 600;
-
-            transition: opacity .2s ease;
-
-        }
-
-
-        nav a:hover {
-
-            opacity: .75;
-
-        }
-
-
-
-        /* ================================
-           HERO
-        ================================= */
-
-        .hero {
-
-            height: 430px;
-
-            background:
-
-                linear-gradient(
-                    rgba(0,0,0,.58),
-                    rgba(0,0,0,.58)
-                ),
-
-                url("https://media.discordapp.net/attachments/1394469502061772811/1394843996442067015/Screenshot_2025-06-28_182416.png?ex=6a918473&is=6a9032f3&hm=655e89646379386e8abc4f53733de9764cfa48305edab8f8f0e4b7b005dca408&=&format=webp&quality=lossless&width=1536&height=843")
-
-                center/cover;
-
-            display: flex;
-
-            align-items: center;
-
-            padding-left: 10%;
-
-            color: white;
-
-        }
-
-
-        .hero-content {
-
-            max-width: 650px;
-
-        }
-
-
-        .hero h2 {
-
-            font-size: 48px;
-
-            margin-bottom: 15px;
-
-            font-weight: 700;
-
-        }
-
-
-        .hero p {
-
-            font-size: 18px;
-
-            line-height: 1.6;
-
-            margin-bottom: 25px;
-
-        }
-
-
-        /* ================================
-           BUTTON
-        ================================= */
-
-        .button {
-
-            display: inline-block;
-
-            background: #b5121b;
-
-            color: white;
-
-            padding: 13px 24px;
-
-            text-decoration: none;
-
-            font-weight: bold;
-
-            font-size: 14px;
-
-            transition: background .2s ease;
-
-        }
-
-
-        .button:hover {
-
-            background: #951019;
-
-        }
-
-
-
-        /* ================================
-           MAIN
-        ================================= */
-
-        .container {
-
-            max-width: 1100px;
-
-            margin: auto;
-
-            padding: 55px 25px;
-
-        }
-
-
-        .section-title {
-
-            font-size: 28px;
-
-            margin-bottom: 12px;
-
-            color: #222;
-
-        }
-
-
-        .red-line {
-
-            width: 55px;
-
-            height: 4px;
-
-            background: #b5121b;
-
-            margin-bottom: 25px;
-
-        }
-
-
-        .about {
-
-            font-size: 16px;
-
-            line-height: 1.7;
-
-            max-width: 850px;
-
-            color: #555;
-
-        }
-
-
-
-        /* ================================
-           CARDS
-        ================================= */
-
-        .cards {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 20px;
-
-            margin-top: 35px;
-
-        }
-
-
-        .card {
-
-            background: white;
-
-            border-top: 4px solid #b5121b;
-
-            padding: 28px;
-
-            box-shadow:
-                0 2px 8px rgba(0,0,0,.08);
-
-        }
-
-
-        .card h3 {
-
-            margin-bottom: 10px;
-
-            font-size: 19px;
-
-        }
-
-
-        .card p {
-
-            color: #666;
-
-            font-size: 14px;
-
-            line-height: 1.6;
-
-        }
-
-
-
-        /* ================================
-           EMERGENCY
-        ================================= */
-
-        .emergency {
-
-            background: #222;
-
-            color: white;
-
-            text-align: center;
-
-            padding: 40px 20px;
-
-        }
-
-
-        .emergency h2 {
-
-            font-size: 30px;
-
-            margin-bottom: 8px;
-
-        }
-
-
-        .emergency span {
-
-            color: #e21b2d;
-
-        }
-
-
-        .emergency p {
-
-            color: #ccc;
-
-            font-size: 15px;
-
-        }
-
-
-
-        /* ================================
-           FOOTER
-        ================================= */
-
-        footer {
-
-            background: #111;
-
-            color: #aaa;
-
-            text-align: center;
-
-            padding: 25px;
-
-            font-size: 13px;
-
-        }
-
-
-
-        /* ================================
-           MOBILE
-        ================================= */
-
-        @media (max-width: 750px) {
-
-            .city-bar {
-
-                padding: 0 20px;
-
-            }
-
-
-            .city-logo {
-
-                width: 27px;
-
-                height: 27px;
-
-            }
-
-
-            .city-bar span {
-
-                font-size: 11px;
-
-            }
-
-
-            header {
-
-                padding: 15px 20px;
-
-            }
-
-
-            nav {
-
-                display: none;
-
-            }
-
-
-            .brand-text h1 {
-
-                font-size: 16px;
-
-            }
-
-
-            .brand-text p {
-
-                font-size: 10px;
-
-            }
-
-
-            .lafd-logo {
-
-                width: 46px;
-
-                height: 46px;
-
-            }
-
-
-            .hero {
-
-                height: 400px;
-
-                padding: 40px 25px;
-
-            }
-
-
-            .hero h2 {
-
-                font-size: 36px;
-
-            }
-
-
-            .hero p {
-
-                font-size: 16px;
-
-            }
-
-
-            .cards {
-
-                grid-template-columns: 1fr;
-
-            }
-
-        }
-
-    </style>
 
 </head>
 
-
 <body>
 
-
-<!-- ================================
-     CITY GOVERNMENT BAR
-================================= -->
+<!-- =========================================================
+     CITY OF LOS ANGELES BAR
+========================================================= -->
 
 <div class="city-bar">
+    <div class="city-inner">
 
-    <div class="city-government">
 
-        <img
-            src="la-city-logo.png"
-            alt="City of Los Angeles"
-            class="city-logo"
-        >
+    <div class="city-left">
+        <img src="la-city-logo.png" alt="City of Los Angeles">
 
         <span>
             An official website of the City of Los Angeles
         </span>
+    </div>
+
+    <div class="city-right">
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+    </div>
+
+</div>
+
+
+</div>
+
+<!-- =========================================================
+     LAFD HEADER
+========================================================= -->
+
+<header class="main-header">
+
+
+<div class="header-inner">
+
+    <a href="index.html" class="lafd-brand">
+
+        <img
+            src="lafd-logo.png"
+            alt="Los Angeles Fire Department"
+        >
+
+        <div class="brand-text">
+            <strong>LOS ANGELES FIRE DEPARTMENT</strong>
+            <span>CITY OF LOS ANGELES</span>
+        </div>
+
+    </a>
+
+
+    <nav class="main-nav">
+
+        <a href="index.html" class="active">HOME</a>
+
+        <a href="about.html">ABOUT</a>
+
+        <a href="stations.html">STATIONS</a>
+
+        <a href="careers.html">CAREERS</a>
+
+        <a href="my-applications.html">MY APPLICATIONS</a>
+
+        <a href="contact.html">CONTACT</a>
+
+    </nav>
+
+</div>
+
+
+</header>
+
+<!-- =========================================================
+     EMERGENCY BAR
+========================================================= -->
+
+<section class="emergency-bar">
+
+
+<div class="emergency-inner">
+
+    <div class="emergency-icon">
+        911
+    </div>
+
+    <div>
+        <strong>TO REPORT AN EMERGENCY CALL 9-1-1</strong>
+        <span>For fire, rescue, or medical emergencies</span>
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+    <div class="hero-label">
+        LOS ANGELES FIRE DEPARTMENT
+    </div>
+
+    <h1>
+        Protecting Lives.<br>
+        Fighting Fires.<br>
+        Serving Communities.
+    </h1>
+
+    <p>
+        The Los Angeles Fire Department is committed to
+        protecting life, property, and the communities
+        we serve through professional emergency response
+        and public safety.
+    </p>
+
+    <div class="hero-buttons">
+
+        <a href="about.html" class="hero-button primary">
+            ABOUT THE DEPARTMENT
+        </a>
+
+        <a href="stations.html" class="hero-button secondary">
+            FIND A STATION
+        </a>
 
     </div>
 
 </div>
 
 
+</section>
 
-<!-- ================================
-     LAFD HEADER
-================================= -->
+<!-- =========================================================
+     WELCOME / INTRO
+========================================================= -->
 
-<header>
-
-    <div class="brand">
-
-        <img
-            src="lafd-logo.png"
-            alt="Los Angeles Fire Department"
-            class="lafd-logo"
-        >
+<section class="intro">
 
 
-        <div class="brand-text">
+<div class="content-width">
 
-            <h1>
-                Los Angeles Fire Department
-            </h1>
+    <div class="section-heading">
+
+        <span>LOS ANGELES FIRE DEPARTMENT</span>
+
+        <h2>
+            Serving Los Angeles
+        </h2>
+
+        <div class="heading-line"></div>
+
+    </div>
+
+    <p class="intro-text">
+        The Los Angeles Fire Department provides fire suppression,
+        emergency medical services, rescue operations, and other
+        emergency services throughout the City of Los Angeles.
+    </p>
+
+</div>
+```
+
+</section>
+
+<!-- =========================================================
+     READY SET GO
+========================================================= -->
+
+<section class="feature-section ready-section">
+
+
+<div class="feature-image ready-image"></div>
+
+<div class="feature-content">
+
+    <span class="feature-label">
+        EMERGENCY PREPAREDNESS
+    </span>
+
+    <h2>
+        READY, SET, GO!
+    </h2>
+
+    <div class="feature-line"></div>
+
+    <p>
+        Be prepared in the event of a brush fire or other
+        emergency. Make certain your family, critical papers,
+        phone data, pets, and other valuables are ready to
+        evacuate if so directed.
+    </p>
+
+    <p>
+        Planning ahead can help protect you, your family,
+        and your community during an emergency.
+    </p>
+
+    <a href="about.html" class="red-button">
+        LEARN MORE
+    </a>
+
+</div>
+
+
+</section>
+
+<!-- =========================================================
+     EXISTING SERVICES
+========================================================= -->
+
+<section class="services">
+
+
+<div class="content-width">
+
+    <div class="section-heading centered">
+
+        <span>OUR SERVICES</span>
+
+        <h2>
+            Your LAFD
+        </h2>
+
+        <div class="heading-line"></div>
+
+    </div>
+
+
+    <div class="service-grid">
+
+        <!-- FIRE & RESCUE -->
+
+        <article class="service-card">
+
+            <div class="service-number">
+                01
+            </div>
+
+            <h3>
+                Fire &amp; Rescue
+            </h3>
 
             <p>
-                City of Los Angeles
+                Professional fire suppression, rescue
+                operations, and emergency response.
             </p>
+
+            <a href="about.html">
+                LEARN MORE
+            </a>
+
+        </article>
+
+
+        <!-- EMS -->
+
+        <article class="service-card">
+
+            <div class="service-number">
+                02
+            </div>
+
+            <h3>
+                Emergency Medical Services
+            </h3>
+
+            <p>
+                Emergency medical care and transportation
+                for those in need.
+            </p>
+
+            <a href="about.html">
+                LEARN MORE
+            </a>
+
+        </article>
+
+
+        <!-- STATIONS -->
+
+        <article class="service-card">
+
+            <div class="service-number">
+                03
+            </div>
+
+            <h3>
+                Fire Stations
+            </h3>
+
+            <p>
+                Find information about LAFD stations and
+                the communities they serve.
+            </p>
+
+            <a href="stations.html">
+                FIND A STATION
+            </a>
+
+        </article>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- =========================================================
+     RED FLAG PARKING
+========================================================= -->
+
+<section class="feature-section reverse redflag-section">
+
+
+<div class="feature-image redflag-image"></div>
+
+<div class="feature-content">
+
+    <span class="feature-label">
+        FIRE SAFETY
+    </span>
+
+    <h2>
+        RED FLAG PARKING
+    </h2>
+
+    <div class="feature-line"></div>
+
+    <p>
+        To increase public safety, the Fire Department and
+        Department of Transportation have created a program
+        to remove illegally parked vehicles in posted
+        locations within the Very High Fire Hazard Severity
+        Zones.
+    </p>
+
+    <p>
+        The goal is to keep roadways clear and allow
+        emergency vehicles to respond quickly during
+        fast-moving brush fires.
+    </p>
+
+    <a href="redflag.html" class="red-button">
+        LEARN MORE ABOUT RED FLAG PARKING
+    </a>
+
+</div>
+
+
+</section>
+
+<!-- =========================================================
+     BRUSH
+========================================================= -->
+
+<section class="feature-section brush-section">
+
+```
+<div class="feature-image brush-image"></div>
+
+<div class="feature-content">
+
+    <span class="feature-label">
+        FIRE PREVENTION
+    </span>
+
+    <h2>
+        BRUSH
+    </h2>
+
+    <div class="feature-line"></div>
+
+    <p>
+        The canyons and hillsides of Los Angeles present
+        unique fire-safety challenges. Brush, vegetation,
+        and other hazards can contribute to the spread
+        of wildfire.
+    </p>
+
+    <p>
+        The Los Angeles Fire Department works year-round
+        to promote fire safety and help protect communities.
+    </p>
+
+    <a href="redflag.html" class="red-button">
+        LEARN MORE
+    </a>
+
+</div>
+
+
+</section>
+
+<!-- =========================================================
+     EXISTING SITE SERVICES
+========================================================= -->
+
+<section class="quick-services">
+
+
+<div class="content-width">
+
+    <div class="quick-grid">
+
+
+        <!-- CAREERS -->
+
+        <div class="quick-card">
+
+            <div class="quick-icon">
+                ★
+            </div>
+
+            <span>
+                SERVE LOS ANGELES
+            </span>
+
+            <h3>
+                Join the Department
+            </h3>
+
+            <p>
+                Interested in serving Los Angeles?
+                Learn more about careers with the LAFD.
+            </p>
+
+            <a href="careers.html">
+                CAREERS
+            </a>
+
+        </div>
+
+
+        <!-- CONTACT -->
+
+        <div class="quick-card">
+
+            <div class="quick-icon">
+                ✉
+            </div>
+
+            <span>
+                GET IN TOUCH
+            </span>
+
+            <h3>
+                Contact the Department
+            </h3>
+
+            <p>
+                Have a question, comment, or concern?
+                Find information on how to contact the
+                Los Angeles Fire Department.
+            </p>
+
+            <a href="contact.html">
+                CONTACT US
+            </a>
+
+        </div>
+
+
+        <!-- RECORDS -->
+
+        <div class="quick-card">
+
+            <div class="quick-icon">
+                ▣
+            </div>
+
+            <span>
+                PUBLIC RECORDS
+            </span>
+
+            <h3>
+                Fire Records &amp; CPRA Requests
+            </h3>
+
+            <p>
+                Request fire incident reports, public
+                records, subpoenas, personal appearances,
+                and other eligible LAFD records.
+            </p>
+
+            <a href="fire-records-cpra-request.html">
+                REQUEST RECORDS
+            </a>
 
         </div>
 
     </div>
 
+</div>
 
-    <nav>
+
+</section>
+
+<!-- =========================================================
+     DEDICATION
+========================================================= -->
+
+<section class="dedication">
+
+
+<div class="dedication-overlay"></div>
+
+<div class="dedication-content">
+
+    <span>
+        LOS ANGELES FIRE DEPARTMENT
+    </span>
+
+    <h2>
+        Dedicated to Saving Lives,
+        Fighting Fires, Safety and Prevention,
+        and Building Communities.
+    </h2>
+
+</div>
+
+
+</section>
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+<div class="footer-main">
+
+    <div class="footer-brand">
+
+        <img
+            src="lafd-logo.png"
+            alt="LAFD"
+        >
+
+        <h3>
+            LOS ANGELES<br>
+            FIRE DEPARTMENT
+        </h3>
+
+        <p>
+            City of Los Angeles
+        </p>
+
+    </div>
+
+
+    <!-- EXISTING LINKS ONLY -->
+
+    <div class="footer-column">
+
+        <h4>
+            DEPARTMENT
+        </h4>
 
         <a href="index.html">
             Home
@@ -690,6 +595,15 @@
             Stations
         </a>
 
+    </div>
+
+
+    <div class="footer-column">
+
+        <h4>
+            CAREERS
+        </h4>
+
         <a href="careers.html">
             Careers
         </a>
@@ -698,271 +612,59 @@
             My Applications
         </a>
 
-    </nav>
-
-</header>
-
-
-
-
-<!-- ================================
-     HERO
-================================= -->
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <h2>
-            Los Angeles Fire Department
-        </h2>
-
-
-        <p>
-
-            Protecting lives, property, and the communities
-            we serve. The Los Angeles Fire Department is
-            committed to professional emergency response
-            and public safety.
-
-        </p>
-
-
-        <a
-            href="about.html"
-            class="button"
-        >
-            ABOUT THE DEPARTMENT
-        </a>
-
     </div>
 
-</section>
 
+    <div class="footer-column">
 
+        <h4>
+            SERVICES
+        </h4>
 
-<!-- ================================
-     MAIN
-================================= -->
+        <a href="redflag.html">
+            Red Flag Parking
+        </a>
 
-<main class="container">
-
-
-    <h2 class="section-title">
-        Welcome to the LAFD
-    </h2>
-
-
-    <div class="red-line"></div>
-
-
-    <p class="about">
-
-        The Los Angeles Fire Department provides fire
-        suppression, emergency medical services, rescue
-        operations, and other emergency services throughout
-        the City of Los Angeles.
-
-    </p>
-
-
-
-    <div class="cards">
-
-   <div class="card">
-
-    <h3>
-        Red Flag Parking
-    </h3>
-
-
-    <p>
-
-        To increase public safety, the Fire Department and
-        Department of Transportation have created a program
-        to remove illegally parked vehicles in posted
-        locations within the Very High Fire Hazard Severity
-        Zones. The goal of this program is to educate the
-        public on the potential hazards associated with a
-        fast-moving brush fire, and the importance of
-        keeping roadways clear.
-
-    </p>
-
-
-    <a
-        href="redflag.html"
-        class="card-button"
-    >
-        Learn More About Red Flag
-    </a>
-
-</div>
-
-       
-        <div class="card">
-
-            <h3>
-                Fire & Rescue
-            </h3>
-
-
-            <p>
-
-                Professional fire suppression, rescue
-                operations, and emergency response.
-
-            </p>
-
-        </div>
-
-
-
-        <div class="card">
-
-            <h3>
-                Emergency Medical Services
-            </h3>
-
-
-            <p>
-
-                Emergency medical care and transportation
-                for those in need.
-
-            </p>
-
-        </div>
-
-
-
-        <div class="card">
-
-            <h3>
-                Join the Department
-            </h3>
-
-
-            <p>
-
-                Interested in serving Los Angeles?
-                Learn more about careers with the LAFD.
-
-            </p>
-
-
-            <br>
-
-
-            <a
-                href="careers.html"
-                class="button"
-            >
-                CAREERS
-            </a>
-
-        </div>
-
-
-
-    <div class="card">
-
-        <h3>
-            Contact the Department
-        </h3>
-
-
-        <p>
-
-            Have a question, comment, or concern?
-            Find information on how to contact the Los Angeles Fire Department.
-
-        </p>
-
-
-        <br>
-
-
-        <a
-            href="contact.html"
-            class="button"
-        >
-            CONTACT US
+        <a href="fire-records-cpra-request.html">
+            Fire Records &amp; CPRA
         </a>
 
     </div>
 
 
-  <div class="card">
+    <div class="footer-column">
 
-    <h3>
-        Fire Records & CPRA Requests
-    </h3>
+        <h4>
+            CONTACT
+        </h4>
 
+        <a href="contact.html">
+            Contact Us
+        </a>
 
-    <p>
+        <a href="stations.html">
+            Fire Stations
+        </a>
 
-        Request fire incident reports, public records,
-        subpoenas, personal appearances, and other eligible
-        Los Angeles Fire Department records.
-
-    </p>
-
-
-    <br>
-
-
-    <a
-        href="fire-records-cpra-request.html"
-        class="button"
-    >
-        REQUEST RECORDS
-    </a>
-
-</div>
-  
     </div>
 
-</main>
+</div>
 
 
+<div class="footer-bottom">
 
-<!-- ================================
-     EMERGENCY
-================================= -->
+    <div>
+        © 2026 Los Angeles Fire Department
+    </div>
 
-<section class="emergency">
+    <div>
+        FiveM Roleplay Community
+    </div>
 
-    <h2>
+</div>
 
-        Emergency?
-        <span>Call 911</span>
-
-    </h2>
-
-
-    <p>
-
-        For emergencies requiring fire, rescue,
-        or medical assistance.
-
-    </p>
-
-</section>
-
-
-
-<!-- ================================
-     FOOTER
-================================= -->
-
-<footer>
-
-    © 2026 Los Angeles Fire Department — FiveM Roleplay
 
 </footer>
 
-
 </body>
-
 </html>
