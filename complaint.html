@@ -766,8 +766,6 @@
 
 <script>
 
-    const WEBHOOK_URL = "https://discordapp.com/api/webhooks/1542688585633763328/tU60bbfb3ZtOAiQPK77f6fO8lflkH1WMFfNET2Wb4rXirzYCwjcjZ_0UR9cmV4LcwsSv";
-
     document
         .getElementById("complaintForm")
         .addEventListener("submit", async function(event) {
@@ -785,63 +783,49 @@
                 });
 
 
-            const payload = {
+            const data = {
 
-                username: "LAFD Professional Standards",
+                reportingName:
+                    form.get("reporting_name"),
 
-                embeds: [{
+                reportingEmail:
+                    form.get("reporting_email"),
 
-                    title: "New LAFD Complaint",
+                incidentDate:
+                    form.get("incident_date"),
 
-                    color: 11801371,
+                incidentTime:
+                    form.get("incident_time"),
 
-                    fields: [
+                incidentType:
+                    form.get("incident_type"),
 
-                        {
-                            name: "Reporting Party",
-                            value:
-                                `${form.get("reporting_name")}\n${form.get("reporting_email")}`
-                        },
+                incidentLocation:
+                    form.get("incident_location"),
 
-                        {
-                            name: "Incident",
-                            value:
-                                `${form.get("incident_date")} ${form.get("incident_time") || ""}\n` +
-                                `${form.get("incident_type") || "Not specified"}\n` +
-                                `${form.get("incident_location")}`
-                        },
+                employeeFirst:
+                    form.get("employee_first"),
 
-                        {
-                            name: "Employee / Unit",
-                            value:
-                                `${form.get("employee_first") || ""} ${form.get("employee_last") || ""}\n` +
-                                `Badge: ${form.get("employee_badge") || "N/A"}\n` +
-                                `Unit: ${form.get("unit_number") || "N/A"}\n` +
-                                `Station: ${form.get("station") || "N/A"}`
-                        },
+                employeeLast:
+                    form.get("employee_last"),
 
-                        {
-                            name: "Complaint Type",
-                            value:
-                                complaintTypes.join(", ") ||
-                                "Not specified"
-                        },
+                employeeBadge:
+                    form.get("employee_badge"),
 
-                        {
-                            name: "Complaint Details",
-                            value:
-                                form.get("statement").substring(0, 1024)
-                        }
+                unitNumber:
+                    form.get("unit_number"),
 
-                    ],
+                station:
+                    form.get("station"),
 
-                    footer: {
-                        text: "LAFD Professional Standards • Complaint"
-                    },
+                complaintTypes:
+                    complaintTypes,
 
-                    timestamp: new Date().toISOString()
+                statement:
+                    form.get("statement"),
 
-                }]
+                submittedAt:
+                    new Date().toISOString()
 
             };
 
@@ -852,33 +836,58 @@
 
             try {
 
-                const response = await fetch(
-                    WEBHOOK_URL,
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(payload)
-                    }
-                );
+                const response =
+                    await fetch(
+                        "/api/complaint",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(data)
+
+                        }
+                    );
 
 
-                if (!response.ok) {
-                    throw new Error("Webhook request failed.");
+                const result =
+                    await response.json();
+
+
+                if (!response.ok || !result.success) {
+
+                    throw new Error(
+                        result.message ||
+                        "Complaint submission failed."
+                    );
+
                 }
 
 
                 status.style.display = "block";
+
+                status.style.background = "#e5f6e9";
+                status.style.borderColor = "#b9e2c0";
+                status.style.color = "#217a35";
 
                 status.textContent =
                     "Your complaint has been submitted successfully.";
 
                 this.reset();
 
-            }
 
-            catch (error) {
+            } catch (error) {
+
+                console.error(
+                    "Complaint submission error:",
+                    error
+                );
+
 
                 status.style.display = "block";
 
@@ -894,6 +903,7 @@
         });
 
 </script>
+
 
 </body>
 
