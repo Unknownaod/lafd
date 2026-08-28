@@ -21,24 +21,21 @@
 }
 
 body {
-    background: #f4f4f4;
+    background: #f5f5f5;
     color: #222;
 }
 
 /* ================================
-   CITY GOVERNMENT BAR
+   CITY BAR
 ================================ */
 
 .city-bar {
-    background: #eeeeee;
-    border-bottom: 1px solid #d5d5d5;
     min-height: 38px;
-
+    background: #eee;
+    border-bottom: 1px solid #d5d5d5;
     display: flex;
     align-items: center;
-
     padding: 0 55px;
-
     font-size: 12px;
     color: #444;
 }
@@ -46,7 +43,6 @@ body {
 .city-bar img {
     width: 22px;
     height: 22px;
-    object-fit: contain;
     margin-right: 9px;
 }
 
@@ -59,14 +55,11 @@ body {
 ================================ */
 
 header {
-    background: #b5121b;
     min-height: 82px;
-
+    background: #b5121b;
     display: flex;
     align-items: center;
-
     padding: 0 55px;
-
     color: white;
 }
 
@@ -79,33 +72,26 @@ header {
 .lafd-logo {
     width: 54px;
     height: 54px;
-
-    object-fit: contain;
-
     background: white;
-
     border-radius: 50%;
-
     padding: 3px;
+    object-fit: contain;
 }
 
 .city-logo {
     width: 47px;
     height: 47px;
-
     object-fit: contain;
 }
 
 .logo-divider {
     width: 1px;
     height: 44px;
-
     background: rgba(255,255,255,.45);
 }
 
 .brand-text h1 {
     font-size: 19px;
-    font-weight: 700;
 }
 
 .brand-text p {
@@ -114,23 +100,15 @@ header {
     color: #eee;
 }
 
-/* ================================
-   NAVIGATION
-================================ */
-
 nav {
     margin-left: auto;
-
     display: flex;
-
     gap: 27px;
 }
 
 nav a {
     color: white;
-
     text-decoration: none;
-
     font-size: 13px;
     font-weight: 600;
 }
@@ -144,34 +122,24 @@ nav a:hover {
 ================================ */
 
 .page-header {
-    background:
-        linear-gradient(
-            rgba(0,0,0,.65),
-            rgba(0,0,0,.65)
-        ),
-        url("https://media.discordapp.net/attachments/1394469502061772811/1397741145932697630/Screenshot_2025-07-23_193808.png?format=webp&quality=lossless")
-        center/cover;
-
-    min-height: 250px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
+    background: #222;
     color: white;
+    padding: 38px 55px;
+}
+
+.page-header-inner {
+    max-width: 1050px;
+    margin: auto;
 }
 
 .page-header h2 {
-    font-size: 40px;
-    margin-bottom: 9px;
+    font-size: 30px;
 }
 
 .page-header p {
-    color: #ddd;
-    font-size: 14px;
+    color: #ccc;
+    font-size: 13px;
+    margin-top: 7px;
 }
 
 /* ================================
@@ -180,145 +148,117 @@ nav a:hover {
 
 .container {
     max-width: 1050px;
-
     margin: auto;
-
-    padding: 45px 25px 70px;
+    padding: 35px 25px 70px;
 }
 
-.section-title {
+.section-box {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 30px;
     margin-bottom: 25px;
 }
 
-.section-title h2 {
-    font-size: 26px;
+.section-box h2 {
+    font-size: 22px;
 }
 
 .red-line {
-    width: 55px;
+    width: 50px;
     height: 4px;
-
     background: #b5121b;
+    margin: 10px 0 22px;
+}
 
-    margin-top: 10px;
+.section-description {
+    color: #666;
+    font-size: 13px;
+    line-height: 1.7;
 }
 
 /* ================================
-   ALERT LIST
+   ACTIVE ALERTS
 ================================ */
 
-.alert-list {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 18px;
+.alerts-list {
+    margin-top: 25px;
 }
 
-.alert {
-    background: white;
-
+.no-alerts {
+    background: #f7f7f7;
     border: 1px solid #ddd;
-
-    border-left: 6px solid #777;
-
-    padding: 23px 25px;
+    padding: 25px;
+    text-align: center;
+    color: #666;
+    font-size: 13px;
 }
 
-.alert.emergency {
+.alert-card {
+    border: 1px solid #ddd;
+    border-left: 5px solid #b5121b;
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.alert-card.high {
     border-left-color: #b5121b;
 }
 
-.alert.warning {
-    border-left-color: #d58b00;
+.alert-card.medium {
+    border-left-color: #d59b00;
 }
 
-.alert.advisory {
-    border-left-color: #2874a6;
-}
-
-.alert.information {
+.alert-card.info {
     border-left-color: #555;
 }
 
-/* ================================
-   ALERT HEADER
-================================ */
-
-.alert-header {
+.alert-top {
     display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
 }
 
-.alert-type {
-    font-size: 10px;
-
+.alert-title {
+    font-size: 17px;
     font-weight: bold;
-
-    padding: 5px 9px;
-
-    color: white;
-
-    background: #555;
 }
 
-.emergency .alert-type {
+.alert-badge {
     background: #b5121b;
+    color: white;
+    padding: 5px 8px;
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 
-.warning .alert-type {
-    background: #d58b00;
+.alert-card.medium .alert-badge {
+    background: #d59b00;
 }
 
-.advisory .alert-type {
-    background: #2874a6;
-}
-
-.information .alert-type {
+.alert-card.info .alert-badge {
     background: #555;
 }
 
-.alert h3 {
-    font-size: 19px;
-}
-
-.alert p {
-    font-size: 13px;
-
+.alert-message {
     color: #555;
-
+    font-size: 13px;
     line-height: 1.7;
-
-    margin-top: 8px;
-
-    white-space: pre-line;
+    margin-top: 12px;
 }
-
-/* ================================
-   ALERT META
-================================ */
 
 .alert-meta {
-    margin-top: 15px;
-
-    padding-top: 12px;
-
-    border-top: 1px solid #eee;
-
     display: flex;
-
     flex-wrap: wrap;
-
-    gap: 25px;
-
-    font-size: 11px;
-
+    gap: 18px;
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px solid #eee;
     color: #777;
+    font-size: 11px;
 }
 
 .alert-meta strong {
@@ -326,151 +266,114 @@ nav a:hover {
 }
 
 /* ================================
-   ALERT LINK
+   SUBSCRIBE
 ================================ */
 
-.alert-link {
-    display: inline-block;
-
-    margin-top: 15px;
-
-    color: #b5121b;
-
-    font-size: 11px;
-
-    font-weight: bold;
-
-    text-decoration: none;
-}
-
-.alert-link:hover {
-    text-decoration: underline;
-}
-
-/* ================================
-   NO ALERTS
-================================ */
-
-.no-alerts {
-    background: white;
-
-    border: 1px solid #ddd;
-
-    padding: 35px;
-
-    text-align: center;
-}
-
-.no-alerts h3 {
-    font-size: 18px;
-
-    margin-bottom: 8px;
-}
-
-.no-alerts p {
-    color: #666;
-
-    font-size: 13px;
-
-    line-height: 1.6;
-}
-
-/* ================================
-   ERROR
-================================ */
-
-.alert-error {
-    background: #fff1f1;
-
-    border: 1px solid #e1b5b5;
-
-    border-left: 6px solid #b5121b;
-
-    padding: 20px;
-
-    color: #6b1b1b;
-
-    font-size: 13px;
-
-    line-height: 1.6;
-}
-
-/* ================================
-   EMAIL ALERTS
-================================ */
-
-.subscribe {
-    margin-top: 40px;
-
+.subscribe-box {
     background: #222;
-
     color: white;
-
     padding: 30px;
 }
 
-.subscribe h2 {
-    font-size: 21px;
-
-    margin-bottom: 8px;
+.subscribe-box h2 {
+    font-size: 22px;
 }
 
-.subscribe p {
+.subscribe-box p {
     color: #ccc;
-
     font-size: 13px;
+    line-height: 1.7;
+    margin-top: 8px;
+}
 
-    line-height: 1.6;
+.subscribe-form {
+    margin-top: 22px;
+}
 
-    max-width: 700px;
+.email-row {
+    display: flex;
+    gap: 10px;
+}
+
+.email-input {
+    flex: 1;
+    border: none;
+    padding: 14px;
+    font-size: 13px;
+    outline: none;
 }
 
 .subscribe-button {
-    display: inline-block;
-
-    margin-top: 18px;
-
     background: #b5121b;
-
     color: white;
-
-    text-decoration: none;
-
-    padding: 12px 20px;
-
+    border: none;
+    padding: 14px 22px;
     font-size: 11px;
-
     font-weight: bold;
+    cursor: pointer;
 }
 
 .subscribe-button:hover {
     background: #951019;
 }
 
-/* ================================
-   BACK BUTTON
-================================ */
-
-.back-button {
-    display: inline-block;
-
-    margin-top: 30px;
-
-    background: #b5121b;
-
-    color: white;
-
-    text-decoration: none;
-
-    padding: 12px 21px;
-
-    font-size: 11px;
-
-    font-weight: bold;
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
 }
 
-.back-button:hover {
-    background: #951019;
+.category {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    color: #ddd;
+}
+
+.category input {
+    accent-color: #b5121b;
+}
+
+/* ================================
+   STATUS
+================================ */
+
+.form-status {
+    display: none;
+    margin-top: 15px;
+    padding: 12px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.form-status.success {
+    display: block;
+    background: #eaf6ed;
+    border: 1px solid #b9d9c0;
+    color: #285c32;
+}
+
+.form-status.error {
+    display: block;
+    background: #fceaea;
+    border: 1px solid #e0b4b4;
+    color: #7b2020;
+}
+
+/* ================================
+   UNSUBSCRIBE
+================================ */
+
+.unsubscribe {
+    margin-top: 18px;
+    font-size: 11px;
+    color: #aaa;
+}
+
+.unsubscribe a {
+    color: #ddd;
 }
 
 /* ================================
@@ -479,13 +382,9 @@ nav a:hover {
 
 footer {
     background: #111;
-
     color: #999;
-
     text-align: center;
-
     padding: 27px;
-
     font-size: 11px;
 }
 
@@ -497,7 +396,7 @@ footer strong {
    MOBILE
 ================================ */
 
-@media(max-width: 750px) {
+@media(max-width:750px) {
 
     .city-bar {
         padding: 0 20px;
@@ -512,35 +411,28 @@ footer strong {
     }
 
     .page-header {
-        min-height: 210px;
-
-        padding: 25px;
-    }
-
-    .page-header h2 {
-        font-size: 31px;
+        padding: 28px 20px;
     }
 
     .container {
-        padding: 35px 20px 60px;
+        padding: 25px 15px 55px;
     }
 
-    .alert {
-        padding: 20px;
+    .section-box,
+    .subscribe-box {
+        padding: 22px;
     }
 
-    .alert-header {
-        align-items: flex-start;
-
+    .alert-top {
         flex-direction: column;
-
-        gap: 7px;
     }
 
-    .alert-meta {
+    .email-row {
         flex-direction: column;
+    }
 
-        gap: 7px;
+    .subscribe-button {
+        width: 100%;
     }
 
 }
@@ -552,8 +444,8 @@ footer strong {
 <body>
 
 <!-- ================================
-     CITY GOVERNMENT BAR
-================================ -->
+     CITY BAR
+================================= -->
 
 <div class="city-bar">
 
@@ -572,7 +464,7 @@ footer strong {
 
 <!-- ================================
      HEADER
-================================ -->
+================================= -->
 
 <header>
 
@@ -626,8 +518,8 @@ footer strong {
         Careers
     </a>
 
-    <a href="alerts.html">
-        Alerts
+    <a href="contact.html">
+        Contact
     </a>
 
 </nav>
@@ -637,19 +529,19 @@ footer strong {
 
 <!-- ================================
      PAGE HEADER
-================================ -->
+================================= -->
 
 <section class="page-header">
 
 
-<div>
+<div class="page-header-inner">
 
     <h2>
         Emergency Alerts
     </h2>
 
     <p>
-        Fire and emergency information from the Los Angeles Fire Department
+        Public safety notifications and emergency information
     </p>
 
 </div>
@@ -659,12 +551,14 @@ footer strong {
 
 <!-- ================================
      MAIN
-================================ -->
+================================= -->
 
 <main class="container">
 
 
-<div class="section-title">
+<!-- ACTIVE ALERTS -->
+
+<section class="section-box">
 
     <h2>
         Current Alerts
@@ -672,80 +566,156 @@ footer strong {
 
     <div class="red-line"></div>
 
-</div>
+    <p class="section-description">
 
+        View active public safety alerts issued through the
+        Los Angeles Fire Department alert system.
 
-<!--
-    ALERTS FROM /api/alerts
-    ARE INSERTED HERE
--->
-
-<div
-    id="alerts-container"
-    class="alert-list"
->
-
-    <article class="alert information">
-
-        <div class="alert-header">
-
-            <span class="alert-type">
-                INFORMATION
-            </span>
-
-            <h3>
-                Loading Alerts
-            </h3>
-
-        </div>
-
-        <p>
-            Checking for current emergency alerts...
-        </p>
-
-    </article>
-
-</div>
-
-
-<!-- ================================
-     EMAIL SUBSCRIPTION
-================================= -->
-
-<section class="subscribe">
-
-    <h2>
-        Receive Emergency Alerts
-    </h2>
-
-    <p>
-        Subscribe to receive emergency and public safety
-        alerts by email. You can unsubscribe at any time.
     </p>
 
-    <a
-        href="alert-signup.html"
-        class="subscribe-button"
+
+    <div
+        id="alertsList"
+        class="alerts-list"
     >
-        SIGN UP FOR EMAIL ALERTS
-    </a>
+
+        <div class="no-alerts">
+            Loading current alerts...
+        </div>
+
+    </div>
 
 </section>
 
 
-<a
-    href="index.html"
-    class="back-button"
->
-    RETURN TO HOME
-</a>
+<!-- SUBSCRIBE -->
+
+<section class="subscribe-box">
+
+    <h2>
+        Sign Up for Emergency Alerts
+    </h2>
+
+    <p>
+
+        Receive important public safety notifications and
+        emergency information by email.
+
+    </p>
+
+
+    <form
+        id="subscribeForm"
+        class="subscribe-form"
+    >
+
+        <div class="email-row">
+
+            <input
+                id="email"
+                class="email-input"
+                type="email"
+                placeholder="Enter your email address"
+                autocomplete="email"
+                required
+            >
+
+            <button
+                id="subscribeButton"
+                class="subscribe-button"
+                type="submit"
+            >
+                SIGN UP FOR ALERTS
+            </button>
+
+        </div>
+
+
+        <div class="categories">
+
+            <label class="category">
+
+                <input
+                    type="checkbox"
+                    name="categories"
+                    value="Wildfire"
+                    checked
+                >
+
+                Wildfire
+
+            </label>
+
+
+            <label class="category">
+
+                <input
+                    type="checkbox"
+                    name="categories"
+                    value="Evacuation"
+                    checked
+                >
+
+                Evacuation
+
+            </label>
+
+
+            <label class="category">
+
+                <input
+                    type="checkbox"
+                    name="categories"
+                    value="Emergency"
+                    checked
+                >
+
+                Emergency
+
+            </label>
+
+
+            <label class="category">
+
+                <input
+                    type="checkbox"
+                    name="categories"
+                    value="General"
+                    checked
+                >
+
+                General Information
+
+            </label>
+
+        </div>
+
+
+        <div
+            id="formStatus"
+            class="form-status"
+        ></div>
+
+    </form>
+
+
+    <div class="unsubscribe">
+
+        You can unsubscribe from alerts at any time.
+        <a href="unsubscribe.html">
+            Manage alert subscriptions
+        </a>
+
+    </div>
+
+</section>
 
 
 </main>
 
 <!-- ================================
      FOOTER
-================================ -->
+================================= -->
 
 <footer>
 
@@ -756,7 +726,7 @@ footer strong {
 
 <br><br>
 
-Emergency Alerts
+Public Safety Alert System
 
 <br>
 
@@ -765,68 +735,49 @@ Emergency Alerts
 
 </footer>
 
-<!-- ================================
-     ALERT SYSTEM SCRIPT
-================================ -->
-
 <script>
 
-const alertsContainer =
-    document.getElementById("alerts-container");
-
-
-/* ================================
-   LOAD ALERTS
-================================ */
+/* ========================================
+   LOAD CURRENT ALERTS
+======================================== */
 
 async function loadAlerts() {
+
+    const alertsList =
+        document.getElementById("alertsList");
 
     try {
 
         const response =
-            await fetch("/api/alerts", {
-                method: "GET",
-                cache: "no-store"
-            });
-
+            await fetch("/api/alerts/list");
 
         if (!response.ok) {
-
-            throw new Error(
-                `Server returned ${response.status}`
-            );
-
+            throw new Error("Unable to load alerts.");
         }
-
 
         const data =
             await response.json();
 
-
         if (
-            !data ||
             !data.success ||
             !Array.isArray(data.alerts) ||
             data.alerts.length === 0
         ) {
 
-            showNoAlerts();
+            alertsList.innerHTML = `
+                <div class="no-alerts">
+                    There are currently no active emergency alerts.
+                </div>
+            `;
 
             return;
-
         }
 
 
-        alertsContainer.innerHTML = "";
-
-
-        data.alerts.forEach(alert => {
-
-            alertsContainer.appendChild(
-                createAlertElement(alert)
-            );
-
-        });
+        alertsList.innerHTML =
+            data.alerts
+                .map(createAlertCard)
+                .join("");
 
 
     } catch (error) {
@@ -836,226 +787,105 @@ async function loadAlerts() {
             error
         );
 
-
-        showAlertError();
+        alertsList.innerHTML = `
+            <div class="no-alerts">
+                Unable to load current alerts.
+                Please try again later.
+            </div>
+        `;
 
     }
 
 }
 
 
-/* ================================
-   CREATE ALERT
-================================ */
+/* ========================================
+   CREATE ALERT CARD
+======================================== */
 
-function createAlertElement(alert) {
+function createAlertCard(alert) {
 
-    const article =
-        document.createElement("article");
-
-
-    let type =
+    const severity =
         String(
-            alert.type || "information"
+            alert.severity || "info"
         ).toLowerCase();
 
 
-    const allowedTypes = [
-        "emergency",
-        "warning",
-        "advisory",
-        "information"
-    ];
-
-
-    if (!allowedTypes.includes(type)) {
-        type = "information";
-    }
-
-
-    article.className =
-        `alert ${type}`;
-
-
-    const typeLabel =
-        type.charAt(0).toUpperCase() +
-        type.slice(1);
-
-
-    const header =
-        document.createElement("div");
-
-    header.className =
-        "alert-header";
-
-
-    const badge =
-        document.createElement("span");
-
-    badge.className =
-        "alert-type";
-
-    badge.textContent =
-        typeLabel.toUpperCase();
-
-
     const title =
-        document.createElement("h3");
-
-    title.textContent =
-        alert.title || "Emergency Alert";
-
-
-    header.appendChild(badge);
-    header.appendChild(title);
+        escapeHtml(
+            alert.title || "Public Safety Alert"
+        );
 
 
     const message =
-        document.createElement("p");
-
-    message.textContent =
-        alert.message || "";
-
-
-    article.appendChild(header);
-    article.appendChild(message);
-
-
-    const meta =
-        document.createElement("div");
-
-    meta.className =
-        "alert-meta";
-
-
-    if (alert.area) {
-
-        const area =
-            document.createElement("span");
-
-        const strong =
-            document.createElement("strong");
-
-        strong.textContent =
-            "Affected Area:";
-
-        area.appendChild(strong);
-
-        area.appendChild(
-            document.createTextNode(
-                " " + alert.area
-            )
+        escapeHtml(
+            alert.message || ""
         );
 
-        meta.appendChild(area);
 
-    }
-
-
-    if (alert.issuedAt) {
-
-        const issued =
-            document.createElement("span");
-
-        const strong =
-            document.createElement("strong");
-
-        strong.textContent =
-            "Issued:";
-
-        issued.appendChild(strong);
-
-        issued.appendChild(
-            document.createTextNode(
-                " " + formatDate(alert.issuedAt)
-            )
+    const location =
+        escapeHtml(
+            alert.location || "Los Angeles"
         );
 
-        meta.appendChild(issued);
 
-    }
-
-
-    if (alert.expiresAt) {
-
-        const expires =
-            document.createElement("span");
-
-        const strong =
-            document.createElement("strong");
-
-        strong.textContent =
-            "Expires:";
-
-        expires.appendChild(strong);
-
-        expires.appendChild(
-            document.createTextNode(
-                " " + formatDate(alert.expiresAt)
-            )
+    const type =
+        escapeHtml(
+            alert.type || "General"
         );
 
-        meta.appendChild(expires);
 
-    }
-
-
-    if (meta.children.length > 0) {
-
-        article.appendChild(meta);
-
-    }
+    const date =
+        alert.createdAt
+            ? new Date(alert.createdAt)
+                .toLocaleString()
+            : "Recently";
 
 
-    if (alert.link) {
+    return `
 
-        const link =
-            document.createElement("a");
+        <article
+            class="alert-card ${severity}"
+        >
 
-        link.className =
-            "alert-link";
+            <div class="alert-top">
 
-        link.href =
-            alert.link;
+                <div class="alert-title">
+                    ${title}
+                </div>
 
-        link.textContent =
-            "MORE INFORMATION →";
+                <div class="alert-badge">
+                    ${escapeHtml(
+                        alert.severity || "INFO"
+                    )}
+                </div>
 
-        link.target =
-            "_blank";
-
-        link.rel =
-            "noopener noreferrer";
-
-        article.appendChild(link);
-
-    }
+            </div>
 
 
-    return article;
+            <div class="alert-message">
+                ${message}
+            </div>
 
-}
 
+            <div class="alert-meta">
 
-/* ================================
-   NO ALERTS
-================================ */
+                <span>
+                    <strong>Type:</strong>
+                    ${type}
+                </span>
 
-function showNoAlerts() {
+                <span>
+                    <strong>Location:</strong>
+                    ${location}
+                </span>
 
-    alertsContainer.innerHTML = `
+                <span>
+                    <strong>Issued:</strong>
+                    ${escapeHtml(date)}
+                </span>
 
-        <article class="no-alerts">
-
-            <h3>
-                No Active Emergency Alerts
-            </h3>
-
-            <p>
-                There are currently no active emergency
-                alerts issued through this website.
-                Please check back for updates.
-            </p>
+            </div>
 
         </article>
 
@@ -1064,82 +894,203 @@ function showNoAlerts() {
 }
 
 
-/* ================================
-   ERROR
-================================ */
+/* ========================================
+   SUBSCRIBE
+======================================== */
 
-function showAlertError() {
+document
+    .getElementById("subscribeForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
 
-    alertsContainer.innerHTML = `
-
-        <div class="alert-error">
-
-            <strong>
-                Alert Service Unavailable
-            </strong>
-
-            <br><br>
-
-            Emergency alert information is temporarily
-            unavailable. Please try again shortly.
-
-        </div>
-
-    `;
-
-}
+            event.preventDefault();
 
 
-/* ================================
-   DATE FORMAT
-================================ */
-
-function formatDate(date) {
-
-    const parsed =
-        new Date(date);
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
 
 
-    if (
-        Number.isNaN(
-            parsed.getTime()
-        )
-    ) {
-
-        return "Unknown";
-
-    }
+            const categories =
+                Array.from(
+                    document.querySelectorAll(
+                        'input[name="categories"]:checked'
+                    )
+                )
+                .map(input => input.value);
 
 
-    return parsed.toLocaleString(
-        "en-US",
-        {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-            hour: "numeric",
-            minute: "2-digit"
+            const status =
+                document.getElementById(
+                    "formStatus"
+                );
+
+
+            const button =
+                document.getElementById(
+                    "subscribeButton"
+                );
+
+
+            if (!email) {
+
+                showStatus(
+                    "Please enter a valid email address.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (categories.length === 0) {
+
+                showStatus(
+                    "Please select at least one alert category.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            button.disabled = true;
+
+            button.textContent =
+                "SUBMITTING...";
+
+
+            status.className =
+                "form-status";
+
+            status.textContent =
+                "";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/alerts/subscribe",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                email,
+
+                                categories
+
+                            })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok || !data.success) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to subscribe."
+                    );
+
+                }
+
+
+                showStatus(
+                    "You have successfully signed up for emergency alerts.",
+                    "success"
+                );
+
+
+                document
+                    .getElementById("email")
+                    .value = "";
+
+
+            } catch (error) {
+
+                console.error(
+                    "Subscription error:",
+                    error
+                );
+
+
+                showStatus(
+                    error.message ||
+                    "Unable to complete your subscription.",
+                    "error"
+                );
+
+            } finally {
+
+                button.disabled = false;
+
+                button.textContent =
+                    "SIGN UP FOR ALERTS";
+
+            }
+
         }
     );
 
+
+/* ========================================
+   STATUS MESSAGE
+======================================== */
+
+function showStatus(message, type) {
+
+    const status =
+        document.getElementById(
+            "formStatus"
+        );
+
+
+    status.textContent =
+        message;
+
+
+    status.className =
+        `form-status ${type}`;
+
 }
 
 
-/* ================================
+/* ========================================
+   HTML ESCAPE
+======================================== */
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* ========================================
    INITIAL LOAD
-================================ */
+======================================== */
 
 loadAlerts();
-
-
-/* ================================
-   AUTO REFRESH
-================================ */
-
-setInterval(
-    loadAlerts,
-    60000
-);
 
 </script>
 
