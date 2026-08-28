@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Fire Code | Los Angeles Fire Department</title>
+
+<link
+    rel="icon"
+    type="image/png"
+    href="./lafd-logo.png"
+>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background: #f4f4f4;
+        color: #222;
+    }
+
+    /* ================================
+       CITY GOVERNMENT BAR
+    ================================= */
+
+    .city-bar {
+        background: #eeeeee;
+        border-bottom: 1px solid #d5d5d5;
+        min-height: 38px;
+        display: flex;
+        align-items: center;
+        padding: 0 55px;
+        font-size: 12px;
+        color: #444;
+    }
+
+    .city-bar-logo {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+        margin-right: 9px;
+    }
+
+    .city-bar span {
+        font-weight: 600;
+    }
+
+    /* ================================
+       HEADER
+    ================================= */
+
+    header {
+        background: #b5121b;
+        min-height: 82px;
+        display: flex;
+        align-items: center;
+        padding: 0 55px;
+        color: white;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .lafd-logo {
+        width: 54px;
+        height: 54px;
+        object-fit: contain;
+        background: white;
+        border-radius: 50%;
+        padding: 3px;
+    }
+
+    .city-logo {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+    }
+
+    .logo-divider {
+        width: 1px;
+        height: 45px;
+        background: rgba(255,255,255,.45);
+        margin: 0 3px;
+    }
+
+    .brand-text h1 {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: .3px;
+    }
+
+    .brand-text p {
+        font-size: 11px;
+        margin-top: 3px;
+        color: #eee;
+    }
+
+    nav {
+        margin-left: auto;
+        display: flex;
+        gap: 30px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    /* ================================
+       PAGE HEADER
+    ================================= */
+
+    .page-header {
+        background:
+            linear-gradient(
+                rgba(0,0,0,.70),
+                rgba(0,0,0,.70)
+            ),
+            url("https://media.discordapp.net/attachments/1394469502061772811/1397741145932697630/Screenshot_2025-07-23_193808.png?ex=6a9182a1&is=6a903121&hm=caf47823a2dc8854e047d875ce7096889dc503df09235f35c02ccd2ee73e9ba2&=&format=webp&quality=lossless")
+            center/cover;
+
+        min-height: 280px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+        color: white;
+    }
+
+    .page-header h2 {
+        font-size: 44px;
+        margin-bottom: 10px;
+    }
+
+    .page-header p {
+        color: #ddd;
+        font-size: 15px;
+    }
+
+    /* ================================
+       MAIN
+    ================================= */
+
+    .container {
+        max-width: 1050px;
+        margin: auto;
+        padding: 45px 25px 70px;
+    }
+
+    .content {
+        background: white;
+        border: 1px solid #ddd;
+        padding: 35px;
+    }
+
+    .content h2 {
+        font-size: 27px;
+        margin-bottom: 10px;
+    }
+
+    .red-line {
+        width: 55px;
+        height: 4px;
+        background: #b5121b;
+        margin-bottom: 25px;
+    }
+
+    .content p {
+        color: #555;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 22px;
+    }
+
+    .content h3 {
+        font-size: 19px;
+        margin-top: 32px;
+        margin-bottom: 12px;
+        padding-bottom: 9px;
+        border-bottom: 2px solid #b5121b;
+    }
+
+    .content ul {
+        padding-left: 22px;
+        color: #555;
+        font-size: 14px;
+        line-height: 1.9;
+        margin-bottom: 20px;
+    }
+
+    /* ================================
+       NOTICE
+    ================================= */
+
+    .notice {
+        background: #fff8e5;
+        border: 1px solid #ead9a5;
+        border-left: 5px solid #d59b00;
+        padding: 18px;
+        margin: 25px 0;
+        color: #665522;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .notice strong {
+        display: block;
+        color: #554400;
+        margin-bottom: 5px;
+    }
+
+    /* ================================
+       CODE CARDS
+    ================================= */
+
+    .code-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin: 25px 0;
+    }
+
+    .code-card {
+        border: 1px solid #ddd;
+        background: #f8f8f8;
+        padding: 22px;
+    }
+
+    .code-card h4 {
+        font-size: 15px;
+        margin-bottom: 9px;
+        color: #333;
+    }
+
+    .code-card p {
+        font-size: 12px;
+        line-height: 1.7;
+        margin: 0;
+        color: #666;
+    }
+
+    /* ================================
+       CODE REFERENCE
+    ================================= */
+
+    .code-reference {
+        background: #f7f7f7;
+        border: 1px solid #d7d7d7;
+        border-left: 5px solid #b5121b;
+        padding: 22px;
+        margin: 25px 0;
+    }
+
+    .code-reference .label {
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        color: #888;
+        margin-bottom: 6px;
+    }
+
+    .code-reference h4 {
+        font-size: 17px;
+        margin-bottom: 8px;
+    }
+
+    .code-reference p {
+        font-size: 13px;
+        margin-bottom: 0;
+    }
+
+    /* ================================
+       BUTTONS
+    ================================= */
+
+    .button-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 25px;
+    }
+
+    .button {
+        display: inline-block;
+        background: #b5121b;
+        color: white;
+        text-decoration: none;
+        padding: 14px 22px;
+        font-size: 12px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background: #951019;
+    }
+
+    .button.secondary {
+        background: #333;
+    }
+
+    .button.secondary:hover {
+        background: #222;
+    }
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    footer {
+        background: #111;
+        color: #aaa;
+        text-align: center;
+        padding: 25px;
+        font-size: 12px;
+    }
+
+    /* ================================
+       MOBILE
+    ================================= */
+
+    @media (max-width: 750px) {
+
+        .city-bar {
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 15px 20px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .brand-text h1 {
+            font-size: 16px;
+        }
+
+        .brand-text p {
+            font-size: 10px;
+        }
+
+        .lafd-logo {
+            width: 46px;
+            height: 46px;
+        }
+
+        .city-logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-divider {
+            height: 35px;
+        }
+
+        .page-header h2 {
+            font-size: 34px;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .code-grid {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+<!-- ================================
+     CITY GOVERNMENT BAR
+================================= -->
+
+<div class="city-bar">
+
+
+<img
+    src="la-city-logo.png"
+    alt="City of Los Angeles"
+    class="city-bar-logo"
+>
+
+<span>
+    An official website of the City of Los Angeles
+</span>
+
+
+</div>
+
+<!-- ================================
+     HEADER
+================================= -->
+
+<header>
+
+
+<div class="brand">
+
+    <img
+        src="lafd-logo.png"
+        alt="Los Angeles Fire Department"
+        class="lafd-logo"
+    >
+
+    <div class="logo-divider"></div>
+
+    <img
+        src="la-city-logo.png"
+        alt="City of Los Angeles"
+        class="city-logo"
+    >
+
+    <div class="brand-text">
+
+        <h1>
+            Los Angeles Fire Department
+        </h1>
+
+        <p>
+            City of Los Angeles
+        </p>
+
+    </div>
+
+</div>
+
+
+<nav>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="about.html">
+        About
+    </a>
+
+    <a href="stations.html">
+        Stations
+    </a>
+
+    <a href="careers.html">
+        Careers
+    </a>
+
+    <a href="my-applications.html">
+        My Applications
+    </a>
+
+</nav>
+
+
+</header>
+
+<!-- ================================
+     PAGE HEADER
+================================= -->
+
+<section class="page-header">
+
+
+<div>
+
+    <h2>
+        Fire Code
+    </h2>
+
+    <p>
+        Fire prevention, life safety, and emergency protection requirements
+    </p>
+
+</div>
+
+
+</section>
+
+<!-- ================================
+     MAIN CONTENT
+================================= -->
+
+<main class="container">
+
+
+<div class="content">
+
+    <h2>
+        Los Angeles County Fire Code
+    </h2>
+
+    <div class="red-line"></div>
+
+
+    <p>
+
+        The Fire Code establishes minimum requirements intended to
+        protect life and property from fire, explosion, hazardous
+        conditions, and other fire-related dangers.
+
+    </p>
+
+
+    <p>
+
+        The Los Angeles County Fire Code incorporates the applicable
+        California Fire Code provisions together with amendments and
+        requirements adopted by Los Angeles County.
+
+    </p>
+
+
+    <div class="notice">
+
+        <strong>
+            Official Code Reference
+        </strong>
+
+        The complete 2022 Los Angeles County Fire Code is maintained
+        through the official code reference provided below. Use the
+        full code when researching specific requirements, sections,
+        definitions, or enforcement provisions.
+
+    </div>
+
+
+    <h3>
+        What the Fire Code Covers
+    </h3>
+
+
+    <div class="code-grid">
+
+
+        <div class="code-card">
+
+            <h4>
+                Fire Prevention
+            </h4>
+
+            <p>
+
+                Requirements intended to prevent fires and reduce
+                conditions that could create a fire or life-safety
+                hazard.
+
+            </p>
+
+        </div>
+
+
+        <div class="code-card">
+
+            <h4>
+                Emergency Access
+            </h4>
+
+            <p>
+
+                Requirements involving fire apparatus access,
+                emergency vehicle operations, and access for
+                responding personnel.
+
+            </p>
+
+        </div>
+
+
+        <div class="code-card">
+
+            <h4>
+                Fire Protection
+            </h4>
+
+            <p>
+
+                Regulations addressing fire protection systems,
+                alarms, suppression systems, equipment, and related
+                safeguards.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <h3>
+        Scope and Administration
+    </h3>
+
+
+    <p>
+
+        Chapter 1 addresses the scope and administration of the
+        Fire Code, including how the code is adopted, administered,
+        interpreted, and enforced.
+
+    </p>
+
+
+    <p>
+
+        The broader California Fire Code establishes requirements
+        relating to fire and explosion hazards, hazardous conditions,
+        fire protection systems, and the safety of firefighters and
+        emergency responders.
+
+    </p>
+
+
+    <div class="code-reference">
+
+        <div class="label">
+            Reference
+        </div>
+
+        <h4>
+            2022 Los Angeles County Fire Code
+        </h4>
+
+        <p>
+            Chapter 1 — Scope and Administration
+        </p>
+
+    </div>
+
+
+    <h3>
+        Code Compliance
+    </h3>
+
+
+    <p>
+
+        Property owners, businesses, contractors, and other
+        responsible parties should review applicable Fire Code
+        requirements before beginning construction, alterations,
+        operations, or activities that may affect fire or life
+        safety.
+
+    </p>
+
+
+    <ul>
+
+        <li>
+            Maintain required fire and life-safety systems.
+        </li>
+
+        <li>
+            Maintain required emergency access for fire apparatus.
+        </li>
+
+        <li>
+            Follow applicable requirements for hazardous materials
+            and hazardous operations.
+        </li>
+
+        <li>
+            Maintain required exits, fire protection equipment,
+            and emergency systems.
+        </li>
+
+        <li>
+            Comply with applicable inspection, permit, and
+            enforcement requirements.
+        </li>
+
+    </ul>
+
+
+    <div class="notice">
+
+        <strong>
+            Important
+        </strong>
+
+        This page provides a general reference only and does not
+        reproduce the complete Fire Code. For the exact language,
+        requirements, exceptions, amendments, and definitions,
+        consult the complete code.
+
+    </div>
+
+
+    <h3>
+        View the Complete Fire Code
+    </h3>
+
+
+    <p>
+
+        The complete Los Angeles County 2022 Fire Code can be
+        accessed through the external code reference below.
+
+    </p>
+
+
+    <div class="button-row">
+
+        <a
+            href="https://up.codes/viewer/los-angeles-county/ca-fire-code-2022/chapter/1/scope-and-administration#1"
+            class="button"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            VIEW FIRE CODE
+        </a>
+
+        <a
+            href="index.html"
+            class="button secondary"
+        >
+            RETURN TO HOME
+        </a>
+
+    </div>
+
+</div>
+
+
+</main>
+
+<!-- ================================
+     FOOTER
+================================= -->
+
+<footer>
+
+
+© 2026 Los Angeles Fire Department — FiveM Roleplay
+
+
+</footer>
+
+</body>
+
+</html>
