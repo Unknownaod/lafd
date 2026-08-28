@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Send Alert | LAFD</title>
+
+<link rel="icon" type="image/png" href="./lafd-logo.png">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    color: #222;
+}
+
+.city-bar {
+    min-height: 38px;
+    background: #eee;
+    border-bottom: 1px solid #d5d5d5;
+    display: flex;
+    align-items: center;
+    padding: 0 55px;
+    font-size: 12px;
+    color: #444;
+}
+
+.city-bar img {
+    width: 22px;
+    height: 22px;
+    margin-right: 9px;
+}
+
+.city-bar span {
+    font-weight: 600;
+}
+
+header {
+    min-height: 82px;
+    background: #b5121b;
+    display: flex;
+    align-items: center;
+    padding: 0 55px;
+    color: white;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.lafd-logo {
+    width: 54px;
+    height: 54px;
+    background: white;
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.city-logo {
+    width: 47px;
+    height: 47px;
+}
+
+.logo-divider {
+    width: 1px;
+    height: 44px;
+    background: rgba(255,255,255,.45);
+}
+
+.brand-text h1 {
+    font-size: 19px;
+}
+
+.brand-text p {
+    font-size: 11px;
+    margin-top: 3px;
+    color: #eee;
+}
+
+nav {
+    margin-left: auto;
+    display: flex;
+    gap: 27px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.page-header {
+    background: #222;
+    color: white;
+    padding: 30px 55px;
+}
+
+.page-header-inner {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.page-header h2 {
+    font-size: 26px;
+}
+
+.page-header p {
+    color: #ccc;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 35px 25px 70px;
+}
+
+.form-box {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 30px;
+}
+
+.form-box h2 {
+    font-size: 22px;
+}
+
+.red-line {
+    width: 50px;
+    height: 4px;
+    background: #b5121b;
+    margin: 10px 0 25px;
+}
+
+.notice {
+    background: #fff8e5;
+    border: 1px solid #ead9a5;
+    border-left: 5px solid #d59b00;
+    padding: 16px;
+    color: #665522;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.notice strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #554400;
+}
+
+.form-section {
+    margin-top: 25px;
+}
+
+.form-section h3 {
+    font-size: 16px;
+    border-bottom: 2px solid #b5121b;
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+label {
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+.required {
+    color: #b5121b;
+}
+
+input,
+select,
+textarea {
+    border: 1px solid #ccc;
+    padding: 11px;
+    font-size: 12px;
+    outline: none;
+    background: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #b5121b;
+}
+
+textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.submit-area {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+}
+
+.submit {
+    background: #b5121b;
+    color: white;
+    border: none;
+    padding: 13px 24px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background: #951019;
+}
+
+.submit:disabled {
+    background: #888;
+    cursor: not-allowed;
+}
+
+.cancel {
+    background: #333;
+    color: white;
+    text-decoration: none;
+    padding: 13px 24px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.status {
+    display: none;
+    margin-top: 20px;
+    padding: 14px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.status.success {
+    display: block;
+    background: #edf7ed;
+    border: 1px solid #b7d8b7;
+    color: #315c31;
+}
+
+.status.error {
+    display: block;
+    background: #fbecec;
+    border: 1px solid #e0b0b0;
+    color: #7a2222;
+}
+
+footer {
+    background: #111;
+    color: #999;
+    text-align: center;
+    padding: 27px;
+    font-size: 11px;
+}
+
+footer strong {
+    color: #ddd;
+}
+
+@media(max-width:750px) {
+
+    .city-bar {
+        padding: 0 20px;
+    }
+
+    header {
+        padding: 15px 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .page-header {
+        padding: 25px 20px;
+    }
+
+    .form-box {
+        padding: 22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="city-bar">
+
+    <img src="la-city-logo.png" alt="City of Los Angeles">
+
+    <span>
+        An official website of the City of Los Angeles
+    </span>
+
+</div>
+
+
+<header>
+
+    <div class="brand">
+
+        <img
+            src="lafd-logo.png"
+            class="lafd-logo"
+            alt="LAFD"
+        >
+
+        <div class="logo-divider"></div>
+
+        <img
+            src="la-city-logo.png"
+            class="city-logo"
+            alt="City of Los Angeles"
+        >
+
+        <div class="brand-text">
+
+            <h1>
+                Los Angeles Fire Department
+            </h1>
+
+            <p>
+                City of Los Angeles
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="alerts.html">
+            Alerts
+        </a>
+
+    </nav>
+
+</header>
+
+
+<section class="page-header">
+
+    <div class="page-header-inner">
+
+        <h2>
+            Send Emergency Alert
+        </h2>
+
+        <p>
+            LAFD Emergency Alert Management
+        </p>
+
+    </div>
+
+</section>
+
+
+<main class="container">
+
+    <form
+        id="alertForm"
+        class="form-box"
+    >
+
+        <h2>
+            Create Alert
+        </h2>
+
+        <div class="red-line"></div>
+
+
+        <div class="notice">
+
+            <strong>
+                Authorized Use Only
+            </strong>
+
+            This page is intended for authorized LAFD
+            personnel. Alerts submitted here may be
+            distributed to registered alert subscribers.
+
+        </div>
+
+
+        <div class="form-section">
+
+            <h3>
+                Alert Information
+            </h3>
+
+
+            <div class="form-group">
+
+                <label>
+                    Alert Subject
+                    <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="subject"
+                    maxlength="150"
+                    placeholder="Example: Brush Fire Advisory"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Alert Message
+                    <span class="required">*</span>
+                </label>
+
+                <textarea
+                    id="message"
+                    maxlength="5000"
+                    placeholder="Enter the alert message..."
+                    required
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="status"
+            class="status"
+        ></div>
+
+
+        <div class="submit-area">
+
+            <button
+                type="submit"
+                id="submitButton"
+                class="submit"
+            >
+                SEND ALERT
+            </button>
+
+            <a
+                href="alerts.html"
+                class="cancel"
+            >
+                CANCEL
+            </a>
+
+        </div>
+
+    </form>
+
+</main>
+
+
+<footer>
+
+    <strong>
+        Los Angeles Fire Department
+    </strong>
+
+    <br><br>
+
+    Emergency Alert System
+
+    <br>
+
+    © 2026 Los Angeles Fire Department — FiveM Roleplay
+
+</footer>
+
+
+<script>
+
+const form = document.getElementById("alertForm");
+
+const subjectInput =
+    document.getElementById("subject");
+
+const messageInput =
+    document.getElementById("message");
+
+const statusBox =
+    document.getElementById("status");
+
+const submitButton =
+    document.getElementById("submitButton");
+
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+
+    const subject =
+        subjectInput.value.trim();
+
+    const message =
+        messageInput.value.trim();
+
+
+    if (!subject || !message) {
+
+        showStatus(
+            "Please enter an alert subject and message.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    submitButton.disabled = true;
+
+    submitButton.textContent =
+        "SENDING...";
+
+    hideStatus();
+
+
+    try {
+
+        const response = await fetch(
+            "/api/alerts/send",
+            {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    subject: subject,
+
+                    message: message
+
+                })
+
+            }
+        );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok || !data.success) {
+
+            throw new Error(
+                data.message ||
+                "Unable to send alert."
+            );
+
+        }
+
+
+        showStatus(
+            "Alert sent successfully.",
+            "success"
+        );
+
+
+        form.reset();
+
+
+    } catch (error) {
+
+        console.error(
+            "Alert submission error:",
+            error
+        );
+
+
+        showStatus(
+            error.message ||
+            "An unexpected error occurred.",
+            "error"
+        );
+
+    } finally {
+
+        submitButton.disabled = false;
+
+        submitButton.textContent =
+            "SEND ALERT";
+
+    }
+
+});
+
+
+function showStatus(message, type) {
+
+    statusBox.textContent = message;
+
+    statusBox.className =
+        "status " + type;
+
+}
+
+
+function hideStatus() {
+
+    statusBox.textContent = "";
+
+    statusBox.className =
+        "status";
+
+}
+
+</script>
+
+</body>
+
+</html>
