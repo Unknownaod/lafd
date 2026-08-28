@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Fire Records & CPRA Request | Los Angeles Fire Department</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        /* ================================
+           CITY GOVERNMENT BAR
+        ================================= */
+
+        .city-bar {
+            background: #eeeeee;
+            border-bottom: 1px solid #d5d5d5;
+            min-height: 38px;
+            display: flex;
+            align-items: center;
+            padding: 0 55px;
+            font-size: 12px;
+            color: #444;
+        }
+
+        .city-bar span {
+            font-weight: 600;
+        }
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        header {
+            background: #b5121b;
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            padding: 0 55px;
+            color: white;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lafd-logo {
+            width: 54px;
+            height: 54px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 3px;
+        }
+
+        .city-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .logo-divider {
+            width: 1px;
+            height: 45px;
+            background: rgba(255,255,255,.45);
+            margin: 0 3px;
+        }
+
+        .brand-text h1 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .brand-text p {
+            font-size: 11px;
+            margin-top: 3px;
+            color: #eee;
+        }
+
+        nav {
+            margin-left: auto;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* ================================
+           PAGE HEADER
+        ================================= */
+
+        .page-header {
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.68),
+                    rgba(0,0,0,.68)
+                ),
+                url("https://media.discordapp.net/attachments/1394469502061772811/1397741145932697630/Screenshot_2025-07-23_193808.png?ex=6a9182a1&is=6a903121&hm=caf47823a2dc8854e047d875ce7096889dc503df09235f35c02ccd2ee73e9ba2&=&format=webp&quality=lossless")
+                center/cover;
+
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .page-header h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: #ddd;
+            font-size: 15px;
+        }
+
+        /* ================================
+           MAIN
+        ================================= */
+
+        .container {
+            max-width: 1050px;
+            margin: auto;
+            padding: 45px 25px 70px;
+        }
+
+        .intro-box {
+            background: white;
+            border: 1px solid #ddd;
+            border-left: 5px solid #b5121b;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .intro-box h2 {
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        .intro-box p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* ================================
+           RECORD SECTIONS
+        ================================= */
+
+        .record-section {
+            background: white;
+            border: 1px solid #ddd;
+            margin-bottom: 22px;
+            padding: 28px;
+            box-shadow: 0 2px 7px rgba(0,0,0,.05);
+        }
+
+        .record-section h2 {
+            font-size: 21px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #b5121b;
+        }
+
+        .record-section h3 {
+            font-size: 15px;
+            margin-top: 22px;
+            margin-bottom: 8px;
+        }
+
+        .record-section p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .record-section ul {
+            padding-left: 22px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        /* ================================
+           FEE BOX
+        ================================= */
+
+        .fee {
+            display: inline-block;
+            background: #f7f7f7;
+            border: 1px solid #ddd;
+            border-left: 4px solid #b5121b;
+            padding: 13px 17px;
+            margin: 8px 0 15px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* ================================
+           NOTICE
+        ================================= */
+
+        .notice {
+            background: #fff8e5;
+            border: 1px solid #ead9a5;
+            padding: 15px;
+            color: #665522;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+
+        .important {
+            background: #fbe7e7;
+            border: 1px solid #edbcbc;
+            border-left: 4px solid #b5121b;
+            padding: 15px;
+            color: #7b2222;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+
+        /* ================================
+           LINKS / BUTTONS
+        ================================= */
+
+        .button {
+            display: inline-block;
+            background: #b5121b;
+            color: white;
+            text-decoration: none;
+            padding: 12px 19px;
+            margin-top: 5px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #951019;
+        }
+
+        .secondary-button {
+            display: inline-block;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            padding: 12px 19px;
+            margin-top: 5px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .secondary-button:hover {
+            background: #222;
+        }
+
+        /* ================================
+           REQUEST INFORMATION
+        ================================= */
+
+        .request-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 18px;
+        }
+
+        .request-item {
+            background: #f7f7f7;
+            border: 1px solid #ddd;
+            padding: 17px;
+        }
+
+        .request-item strong {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #777;
+            margin-bottom: 6px;
+        }
+
+        .request-item span {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+            font-size: 12px;
+        }
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 750px) {
+
+            .city-bar {
+                padding: 0 20px;
+            }
+
+            header {
+                padding: 15px 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .brand-text h1 {
+                font-size: 16px;
+            }
+
+            .brand-text p {
+                font-size: 10px;
+            }
+
+            .lafd-logo {
+                width: 46px;
+                height: 46px;
+            }
+
+            .city-logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo-divider {
+                height: 35px;
+            }
+
+            .page-header h2 {
+                font-size: 30px;
+            }
+
+            .request-list {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 30px 18px 50px;
+            }
+
+            .record-section {
+                padding: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================================
+     CITY GOVERNMENT BAR
+================================= -->
+
+<div class="city-bar">
+
+    <span>
+        An official website of the City of Los Angeles
+    </span>
+
+</div>
+
+
+<!-- ================================
+     HEADER
+================================= -->
+
+<header>
+
+    <div class="brand">
+
+        <img
+            src="lafd-logo.png"
+            alt="Los Angeles Fire Department"
+            class="lafd-logo"
+        >
+
+        <div class="logo-divider"></div>
+
+        <img
+            src="la-city-logo.png"
+            alt="City of Los Angeles"
+            class="city-logo"
+        >
+
+        <div class="brand-text">
+
+            <h1>
+                Los Angeles Fire Department
+            </h1>
+
+            <p>
+                City of Los Angeles
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="stations.html">
+            Stations
+        </a>
+
+        <a href="careers.html">
+            Careers
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- ================================
+     PAGE HEADER
+================================= -->
+
+<section class="page-header">
+
+    <div>
+
+        <h2>
+            Fire Records & CPRA Request
+        </h2>
+
+        <p>
+            Information regarding fire incident records and public records requests
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     MAIN CONTENT
+================================= -->
+
+<main class="container">
+
+
+    <div class="intro-box">
+
+        <h2>
+            Fire Records & Document Requests
+        </h2>
+
+        <p>
+            The Los Angeles Fire Department Records Unit processes requests
+            for fire incident reports, subpoenas, personal appearances and
+            California Public Records Act requests. Review the information
+            below to determine the appropriate request type and submission
+            process.
+        </p>
+
+    </div>
+
+
+    <!-- ================================
+         FIRE INCIDENT REPORTS
+    ================================= -->
+
+    <section class="record-section">
+
+        <h2>
+            Fire Incident Reports
+        </h2>
+
+        <p>
+            Fire incident reports may be requested for qualifying incidents.
+            Medical and Emergency Medical Services records are handled through
+            separate procedures.
+        </p>
+
+        <div class="fee">
+            Report Processing Fee: $5.50 per report
+        </div>
+
+        <h3>
+            Electronic Requests
+        </h3>
+
+        <p>
+            Submit a fire incident report request electronically through the
+            designated Fire Records Request Portal.
+        </p>
+
+        <a
+            href="#"
+            class="button"
+        >
+            FIRE RECORDS REQUEST PORTAL
+        </a>
+
+        <div class="notice">
+            Medical and EMS records are excluded from standard fire incident
+            report requests and may require a separate records process.
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         RECORD SUBPOENAS
+    ================================= -->
+
+    <section class="record-section">
+
+        <h2>
+            Record Subpoenas & Personal Appearances
+        </h2>
+
+        <p>
+            Requests involving subpoenas, witness appearances and official
+            records must identify the nature of the legal proceeding and the
+            records or appearance being requested.
+        </p>
+
+        <h3>
+            Criminal or Juvenile Cases
+        </h3>
+
+        <div class="fee">
+            No Fee
+        </div>
+
+        <p>
+            Requests involving criminal or juvenile matters may be submitted
+            through the designated records process.
+        </p>
+
+        <h3>
+            Civil Cases
+        </h3>
+
+        <div class="fee">
+            $275.00 Government Code § 68096.1(b)
+        </div>
+
+        <p>
+            Civil personal appearance requests are subject to applicable
+            statutory requirements and departmental review.
+        </p>
+
+        <h3>
+            Government Agencies
+        </h3>
+
+        <div class="fee">
+            No Fee
+        </div>
+
+        <p>
+            Requests submitted by qualifying government agencies should include
+            the requesting agency, case information and the specific records
+            or appearance requested.
+        </p>
+
+    </section>
+
+
+    <!-- ================================
+         LAFD RECORD SUBPOENAS
+    ================================= -->
+
+    <section class="record-section">
+
+        <h2>
+            Subpoenas for LAFD Records
+        </h2>
+
+        <p>
+            Records subpoenas may include requests for personnel, payroll,
+            Fire Prevention and Fire Investigation records.
+        </p>
+
+        <div class="fee">
+            $15.00 Deposit
+        </div>
+
+        <div class="notice">
+            Medical and EMS records are excluded from this request category.
+            Additional requirements may apply depending on the type of record
+            requested.
+        </div>
+
+        <a
+            href="#"
+            class="button"
+        >
+            SUBMIT RECORDS REQUEST
+        </a>
+
+    </section>
+
+
+    <!-- ================================
+         ARSON REPORTS
+    ================================= -->
+
+    <section class="record-section">
+
+        <h2>
+            Arson Investigation Reports
+        </h2>
+
+        <p>
+            Arson Investigation Reports may only be released after the
+            investigation has been closed and the report has been reviewed
+            and approved for release by the appropriate investigative unit.
+        </p>
+
+        <div class="important">
+            Requests for an active or restricted investigation may not be
+            eligible for release. Records are subject to applicable laws,
+            exemptions and departmental review.
+        </div>
+
+        <p>
+            Requests should identify the incident, case information and
+            records being sought so that the request can be properly reviewed.
+        </p>
+
+    </section>
+
+
+    <!-- ================================
+         MEDIA REQUESTS
+    ================================= -->
+
+    <section class="record-section">
+
+        <h2>
+            Media Requests
+        </h2>
+
+        <p>
+            Media requests concerning incidents, interviews, feature stories,
+            filming or other public information matters should be directed
+            through the Department's appropriate media and community relations
+            process.
+        </p>
+
+        <a
+            href="contact.html"
+            class="secondary-button"
+        >
+            MEDIA & CONTACT INFORMATION
+        </a>
+
+    </section>
+
+
+    <!-- ================================
+         CPRA
+    ================================= -->
+
+    <section class="record-section">
+
+        <h2>
+            California Public Records Act (CPRA) Requests
+        </h2>
+
+        <p>
+            The California Public Records Act provides the public with access
+            to qualifying government records, subject to applicable laws,
+            exemptions and privacy protections.
+        </p>
+
+        <h3>
+            Submit a CPRA Request
+        </h3>
+
+        <p>
+            CPRA requests should clearly describe the records being requested
+            and provide enough information for the Department to identify the
+            responsive records.
+        </p>
+
+        <a
+            href="#"
+            class="button"
+        >
+            SUBMIT CPRA REQUEST
+        </a>
+
+        <h3>
+            Examples of CPRA Requests
+        </h3>
+
+        <ul>
+
+            <li>
+                Property assessment records
+            </li>
+
+            <li>
+                Underground storage tank records
+            </li>
+
+            <li>
+                Hazardous materials-related records
+            </li>
+
+            <li>
+                Other qualifying public records maintained by the Department
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- ================================
+         EMS RECORDS
+    ================================= -->
+
+    <section class="record-section">
+
+        <h2>
+            Emergency Medical Services (EMS) Records
+        </h2>
+
+        <p>
+            Medical and EMS-related records are handled separately from
+            standard fire incident reports. Requests for medical records may
+            be subject to additional privacy requirements and eligibility
+            restrictions.
+        </p>
+
+        <a
+            href="#"
+            class="secondary-button"
+        >
+            EMS RECORDS INFORMATION
+        </a>
+
+    </section>
+
+
+    <!-- ================================
+         REQUEST CHECKLIST
+    ================================= -->
+
+    <section class="record-section">
+
+        <h2>
+            Request Information
+        </h2>
+
+        <p>
+            To help ensure your request can be processed efficiently, include
+            as much of the following information as applicable.
+        </p>
+
+        <div class="request-list">
+
+            <div class="request-item">
+
+                <strong>
+                    Incident Information
+                </strong>
+
+                <span>
+                    Date, approximate time and location of the incident.
+                </span>
+
+            </div>
+
+
+            <div class="request-item">
+
+                <strong>
+                    Record Type
+                </strong>
+
+                <span>
+                    Clearly identify the report, document or record being requested.
+                </span>
+
+            </div>
+
+
+            <div class="request-item">
+
+                <strong>
+                    Case Information
+                </strong>
+
+                <span>
+                    Include a case, incident or reference number when available.
+                </span>
+
+            </div>
+
+
+            <div class="request-item">
+
+                <strong>
+                    Requester Information
+                </strong>
+
+                <span>
+                    Provide accurate contact and requester information when
+                    required for processing.
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         IMPORTANT INFORMATION
+    ================================= -->
+
+    <section class="record-section">
+
+        <h2>
+            Important Information
+        </h2>
+
+        <p>
+            Requests are reviewed under applicable federal, state and local
+            laws. Certain records may be withheld or redacted when disclosure
+            is restricted by law, privacy protections, active investigations
+            or other applicable exemptions.
+        </p>
+
+        <p>
+            Submission of a request does not guarantee that the requested
+            records will be available for release.
+        </p>
+
+        <div class="notice">
+            Please ensure that your request contains sufficient information
+            to identify the records being sought. Incomplete requests may
+            require additional clarification.
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- ================================
+     FOOTER
+================================= -->
+
+<footer>
+
+    © 2026 Los Angeles Fire Department — FiveM Roleplay
+
+</footer>
+
+
+</body>
+
+</html>
