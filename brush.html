@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Brush | Los Angeles Fire Department</title>
+
+<link
+    rel="icon"
+    type="image/png"
+    href="./lafd-logo.png"
+>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background: #f4f4f4;
+        color: #222;
+    }
+
+    /* ================================
+       CITY GOVERNMENT BAR
+    ================================= */
+
+    .city-bar {
+        background: #eeeeee;
+        border-bottom: 1px solid #d5d5d5;
+        min-height: 38px;
+        display: flex;
+        align-items: center;
+        padding: 0 55px;
+        font-size: 12px;
+        color: #444;
+    }
+
+    .city-bar-logo {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+        margin-right: 9px;
+    }
+
+    .city-bar span {
+        font-weight: 600;
+    }
+
+    /* ================================
+       HEADER
+    ================================= */
+
+    header {
+        background: #b5121b;
+        min-height: 82px;
+        display: flex;
+        align-items: center;
+        padding: 0 55px;
+        color: white;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .lafd-logo {
+        width: 54px;
+        height: 54px;
+        object-fit: contain;
+        background: white;
+        border-radius: 50%;
+        padding: 3px;
+    }
+
+    .city-logo {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+    }
+
+    .logo-divider {
+        width: 1px;
+        height: 45px;
+        background: rgba(255,255,255,.45);
+        margin: 0 3px;
+    }
+
+    .brand-text h1 {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: .3px;
+    }
+
+    .brand-text p {
+        font-size: 11px;
+        margin-top: 3px;
+        color: #eee;
+    }
+
+    nav {
+        margin-left: auto;
+        display: flex;
+        gap: 30px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    /* ================================
+       PAGE HEADER
+    ================================= */
+
+    .page-header {
+        background:
+            linear-gradient(
+                rgba(0,0,0,.68),
+                rgba(0,0,0,.68)
+            ),
+            url("https://media.discordapp.net/attachments/1394469502061772811/1397741145932697630/Screenshot_2025-07-23_193808.png?ex=6a9182a1&is=6a903121&hm=caf47823a2dc8854e047d875ce7096889dc503df09235f35c02ccd2ee73e9ba2&=&format=webp&quality=lossless")
+            center/cover;
+
+        min-height: 280px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+        color: white;
+    }
+
+    .page-header h2 {
+        font-size: 44px;
+        margin-bottom: 10px;
+    }
+
+    .page-header p {
+        color: #ddd;
+        font-size: 15px;
+    }
+
+    /* ================================
+       MAIN
+    ================================= */
+
+    .container {
+        max-width: 1050px;
+        margin: auto;
+        padding: 45px 25px 70px;
+    }
+
+    .content {
+        background: white;
+        border: 1px solid #ddd;
+        padding: 35px;
+    }
+
+    .content h2 {
+        font-size: 27px;
+        margin-bottom: 10px;
+    }
+
+    .red-line {
+        width: 55px;
+        height: 4px;
+        background: #b5121b;
+        margin-bottom: 25px;
+    }
+
+    .content p {
+        color: #555;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 22px;
+    }
+
+    .content h3 {
+        font-size: 19px;
+        margin-top: 32px;
+        margin-bottom: 12px;
+        padding-bottom: 9px;
+        border-bottom: 2px solid #b5121b;
+    }
+
+    .content ul {
+        padding-left: 22px;
+        color: #555;
+        font-size: 14px;
+        line-height: 1.9;
+        margin-bottom: 20px;
+    }
+
+    /* ================================
+       NOTICE
+    ================================= */
+
+    .notice {
+        background: #fff8e5;
+        border: 1px solid #ead9a5;
+        border-left: 5px solid #d59b00;
+        padding: 18px;
+        margin: 25px 0;
+        color: #665522;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .notice strong {
+        display: block;
+        color: #554400;
+        margin-bottom: 5px;
+    }
+
+    /* ================================
+       INFO GRID
+    ================================= */
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .info-card {
+        border: 1px solid #ddd;
+        background: #f8f8f8;
+        padding: 20px;
+    }
+
+    .info-card h4 {
+        font-size: 14px;
+        margin-bottom: 8px;
+        color: #333;
+    }
+
+    .info-card p {
+        font-size: 12px;
+        line-height: 1.6;
+        margin: 0;
+        color: #666;
+    }
+
+    /* ================================
+       REQUIREMENTS
+    ================================= */
+
+    .requirements {
+        margin-top: 20px;
+    }
+
+    .requirement {
+        display: flex;
+        gap: 15px;
+        padding: 17px;
+        border: 1px solid #ddd;
+        border-bottom: none;
+        background: #fafafa;
+    }
+
+    .requirement:last-child {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .requirement-number {
+        min-width: 30px;
+        height: 30px;
+        background: #b5121b;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .requirement-text {
+        color: #555;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .requirement-text strong {
+        display: block;
+        color: #333;
+        margin-bottom: 3px;
+    }
+
+    /* ================================
+       CONTACT
+    ================================= */
+
+    .contact-box {
+        background: #f5f5f5;
+        border: 1px solid #ddd;
+        border-left: 5px solid #b5121b;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .contact-box h4 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .contact-box p {
+        margin-bottom: 7px;
+        font-size: 13px;
+    }
+
+    /* ================================
+       BUTTONS
+    ================================= */
+
+    .button-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 25px;
+    }
+
+    .button {
+        display: inline-block;
+        background: #b5121b;
+        color: white;
+        text-decoration: none;
+        padding: 13px 20px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .button:hover {
+        background: #951019;
+    }
+
+    .button.secondary {
+        background: #333;
+    }
+
+    .button.secondary:hover {
+        background: #222;
+    }
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    footer {
+        background: #111;
+        color: #aaa;
+        text-align: center;
+        padding: 25px;
+        font-size: 12px;
+    }
+
+    /* ================================
+       MOBILE
+    ================================= */
+
+    @media (max-width: 750px) {
+
+        .city-bar {
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 15px 20px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .brand-text h1 {
+            font-size: 16px;
+        }
+
+        .brand-text p {
+            font-size: 10px;
+        }
+
+        .lafd-logo {
+            width: 46px;
+            height: 46px;
+        }
+
+        .city-logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-divider {
+            height: 35px;
+        }
+
+        .page-header h2 {
+            font-size: 34px;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .requirement {
+            align-items: flex-start;
+        }
+
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+<!-- ================================
+     CITY GOVERNMENT BAR
+================================= -->
+
+<div class="city-bar">
+
+
+<img
+    src="la-city-logo.png"
+    alt="City of Los Angeles"
+    class="city-bar-logo"
+>
+
+<span>
+    An official website of the City of Los Angeles
+</span>
+
+
+</div>
+
+<!-- ================================
+     HEADER
+================================= -->
+
+<header>
+
+
+<div class="brand">
+
+    <img
+        src="lafd-logo.png"
+        alt="Los Angeles Fire Department"
+        class="lafd-logo"
+    >
+
+    <div class="logo-divider"></div>
+
+    <img
+        src="la-city-logo.png"
+        alt="City of Los Angeles"
+        class="city-logo"
+    >
+
+    <div class="brand-text">
+
+        <h1>
+            Los Angeles Fire Department
+        </h1>
+
+        <p>
+            City of Los Angeles
+        </p>
+
+    </div>
+
+</div>
+
+
+<nav>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="about.html">
+        About
+    </a>
+
+    <a href="stations.html">
+        Stations
+    </a>
+
+    <a href="careers.html">
+        Careers
+    </a>
+
+    <a href="my-applications.html">
+        My Applications
+    </a>
+
+</nav>
+
+
+</header>
+
+<!-- ================================
+     PAGE HEADER
+================================= -->
+
+<section class="page-header">
+
+
+<div>
+
+    <h2>
+        Brush
+    </h2>
+
+    <p>
+        Brush clearance and wildfire prevention
+    </p>
+
+</div>
+
+
+</section>
+
+<!-- ================================
+     MAIN CONTENT
+================================= -->
+
+<main class="container">
+
+
+<div class="content">
+
+    <h2>
+        Brush Clearance
+    </h2>
+
+    <div class="red-line"></div>
+
+
+    <p>
+
+        The Los Angeles Fire Department maintains a comprehensive
+        brush clearance program designed to protect lives and
+        property in the hillside communities of Los Angeles.
+
+    </p>
+
+
+    <p>
+
+        Proper vegetation management helps reduce the threat of
+        wildfire and provides firefighters with a better opportunity
+        to defend homes and structures when a brush fire occurs.
+
+    </p>
+
+
+    <div class="notice">
+
+        <strong>
+            Vegetation Management Is a Year-Round Responsibility
+        </strong>
+
+        Property owners in designated fire hazard areas are
+        responsible for maintaining required brush clearance
+        throughout the year. Clear early and clear often.
+
+    </div>
+
+
+    <h3>
+        Brush Clearance Requirements
+    </h3>
+
+
+    <p>
+
+        Properties located within the Very High Fire Hazard Severity
+        Zone may be subject to specific brush clearance requirements.
+        These requirements are intended to reduce combustible
+        vegetation and improve defensible space around structures.
+
+    </p>
+
+
+    <div class="requirements">
+
+
+        <div class="requirement">
+
+            <div class="requirement-number">
+                1
+            </div>
+
+            <div class="requirement-text">
+
+                <strong>
+                    Maintain Clearance Around Structures
+                </strong>
+
+                Maintain required clearance around structures,
+                buildings, roadways, driveways, and combustible
+                fences as required by applicable fire regulations.
+
+            </div>
+
+        </div>
+
+
+        <div class="requirement">
+
+            <div class="requirement-number">
+                2
+            </div>
+
+            <div class="requirement-text">
+
+                <strong>
+                    Maintain Grass and Brush
+                </strong>
+
+                Grass, native brush, weeds, and other hazardous
+                vegetation must be maintained in accordance with
+                applicable clearance requirements.
+
+            </div>
+
+        </div>
+
+
+        <div class="requirement">
+
+            <div class="requirement-number">
+                3
+            </div>
+
+            <div class="requirement-text">
+
+                <strong>
+                    Maintain Trees
+                </strong>
+
+                Trees and shrubs must be properly maintained,
+                including removal of dead material and appropriate
+                trimming of lower branches.
+
+            </div>
+
+        </div>
+
+
+        <div class="requirement">
+
+            <div class="requirement-number">
+                4
+            </div>
+
+            <div class="requirement-text">
+
+                <strong>
+                    Keep Roofs Clear
+                </strong>
+
+                Roof surfaces should be maintained free of substantial
+                accumulations of leaves, needles, twigs, and other
+                combustible materials.
+
+            </div>
+
+        </div>
+
+
+        <div class="requirement">
+
+            <div class="requirement-number">
+                5
+            </div>
+
+            <div class="requirement-text">
+
+                <strong>
+                    Remove Cut Vegetation
+                </strong>
+
+                Cut vegetation and debris must be properly removed
+                or processed and stored in accordance with applicable
+                requirements.
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <h3>
+        Very High Fire Hazard Severity Zone
+    </h3>
+
+
+    <p>
+
+        The Very High Fire Hazard Severity Zone (VHFHSZ) includes
+        areas where vegetation, terrain, weather, and other factors
+        can contribute to an increased wildfire threat.
+
+    </p>
+
+
+    <p>
+
+        Property owners within these areas should understand their
+        clearance responsibilities and maintain their property in
+        compliance with applicable Los Angeles fire regulations.
+
+    </p>
+
+
+    <div class="info-grid">
+
+
+        <div class="info-card">
+
+            <h4>
+                Brush Clearance
+            </h4>
+
+            <p>
+
+                Maintain vegetation and combustible materials
+                around structures to help create defensible space.
+
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h4>
+                Property Inspections
+            </h4>
+
+            <p>
+
+                Properties may be inspected to determine whether
+                required brush clearance has been completed.
+
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h4>
+                Fire Prevention
+            </h4>
+
+            <p>
+
+                Proper vegetation management helps firefighters
+                protect homes and communities during wildfires.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <h3>
+        Brush Clearance Safety
+    </h3>
+
+
+    <p>
+
+        Brush clearance operations can accidentally start fires,
+        particularly when motorized equipment produces sparks or
+        contacts dry vegetation. Residents should use appropriate
+        precautions when performing clearance work.
+
+    </p>
+
+
+    <ul>
+
+        <li>
+            Keep a water source or appropriate fire extinguisher
+            readily available.
+        </li>
+
+        <li>
+            Avoid performing brush clearance during peak heat
+            conditions or when Red Flag conditions are in effect.
+        </li>
+
+        <li>
+            Use properly maintained equipment.
+        </li>
+
+        <li>
+            Keep hot equipment exhaust away from dry vegetation.
+        </li>
+
+        <li>
+            Never refuel equipment while the engine is running.
+        </li>
+
+        <li>
+            Wear appropriate protective equipment, including
+            safety glasses and gloves.
+        </li>
+
+    </ul>
+
+
+    <h3>
+        Check Your Property
+    </h3>
+
+
+    <p>
+
+        Property owners can check brush clearance information for
+        their parcel and review available inspection information
+        through the LAFD's property management systems.
+
+    </p>
+
+
+    <div class="button-row">
+
+        <a
+            href="#"
+            class="button"
+            onclick="alert('Property status portal for FiveM roleplay.'); return false;"
+        >
+            CHECK PROPERTY STATUS
+        </a>
+
+        <a
+            href="#"
+            class="button secondary"
+            onclick="alert('Brush clearance requirements for FiveM roleplay.'); return false;"
+        >
+            CLEARANCE REQUIREMENTS
+        </a>
+
+    </div>
+
+
+    <h3>
+        Report a Brush Hazard
+    </h3>
+
+
+    <p>
+
+        If you observe hazardous vegetation or conditions that may
+        create a fire danger, residents should report the concern
+        through the appropriate City of Los Angeles channels.
+
+    </p>
+
+
+    <div class="contact-box">
+
+        <h4>
+            LAFD Brush Clearance Unit
+        </h4>
+
+        <p>
+            <strong>Phone:</strong> (800) 994-4444
+        </p>
+
+        <p>
+            <strong>Hours:</strong> 8:00 a.m. – 3:00 p.m.
+        </p>
+
+        <p>
+            <strong>Email:</strong> lafdbrush@lacity.org
+        </p>
+
+    </div>
+
+
+    <div class="notice">
+
+        <strong>
+            Emergency?
+        </strong>
+
+        If you see a fire or an immediate threat to life or property,
+        call 9-1-1.
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="button"
+    >
+        RETURN TO HOME
+    </a>
+
+</div>
+
+
+</main>
+
+<!-- ================================
+     FOOTER
+================================= -->
+
+<footer>
+
+
+© 2026 Los Angeles Fire Department — FiveM Roleplay
+
+
+</footer>
+
+</body>
+
+</html>
