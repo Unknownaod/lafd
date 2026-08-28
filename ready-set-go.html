@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Ready, Set, Go! | Los Angeles Fire Department</title>
+
+<link
+    rel="icon"
+    type="image/png"
+    href="./lafd-logo.png"
+>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background: #f4f4f4;
+        color: #222;
+    }
+
+    /* ================================
+       CITY GOVERNMENT BAR
+    ================================= */
+
+    .city-bar {
+        background: #eeeeee;
+        border-bottom: 1px solid #d5d5d5;
+        min-height: 38px;
+        display: flex;
+        align-items: center;
+        padding: 0 55px;
+        font-size: 12px;
+        color: #444;
+    }
+
+    .city-bar-logo {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+        margin-right: 9px;
+    }
+
+    .city-bar span {
+        font-weight: 600;
+    }
+
+    /* ================================
+       HEADER
+    ================================= */
+
+    header {
+        background: #b5121b;
+        min-height: 82px;
+        display: flex;
+        align-items: center;
+        padding: 0 55px;
+        color: white;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .lafd-logo {
+        width: 54px;
+        height: 54px;
+        object-fit: contain;
+        background: white;
+        border-radius: 50%;
+        padding: 3px;
+    }
+
+    .city-logo {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+    }
+
+    .logo-divider {
+        width: 1px;
+        height: 45px;
+        background: rgba(255,255,255,.45);
+        margin: 0 3px;
+    }
+
+    .brand-text h1 {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: .3px;
+    }
+
+    .brand-text p {
+        font-size: 11px;
+        margin-top: 3px;
+        color: #eee;
+    }
+
+    nav {
+        margin-left: auto;
+        display: flex;
+        gap: 30px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    /* ================================
+       PAGE HEADER
+    ================================= */
+
+    .page-header {
+        background:
+            linear-gradient(
+                rgba(0,0,0,.68),
+                rgba(0,0,0,.68)
+            ),
+            url("https://media.discordapp.net/attachments/1394469502061772811/1397741145932697630/Screenshot_2025-07-23_193808.png?ex=6a9182a1&is=6a903121&hm=caf47823a2dc8854e047d875ce7096889dc503df09235f35c02ccd2ee73e9ba2&=&format=webp&quality=lossless")
+            center/cover;
+
+        min-height: 300px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+        color: white;
+    }
+
+    .page-header h2 {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    .page-header p {
+        color: #ddd;
+        font-size: 15px;
+    }
+
+    /* ================================
+       MAIN
+    ================================= */
+
+    .container {
+        max-width: 1050px;
+        margin: auto;
+        padding: 45px 25px 70px;
+    }
+
+    .content {
+        background: white;
+        border: 1px solid #ddd;
+        padding: 35px;
+    }
+
+    .content h2 {
+        font-size: 27px;
+        margin-bottom: 10px;
+    }
+
+    .red-line {
+        width: 55px;
+        height: 4px;
+        background: #b5121b;
+        margin-bottom: 25px;
+    }
+
+    .content p {
+        color: #555;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 22px;
+    }
+
+    .content h3 {
+        font-size: 19px;
+        margin-top: 30px;
+        margin-bottom: 12px;
+        padding-bottom: 9px;
+        border-bottom: 2px solid #b5121b;
+    }
+
+    .content ul {
+        padding-left: 22px;
+        color: #555;
+        font-size: 14px;
+        line-height: 1.9;
+        margin-bottom: 20px;
+    }
+
+    /* ================================
+       READY SET GO STEPS
+    ================================= */
+
+    .steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin: 30px 0;
+    }
+
+    .step {
+        border: 1px solid #ddd;
+        background: #f8f8f8;
+        padding: 25px 20px;
+        position: relative;
+    }
+
+    .step-number {
+        width: 42px;
+        height: 42px;
+        background: #b5121b;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .step h4 {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .step p {
+        font-size: 13px;
+        line-height: 1.7;
+        margin: 0;
+        color: #666;
+    }
+
+    /* ================================
+       NOTICE
+    ================================= */
+
+    .notice {
+        background: #fff8e5;
+        border: 1px solid #ead9a5;
+        border-left: 5px solid #d59b00;
+        padding: 18px;
+        margin: 25px 0;
+        color: #665522;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .notice strong {
+        display: block;
+        color: #554400;
+        margin-bottom: 5px;
+    }
+
+    /* ================================
+       CHECKLIST
+    ================================= */
+
+    .checklist {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .check-item {
+        border: 1px solid #ddd;
+        background: #f8f8f8;
+        padding: 15px;
+        font-size: 13px;
+        color: #555;
+    }
+
+    .check-item strong {
+        display: block;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    /* ================================
+       BUTTON
+    ================================= */
+
+    .back-button {
+        display: inline-block;
+        margin-top: 20px;
+        background: #b5121b;
+        color: white;
+        text-decoration: none;
+        padding: 13px 22px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .back-button:hover {
+        background: #951019;
+    }
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    footer {
+        background: #111;
+        color: #aaa;
+        text-align: center;
+        padding: 25px;
+        font-size: 12px;
+    }
+
+    /* ================================
+       MOBILE
+    ================================= */
+
+    @media (max-width: 750px) {
+
+        .city-bar {
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 15px 20px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .brand-text h1 {
+            font-size: 16px;
+        }
+
+        .brand-text p {
+            font-size: 10px;
+        }
+
+        .lafd-logo {
+            width: 46px;
+            height: 46px;
+        }
+
+        .city-logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-divider {
+            height: 35px;
+        }
+
+        .page-header h2 {
+            font-size: 32px;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .steps {
+            grid-template-columns: 1fr;
+        }
+
+        .checklist {
+            grid-template-columns: 1fr;
+        }
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+<!-- ================================
+     CITY GOVERNMENT BAR
+================================= -->
+
+<div class="city-bar">
+
+
+<img
+    src="la-city-logo.png"
+    alt="City of Los Angeles"
+    class="city-bar-logo"
+>
+
+<span>
+    An official website of the City of Los Angeles
+</span>
+
+
+</div>
+
+<!-- ================================
+     HEADER
+================================= -->
+
+<header>
+
+
+<div class="brand">
+
+    <img
+        src="lafd-logo.png"
+        alt="Los Angeles Fire Department"
+        class="lafd-logo"
+    >
+
+    <div class="logo-divider"></div>
+
+    <img
+        src="la-city-logo.png"
+        alt="City of Los Angeles"
+        class="city-logo"
+    >
+
+    <div class="brand-text">
+
+        <h1>
+            Los Angeles Fire Department
+        </h1>
+
+        <p>
+            City of Los Angeles
+        </p>
+
+    </div>
+
+</div>
+
+
+<nav>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="about.html">
+        About
+    </a>
+
+    <a href="stations.html">
+        Stations
+    </a>
+
+    <a href="careers.html">
+        Careers
+    </a>
+
+    <a href="my-applications.html">
+        My Applications
+    </a>
+
+</nav>
+
+
+</header>
+
+<!-- ================================
+     PAGE HEADER
+================================= -->
+
+<section class="page-header">
+
+
+<div>
+
+    <h2>
+        Ready, Set, Go!
+    </h2>
+
+    <p>
+        Prepare your family, protect your home, and know when to evacuate
+    </p>
+
+</div>
+
+
+</section>
+
+<!-- ================================
+     MAIN CONTENT
+================================= -->
+
+<main class="container">
+
+
+<div class="content">
+
+    <h2>
+        Ready, Set, Go!
+    </h2>
+
+    <div class="red-line"></div>
+
+
+    <p>
+
+        Wildfires can spread rapidly and threaten homes and
+        communities with little warning. The Los Angeles Fire
+        Department encourages residents to prepare before a fire
+        starts and understand what actions to take if an evacuation
+        becomes necessary.
+
+    </p>
+
+
+    <p>
+
+        The Ready, Set, Go! approach provides residents with a simple
+        way to prepare for wildfire emergencies: be Ready before a
+        fire starts, get Set when fire threatens your area, and Go
+        when evacuation orders or warnings are issued.
+
+    </p>
+
+
+    <div class="notice">
+
+        <strong>
+            Be Prepared to Evacuate
+        </strong>
+
+        Residents should always be prepared to leave quickly.
+        Do not wait until a wildfire is close to your home before
+        gathering important belongings or planning your evacuation.
+
+    </div>
+
+
+    <h3>
+        Ready. Set. Go.
+    </h3>
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h4>
+                READY
+            </h4>
+
+            <p>
+
+                Prepare your home and family before wildfire
+                threatens. Create an evacuation plan, identify
+                multiple evacuation routes, and prepare emergency
+                supplies.
+
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h4>
+                SET
+            </h4>
+
+            <p>
+
+                When wildfire activity increases, stay alert.
+                Monitor official emergency information, gather
+                your belongings, and be prepared to evacuate
+                immediately.
+
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h4>
+                GO
+            </h4>
+
+            <p>
+
+                When instructed to evacuate, leave immediately.
+                Follow evacuation instructions and use designated
+                routes. Do not delay your departure.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <h3>
+        Prepare Your Home
+    </h3>
+
+
+    <p>
+
+        Preparing your home before wildfire season can help reduce
+        the risk of fire spreading to your property. Residents
+        should maintain their property and remove combustible
+        materials from around structures.
+
+    </p>
+
+
+    <div class="checklist">
+
+        <div class="check-item">
+
+            <strong>
+                Maintain Vegetation
+            </strong>
+
+            Keep vegetation and landscaping maintained around
+            structures and remove dead or dry vegetation.
+
+        </div>
+
+
+        <div class="check-item">
+
+            <strong>
+                Clear Combustible Materials
+            </strong>
+
+            Remove leaves, branches, wood piles, and other
+            combustible materials from areas surrounding your home.
+
+        </div>
+
+
+        <div class="check-item">
+
+            <strong>
+                Prepare Emergency Supplies
+            </strong>
+
+            Keep important documents, medications, water,
+            food, flashlights, and other emergency supplies
+            ready to take with you.
+
+        </div>
+
+
+        <div class="check-item">
+
+            <strong>
+                Plan for Pets
+            </strong>
+
+            Make arrangements for pets and livestock so they
+            can be evacuated safely and quickly.
+
+        </div>
+
+    </div>
+
+
+    <h3>
+        Create an Evacuation Plan
+    </h3>
+
+
+    <p>
+
+        Every household should have an evacuation plan before a
+        wildfire occurs. Discuss evacuation routes with everyone
+        in your household and identify more than one way to leave
+        your neighborhood.
+
+    </p>
+
+
+    <ul>
+
+        <li>
+            Identify multiple evacuation routes from your home.
+        </li>
+
+        <li>
+            Establish a meeting location outside the immediate
+            evacuation area.
+        </li>
+
+        <li>
+            Make sure every household member understands the plan.
+        </li>
+
+        <li>
+            Plan for children, older adults, people with disabilities,
+            pets, and anyone who may require additional assistance.
+        </li>
+
+        <li>
+            Keep your vehicle fueled and ready to leave.
+        </li>
+
+    </ul>
+
+
+    <h3>
+        When You Are Told to Evacuate
+    </h3>
+
+
+    <p>
+
+        If emergency officials issue an evacuation order for your
+        area, leave immediately. Delaying evacuation can place you,
+        your family, and emergency responders at greater risk.
+
+    </p>
+
+
+    <p>
+
+        Follow instructions from emergency officials and use
+        recommended evacuation routes. Avoid driving toward the
+        fire or entering closed areas.
+
+    </p>
+
+
+    <div class="notice">
+
+        <strong>
+            Never Block Emergency Access
+        </strong>
+
+        During an evacuation, keep roadways clear so fire engines,
+        ambulances, law enforcement vehicles, and other emergency
+        resources can reach areas affected by wildfire.
+
+    </div>
+
+
+    <h3>
+        Stay Informed
+    </h3>
+
+
+    <p>
+
+        Conditions during a wildfire can change quickly. Residents
+        should monitor official emergency information and remain
+        prepared to evacuate even if an immediate evacuation order
+        has not yet been issued.
+
+    </p>
+
+
+    <a
+        href="index.html"
+        class="back-button"
+    >
+        RETURN TO HOME
+    </a>
+
+</div>
+
+
+</main>
+
+<!-- ================================
+     FOOTER
+================================= -->
+
+<footer>
+
+
+© 2026 Los Angeles Fire Department — FiveM Roleplay
+
+
+</footer>
+
+</body>
+
+</html>
