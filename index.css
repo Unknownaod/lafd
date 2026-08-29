@@ -215,7 +215,7 @@ min-height: 590px;
 position: relative;
 
 background:
-    url("https://media.discordapp.net/attachments/1394469502061772811/1394843996442067015/Screenshot_2025-06-28_182416.png?ex=6a918473&is=6a9032f3&hm=655e89646379386e8abc4f53733de9764cfa48305edab8f8f0e4b7b005dca408&=&format=webp&quality=lossless&width=1536&height=843")
+    url("https://ibb.co/N2Whs8G1")
     center / cover
     no-repeat;
 
@@ -380,19 +380,19 @@ background-size: cover;
 .ready-image {
 background-image:
 linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.08)),
-url("https://media.discordapp.net/attachments/1394469502061772811/1397741148306538658/Screenshot_2025-07-23_193934.png?ex=6a92d422&is=6a9182a2&hm=99f6e26cfe2f13f90d2bdf1c9afbe23bedcd8b69e6bdfd668ba0e77d320613c6&=&format=webp&quality=lossless");
+url("https://ibb.co/VW0X6XKy");
 }
 
 .redflag-image {
 background-image:
 linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.12)),
-url("https://media.discordapp.net/attachments/1394469502061772811/1394843731202543757/Screenshot_2025-06-29_211328.png?ex=6a92d5b4&is=6a918434&hm=4d7403516d0d1dbb69650556a5ec6af7e029c1601725ec5ccb399c3e2f506ba4&=&format=webp&quality=lossless&width=1536&height=838");
+url("https://ibb.co/JRkQzGs9");
 }
 
 .brush-image {
 background-image:
 linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.1)),
-url("https://media.discordapp.net/attachments/1394469502061772811/1394843997234663547/IMG_6683.png?ex=6a92d5f3&is=6a918473&hm=9d33a3b9d52f32f3f11a76b04f1aedd536578a3d8067c7706418c4d2c53b9f32&=&format=webp&quality=lossless");
+url("https://ibb.co/dw6yDSNm");
 }
 
 .feature-content {
