@@ -87,6 +87,113 @@ export default async function handler(req, res) {
         };
 
 
+        /* ================================
+           SPLIT LONG DISCORD CONTENT
+           
+           Discord embed field values:
+           MAX = 1024 characters
+
+           This automatically splits longer
+           application answers into multiple
+           fields.
+        ================================= */
+
+        const splitText = (text, maxLength = 1000) => {
+
+            text = String(text || "Not provided");
+
+            if (text.length <= maxLength) {
+                return [text];
+            }
+
+            const chunks = [];
+
+            let remaining = text;
+
+            while (remaining.length > maxLength) {
+
+                let splitAt =
+                    remaining.lastIndexOf(
+                        "\n",
+                        maxLength
+                    );
+
+                if (splitAt < 100) {
+
+                    splitAt =
+                        remaining.lastIndexOf(
+                            " ",
+                            maxLength
+                        );
+
+                }
+
+                if (splitAt < 100) {
+                    splitAt = maxLength;
+                }
+
+                chunks.push(
+                    remaining
+                        .slice(0, splitAt)
+                        .trim()
+                );
+
+                remaining =
+                    remaining
+                        .slice(splitAt)
+                        .trim();
+
+            }
+
+            if (remaining.length > 0) {
+                chunks.push(remaining);
+            }
+
+            return chunks;
+
+        };
+
+
+        /* ================================
+           ADD LONG ANSWER FIELDS
+        ================================= */
+
+        const addLongField = (
+            fields,
+            name,
+            value
+        ) => {
+
+            const chunks =
+                splitText(
+                    clean(value),
+                    1000
+                );
+
+            chunks.forEach((chunk, index) => {
+
+                fields.push({
+
+                    name:
+                        index === 0
+                            ? name
+                            : `${name} (continued)`,
+
+                    value: chunk,
+
+                    inline: false
+
+                });
+
+            });
+
+        };
+
+
+        /* ================================
+           APPLICATION VALUES
+        ================================= */
+
         const applicationNumber =
             clean(application.applicationNumber);
 
@@ -145,137 +252,216 @@ export default async function handler(req, res) {
             clean(application.additional);
 
 
-
         /* ================================
-           DISCORD EMBED
+           BUILD DISCORD FIELDS
         ================================= */
 
-        const embed = {
+        const fields = [
 
-            title: "🚒 New LAFD Employment Application",
+            {
+                name: "📋 Application Information",
 
-            description:
-                "A new application has been submitted through the Los Angeles Fire Department Career Portal.",
+                value:
+                    `**Application #:** ${applicationNumber}\n` +
+                    `**Position:** ${position}`,
 
-            color: 11801115,
-
-            fields: [
-
-                {
-                    name: "📋 Application Information",
-
-                    value:
-                        `**Application #:** ${applicationNumber}\n` +
-                        `**Position:** ${position}`,
-
-                    inline: false
-                },
-
-
-                {
-                    name: "👤 Applicant",
-
-                    value:
-                        `**Name:** ${firstName} ${lastName}\n` +
-                        `**Date of Birth:** ${dob}`,
-
-                    inline: false
-                },
-
-
-                {
-                    name: "📞 Contact Information",
-
-                    value:
-                        `**Email:** ${email}\n` +
-                        `**Phone:** ${phone}`,
-
-                    inline: false
-                },
-
-
-                {
-                    name: "📍 Address",
-
-                    value:
-                        `**Street:** ${address}\n` +
-                        `**City:** ${city}\n` +
-                        `**State:** ${state}`,
-
-                    inline: false
-                },
-
-
-                {
-                    name: "💼 Employment History",
-
-                    value:
-                        `**Employer:** ${employer}\n` +
-                        `**Previous Position:** ${previousPosition}\n` +
-                        `**Experience:** ${experience}\n` +
-                        `**Education:** ${education}`,
-
-                    inline: false
-                },
-
-
-                {
-                    name: "🚗 Eligibility",
-
-                    value:
-                        `**Driver's License:** ${license}\n` +
-                        `**Eligible to Work:** ${eligible}`,
-
-                    inline: false
-                },
-
-
-                {
-                    name: "📝 Relevant Experience",
-
-                    value:
-                        relevantExperience,
-
-                    inline: false
-                },
-
-
-                {
-                    name: "❓ Why do you want to join LAFD?",
-
-                    value:
-                        motivation,
-
-                    inline: false
-                },
-
-
-                {
-                    name: "ℹ️ Additional Information",
-
-                    value:
-                        additional,
-
-                    inline: false
-                }
-
-            ],
-
-
-            footer: {
-
-                text:
-                    "LAFD Career Portal • FiveM Roleplay"
-
+                inline: false
             },
 
 
-            timestamp:
-                application.submittedAt ||
-                new Date().toISOString()
+            {
+                name: "👤 Applicant",
 
-        };
+                value:
+                    `**Name:** ${firstName} ${lastName}\n` +
+                    `**Date of Birth:** ${dob}`,
 
+                inline: false
+            },
+
+
+            {
+                name: "📞 Contact Information",
+
+                value:
+                    `**Email:** ${email}\n` +
+                    `**Phone:** ${phone}`,
+
+                inline: false
+            },
+
+
+            {
+                name: "📍 Address",
+
+                value:
+                    `**Street:** ${address}\n` +
+                    `**City:** ${city}\n` +
+                    `**State:** ${state}`,
+
+                inline: false
+            },
+
+
+            {
+                name: "💼 Employment History",
+
+                value:
+                    `**Employer:** ${employer}\n` +
+                    `**Previous Position:** ${previousPosition}`,
+
+                inline: false
+            }
+
+        ];
+
+
+        /* ================================
+           LONG ANSWERS
+        ================================= */
+
+        addLongField(
+            fields,
+            "💼 Experience",
+            experience
+        );
+
+
+        addLongField(
+            fields,
+            "🎓 Education",
+            education
+        );
+
+
+        addLongField(
+            fields,
+            "🚗 Eligibility",
+            `**Driver's License:** ${license}\n` +
+            `**Eligible to Work:** ${eligible}`
+        );
+
+
+        addLongField(
+            fields,
+            "📝 Relevant Experience",
+            relevantExperience
+        );
+
+
+        addLongField(
+            fields,
+            "❓ Why do you want to join LAFD?",
+            motivation
+        );
+
+
+        addLongField(
+            fields,
+            "ℹ️ Additional Information",
+            additional
+        );
+
+
+        /* ================================
+           DISCORD LIMIT SAFETY
+           
+           Discord allows:
+           - 25 fields per embed
+           - 1024 chars per field
+           - 6000 chars per embed
+
+           If the application is extremely
+           long, split it into multiple embeds.
+        ================================= */
+
+        const embeds = [];
+
+        let currentFields = [];
+        let currentCharacters = 0;
+
+        const EMBED_CHARACTER_LIMIT = 5500;
+        const EMBED_FIELD_LIMIT = 25;
+
+
+        for (const field of fields) {
+
+            const fieldCharacters =
+                field.name.length +
+                field.value.length;
+
+            if (
+                currentFields.length >= EMBED_FIELD_LIMIT ||
+                currentCharacters + fieldCharacters >
+                    EMBED_CHARACTER_LIMIT
+            ) {
+
+                embeds.push({
+
+                    title:
+                        embeds.length === 0
+                            ? "🚒 New LAFD Employment Application"
+                            : "🚒 LAFD Application — Continued",
+
+                    description:
+                        embeds.length === 0
+                            ? "A new application has been submitted through the Los Angeles Fire Department Career Portal."
+                            : `Application #${applicationNumber} — Continued`,
+
+                    color: 11801115,
+
+                    fields: currentFields
+
+                });
+
+                currentFields = [];
+                currentCharacters = 0;
+
+            }
+
+            currentFields.push(field);
+
+            currentCharacters += fieldCharacters;
+
+        }
+
+
+        /* ================================
+           PUSH FINAL EMBED
+        ================================= */
+
+        if (currentFields.length > 0) {
+
+            embeds.push({
+
+                title:
+                    embeds.length === 0
+                        ? "🚒 New LAFD Employment Application"
+                        : "🚒 LAFD Application — Continued",
+
+                description:
+                    embeds.length === 0
+                        ? "A new application has been submitted through the Los Angeles Fire Department Career Portal."
+                        : `Application #${applicationNumber} — Continued`,
+
+                color: 11801115,
+
+                fields: currentFields,
+
+                footer: {
+
+                    text:
+                        "LAFD Career Portal • FiveM Roleplay"
+
+                },
+
+                timestamp:
+                    application.submittedAt ||
+                    new Date().toISOString()
+
+            });
+
+        }
 
 
         /* ================================
@@ -302,9 +488,7 @@ export default async function handler(req, res) {
                             username:
                                 "LAFD Recruitment",
 
-                            embeds: [
-                                embed
-                            ],
+                            embeds,
 
                             allowed_mentions: {
                                 parse: []
@@ -314,7 +498,6 @@ export default async function handler(req, res) {
 
                 }
             );
-
 
 
         /* ================================
@@ -343,7 +526,6 @@ export default async function handler(req, res) {
         }
 
 
-
         /* ================================
            SUCCESS
         ================================= */
@@ -360,8 +542,7 @@ export default async function handler(req, res) {
             message:
                 "Application submitted successfully.",
 
-            applicationNumber:
-                applicationNumber
+            applicationNumber
 
         });
 
@@ -386,3 +567,4 @@ export default async function handler(req, res) {
     }
 
 }
+
