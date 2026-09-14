@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "cleanUrls": false,
+  "routes": [
+    { "src": "/about", "dest": "/about.html" },
+    { "src": "/alerts", "dest": "/alerts.html" },
+    { "src": "/application", "dest": "/application.html" },
+    { "src": "/apply", "dest": "/apply.html" },
+    { "src": "/brush", "dest": "/brush.html" },
+    { "src": "/careers", "dest": "/careers.html" },
+    { "src": "/commendation", "dest": "/commendation.html" },
+    { "src": "/complaint", "dest": "/complaint.html" },
+    { "src": "/contact", "dest": "/contact.html" },
+    { "src": "/educational-videos", "dest": "/educational-videos.html" },
+    { "src": "/faq", "dest": "/faq.html" },
+    { "src": "/fims", "dest": "/fims.html" },
+    { "src": "/fire-code", "dest": "/fire-code.html" },
+    { "src": "/fire-records-cpra-request", "dest": "/fire-records-cpra-request.html" },
+    { "src": "/my-applications", "dest": "/my-applications.html" },
+    { "src": "/portal", "dest": "/portal.html" },
+    { "src": "/professional-standards", "dest": "/professional-standards.html" },
+    { "src": "/ready-set-go", "dest": "/ready-set-go.html" },
+    { "src": "/redflag", "dest": "/redflag.html" },
+    { "src": "/send", "dest": "/send.html" },
+    { "src": "/stations", "dest": "/stations.html" },
+    { "src": "/unsubscribe", "dest": "/unsubscribe.html" },
+    { "src": "/wildfire", "dest": "/wildfire.html" },
+
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
