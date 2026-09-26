@@ -25,6 +25,7 @@
     { "src": "/stations", "dest": "/stations.html" },
     { "src": "/unsubscribe", "dest": "/unsubscribe.html" },
     { "src": "/wildfire", "dest": "/wildfire.html" },
+    { "src": "/coc", "dest": "/coc.html" },
 
     { "src": "/(.*)", "dest": "/$1" }
   ]
