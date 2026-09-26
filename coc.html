@@ -1,0 +1,1042 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Office of the Fire Chief | Los Angeles Fire Department</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        /* ================================
+           CITY GOVERNMENT BAR
+        ================================= */
+
+        .city-bar {
+            background: #eeeeee;
+            border-bottom: 1px solid #d4d4d4;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            padding: 0 55px;
+            color: #444;
+        }
+
+        .city-government {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .city-logo {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .city-bar span {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* ================================
+           MAIN HEADER
+        ================================= */
+
+        header {
+            background: #b5121b;
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            padding: 0 55px;
+            color: white;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lafd-logo {
+            width: 54px;
+            height: 54px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 3px;
+        }
+
+        .brand-text h1 {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: .3px;
+        }
+
+        .brand-text p {
+            font-size: 11px;
+            margin-top: 3px;
+            color: #eee;
+        }
+
+        nav {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* ================================
+           PAGE HEADER
+        ================================= */
+
+        .page-header {
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, .65),
+                    rgba(0, 0, 0, .65)
+                ),
+                url("https://media.discordapp.net/attachments/1394469502061772811/1394843996442067015/Screenshot_2025-06-28_182416.png?format=webp&quality=lossless&width=1536&height=843")
+                center/cover;
+
+            min-height: 270px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 35px 20px;
+        }
+
+        .page-header h2 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            color: #ddd;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .breadcrumb {
+            margin-top: 18px;
+            font-size: 12px;
+            color: #ddd;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* ================================
+           MAIN CONTENT
+        ================================= */
+
+        .container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 50px 25px 75px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .red-line {
+            width: 55px;
+            height: 4px;
+            background: #b5121b;
+            margin-bottom: 25px;
+        }
+
+        .intro {
+            max-width: 900px;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* ================================
+           DEPARTMENT NOTICE
+        ================================= */
+
+        .notice {
+            background: white;
+            border: 1px solid #ddd;
+            border-left: 5px solid #b5121b;
+            padding: 22px 25px;
+            margin-bottom: 45px;
+        }
+
+        .notice h3 {
+            font-size: 17px;
+            margin-bottom: 9px;
+            color: #222;
+        }
+
+        .notice p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        /* ================================
+           LEADERSHIP SECTION
+        ================================= */
+
+        .leadership-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .leadership-heading h2 {
+            font-size: 25px;
+        }
+
+        .leadership-heading span {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            font-weight: bold;
+        }
+
+        /* ================================
+           CHIEF PROFILE
+        ================================= */
+
+        .chief-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-top: 5px solid #b5121b;
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 30px;
+            padding: 35px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, .05);
+        }
+
+        .chief-image {
+            width: 180px;
+            height: 210px;
+            background: #eeeeee;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .chief-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-placeholder {
+            font-size: 12px;
+            text-align: center;
+            color: #999;
+            padding: 15px;
+            line-height: 1.6;
+        }
+
+        .chief-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .rank-label {
+            display: inline-block;
+            background: #b5121b;
+            color: white;
+            padding: 7px 12px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: .6px;
+            width: fit-content;
+            margin-bottom: 15px;
+        }
+
+        .chief-info h3 {
+            font-size: 29px;
+            margin-bottom: 8px;
+        }
+
+        .chief-info .position {
+            font-size: 15px;
+            color: #b5121b;
+            font-weight: bold;
+            margin-bottom: 17px;
+        }
+
+        .chief-info p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #666;
+            max-width: 700px;
+        }
+
+        .chief-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid #eee;
+        }
+
+        .meta-item strong {
+            display: block;
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 5px;
+        }
+
+        .meta-item span {
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* ================================
+           EXECUTIVE LEADERSHIP GRID
+        ================================= */
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 25px;
+        }
+
+        .leader-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-top: 4px solid #b5121b;
+            padding: 28px 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .09);
+        }
+
+        .leader-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: #f8e9ea;
+            color: #b5121b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 22px;
+            border: 1px solid #efd0d2;
+        }
+
+        .leader-rank {
+            font-size: 11px;
+            font-weight: bold;
+            color: #b5121b;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 10px;
+        }
+
+        .leader-card h3 {
+            font-size: 22px;
+            margin-bottom: 9px;
+        }
+
+        .leader-card .leader-title {
+            color: #555;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .leader-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .leader-divider {
+            height: 1px;
+            background: #eee;
+            margin: 20px 0;
+        }
+
+        .leader-card .office-label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+
+        .leader-card .office-name {
+            font-size: 13px;
+            color: #333;
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        /* ================================
+           CHAIN OF COMMAND
+        ================================= */
+
+        .chain-section {
+            margin-top: 60px;
+        }
+
+        .chain-section h2 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .chain-description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 850px;
+        }
+
+        .chain {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .chain-item {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        .chain-item + .chain-item {
+            margin-top: 30px;
+        }
+
+        .chain-item + .chain-item::before {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 31px;
+            background: #b5121b;
+            top: -31px;
+            left: 38px;
+        }
+
+        .chain-number {
+            width: 38px;
+            height: 38px;
+            min-width: 38px;
+            background: #b5121b;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .chain-info h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .chain-info p {
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        .footer-links {
+            margin-top: 12px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 12px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 900px) {
+            .leadership-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header {
+                padding: 15px 25px;
+            }
+
+            nav {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .city-bar {
+                padding: 0 20px;
+            }
+
+            .city-logo {
+                width: 27px;
+                height: 27px;
+            }
+
+            .city-bar span {
+                font-size: 11px;
+            }
+
+            header {
+                padding: 15px 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .brand-text h1 {
+                font-size: 16px;
+            }
+
+            .brand-text p {
+                font-size: 10px;
+            }
+
+            .lafd-logo {
+                width: 46px;
+                height: 46px;
+            }
+
+            .page-header {
+                min-height: 230px;
+            }
+
+            .page-header h2 {
+                font-size: 32px;
+            }
+
+            .container {
+                padding: 35px 20px 50px;
+            }
+
+            .chief-card {
+                grid-template-columns: 1fr;
+                padding: 25px;
+                gap: 20px;
+            }
+
+            .chief-image {
+                width: 130px;
+                height: 150px;
+            }
+
+            .chief-info h3 {
+                font-size: 25px;
+            }
+
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .leadership-heading h2 {
+                font-size: 22px;
+            }
+
+            .chain-item {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================================
+         CITY GOVERNMENT BAR
+    ================================= -->
+
+    <div class="city-bar">
+        <div class="city-government">
+            <img
+                src="la-city-logo.png"
+                alt="City of Los Angeles"
+                class="city-logo"
+            >
+
+            <span>
+                An official website of the City of Los Angeles
+                — FiveM Roleplay
+            </span>
+        </div>
+    </div>
+
+    <!-- ================================
+         HEADER
+    ================================= -->
+
+    <header>
+        <div class="brand">
+            <img
+                src="lafd-logo.png"
+                alt="Los Angeles Fire Department"
+                class="lafd-logo"
+            >
+
+            <div class="brand-text">
+                <h1>Los Angeles Fire Department</h1>
+                <p>City of Los Angeles</p>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="stations.html">Stations</a>
+            <a href="careers.html">Careers</a>
+            <a href="my-applications.html">My Applications</a>
+        </nav>
+    </header>
+
+    <!-- ================================
+         PAGE HEADER
+    ================================= -->
+
+    <section class="page-header">
+        <div>
+            <h2>Office of the Fire Chief</h2>
+
+            <p>
+                Executive leadership, department administration,
+                and the chain of command.
+            </p>
+
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                &nbsp; / &nbsp;
+                Office of the Fire Chief
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         MAIN CONTENT
+    ================================= -->
+
+    <main class="container">
+
+        <h2 class="section-title">
+            Department Executive Leadership
+        </h2>
+
+        <div class="red-line"></div>
+
+        <p class="intro">
+            The Office of the Fire Chief provides executive leadership
+            and administrative oversight for the Los Angeles Fire
+            Department. The office establishes departmental priorities,
+            oversees operational administration, and provides direction
+            to the department's command staff and personnel.
+            The following directory identifies the department's
+            executive leadership and established chain of command
+            for this FiveM roleplay organization.
+        </p>
+
+        <!-- DEPARTMENT NOTICE -->
+
+        <div class="notice">
+            <h3>Office of the Fire Chief</h3>
+
+            <p>
+                The Fire Chief serves as the department's senior
+                executive authority. The Deputy Chief assists with
+                department-wide administration and executive oversight,
+                while Assistant Chiefs support command-level
+                administration and the implementation of departmental
+                directives.
+            </p>
+        </div>
+
+        <!-- FIRE CHIEF -->
+
+        <div class="leadership-heading">
+            <h2>Fire Chief</h2>
+            <span>Executive Command</span>
+        </div>
+
+        <div class="chief-card">
+
+            <div class="chief-image">
+                <div class="image-placeholder">
+                    Chief's Official<br>
+                    Portrait
+                </div>
+            </div>
+
+            <div class="chief-info">
+
+                <span class="rank-label">
+                    Chief of Department
+                </span>
+
+                <h3>C. Cionek</h3>
+
+                <div class="position">
+                    Fire Chief
+                </div>
+
+                <p>
+                    The Fire Chief is the highest-ranking official
+                    within the department and is responsible for
+                    overall leadership, executive administration,
+                    departmental policy, and strategic direction.
+                    The Chief provides final departmental direction
+                    and supervises the executive command staff.
+                </p>
+
+                <div class="chief-meta">
+
+                    <div class="meta-item">
+                        <strong>Office</strong>
+                        <span>Office of the Fire Chief</span>
+                    </div>
+
+                    <div class="meta-item">
+                        <strong>Command Level</strong>
+                        <span>Executive</span>
+                    </div>
+
+                    <div class="meta-item">
+                        <strong>Reports To</strong>
+                        <span>Department Executive Authority</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- EXECUTIVE COMMAND STAFF -->
+
+        <div class="leadership-heading">
+            <h2>Executive Command Staff</h2>
+            <span>Deputy & Assistant Chiefs</span>
+        </div>
+
+        <div class="leadership-grid">
+
+            <!-- DEPUTY CHIEF -->
+
+            <div class="leader-card">
+
+                <div class="leader-icon">
+                    BP
+                </div>
+
+                <div class="leader-rank">
+                    Deputy Chief
+                </div>
+
+                <h3>B. Pinkman</h3>
+
+                <div class="leader-title">
+                    Deputy Chief of Department
+                </div>
+
+                <p>
+                    The Deputy Chief serves as the second-ranking
+                    executive officer and assists the Fire Chief
+                    with department-wide administration, command
+                    oversight, and implementation of departmental
+                    directives. The Deputy Chief may act on behalf
+                    of the Fire Chief when delegated authority.
+                </p>
+
+                <div class="leader-divider"></div>
+
+                <div class="office-label">
+                    Assigned Office
+                </div>
+
+                <div class="office-name">
+                    Office of the Deputy Chief
+                </div>
+
+            </div>
+
+            <!-- ASSISTANT CHIEF -->
+
+            <div class="leader-card">
+
+                <div class="leader-icon">
+                    JB
+                </div>
+
+                <div class="leader-rank">
+                    Assistant Chief
+                </div>
+
+                <h3>J. Bieber</h3>
+
+                <div class="leader-title">
+                    Assistant Chief of Department
+                </div>
+
+                <p>
+                    The Assistant Chief supports executive command
+                    through departmental administration, coordination
+                    of assigned command functions, and supervision
+                    of personnel and operations within delegated
+                    areas of responsibility.
+                </p>
+
+                <div class="leader-divider"></div>
+
+                <div class="office-label">
+                    Assigned Office
+                </div>
+
+                <div class="office-name">
+                    Office of the Assistant Chief
+                </div>
+
+            </div>
+
+            <!-- ASSISTANT CHIEF -->
+
+            <div class="leader-card">
+
+                <div class="leader-icon">
+                    CK
+                </div>
+
+                <div class="leader-rank">
+                    Assistant Chief
+                </div>
+
+                <h3>C. Keeler</h3>
+
+                <div class="leader-title">
+                    Assistant Chief of Department
+                </div>
+
+                <p>
+                    The Assistant Chief assists with command-level
+                    administration, executive initiatives, and
+                    oversight of assigned departmental functions.
+                    The position supports the Fire Chief and Deputy
+                    Chief in maintaining departmental standards
+                    and organizational coordination.
+                </p>
+
+                <div class="leader-divider"></div>
+
+                <div class="office-label">
+                    Assigned Office
+                </div>
+
+                <div class="office-name">
+                    Office of the Assistant Chief
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CHAIN OF COMMAND -->
+
+        <section class="chain-section">
+
+            <h2>Department Chain of Command</h2>
+
+            <div class="red-line"></div>
+
+            <p class="chain-description">
+                The department follows the executive reporting
+                structure below. Department personnel are expected
+                to follow established supervisory channels and
+                applicable directives issued by authorized
+                command staff.
+            </p>
+
+            <div class="chain">
+
+                <div class="chain-item">
+
+                    <div class="chain-number">
+                        1
+                    </div>
+
+                    <div class="chain-info">
+                        <h3>Chief of Department — C. Cionek</h3>
+                        <p>
+                            Overall department authority and
+                            executive leadership.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="chain-item">
+
+                    <div class="chain-number">
+                        2
+                    </div>
+
+                    <div class="chain-info">
+                        <h3>Deputy Chief — B. Pinkman</h3>
+                        <p>
+                            Second-ranking executive officer
+                            and department-wide oversight.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="chain-item">
+
+                    <div class="chain-number">
+                        3
+                    </div>
+
+                    <div class="chain-info">
+                        <h3>Assistant Chief — J. Bieber</h3>
+                        <p>
+                            Executive command and delegated
+                            departmental responsibilities.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="chain-item">
+
+                    <div class="chain-number">
+                        4
+                    </div>
+
+                    <div class="chain-info">
+                        <h3>Assistant Chief — C. Keeler</h3>
+                        <p>
+                            Executive command and delegated
+                            departmental responsibilities.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer>
+
+        <strong>Los Angeles Fire Department</strong>
+
+        <br>
+
+        Office of the Fire Chief
+
+        <br>
+
+        © 2026 Los Angeles Fire Department
+        — FiveM Roleplay
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About LAFD</a>
+            <a href="stations.html">Fire Stations</a>
+            <a href="careers.html">Careers</a>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
